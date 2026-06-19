@@ -679,12 +679,42 @@ textarea.form-control { resize: vertical; min-height: 92px; }
   .topbar h1 { font-size: 15px; }
   .topbar .user-info { display: none; }
 }
+@media (max-width: 600px) {
+  .page-title { font-size: 18px; }
+  .page-sub   { font-size: 12.5px; }
+  .toolbar    { flex-wrap: wrap; gap: 8px; }
+  .toolbar > * { flex: 1 1 auto; min-width: 0; }
+  .toolbar select.form-control,
+  .toolbar input.form-control { width: 100% !important; min-width: 0; }
+  .toolbar .search { flex: 1 1 100%; }
+  .toolbar .spacer { display: none; }
+  .card-header   { flex-wrap: wrap; gap: 8px; }
+  .card-header .card-title { flex: 1 1 100%; }
+  table.data { font-size: 12.5px; }
+  table.data thead th,
+  table.data tbody td { padding: 8px 10px; }
+  .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; }
+  .tabs .tab { flex-shrink: 0; }
+  .chart-wrap { height: 220px !important; }
+  .btn { padding: 8px 12px; font-size: 13px; }
+}
 @media (max-width: 480px) {
   .stat-grid { grid-template-columns: 1fr; }
   .qa-grid { grid-template-columns: repeat(2, 1fr); }
-  .card { padding: 16px; }
-  .toolbar .search { flex: 1 1 100%; }
+  .card { padding: 14px; }
+  .content { padding: 14px 12px; }
+  .topbar { padding: 0 12px; }
+  .topbar h1 { font-size: 14px; }
+  .page-title { font-size: 17px; }
+  .stat .value { font-size: 17px; }
+  .modal { width: 95%; padding: 18px; }
+  .form-grid.cols-2 { grid-template-columns: 1fr; }
+  table.data { font-size: 12px; min-width: 480px; }
 }
+/* Pastikan layout tidak melebihi lebar layar di HP */
+html, body { max-width: 100%; overflow-x: hidden; }
+.content { max-width: 100%; }
+img, svg { max-width: 100%; height: auto; }
 
 /* ====================================================================
    COMPATIBILITY LAYER — map .m-* (warisan mobile) ke style desktop
