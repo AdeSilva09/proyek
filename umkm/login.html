@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Login UMKM - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="login-page">
+  <form class="login-card" onsubmit="event.preventDefault(); window.location='dashboard.html';">
+    <div class="login-logo">UB</div>
+    <h1>Login Pelaku UMKM</h1>
+    <div class="sub">Masuk untuk mengelola usaha Anda</div>
+
+    <div class="form-group">
+      <label>Username / Email</label>
+      <input type="text" class="form-control" placeholder="umkm@example.com" value="sari@umkm.id" required>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" value="password" required>
+    </div>
+    <div class="form-group flex justify-between items-center" style="font-size:12.5px;">
+      <label style="display:flex;gap:6px;align-items:center;font-weight:400;">
+        <input type="checkbox" checked> Ingat saya
+      </label>
+      <a href="#" style="color:var(--primary);">Lupa password?</a>
+    </div>
+    <button type="submit" class="btn">Masuk ke Sistem</button>
+    <div class="footer-link">&copy; 2026 SIM-UMKM &middot; <a href="../dkukmpp/login.html" style="color:var(--primary);">Login Admin</a></div>
+  </form>
+</div>
+</body>
+</html>
+

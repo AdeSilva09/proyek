@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Lihat Data UMKM Binaan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Lihat Data UMKM Binaan">
+
+<div class="flex justify-between items-center mb-2">
+  <div>
+    <div class="page-title">Batik Lestari</div>
+    <div class="page-sub">UMK-002 &middot; Fashion / Baju &middot; Bergabung 05 Jan 2024 &middot; <span class="badge success">Aktif</span></div>
+  </div>
+  <div class="flex gap-2">
+    <a href="monitoring-statistik.html" class="btn secondary">&lsaquo; Pilih UMKM Lain</a>
+    <button class="btn danger"><span data-ic="x"></span> Hapus UMKM</button>
+  </div>
+</div>
+
+<div class="alert mb-2">
+  <span data-ic="eye" class="alert-ic"></span>
+  <div style="font-size:12.5px">Mode <strong>view-only</strong> &mdash; semua data di bawah ini diinput oleh UMKM. DKUKMPP hanya bisa melihat, memverifikasi, dan menghapus.</div>
+</div>
+
+<div class="tabs" id="detailTabs">
+  <div class="tab active" data-view="profil">Data UMKM</div>
+  <div class="tab" data-view="modal">Data Modal</div>
+  <div class="tab" data-view="produk">Data Produk</div>
+  <div class="tab" data-view="bahan">Data Bahan Baku</div>
+  <div class="tab" data-view="penjualan">Data Penjualan</div>
+  <div class="tab" data-view="pengeluaran">Data Pengeluaran</div>
+  <div class="tab" data-view="keuntungan">Data Keuntungan</div>
+  <div class="tab" data-view="laporan">Data Laporan</div>
+</div>
+
+<!-- ============ DATA UMKM ============ -->
+<div class="view" id="v-profil">
+  <div class="row-2">
+    <div>
+      <div class="card">
+        <div class="card-title mb-2">Informasi Profil</div>
+        <table class="data" style="font-size:13.5px;">
+          <tbody>
+            <tr><td style="width:200px; color:var(--gray-500);">Nama UMKM</td><td><strong>Batik Lestari</strong></td></tr>
+            <tr><td style="color:var(--gray-500);">Pemilik</td><td>Sri Mulyani</td></tr>
+            <tr><td style="color:var(--gray-500);">Kategori</td><td>Fashion</td></tr>
+            <tr><td style="color:var(--gray-500);">Sub Kategori</td><td>Baju</td></tr>
+            <tr><td style="color:var(--gray-500);">NIB</td><td>1234567890123</td></tr>
+            <tr><td style="color:var(--gray-500);">Alamat</td><td>Jl. Sukajadi No. 45, Bandung</td></tr>
+            <tr><td style="color:var(--gray-500);">Telepon</td><td>0812-3456-7890</td></tr>
+            <tr><td style="color:var(--gray-500);">Email</td><td>batik.lestari@email.com</td></tr>
+            <tr><td style="color:var(--gray-500);">Jumlah Karyawan</td><td>8 orang</td></tr>
+            <tr><td style="color:var(--gray-500);">Modal Awal</td><td>Rp 45.000.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-title mb-2">Ringkasan Kinerja</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div><div class="text-muted" style="font-size:12px;">Modal Saat Ini</div><strong style="font-size:18px;">Rp 62.500.000</strong></div>
+          <div><div class="text-muted" style="font-size:12px;">Penjualan Bulan Ini</div><strong style="font-size:18px;">Rp 28.300.000</strong></div>
+          <div><div class="text-muted" style="font-size:12px;">Keuntungan Bulan Ini</div><strong style="font-size:18px; color:var(--success);">Rp 8.450.000</strong></div>
+          <div><div class="text-muted" style="font-size:12px;">Margin</div><strong style="font-size:18px;">29.8%</strong></div>
+        </div>
+        <hr style="margin:16px 0; border:none; border-top:1px solid var(--gray-100);">
+        <div class="text-muted" style="font-size:12px; margin-bottom:8px;">Penjualan & Keuntungan per Sub Kategori (Bulan Ini)</div>
+        <table class="data" style="font-size:12.5px">
+          <thead><tr><th>Sub Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr></thead>
+          <tbody>
+            <tr><td>Baju</td><td style="text-align:right">Rp 18.450.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 5.620.000</td></tr>
+            <tr><td>Celana</td><td style="text-align:right">Rp 7.200.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.180.000</td></tr>
+            <tr><td>Aksesoris</td><td style="text-align:right">Rp 2.650.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 650.000</td></tr>
+          </tbody>
+        </table>
+        <div class="text-muted" style="font-size:12px; margin:14px 0 8px;">Penjualan & Keuntungan per Item Produk</div>
+        <table class="data" style="font-size:12.5px">
+          <thead><tr><th>Produk</th><th style="text-align:right">Qty Terjual</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr></thead>
+          <tbody>
+            <tr><td>Batik Tulis Pria</td><td style="text-align:right">38</td><td style="text-align:right">Rp 11.020.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 4.180.000</td></tr>
+            <tr><td>Kemeja Batik Wanita</td><td style="text-align:right">30</td><td style="text-align:right">Rp 7.430.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.440.000</td></tr>
+            <tr><td>Celana Batik</td><td style="text-align:right">48</td><td style="text-align:right">Rp 7.200.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.180.000</td></tr>
+            <tr><td>Selendang Batik</td><td style="text-align:right">33</td><td style="text-align:right">Rp 2.650.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 650.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title mb-2">Status Verifikasi</div>
+        <table class="data" style="font-size:13px">
+          <tbody>
+            <tr><td style="color:var(--gray-500)">Status Akun</td><td><span class="badge success">Terverifikasi</span></td></tr>
+            <tr><td style="color:var(--gray-500)">Diverifikasi Oleh</td><td>Admin DKUKMPP</td></tr>
+            <tr><td style="color:var(--gray-500)">Tanggal Verifikasi</td><td>06 Jan 2024</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DATA MODAL ============ -->
+<div class="view" id="v-modal" style="display:none">
+  <div class="stat-grid">
+    <div class="stat"><div class="icon"><span data-ic="wallet"></span></div><div><div class="label">Total Modal</div><div class="value">Rp 62.5 jt</div></div></div>
+    <div class="stat green"><div class="icon"><span data-ic="arrow-up"></span></div><div><div class="label">Modal Masuk</div><div class="value">Rp 62.5 jt</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Pertumbuhan</div><div class="value">+38.9%</div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title mb-2">Daftar Modal yang Diinput UMKM</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Tanggal</th><th>Nama Modal</th><th>Sumber Modal</th><th>Sub Kategori</th><th style="text-align:right">Nominal</th></tr></thead>
+      <tbody>
+        <tr><td>05 Jan 2024</td><td>Modal Awal Usaha</td><td>Modal Sendiri</td><td>Tabungan Pribadi</td><td style="text-align:right">Rp 45.000.000</td></tr>
+        <tr><td>20 Jul 2024</td><td>Pinjaman KUR BRI</td><td>Pinjaman</td><td>Bank (KUR)</td><td style="text-align:right">Rp 12.000.000</td></tr>
+        <tr><td>15 Mar 2025</td><td>Bantuan DKUKMPP</td><td>Hibah</td><td>Hibah DKUKMPP</td><td style="text-align:right">Rp 5.500.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ DATA PRODUK ============ -->
+<div class="view" id="v-produk" style="display:none">
+  <div class="card">
+    <div class="card-title mb-2">Kategori &amp; Sub Kategori Barang</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Kategori</th><th>Sub Kategori</th><th style="text-align:right">Jumlah Item</th><th style="text-align:right">Total Stok</th></tr></thead>
+      <tbody>
+        <tr><td>Fashion</td><td>Baju</td><td style="text-align:right">18</td><td style="text-align:right">245 pcs</td></tr>
+        <tr><td>Fashion</td><td>Celana</td><td style="text-align:right">8</td><td style="text-align:right">96 pcs</td></tr>
+        <tr><td>Fashion</td><td>Aksesoris</td><td style="text-align:right">12</td><td style="text-align:right">180 pcs</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-title mb-2">Daftar Produk</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Kode</th><th>Nama Produk</th><th>Sub Kategori</th><th style="text-align:right">Harga Modal</th><th style="text-align:right">Harga Jual</th><th style="text-align:right">Stok</th></tr></thead>
+      <tbody>
+        <tr><td>P-001</td><td>Batik Tulis Pria</td><td>Baju</td><td style="text-align:right">Rp 180.000</td><td style="text-align:right">Rp 290.000</td><td style="text-align:right">42</td></tr>
+        <tr><td>P-002</td><td>Kemeja Batik Wanita</td><td>Baju</td><td style="text-align:right">Rp 155.000</td><td style="text-align:right">Rp 250.000</td><td style="text-align:right">38</td></tr>
+        <tr><td>P-003</td><td>Celana Batik</td><td>Celana</td><td style="text-align:right">Rp 95.000</td><td style="text-align:right">Rp 150.000</td><td style="text-align:right">28</td></tr>
+        <tr><td>P-004</td><td>Selendang Batik</td><td>Aksesoris</td><td style="text-align:right">Rp 50.000</td><td style="text-align:right">Rp 80.000</td><td style="text-align:right">62</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ DATA BAHAN BAKU ============ -->
+<div class="view" id="v-bahan" style="display:none">
+  <div class="stat-grid">
+    <div class="stat"><div class="icon"><span data-ic="box"></span></div><div><div class="label">Total Item</div><div class="value">12</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Stok Menipis</div><div class="value">2</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="wallet"></span></div><div><div class="label">Nilai Inventaris</div><div class="value">Rp 18.450.000</div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title mb-2">Daftar Bahan Baku</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Kode</th><th>Nama Bahan</th><th>Kategori</th><th>Satuan</th><th style="text-align:right">Harga/Satuan</th><th style="text-align:right">Stok</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>BB-001</td><td>Kain Mori</td><td>Pokok</td><td>meter</td><td style="text-align:right">Rp 65.000</td><td style="text-align:right">125</td><td><span class="badge success">Aman</span></td></tr>
+        <tr><td>BB-002</td><td>Pewarna Alami</td><td>Bahan</td><td>kg</td><td style="text-align:right">Rp 180.000</td><td style="text-align:right">8</td><td><span class="badge success">Aman</span></td></tr>
+        <tr><td>BB-003</td><td>Lilin Batik</td><td>Bahan</td><td>kg</td><td style="text-align:right">Rp 45.000</td><td style="text-align:right">2</td><td><span class="badge warning">Hampir</span></td></tr>
+        <tr><td>BB-004</td><td>Plastik Kemasan</td><td>Kemasan</td><td>pcs</td><td style="text-align:right">Rp 850</td><td style="text-align:right">450</td><td><span class="badge success">Aman</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ DATA PENJUALAN ============ -->
+<div class="view" id="v-penjualan" style="display:none">
+  <div class="stat-grid">
+    <div class="stat green"><div class="icon"><span data-ic="cart"></span></div><div><div class="label">Penjualan Bulan Ini</div><div class="value">Rp 28.300.000</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="history"></span></div><div><div class="label">Jumlah Transaksi</div><div class="value">142</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Rata-rata/Hari</div><div class="value">Rp 942.000</div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title mb-2">Riwayat Penjualan Terakhir</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Tanggal</th><th>Sub Kategori</th><th>Item</th><th style="text-align:right">Qty</th><th style="text-align:right">Nilai</th></tr></thead>
+      <tbody>
+        <tr><td>10 Jun 2026</td><td>Baju</td><td>Batik Tulis Pria</td><td style="text-align:right">2</td><td style="text-align:right">Rp 580.000</td></tr>
+        <tr><td>10 Jun 2026</td><td>Celana</td><td>Celana Batik</td><td style="text-align:right">3</td><td style="text-align:right">Rp 450.000</td></tr>
+        <tr><td>09 Jun 2026</td><td>Baju</td><td>Kemeja Batik Wanita</td><td style="text-align:right">5</td><td style="text-align:right">Rp 1.250.000</td></tr>
+        <tr><td>08 Jun 2026</td><td>Aksesoris</td><td>Selendang Batik</td><td style="text-align:right">4</td><td style="text-align:right">Rp 320.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ DATA PENGELUARAN ============ -->
+<div class="view" id="v-pengeluaran" style="display:none">
+  <div class="stat-grid">
+    <div class="stat orange"><div class="icon"><span data-ic="money-off"></span></div><div><div class="label">Pengeluaran Bulan Ini</div><div class="value">Rp 19.850.000</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="history"></span></div><div><div class="label">Jumlah Transaksi</div><div class="value">38</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Kategori Terbesar</div><div class="value" style="font-size:16px;">Bahan Baku</div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title mb-2">Rincian Pengeluaran &mdash; Untuk Beli Apa Saja</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Tanggal</th><th>Kategori</th><th>Sub Kategori</th><th>Deskripsi</th><th style="text-align:right">Nominal</th></tr></thead>
+      <tbody>
+        <tr><td>10 Jun 2026</td><td>Bahan Baku</td><td>Kain</td><td>Beli kain mori 50 m</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 3.250.000</td></tr>
+        <tr><td>08 Jun 2026</td><td>Bahan Baku</td><td>Pewarna</td><td>Pewarna alami batik</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 820.000</td></tr>
+        <tr><td>07 Jun 2026</td><td>Gaji Karyawan</td><td>Gaji Pokok</td><td>Gaji 8 karyawan minggu I</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 6.400.000</td></tr>
+        <tr><td>05 Jun 2026</td><td>Marketing</td><td>Iklan Online</td><td>Iklan Instagram Ads</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 750.000</td></tr>
+        <tr><td>03 Jun 2026</td><td>Operasional</td><td>Listrik</td><td>Listrik bulan Mei</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 480.000</td></tr>
+        <tr><td>01 Jun 2026</td><td>Sewa Tempat</td><td>Sewa Tempat</td><td>Sewa workshop bulan Juni</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 2.500.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ DATA KEUNTUNGAN ============ -->
+<div class="view" id="v-keuntungan" style="display:none">
+  <div class="stat-grid">
+    <div class="stat green"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Keuntungan Bulan Ini</div><div class="value">Rp 8.450.000</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Margin</div><div class="value">29.8%</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Rata-rata/Bulan (6 bln)</div><div class="value">Rp 6.96 jt</div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title mb-2">Tren Keuntungan 6 Bulan Terakhir</div>
+    <div class="chart-wrap sm"><canvas id="cProfit"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-title mb-2">Keuntungan per Sub Kategori</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Sub Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr></thead>
+      <tbody>
+        <tr><td>Baju</td><td style="text-align:right">Rp 18.450.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 5.620.000</td></tr>
+        <tr><td>Celana</td><td style="text-align:right">Rp 7.200.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.180.000</td></tr>
+        <tr><td>Aksesoris</td><td style="text-align:right">Rp 2.650.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 650.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ DATA LAPORAN ============ -->
+<div class="view" id="v-laporan" style="display:none">
+  <div class="card">
+    <div class="card-title mb-2">Laporan Keuangan yang Diunggah UMKM</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Periode</th><th>Jenis</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Pengeluaran</th><th style="text-align:right">Keuntungan</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>Juni 2026</td><td>Bulanan</td><td style="text-align:right">Rp 28.300.000</td><td style="text-align:right">Rp 19.850.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 8.450.000</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>
+        <tr><td>Mei 2026</td><td>Bulanan</td><td style="text-align:right">Rp 26.420.000</td><td style="text-align:right">Rp 18.420.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 8.000.000</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>
+        <tr><td>April 2026</td><td>Bulanan</td><td style="text-align:right">Rp 24.180.000</td><td style="text-align:right">Rp 16.680.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 7.500.000</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>
+        <tr><td>Q1 2026</td><td>Kuartalan</td><td style="text-align:right">Rp 68.420.000</td><td style="text-align:right">Rp 47.620.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 20.800.000</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  const tabs = document.querySelectorAll('#detailTabs .tab');
+  const views = ['profil','modal','produk','bahan','penjualan','pengeluaran','keuntungan','laporan'];
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.toggle('active', x===t));
+    const v = t.dataset.view;
+    views.forEach(name => {
+      document.getElementById('v-'+name).style.display = (name===v) ? '' : 'none';
+    });
+    if (v==='keuntungan' && !window._profitChart) {
+      window._profitChart = new Chart(document.getElementById('cProfit'),{
+        type:'line',
+        data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
+          datasets:[{label:'Keuntungan (jt)',data:[5,6,6.8,7.5,8,8.45],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.15)',fill:true,tension:0.3,borderWidth:2}]},
+        options:{responsive:true,maintainAspectRatio:false}
+      });
+    }
+  }));
+</script>
+</body>
+</html>

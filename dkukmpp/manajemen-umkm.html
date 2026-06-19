@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Manajemen Data UMKM - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Manajemen Data UMKM">
+
+<div class="page-title">Manajemen Data UMKM</div>
+<div class="page-sub">Kelola data UMKM yang telah terdaftar</div>
+
+<div class="card">
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari UMKM..."></div>
+    <select class="form-control" style="width:150px;"><option>Semua Status</option><option>Aktif</option><option>Tidak Aktif</option></select>
+    <select class="form-control" style="width:150px;" id="filterKat">
+      <option value="">Semua Kategori</option>
+      <option>Kuliner</option><option>Fashion</option><option>Kerajinan</option><option>Jasa</option><option>Perdagangan</option>
+    </select>
+    <select class="form-control" style="width:160px;" id="filterSub"><option value="">Semua Sub Kategori</option></select>
+    <div class="spacer"></div>
+    <button class="btn">+ Tambah UMKM</button>
+    <button class="btn outline sm">&#8595; Export</button>
+  </div>
+
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>ID</th><th>Nama UMKM</th><th>Pemilik</th><th>Kategori</th><th>Sub Kategori</th><th>Modal</th><th>Tgl Bergabung</th><th>Status</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>UMK-001</td><td>Warung Bu Sri</td><td>Sri Wahyuni</td><td>Kuliner</td><td>Warung Makan</td><td>Rp 15 jt</td><td>12 Mar 2023</td>
+          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
+        <tr><td>UMK-002</td><td>Batik Lestari</td><td>Sri Mulyani</td><td>Fashion</td><td>Baju</td><td>Rp 45 jt</td><td>05 Jan 2024</td>
+          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
+        <tr><td>UMK-003</td><td>Bengkel Maju</td><td>Joko Susilo</td><td>Jasa</td><td>Servis</td><td>Rp 28 jt</td><td>22 Aug 2023</td>
+          <td><select class="form-control sm st-aktif"><option>Aktif</option><option selected>Tidak Aktif</option></select></td>
+          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
+        <tr><td>UMK-004</td><td>Toko Berkah</td><td>Ahmad Fauzi</td><td>Perdagangan</td><td>Sembako</td><td>Rp 32 jt</td><td>18 Nov 2023</td>
+          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
+        <tr><td>UMK-005</td><td>Kerajinan Bambu</td><td>Wati Lestari</td><td>Kerajinan</td><td>Anyaman</td><td>Rp 12 jt</td><td>03 Feb 2024</td>
+          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
+        <tr><td>UMK-006</td><td>Bakery Manis</td><td>Linda Wati</td><td>Kuliner</td><td>Bakery</td><td>Rp 22 jt</td><td>28 Apr 2024</td>
+          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
+        <tr><td>UMK-007</td><td>Konveksi Jaya</td><td>Hendra Wijaya</td><td>Fashion</td><td>Celana</td><td>Rp 65 jt</td><td>15 Jul 2023</td>
+          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flex justify-between items-center" style="margin-top:14px; font-size:13px;">
+    <div class="text-muted">Menampilkan 1-7 dari 1.248 UMKM</div>
+    <div class="flex gap-2">
+      <button class="btn secondary sm">‹ Sebelumnya</button>
+      <button class="btn sm">1</button>
+      <button class="btn secondary sm">2</button>
+      <button class="btn secondary sm">3</button>
+      <button class="btn secondary sm">Selanjutnya ›</button>
+    </div>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  const subMap = {
+    Kuliner: ['Warung Makan','Catering','Bakery','Minuman'],
+    Fashion: ['Baju','Celana','Hijab','Sepatu','Aksesoris'],
+    Kerajinan: ['Anyaman','Kayu','Keramik'],
+    Jasa: ['Servis','Laundry','Salon'],
+    Perdagangan: ['Sembako','Elektronik','Toko Kelontong'],
+  };
+  const fk = document.getElementById('filterKat');
+  const fs = document.getElementById('filterSub');
+  fk.addEventListener('change', () => {
+    const arr = subMap[fk.value] || [];
+    fs.innerHTML = `<option value="">Semua Sub Kategori</option>` + arr.map(o=>`<option>${o}</option>`).join('');
+  });
+</script>
+</body>
+</html>

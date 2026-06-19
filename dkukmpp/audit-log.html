@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Audit Log - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Audit Log Aktivitas">
+
+<div class="page-title">Audit Log Aktivitas</div>
+<div class="page-sub">Catat & telusuri seluruh aktivitas pengguna pada sistem untuk akuntabilitas</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="eye"></span></div><div><div class="label">Total Aktivitas (30 hari)</div><div class="value">4.286</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Berhasil</div><div class="value">4.158</div></div></div>
+  <div class="stat red"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Gagal / Ditolak</div><div class="value">128</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="lock"></span></div><div><div class="label">Login Mencurigakan</div><div class="value">7</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Riwayat Aktivitas</div>
+    <div>
+      <button class="btn outline sm"><span data-ic="file-text"></span> Export CSV</button>
+    </div>
+  </div>
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari user, modul, atau aksi..."></div>
+    <select class="form-control" style="width:160px;">
+      <option>Semua Modul</option><option>Login</option><option>Registrasi UMKM</option><option>Modal</option><option>Transaksi</option><option>Pengeluaran</option><option>Laporan</option>
+    </select>
+    <select class="form-control" style="width:140px;">
+      <option>Semua Aksi</option><option>Create</option><option>Update</option><option>Delete</option><option>View</option><option>Login</option>
+    </select>
+    <input type="date" class="form-control" style="width:160px;">
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Waktu</th><th>User</th><th>Modul</th><th>Aksi</th><th>Deskripsi</th><th>IP Address</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>19 Jun 2026 09:42</td><td>Dirga Admin</td><td>Verifikasi</td><td>Update</td><td>Verifikasi UMKM "Kedai Kopi Senja"</td><td>10.10.2.18</td><td><span class="badge success">OK</span></td></tr>
+        <tr><td>19 Jun 2026 09:35</td><td>Dirga Admin</td><td>Modal</td><td>Create</td><td>Input modal Rp 5.000.000 — Batik Lestari</td><td>10.10.2.18</td><td><span class="badge success">OK</span></td></tr>
+        <tr><td>19 Jun 2026 09:12</td><td>Bu Sari (UMKM)</td><td>Transaksi</td><td>Create</td><td>Input transaksi Rp 1.250.000</td><td>114.79.x.x</td><td><span class="badge success">OK</span></td></tr>
+        <tr><td>19 Jun 2026 08:58</td><td>Kepala Dinas</td><td>Laporan</td><td>View</td><td>Lihat Laporan Pertumbuhan Q2</td><td>10.10.2.5</td><td><span class="badge success">OK</span></td></tr>
+        <tr><td>19 Jun 2026 08:30</td><td>Dirga Admin</td><td>Login</td><td>Login</td><td>Login berhasil</td><td>10.10.2.18</td><td><span class="badge success">OK</span></td></tr>
+        <tr><td>18 Jun 2026 23:14</td><td>unknown</td><td>Login</td><td>Login</td><td>Login gagal — password salah (admin)</td><td>180.252.x.x</td><td><span class="badge danger">Gagal</span></td></tr>
+        <tr><td>18 Jun 2026 16:20</td><td>Dirga Admin</td><td>UMKM Binaan</td><td>Delete</td><td>Nonaktifkan UMKM "Warung Bu Sri"</td><td>10.10.2.18</td><td><span class="badge warning">Sensitif</span></td></tr>
+        <tr><td>18 Jun 2026 15:42</td><td>Dirga Admin</td><td>Pengeluaran</td><td>Update</td><td>Edit pengeluaran #1208</td><td>10.10.2.18</td><td><span class="badge success">OK</span></td></tr>
+        <tr><td>18 Jun 2026 14:10</td><td>Bu Sari (UMKM)</td><td>Modal</td><td>View</td><td>Lihat data modal</td><td>114.79.x.x</td><td><span class="badge success">OK</span></td></tr>
+        <tr><td>18 Jun 2026 11:05</td><td>Dirga Admin</td><td>Backup</td><td>Create</td><td>Backup database manual</td><td>10.10.2.18</td><td><span class="badge success">OK</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:12px; display:flex; justify-content:space-between; font-size:13px; color:var(--text-muted);">
+    <span>Menampilkan 1-10 dari 4.286 entri</span>
+    <div>
+      <button class="btn outline sm">&laquo; Prev</button>
+      <button class="btn outline sm">Next &raquo;</button>
+    </div>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

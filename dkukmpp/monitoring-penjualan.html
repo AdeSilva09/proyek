@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Data Penjualan UMKM Binaan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Data Penjualan UMKM Binaan">
+
+<div class="page-title">Data Penjualan UMKM Binaan</div>
+<div class="page-sub">Pilih UMKM binaan terlebih dahulu untuk melihat data penjualannya. <a href="monitoring-statistik.html">Pilih UMKM &rsaquo;</a></div>
+
+<div class="toolbar mb-3">
+  <select class="form-control" style="width:260px;" id="pilihUmkm">
+    <option value="all">&mdash; Semua UMKM Binaan (Agregat) &mdash;</option>
+    <option>Warung Bu Sri</option>
+    <option>Batik Lestari</option>
+    <option>Bengkel Maju</option>
+    <option>Toko Berkah</option>
+    <option>Bakery Manis</option>
+    <option>Konveksi Jaya</option>
+  </select>
+  <div class="spacer"></div>
+  <a href="monitoring-statistik.html" class="btn outline sm"><span data-ic="eye"></span> Pilih dari Daftar</a>
+</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="cart"></span></div><div><div class="label">Total Penjualan</div><div class="value">Rp 5.8 M</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Rata-rata/UMKM</div><div class="value">Rp 4.6 jt</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="fire"></span></div><div><div class="label">Penjualan Tertinggi</div><div class="value">Rp 48 jt</div><div class="delta">Konveksi Jaya</div></div></div>
+  <div class="stat red"><div class="icon"><span data-ic="trend-down"></span></div><div><div class="label">Penjualan Rendah</div><div class="value">62</div><div class="delta down">UMKM</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-title mb-2">Penjualan per Kategori</div>
+  <div class="chart-wrap"><canvas id="catChart"></canvas></div>
+</div>
+
+<div class="card">
+  <div class="card-title mb-2">Top 10 UMKM dengan Penjualan Tertinggi</div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Peringkat</th><th>UMKM</th><th>Kategori</th><th style="text-align:right">Penjualan Bulan Ini</th></tr></thead>
+      <tbody>
+        <tr><td><span data-ic="medal"></span> 1</td><td>Konveksi Jaya</td><td>Fashion</td><td style="text-align:right">Rp 48.000.000</td></tr>
+        <tr><td><span data-ic="medal"></span> 2</td><td>Batik Lestari</td><td>Fashion</td><td style="text-align:right">Rp 28.300.000</td></tr>
+        <tr><td><span data-ic="medal"></span> 3</td><td>Bakery Manis</td><td>Kuliner</td><td style="text-align:right">Rp 22.500.000</td></tr>
+        <tr><td>4</td><td>Toko Berkah</td><td>Retail</td><td style="text-align:right">Rp 18.700.000</td></tr>
+        <tr><td>5</td><td>Kedai Kopi Senja</td><td>Kuliner</td><td style="text-align:right">Rp 15.200.000</td></tr>
+        <tr><td>6</td><td>Warung Bu Sri</td><td>Kuliner</td><td style="text-align:right">Rp 8.400.000</td></tr>
+        <tr><td>7</td><td>Bengkel Maju</td><td>Jasa</td><td style="text-align:right">Rp 6.800.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+new Chart(document.getElementById('catChart'),{type:'polarArea',data:{labels:['Kuliner','Fashion','Retail','Jasa','Kerajinan'],
+  datasets:[{data:[2100,1850,920,580,350],backgroundColor:['#1e40af','#3b82f6','#60a5fa','#93c5fd','#bfdbfe']}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}});
+</script>
+</body>
+</html>

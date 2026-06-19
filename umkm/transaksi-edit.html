@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit Transaksi - UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Edit Transaksi" data-back="riwayat-pengeluaran.html">
+
+<div class="m-alert">
+  <span data-ic="edit"></span> Mengubah data transaksi: <strong>Belanja Bahan Baku</strong>
+</div>
+
+<div class="m-card">
+  <div class="m-form-group">
+    <label>Jenis Transaksi</label>
+    <select class="m-select">
+      <option>Pemasukan / Penjualan</option>
+      <option selected>Pengeluaran</option>
+    </select>
+  </div>
+  <div class="m-form-group">
+    <label>Kategori</label>
+    <select class="m-select">
+      <option selected>Bahan Baku</option>
+      <option>Operasional</option>
+      <option>Gaji Karyawan</option>
+      <option>Lainnya</option>
+    </select>
+  </div>
+  <div class="m-form-group">
+    <label>Nominal (Rp)</label>
+    <input class="m-input" type="number" value="850000">
+  </div>
+  <div class="m-form-group">
+    <label>Tanggal</label>
+    <input class="m-input" type="date" value="2026-06-07">
+  </div>
+  <div class="m-form-group">
+    <label>Deskripsi</label>
+    <textarea class="m-textarea">Belanja bahan baku mingguan: beras, minyak, telur, gula.</textarea>
+  </div>
+  <div class="m-btn-row">
+    <a href="riwayat-pengeluaran.html" class="m-btn danger">Hapus</a>
+    <a href="riwayat-pengeluaran.html" class="m-btn"><span data-ic="save"></span> Simpan</a>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>
+

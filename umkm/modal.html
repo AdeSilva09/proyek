@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelola Modal</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Modal" data-back="dashboard.html">
+
+<div class="pill-tabs" id="modalTabs">
+  <div class="tab active" data-view="daftar">Daftar Modal</div>
+  <div class="tab" data-view="statistik">Statistik Modal</div>
+</div>
+
+<!-- ============ VIEW: DAFTAR ============ -->
+<div class="view" id="view-daftar">
+  <div class="m-search">
+    <input type="text" placeholder="Cari modal...">
+  </div>
+
+  <div class="m-btn-row" style="margin-bottom:12px;">
+    <a href="modal-tambah.html" class="m-btn">
+      <span data-ic="plus"></span> Tambah Modal
+    </a>
+  </div>
+
+  <div class="m-list">
+    <div class="m-row">
+      <div class="ic"><span data-ic="wallet"></span></div>
+      <div class="body">
+        <div class="t">Modal Awal Usaha</div>
+        <div class="s">Tabungan Pribadi &middot; Modal Sendiri &middot; 01 Jan 2026</div>
+      </div>
+      <div class="right">
+        <div class="v">Rp 15.000.000</div>
+        <a href="modal-edit.html" class="edit-btn"><span data-ic="edit"></span></a>
+      </div>
+    </div>
+    <div class="m-row">
+      <div class="ic"><span data-ic="banknote"></span></div>
+      <div class="body">
+        <div class="t">Pinjaman KUR BRI</div>
+        <div class="s">Bank &middot; Pinjaman &middot; 15 Feb 2026</div>
+      </div>
+      <div class="right">
+        <div class="v">Rp 7.500.000</div>
+        <a href="modal-edit.html" class="edit-btn"><span data-ic="edit"></span></a>
+      </div>
+    </div>
+    <div class="m-row">
+      <div class="ic"><span data-ic="users"></span></div>
+      <div class="body">
+        <div class="t">Modal Tambahan</div>
+        <div class="s">Investor Keluarga &middot; Investor &middot; 10 Apr 2026</div>
+      </div>
+      <div class="right">
+        <div class="v">Rp 2.500.000</div>
+        <a href="modal-edit.html" class="edit-btn"><span data-ic="edit"></span></a>
+      </div>
+    </div>
+    <div class="m-row">
+      <div class="ic"><span data-ic="trophy"></span></div>
+      <div class="body">
+        <div class="t">Bantuan Dinas Koperasi</div>
+        <div class="s">Hibah DKUKMPP &middot; Hibah &middot; 20 Mei 2026</div>
+      </div>
+      <div class="right">
+        <div class="v">Rp 1.500.000</div>
+        <a href="modal-edit.html" class="edit-btn"><span data-ic="edit"></span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VIEW: STATISTIK ============ -->
+<div class="view" id="view-statistik" style="display:none">
+  <div class="m-stats">
+    <div class="m-stat full">
+      <div class="ic"><span data-ic="wallet"></span></div>
+      <div class="lbl">Total Modal</div>
+      <div class="val">Rp 26.500.000</div>
+      <div class="sub">Akumulasi sejak Jan 2026</div>
+    </div>
+    <div class="m-stat green">
+      <div class="ic"><span data-ic="arrow-up"></span></div>
+      <div class="lbl">Modal Masuk</div>
+      <div class="val">Rp 26.500.000</div>
+      <div class="sub">4 transaksi</div>
+    </div>
+    <div class="m-stat red">
+      <div class="ic"><span data-ic="arrow-down"></span></div>
+      <div class="lbl">Modal Keluar</div>
+      <div class="val">Rp 0</div>
+      <div class="sub">Belum ada</div>
+    </div>
+  </div>
+
+  <div class="m-card">
+    <div class="m-card-title">Perkembangan Modal</div>
+    <div class="m-chart"><canvas id="modalChart"></canvas></div>
+  </div>
+
+  <div class="m-card">
+    <div class="m-card-title">Ringkasan Statistik</div>
+    <div class="m-info-row">
+      <div class="ic"><span data-ic="trend-up"></span></div>
+      <div style="flex:1">
+        <div class="lbl">Rata-rata modal/bulan</div>
+        <div class="val">Rp 5.300.000</div>
+      </div>
+    </div>
+    <div class="m-info-row">
+      <div class="ic"><span data-ic="star"></span></div>
+      <div style="flex:1">
+        <div class="lbl">Sumber dominan</div>
+        <div class="val">Tabungan Pribadi (56.6%)</div>
+      </div>
+    </div>
+    <div class="m-info-row">
+      <div class="ic"><span data-ic="clock"></span></div>
+      <div style="flex:1">
+        <div class="lbl">Transaksi terakhir</div>
+        <div class="val">20 Mei 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  let chartInstance = null;
+  function renderChart(){
+    if (chartInstance) return;
+    const ctx = document.getElementById('modalChart');
+    if (!ctx) return;
+    chartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan','Feb','Mar','Apr','Mei'],
+        datasets: [{ label:'Modal', data:[15000,7500,0,2500,1500], backgroundColor:'#16348f', borderRadius:6 }]
+      },
+      options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{ticks:{font:{size:10}}},x:{ticks:{font:{size:10}}}} }
+    });
+  }
+
+  const tabs = document.querySelectorAll('#modalTabs .tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.toggle('active', x===t));
+    const v = t.dataset.view;
+    document.getElementById('view-daftar').style.display     = v==='daftar' ? '' : 'none';
+    document.getElementById('view-statistik').style.display  = v==='statistik' ? '' : 'none';
+    if (v==='statistik') renderChart();
+  }));
+</script>
+</body>
+</html>

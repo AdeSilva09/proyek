@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Export Laporan</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Export Laporan">
+
+<div class="page-title">Export Laporan</div>
+<div class="page-sub">Unduh laporan keuangan dalam format PDF atau Excel.</div>
+
+<div class="row-2">
+  <!-- Kolom kiri: form export -->
+  <div class="card">
+    <div class="card-title mb-3">Pengaturan Export</div>
+
+    <!-- Format selector (PDF / Excel) -->
+    <div class="form-group">
+      <label>Format File</label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <label class="fmt-opt" data-fmt="pdf" style="cursor:pointer">
+          <input type="radio" name="format" value="pdf" checked style="display:none">
+          <div class="fmt-card active">
+            <div class="fmt-ic red"><span data-ic="file-text"></span></div>
+            <div>
+              <div class="fmt-title">PDF</div>
+              <div class="fmt-sub">Siap cetak / dibagikan</div>
+            </div>
+          </div>
+        </label>
+        <label class="fmt-opt" data-fmt="excel" style="cursor:pointer">
+          <input type="radio" name="format" value="excel" style="display:none">
+          <div class="fmt-card">
+            <div class="fmt-ic green"><span data-ic="file"></span></div>
+            <div>
+              <div class="fmt-title">Excel</div>
+              <div class="fmt-sub">.xlsx, bisa diolah ulang</div>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Jenis laporan -->
+    <div class="form-group">
+      <label>Jenis Laporan</label>
+      <select class="form-control" name="jenis_laporan">
+        <option value="ringkasan">Ringkasan Keuangan (Penjualan, Pengeluaran, Keuntungan)</option>
+        <option value="penjualan">Daftar Penjualan</option>
+        <option value="pengeluaran">Daftar Pengeluaran</option>
+        <option value="modal">Riwayat Modal</option>
+        <option value="produk">Katalog Produk</option>
+        <option value="bahan">Stok Bahan Baku</option>
+        <option value="lengkap">Laporan Lengkap (semua di atas)</option>
+      </select>
+    </div>
+
+    <!-- Periode -->
+    <div class="form-group">
+      <label>Periode</label>
+      <select class="form-control" id="periodSel">
+        <option value="hari">Hari Ini</option>
+        <option value="minggu">7 Hari Terakhir</option>
+        <option value="bulan" selected>Bulan Ini</option>
+        <option value="kuartal">Kuartal Ini</option>
+        <option value="tahun">Tahun Ini</option>
+        <option value="custom">Custom (rentang tanggal)</option>
+      </select>
+    </div>
+
+    <div class="form-grid cols-2" id="customRange" style="display:none">
+      <div class="form-group"><label>Dari Tanggal</label><input type="date" class="form-control" value="2026-06-01"></div>
+      <div class="form-group"><label>Sampai Tanggal</label><input type="date" class="form-control" value="2026-06-10"></div>
+    </div>
+
+    <!-- Opsi tambahan -->
+    <div class="form-group">
+      <label>Sertakan</label>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" checked> Tabel transaksi rinci</label>
+        <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" checked> Grafik / chart visualisasi</label>
+        <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" checked> Ringkasan per kategori</label>
+        <label style="display:flex;gap:8px;align-items:center"><input type="checkbox"> Tanda tangan pemilik</label>
+      </div>
+    </div>
+
+    <button class="btn success block mt-2" onclick="doExport()"><span data-ic="export"></span> Unduh Laporan</button>
+  </div>
+
+  <!-- Kolom kanan: preview & riwayat -->
+  <div>
+    <div class="card">
+      <div class="card-title mb-2">Preview Laporan</div>
+      <div id="preview" class="preview-doc">
+        <div class="preview-header">
+          <div>
+            <strong>LAPORAN KEUANGAN UMKM</strong>
+            <div style="font-size:11px;color:var(--gray-500)">Kedai Sari Rasa &middot; Juni 2026</div>
+          </div>
+          <div id="formatBadge" class="badge danger">PDF</div>
+        </div>
+        <hr>
+        <div class="preview-line"><span>Total Penjualan</span><strong style="color:var(--success)">Rp 17.820.000</strong></div>
+        <div class="preview-line"><span>Total Pengeluaran</span><strong style="color:var(--danger)">Rp 8.450.000</strong></div>
+        <div class="preview-line"><span>Keuntungan Bersih</span><strong style="color:var(--primary)">Rp 9.370.000</strong></div>
+        <div class="preview-line"><span>Margin</span><strong>52.6%</strong></div>
+        <hr>
+        <div style="font-size:11px;color:var(--gray-500);text-align:center">
+          Dokumen ini dihasilkan otomatis oleh SIM-UMKM.<br>
+          Tersinkron dengan DKUKMPP Kota Bandung.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title mb-2">Riwayat Export</div>
+      <div class="m-list">
+        <div class="m-li">
+          <div class="m-li-ico red"><span data-ic="file-text"></span></div>
+          <div class="m-li-body">
+            <div class="t1">laporan-juni-2026.pdf</div>
+            <div class="t2">10 Jun 2026 14:32 &middot; 1.2 MB</div>
+          </div>
+          <button class="btn ghost sm"><span data-ic="export"></span></button>
+        </div>
+        <div class="m-li">
+          <div class="m-li-ico green"><span data-ic="file"></span></div>
+          <div class="m-li-body">
+            <div class="t1">penjualan-mei-2026.xlsx</div>
+            <div class="t2">02 Jun 2026 09:15 &middot; 84 KB</div>
+          </div>
+          <button class="btn ghost sm"><span data-ic="export"></span></button>
+        </div>
+        <div class="m-li">
+          <div class="m-li-ico red"><span data-ic="file-text"></span></div>
+          <div class="m-li-body">
+            <div class="t1">ringkasan-kuartal-1.pdf</div>
+            <div class="t2">02 Apr 2026 11:08 &middot; 980 KB</div>
+          </div>
+          <button class="btn ghost sm"><span data-ic="export"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .fmt-card {
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 14px;
+    display: flex; align-items: center; gap: 12px;
+    transition: border-color 0.15s, background 0.15s;
+    background: #fff;
+  }
+  .fmt-card.active { border-color: var(--primary); background: var(--primary-50); }
+  .fmt-ic {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .fmt-ic.red   { background: var(--danger-light);  color: #B91C1C; }
+  .fmt-ic.green { background: var(--success-light); color: #15803D; }
+  .fmt-title { font-weight: 700; font-size: 14px; color: var(--gray-900); }
+  .fmt-sub   { font-size: 11.5px; color: var(--gray-500); margin-top: 2px; }
+
+  .preview-doc {
+    background: var(--gray-50);
+    border: 1px dashed var(--gray-300);
+    border-radius: var(--radius);
+    padding: 18px;
+    font-size: 12.5px;
+  }
+  .preview-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .preview-doc hr { border: none; border-top: 1px dashed var(--gray-300); margin: 12px 0; }
+  .preview-line { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; }
+</style>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  // Format selector
+  const opts = document.querySelectorAll('.fmt-opt');
+  const badge = document.getElementById('formatBadge');
+  opts.forEach(o => o.addEventListener('click', () => {
+    opts.forEach(x => x.querySelector('.fmt-card').classList.toggle('active', x === o));
+    o.querySelector('input').checked = true;
+    const f = o.dataset.fmt;
+    badge.textContent = f === 'pdf' ? 'PDF' : 'Excel';
+    badge.className = 'badge ' + (f === 'pdf' ? 'danger' : 'success');
+  }));
+
+  // Custom range visibility
+  document.getElementById('periodSel').addEventListener('change', e => {
+    document.getElementById('customRange').style.display = e.target.value === 'custom' ? 'grid' : 'none';
+  });
+
+  function doExport() {
+    const fmt = document.querySelector('input[name="format"]:checked').value;
+    alert('Laporan ' + fmt.toUpperCase() + ' berhasil diunduh (simulasi).');
+  }
+</script>
+</body>
+</html>

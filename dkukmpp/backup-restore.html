@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Backup & Restore - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Backup & Restore Data">
+
+<div class="page-title">Backup & Restore Database</div>
+<div class="page-sub">Cadangkan data sistem secara berkala &amp; pulihkan saat diperlukan</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="database"></span></div><div><div class="label">Total Backup</div><div class="value">42</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Backup Terakhir</div><div class="value" style="font-size:18px;">19 Jun 2026</div><div class="delta">02:00 WIB — Otomatis</div></div></div>
+  <div class="stat purple"><div class="icon"><span data-ic="file-text"></span></div><div><div class="label">Total Ukuran</div><div class="value">3.4 GB</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="pause"></span></div><div><div class="label">Jadwal Berikut</div><div class="value" style="font-size:18px;">20 Jun 02:00</div></div></div>
+</div>
+
+<div class="row-2">
+  <div class="card">
+    <div class="card-header"><div class="card-title">Backup Manual</div></div>
+    <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">Buat backup database sekarang untuk arsip / sebelum perubahan besar.</p>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button class="btn"><span data-ic="database"></span> Backup Sekarang</button>
+      <button class="btn outline"><span data-ic="file-text"></span> Export SQL</button>
+    </div>
+    <div style="margin-top:18px; padding:12px; background:var(--gray-50); border-radius:8px; font-size:13px;">
+      <strong>Catatan:</strong> Proses backup membutuhkan waktu 1-3 menit. Jangan tutup tab selama proses berjalan.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Jadwal Backup Otomatis</div></div>
+    <form>
+      <div style="margin-bottom:12px;">
+        <label style="font-size:13px; font-weight:600;">Frekuensi</label>
+        <select class="form-control"><option>Harian (Recommended)</option><option>Mingguan</option><option>Bulanan</option></select>
+      </div>
+      <div style="margin-bottom:12px;">
+        <label style="font-size:13px; font-weight:600;">Waktu Backup</label>
+        <input type="time" class="form-control" value="02:00">
+      </div>
+      <div style="margin-bottom:12px;">
+        <label style="font-size:13px; font-weight:600;">Simpan Backup Selama</label>
+        <select class="form-control"><option>30 hari</option><option>60 hari</option><option>90 hari</option><option>Selamanya</option></select>
+      </div>
+      <button type="button" class="btn"><span data-ic="check"></span> Simpan Pengaturan</button>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Riwayat Backup</div>
+    <div class="search" style="max-width:260px;"><input placeholder="Cari nama file..."></div>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Nama File</th><th>Tanggal</th><th>Tipe</th><th style="text-align:right">Ukuran</th><th>Dibuat Oleh</th><th>Status</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>simumkm_2026-06-19_0200.sql</td><td>19 Jun 2026 02:00</td><td><span class="badge gray">Otomatis</span></td><td style="text-align:right">82 MB</td><td>system</td><td><span class="badge success">OK</span></td><td><button class="btn outline sm"><span data-ic="file-text"></span></button> <button class="btn outline sm">Restore</button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>simumkm_2026-06-18_0200.sql</td><td>18 Jun 2026 02:00</td><td><span class="badge gray">Otomatis</span></td><td style="text-align:right">81 MB</td><td>system</td><td><span class="badge success">OK</span></td><td><button class="btn outline sm"><span data-ic="file-text"></span></button> <button class="btn outline sm">Restore</button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>simumkm_manual_2026-06-17.sql</td><td>17 Jun 2026 14:32</td><td><span class="badge warning">Manual</span></td><td style="text-align:right">80 MB</td><td>Dirga Admin</td><td><span class="badge success">OK</span></td><td><button class="btn outline sm"><span data-ic="file-text"></span></button> <button class="btn outline sm">Restore</button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>simumkm_2026-06-17_0200.sql</td><td>17 Jun 2026 02:00</td><td><span class="badge gray">Otomatis</span></td><td style="text-align:right">80 MB</td><td>system</td><td><span class="badge success">OK</span></td><td><button class="btn outline sm"><span data-ic="file-text"></span></button> <button class="btn outline sm">Restore</button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>simumkm_2026-06-16_0200.sql</td><td>16 Jun 2026 02:00</td><td><span class="badge gray">Otomatis</span></td><td style="text-align:right">79 MB</td><td>system</td><td><span class="badge success">OK</span></td><td><button class="btn outline sm"><span data-ic="file-text"></span></button> <button class="btn outline sm">Restore</button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-title">Restore dari File</div></div>
+  <p style="font-size:13px; color:var(--text-muted);">Upload file backup (.sql / .zip) untuk memulihkan data. <strong style="color:#b91c1c;">Aksi ini akan menimpa data saat ini.</strong></p>
+  <div style="display:flex; gap:8px; align-items:center; margin-top:10px;">
+    <input type="file" class="form-control" accept=".sql,.zip">
+    <button class="btn danger"><span data-ic="alert"></span> Restore</button>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Riwayat Penjualan</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Riwayat Penjualan">
+
+<div class="page-title">Riwayat Penjualan</div>
+<div class="page-sub">Seluruh pemasukan dari hasil penjualan</div>
+
+<div class="stat-grid">
+  <div class="stat green"><div class="icon"><span data-ic="cart"></span></div><div><div class="label">Transaksi Bulan Ini</div><div class="value">182</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="banknote"></span></div><div><div class="label">Total Penjualan</div><div class="value">Rp 17.820.000</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Rata-rata/Hari</div><div class="value">Rp 594.000</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Produk Terlaris</div><div class="value" style="font-size:16px;">Nasi Goreng</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-title">Daftar Transaksi</div>
+    <button class="btn outline sm"><span data-ic="export"></span> Export</button>
+  </div>
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari no nota..."></div>
+    <input type="date" class="form-control" style="width:170px;">
+    <input type="date" class="form-control" style="width:170px;">
+    <select class="form-control" style="width:160px;"><option>Semua Metode</option><option>Tunai</option><option>Transfer</option></select>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>No. Nota</th><th>Tanggal</th><th>Item</th><th>Total</th><th>Bayar</th><th>Metode</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>TRX-0613</td><td>08 Jun 2026 15:42</td><td>3 item</td><td>Rp 64.000</td><td>Rp 70.000</td><td><span class="badge success">Tunai</span></td><td><a href="transaksi-detail.html" class="btn outline sm"><span data-ic="eye"></span></a></td></tr>
+        <tr><td>TRX-0612</td><td>08 Jun 2026 14:20</td><td>5 item</td><td>Rp 145.000</td><td>Rp 150.000</td><td><span class="badge success">Tunai</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+        <tr><td>TRX-0611</td><td>08 Jun 2026 13:05</td><td>2 item</td><td>Rp 82.000</td><td>Rp 82.000</td><td><span class="badge info">Transfer</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+        <tr><td>TRX-0610</td><td>07 Jun 2026 19:30</td><td>8 item</td><td>Rp 210.000</td><td>Rp 220.000</td><td><span class="badge success">Tunai</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+        <tr><td>TRX-0609</td><td>07 Jun 2026 12:00</td><td>3 item</td><td>Rp 65.000</td><td>Rp 70.000</td><td><span class="badge success">Tunai</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+        <tr><td>TRX-0608</td><td>06 Jun 2026 16:45</td><td>4 item</td><td>Rp 98.000</td><td>Rp 100.000</td><td><span class="badge success">Tunai</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detail Statistik - UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Detail Statistik" data-back="dashboard.html">
+
+<div class="m-detail-head">
+  <div class="lbl">Nilai Total Penjualan</div>
+  <div class="val">Rp 17.820.000</div>
+  <div class="sub">Juni 2026 â€¢ Naik 12.4% MoM</div>
+</div>
+
+<div class="m-card">
+  <div class="m-card-title">Grafik Perkembangan</div>
+  <div class="m-chart lg"><canvas id="sChart"></canvas></div>
+</div>
+
+<div class="m-card">
+  <div class="m-card-title">Ringkasan Performa Usaha</div>
+  <div class="m-info-row">
+    <div class="ic green"><span data-ic="trend-up"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Pertumbuhan 6 Bulan</div>
+      <div class="val">+48.5%</div>
+    </div>
+  </div>
+  <div class="m-info-row">
+    <div class="ic"><span data-ic="bar-chart"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Rata-rata Harian</div>
+      <div class="val">Rp 594.000</div>
+    </div>
+  </div>
+  <div class="m-info-row">
+    <div class="ic orange"><span data-ic="fire"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Hari Terlaris</div>
+      <div class="val">Sabtu â€” Rata-rata Rp 920.000</div>
+    </div>
+  </div>
+  <div class="m-info-row">
+    <div class="ic"><span data-ic="medal"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Produk Top</div>
+      <div class="val">Nasi Rames Komplit</div>
+    </div>
+  </div>
+  <div class="m-info-row">
+    <div class="ic"><span data-ic="trophy"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Peringkat di DKUKMPP</div>
+      <div class="val">Top 12% UMKM Kuliner</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+new Chart(document.getElementById('sChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Jan','Feb','Mar','Apr','Mei','Jun'],
+    datasets: [{ label:'Penjualan', data:[12000,13500,14200,15800,16400,17820], backgroundColor:'#16348f', borderRadius:6 }]
+  },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{ticks:{font:{size:10}}},x:{ticks:{font:{size:10}}}} }
+});
+</script>
+</body>
+</html>
+

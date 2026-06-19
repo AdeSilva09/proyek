@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kelola Data Produk</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Data Produk">
+
+<div class="page-title">Kelola Data Produk</div>
+<div class="page-sub">Kelola katalog produk yang Anda jual &mdash; dikelompokkan per kategori &amp; sub kategori</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Daftar Produk</div>
+    <button class="btn sm" onclick="document.getElementById('prM').classList.add('active')"><span data-ic="plus"></span> Tambah Produk</button>
+  </div>
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari produk..."></div>
+    <select class="form-control" style="width:160px;" id="filterKat">
+      <option value="">Semua Kategori</option>
+      <option>Kuliner</option><option>Fashion</option><option>Minuman</option><option>Snack</option>
+    </select>
+    <select class="form-control" style="width:160px;" id="filterSub"><option value="">Semua Sub Kategori</option></select>
+    <div class="spacer"></div>
+    <span class="text-muted" style="font-size:12.5px;">Total: 24 produk</span>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Kode</th><th>Nama Produk</th><th>Kategori</th><th>Sub Kategori</th><th>Harga Modal</th><th>Harga Jual</th><th>Margin</th><th>Stok</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>P-001</td><td>Nasi Goreng Spesial</td><td>Kuliner</td><td>Warung Makan</td><td>Rp 12.000</td><td>Rp 20.000</td><td class="text-success">40%</td><td>&mdash;</td><td><button class="btn outline sm pr-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>P-002</td><td>Mie Ayam Bakso</td><td>Kuliner</td><td>Warung Makan</td><td>Rp 10.000</td><td>Rp 18.000</td><td class="text-success">44%</td><td>&mdash;</td><td><button class="btn outline sm pr-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>P-003</td><td>Es Teh Manis</td><td>Minuman</td><td>Minuman Dingin</td><td>Rp 2.000</td><td>Rp 5.000</td><td class="text-success">60%</td><td>50 cup</td><td><button class="btn outline sm pr-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>P-004</td><td>Es Jeruk</td><td>Minuman</td><td>Minuman Dingin</td><td>Rp 3.500</td><td>Rp 7.000</td><td class="text-success">50%</td><td>30 cup</td><td><button class="btn outline sm pr-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>P-005</td><td>Roti Bakar Coklat</td><td>Snack</td><td>Bakery</td><td>Rp 4.000</td><td>Rp 9.000</td><td class="text-success">56%</td><td>25 pcs</td><td><button class="btn outline sm pr-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+        <tr><td>P-006</td><td>Kopi Susu</td><td>Minuman</td><td>Minuman Panas</td><td>Rp 5.000</td><td>Rp 12.000</td><td class="text-success">58%</td><td>2 cup <span class="badge danger">Min!</span></td><td><button class="btn outline sm pr-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Edit Produk -->
+<div class="modal-backdrop" id="prEditM"><div class="modal">
+  <h3>Edit Produk</h3>
+  <div class="form-grid cols-2">
+    <div class="form-group"><label>Kode Produk</label><input class="form-control" id="ePrKode" readonly></div>
+    <div class="form-group"><label>Kategori</label>
+      <select class="form-control" id="ePrKategori">
+        <option>Kuliner</option><option>Fashion</option><option>Minuman</option><option>Snack</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Sub Kategori</label>
+      <select class="form-control" id="ePrSub"></select>
+    </div>
+    <div class="form-group"><label>Nama Produk</label><input class="form-control" id="ePrNama"></div>
+    <div class="form-group"><label>Harga Modal</label><input type="text" class="form-control" id="ePrModal"></div>
+    <div class="form-group"><label>Harga Jual</label><input type="text" class="form-control" id="ePrJual"></div>
+    <div class="form-group" style="grid-column:1/-1"><label>Stok</label><input class="form-control" id="ePrStok"></div>
+  </div>
+  <div class="modal-actions">
+    <button class="btn secondary" onclick="document.getElementById('prEditM').classList.remove('active')">Batal</button>
+    <button class="btn success" id="prSaveEdit"><span data-ic="save"></span> Simpan Perubahan</button>
+  </div>
+</div></div>
+
+<div class="modal-backdrop" id="prM"><div class="modal">
+  <h3>Tambah Produk</h3>
+  <div class="form-grid cols-2">
+    <div class="form-group"><label>Kode Produk</label><input class="form-control"></div>
+    <div class="form-group"><label>Kategori</label>
+      <select class="form-control" id="formKat">
+        <option value="kuliner">Kuliner</option>
+        <option value="fashion">Fashion</option>
+        <option value="minuman">Minuman</option>
+        <option value="snack">Snack</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Sub Kategori</label>
+      <select class="form-control" id="formSub"></select>
+    </div>
+    <div class="form-group"><label>Nama Produk</label><input class="form-control"></div>
+    <div class="form-group"><label>Harga Modal</label><input type="number" class="form-control"></div>
+    <div class="form-group"><label>Harga Jual</label><input type="number" class="form-control"></div>
+    <div class="form-group"><label>Stok Awal</label><input type="number" class="form-control"></div>
+    <div class="form-group"><label>Stok Minimum</label><input type="number" class="form-control"></div>
+  </div>
+  <div class="modal-actions"><button class="btn secondary" onclick="document.getElementById('prM').classList.remove('active')">Batal</button><button class="btn">Simpan</button></div>
+</div></div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  const subMap = {
+    kuliner: ['Warung Makan','Catering','Bakery'],
+    fashion: ['Baju','Celana','Hijab','Sepatu','Aksesoris'],
+    minuman: ['Minuman Dingin','Minuman Panas','Jus'],
+    snack:   ['Bakery','Keripik','Kue Basah'],
+  };
+  function fillSubOf(selKat, selSub, addAll){
+    const arr = subMap[selKat.value] || [];
+    selSub.innerHTML = (addAll?`<option value="">Semua Sub Kategori</option>`:'') + arr.map(o=>`<option>${o}</option>`).join('');
+  }
+  const fk = document.getElementById('formKat');
+  const fs = document.getElementById('formSub');
+  fk.addEventListener('change', ()=>fillSubOf(fk,fs,false));
+  fillSubOf(fk,fs,false);
+  const filterKat = document.getElementById('filterKat');
+  const filterSub = document.getElementById('filterSub');
+  filterKat.addEventListener('change', ()=>{
+    const key = filterKat.value.toLowerCase();
+    const arr = subMap[key] || [];
+    filterSub.innerHTML = `<option value="">Semua Sub Kategori</option>` + arr.map(o=>`<option>${o}</option>`).join('');
+  });
+
+  let editingProdukRow = null;
+  const eKat = document.getElementById('ePrKategori');
+  const eSub = document.getElementById('ePrSub');
+  function fillEditSub(selected){
+    const arr = subMap[eKat.value.toLowerCase()] || [];
+    eSub.innerHTML = arr.map(o=>`<option${o===selected?' selected':''}>${o}</option>`).join('');
+  }
+  eKat.addEventListener('change', () => fillEditSub());
+
+  document.querySelectorAll('.pr-edit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tds = btn.closest('tr').querySelectorAll('td');
+      editingProdukRow = btn.closest('tr');
+      document.getElementById('ePrKode').value = tds[0].textContent.trim();
+      document.getElementById('ePrNama').value = tds[1].textContent.trim();
+      eKat.value = tds[2].textContent.trim();
+      fillEditSub(tds[3].textContent.trim());
+      document.getElementById('ePrModal').value = tds[4].textContent.trim();
+      document.getElementById('ePrJual').value = tds[5].textContent.trim();
+      document.getElementById('ePrStok').value = tds[7].textContent.trim();
+      document.getElementById('prEditM').classList.add('active');
+    });
+  });
+  document.getElementById('prSaveEdit').addEventListener('click', () => {
+    if (!editingProdukRow) return;
+    const tds = editingProdukRow.querySelectorAll('td');
+    tds[1].textContent = document.getElementById('ePrNama').value;
+    tds[2].textContent = eKat.value;
+    tds[3].textContent = eSub.value;
+    const modal = document.getElementById('ePrModal').value;
+    const jual = document.getElementById('ePrJual').value;
+    tds[4].textContent = modal;
+    tds[5].textContent = jual;
+    const numModal = parseFloat(modal.replace(/[^\d]/g,'')) || 0;
+    const numJual = parseFloat(jual.replace(/[^\d]/g,'')) || 0;
+    const margin = numJual > 0 ? Math.round(((numJual - numModal) / numJual) * 100) : 0;
+    tds[6].innerHTML = `<span class="text-success">${margin}%</span>`;
+    tds[7].textContent = document.getElementById('ePrStok').value;
+    document.getElementById('prEditM').classList.remove('active');
+  });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kelola Keuntungan UMKM Binaan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Keuntungan UMKM Binaan">
+
+<div class="page-title">Kelola Keuntungan UMKM Binaan</div>
+<div class="page-sub">Pilih kategori usaha untuk melihat performa keuangan detail UMKM dalam kategori tersebut</div>
+
+<div class="card mb-3">
+  <div class="card-title mb-2">Pilih Kategori UMKM</div>
+  <div class="toolbar">
+    <select class="form-control" style="width:240px;" id="pilihKategori">
+      <option value="all">— Semua Kategori (Agregat) —</option>
+      <option value="kuliner">Kuliner</option>
+      <option value="fashion" selected>Fashion</option>
+      <option value="retail">Retail</option>
+      <option value="jasa">Jasa</option>
+      <option value="kerajinan">Kerajinan</option>
+    </select>
+    <select class="form-control" style="width:160px;">
+      <option>Juni 2026</option><option>Mei 2026</option><option>April 2026</option>
+    </select>
+    <div class="spacer"></div>
+    <span class="text-muted" style="font-size:12.5px;" id="catInfo">Kategori: Fashion — 265 UMKM</span>
+  </div>
+</div>
+
+<div class="stat-grid">
+  <div class="stat green"><div class="icon"><span data-ic="banknote"></span></div><div><div class="label">Total Keuntungan</div><div class="value" id="sTotalKeuntungan">Rp 310 jt</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Margin Rata-rata</div><div class="value" id="sMargin">26.4%</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">UMKM Rugi</div><div class="value" id="sRugi">6</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="trophy"></span></div><div><div class="label">Margin Tertinggi</div><div class="value" id="sTopMargin">29.8%</div><div class="delta" id="sTopName">Batik Lestari</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-title mb-2">Performa Keuangan Detail — <span id="catLabel">Fashion</span></div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead>
+        <tr>
+          <th>UMKM</th>
+          <th>Pemilik</th>
+          <th>Sub Kategori</th>
+          <th style="text-align:right">Penjualan</th>
+          <th style="text-align:right">HPP</th>
+          <th style="text-align:right">Produk Terjual</th>
+          <th style="text-align:right">Keuntungan</th>
+          <th style="text-align:right">Margin</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyDetail"></tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+const dataKategori = {
+  fashion: {
+    nama:'Fashion', jumlah:265, total:'Rp 310 jt', margin:'26.4%', rugi:6, topMargin:'29.8%', topName:'Batik Lestari',
+    rows:[
+      ['Batik Lestari','Sri Mulyani','Baju','Rp 28.300.000','Rp 19.850.000','112 pcs','Rp 8.450.000','29.8%','success','Sangat Baik'],
+      ['Konveksi Jaya','Hendra Wijaya','Celana','Rp 48.000.000','Rp 36.500.000','198 pcs','Rp 11.500.000','23.9%','success','Baik'],
+      ['Hijab Modern','Lestari Putri','Hijab','Rp 18.500.000','Rp 13.200.000','86 pcs','Rp 5.300.000','28.6%','success','Baik'],
+      ['Sepatu Kulit Asli','Bambang S.','Sepatu','Rp 14.800.000','Rp 11.250.000','42 pcs','Rp 3.550.000','24.0%','success','Baik'],
+      ['Aksesoris Cantik','Dewi Lestari','Aksesoris','Rp 7.200.000','Rp 6.800.000','185 pcs','Rp 400.000','5.6%','warning','Rendah'],
+      ['Konveksi Murah','Joko Pranoto','Baju','Rp 9.400.000','Rp 9.800.000','58 pcs','-Rp 400.000','-4.3%','danger','Rugi'],
+    ]
+  },
+  kuliner: {
+    nama:'Kuliner', jumlah:420, total:'Rp 520 jt', margin:'28.5%', rugi:9, topMargin:'42.8%', topName:'Bakery Manis',
+    rows:[
+      ['Bakery Manis','Linda Wati','Bakery','Rp 22.500.000','Rp 12.870.000','420 pcs','Rp 9.630.000','42.8%','success','Sangat Baik'],
+      ['Kedai Kopi Senja','Dimas Pratama','Minuman','Rp 15.200.000','Rp 11.800.000','580 cup','Rp 3.400.000','22.3%','info','Cukup'],
+      ['Warung Bu Sri','Sri Wahyuni','Warung Makan','Rp 8.400.000','Rp 7.200.000','312 porsi','Rp 1.200.000','14.2%','warning','Rendah'],
+      ['Catering Sehat','Indra Kusuma','Catering','Rp 18.500.000','Rp 13.100.000','62 paket','Rp 5.400.000','29.2%','success','Baik'],
+    ]
+  },
+  retail: {
+    nama:'Retail', jumlah:238, total:'Rp 225 jt', margin:'18.2%', rugi:4, topMargin:'26.3%', topName:'Toko Berkah',
+    rows:[
+      ['Toko Berkah','Ahmad Fauzi','Sembako','Rp 26.450.000','Rp 19.500.000','1.240 item','Rp 6.950.000','26.3%','success','Baik'],
+      ['Toko Kelontong Sari','Hartono S.','Toko Kelontong','Rp 18.700.000','Rp 15.900.000','820 item','Rp 2.800.000','14.9%','warning','Rendah'],
+      ['Elektronik Murah','Bagus W.','Elektronik','Rp 32.000.000','Rp 26.500.000','64 unit','Rp 5.500.000','17.2%','info','Cukup'],
+    ]
+  },
+  jasa: {
+    nama:'Jasa', jumlah:180, total:'Rp 135 jt', margin:'20.1%', rugi:5, topMargin:'31.5%', topName:'Salon Cantik',
+    rows:[
+      ['Salon Cantik','Rina Anggraini','Salon','Rp 12.500.000','Rp 8.560.000','185 layanan','Rp 3.940.000','31.5%','success','Sangat Baik'],
+      ['Laundry Bersih','Tono S.','Laundry','Rp 9.800.000','Rp 7.420.000','420 kg','Rp 2.380.000','24.3%','success','Baik'],
+      ['Bengkel Maju','Joko Susilo','Servis','Rp 6.800.000','Rp 7.500.000','58 unit','-Rp 700.000','-10.3%','danger','Rugi'],
+    ]
+  },
+  kerajinan: {
+    nama:'Kerajinan', jumlah:145, total:'Rp 110 jt', margin:'22.4%', rugi:4, topMargin:'28.4%', topName:'Anyaman Bambu',
+    rows:[
+      ['Anyaman Bambu','Wati Lestari','Anyaman','Rp 9.500.000','Rp 6.800.000','142 pcs','Rp 2.700.000','28.4%','success','Baik'],
+      ['Kerajinan Kayu Jati','Suparno','Kayu','Rp 14.200.000','Rp 11.100.000','38 pcs','Rp 3.100.000','21.8%','info','Cukup'],
+      ['Keramik Sumber Rejeki','Maman','Keramik','Rp 7.800.000','Rp 6.200.000','85 pcs','Rp 1.600.000','20.5%','info','Cukup'],
+    ]
+  },
+  all: {
+    nama:'Semua Kategori', jumlah:1248, total:'Rp 1.31 M', margin:'22.6%', rugi:28, topMargin:'42.8%', topName:'Bakery Manis',
+    rows:[
+      ['Bakery Manis','Linda Wati','Bakery','Rp 22.500.000','Rp 12.870.000','420 pcs','Rp 9.630.000','42.8%','success','Sangat Baik'],
+      ['Salon Cantik','Rina Anggraini','Salon','Rp 12.500.000','Rp 8.560.000','185 layanan','Rp 3.940.000','31.5%','success','Sangat Baik'],
+      ['Batik Lestari','Sri Mulyani','Baju','Rp 28.300.000','Rp 19.850.000','112 pcs','Rp 8.450.000','29.8%','success','Baik'],
+      ['Konveksi Jaya','Hendra Wijaya','Celana','Rp 48.000.000','Rp 36.500.000','198 pcs','Rp 11.500.000','23.9%','success','Baik'],
+      ['Toko Berkah','Ahmad Fauzi','Sembako','Rp 26.450.000','Rp 19.500.000','1.240 item','Rp 6.950.000','26.3%','success','Baik'],
+      ['Warung Bu Sri','Sri Wahyuni','Warung Makan','Rp 8.400.000','Rp 7.200.000','312 porsi','Rp 1.200.000','14.2%','warning','Rendah'],
+      ['Bengkel Maju','Joko Susilo','Servis','Rp 6.800.000','Rp 7.500.000','58 unit','-Rp 700.000','-10.3%','danger','Rugi'],
+    ]
+  }
+};
+
+function render(key){
+  const d = dataKategori[key];
+  document.getElementById('catLabel').textContent = d.nama;
+  document.getElementById('catInfo').textContent = `Kategori: ${d.nama} — ${d.jumlah.toLocaleString('id-ID')} UMKM`;
+  document.getElementById('sTotalKeuntungan').textContent = d.total;
+  document.getElementById('sMargin').textContent = d.margin;
+  document.getElementById('sRugi').textContent = d.rugi;
+  document.getElementById('sTopMargin').textContent = d.topMargin;
+  document.getElementById('sTopName').textContent = d.topName;
+  const tb = document.getElementById('tbodyDetail');
+  tb.innerHTML = d.rows.map(r => {
+    const profitClass = r[6].startsWith('-') ? 'text-danger' : 'text-success';
+    return `<tr>
+      <td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td>
+      <td style="text-align:right">${r[3]}</td>
+      <td style="text-align:right">${r[4]}</td>
+      <td style="text-align:right">${r[5]}</td>
+      <td class="${profitClass}" style="text-align:right;font-weight:600">${r[6]}</td>
+      <td style="text-align:right"><strong>${r[7]}</strong></td>
+      <td><span class="badge ${r[8]}">${r[9]}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+document.getElementById('pilihKategori').addEventListener('change', e => render(e.target.value));
+render('fashion');
+</script>
+</body>
+</html>

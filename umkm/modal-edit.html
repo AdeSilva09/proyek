@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit Modal - UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Edit Modal" data-back="modal.html">
+
+<div class="m-alert">
+  <span data-ic="edit"></span> Mengubah data modal: <strong>Modal Awal Usaha</strong>
+</div>
+
+<div class="m-card">
+  <div class="m-form-group">
+    <label>Nama Modal</label>
+    <input class="m-input" type="text" value="Modal Awal Usaha">
+  </div>
+  <div class="m-form-group">
+    <label>Sumber Modal</label>
+    <select class="m-select" id="sumberModal">
+      <option value="sendiri" selected>Modal Sendiri</option>
+      <option value="pinjaman">Pinjaman</option>
+      <option value="investor">Investor</option>
+      <option value="hibah">Hibah / Bantuan</option>
+    </select>
+  </div>
+  <div class="m-form-group">
+    <label>Sub Kategori Modal</label>
+    <select class="m-select" id="subModal">
+      <option>Tabungan Pribadi</option>
+    </select>
+  </div>
+  <div class="m-form-group">
+    <label>Nominal (Rp)</label>
+    <input class="m-input" type="number" value="15000000">
+  </div>
+  <div class="m-form-group">
+    <label>Tanggal</label>
+    <input class="m-input" type="date" value="2026-01-01">
+  </div>
+  <div class="m-form-group">
+    <label>Deskripsi</label>
+    <textarea class="m-textarea">Modal awal pembukaan kedai dari tabungan pribadi.</textarea>
+  </div>
+  <div class="m-btn-row">
+    <a href="modal.html" class="m-btn danger">Hapus</a>
+    <a href="modal.html" class="m-btn"><span data-ic="save"></span> Simpan</a>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  const subMap = {
+    sendiri:  ['Tabungan Pribadi','Aset Pribadi','Modal Awal'],
+    pinjaman: ['Bank (KUR)','Koperasi','Fintech','Keluarga'],
+    investor: ['Investor Keluarga','Investor Mitra','Crowdfunding'],
+    hibah:    ['Hibah DKUKMPP','Bantuan Pemerintah','CSR Perusahaan'],
+  };
+  const src = document.getElementById('sumberModal');
+  const sub = document.getElementById('subModal');
+  function fill(){ sub.innerHTML = (subMap[src.value]||['-']).map(o=>`<option>${o}</option>`).join(''); }
+  src.addEventListener('change', fill); fill();
+</script>
+</body>
+</html>
+

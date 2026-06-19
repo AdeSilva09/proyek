@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Filter & Analisis Laporan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Filter & Analisis Laporan">
+
+<div class="page-title">Filter & Analisis Laporan</div>
+<div class="page-sub">Sesuaikan laporan berdasarkan periode, kategori, dan indikator</div>
+
+<div class="card">
+  <div class="card-title mb-2"><span data-ic="search"></span> Parameter Filter</div>
+  <div class="form-grid cols-3" style="margin-bottom:14px;">
+    <div class="form-group">
+      <label>Jenis Laporan</label>
+      <select class="form-control">
+        <option>Pertumbuhan UMKM</option>
+        <option>Kinerja Keuangan</option>
+        <option>Efektivitas Program</option>
+        <option>Aktivitas UMKM</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Periode</label>
+      <select class="form-control">
+        <option>Bulan Ini</option><option>3 Bulan Terakhir</option><option>6 Bulan Terakhir</option><option>Tahun 2026</option><option>Custom</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Tanggal Mulai - Akhir</label>
+      <div class="flex gap-2">
+        <input type="date" class="form-control" value="2026-01-01">
+        <input type="date" class="form-control" value="2026-06-06">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Kategori Usaha</label>
+      <select class="form-control" multiple size="1"><option>Semua</option><option>Kuliner</option><option>Fashion</option></select>
+    </div>
+    <div class="form-group">
+      <label>Wilayah / Kecamatan</label>
+      <select class="form-control"><option>Semua</option><option>Sukajadi</option><option>Cibeunying</option></select>
+    </div>
+    <div class="form-group">
+      <label>Status UMKM</label>
+      <select class="form-control"><option>Semua</option><option>Aktif</option><option>Tidak Aktif</option><option>Bermasalah</option></select>
+    </div>
+    <div class="form-group">
+      <label>Indikator Utama</label>
+      <select class="form-control"><option>Modal</option><option>Penjualan</option><option>Keuntungan</option><option>Pertumbuhan</option></select>
+    </div>
+    <div class="form-group">
+      <label>Skala Modal</label>
+      <select class="form-control"><option>Semua</option><option>< Rp 10 jt</option><option>Rp 10-50 jt</option><option>> Rp 50 jt</option></select>
+    </div>
+    <div class="form-group" style="display:flex; align-items:flex-end; gap:8px;">
+      <button class="btn"><span data-ic="search"></span> Terapkan Filter</button>
+      <button class="btn secondary sm">Reset</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Hasil Analisis</div>
+    <div class="flex gap-2">
+      <button class="btn outline sm">⬇ PDF</button>
+      <button class="btn outline sm">⬇ Excel</button>
+    </div>
+  </div>
+  <div class="alert"><span data-ic="clipboard"></span> Filter aktif: <strong>Pertumbuhan UMKM</strong> • Periode <strong>Jan-Jun 2026</strong> • Semua kategori • Status aktif. Total <strong>1.087 UMKM</strong> memenuhi kriteria.</div>
+
+  <div class="row-2-eq" style="margin-top:14px;">
+    <div>
+      <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+    </div>
+    <div>
+      <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title mb-2">Data Detail (Top 5)</div>
+  <table class="data">
+    <thead><tr><th>UMKM</th><th>Kategori</th><th>Modal</th><th>Penjualan</th><th>Keuntungan</th><th>Pertumbuhan</th></tr></thead>
+    <tbody>
+      <tr><td>Konveksi Jaya</td><td>Fashion</td><td>Rp 185 jt</td><td>Rp 48 jt</td><td>Rp 11.5 jt</td><td class="text-success">+184.6%</td></tr>
+      <tr><td>Batik Lestari</td><td>Fashion</td><td>Rp 62.5 jt</td><td>Rp 28.3 jt</td><td>Rp 8.45 jt</td><td class="text-success">+38.9%</td></tr>
+      <tr><td>Bakery Manis</td><td>Kuliner</td><td>Rp 35 jt</td><td>Rp 22.5 jt</td><td>Rp 9.63 jt</td><td class="text-success">+59.1%</td></tr>
+      <tr><td>Toko Berkah</td><td>Retail</td><td>Rp 38 jt</td><td>Rp 18.7 jt</td><td>Rp 2.8 jt</td><td class="text-success">+18.8%</td></tr>
+      <tr><td>Kedai Kopi Senja</td><td>Kuliner</td><td>Rp 28 jt</td><td>Rp 15.2 jt</td><td>Rp 3.4 jt</td><td class="text-success">+45.0%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+new Chart(document.getElementById('ch1'),{type:'line',data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
+  datasets:[{label:'Pertumbuhan UMKM',data:[1140,1157,1179,1199,1223,1248],borderColor:'#1e40af',tension:0.3,borderWidth:2.5}]},
+  options:{responsive:true,maintainAspectRatio:false}});
+new Chart(document.getElementById('ch2'),{type:'bar',data:{labels:['Kuliner','Fashion','Retail','Jasa','Kerajinan'],
+  datasets:[{label:'Pertumbuhan (%)',data:[15.2,12.8,8.5,9.1,5.6],backgroundColor:'#1e40af'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+</script>
+</body>
+</html>

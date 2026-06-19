@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Monitoring UMKM - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Monitoring UMKM">
+
+<div class="page-title">Monitoring UMKM</div>
+<div class="page-sub">UMKM yang mengalami penurunan modal, penjualan rendah, atau tidak aktif</div>
+
+<div class="alert danger">
+  <strong><span data-ic="alert"></span> Perhatian:</strong> Terdapat <strong>42 UMKM</strong> yang teridentifikasi bermasalah dan memerlukan intervensi segera melalui program pembinaan khusus.
+</div>
+
+<div class="stat-grid">
+  <div class="stat red"><div class="icon"><span data-ic="trend-down"></span></div><div><div class="label">Modal Menurun</div><div class="value">18</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="cart"></span></div><div><div class="label">Penjualan Rendah</div><div class="value">15</div></div></div>
+  <div class="stat red"><div class="icon"><span data-ic="money-off"></span></div><div><div class="label">Mengalami Rugi</div><div class="value">9</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="pause"></span></div><div><div class="label">Tidak Aktif > 3 Bln</div><div class="value">12</div></div></div>
+</div>
+
+<div class="card">
+  <div class="toolbar">
+    <div class="card-title">Daftar UMKM Bermasalah</div>
+    <div class="spacer"></div>
+    <select class="form-control" style="width:180px;"><option>Semua Masalah</option><option>Modal Menurun</option><option>Penjualan Rendah</option><option>Rugi</option><option>Tidak Aktif</option></select>
+    <button class="btn warning sm">Assign ke Program</button>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>UMKM</th><th>Kategori</th><th>Jenis Masalah</th><th>Tingkat</th><th>Durasi</th><th>Rekomendasi</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>Kerajinan Bambu</td><td>Kerajinan</td><td>Modal turun 33%</td><td><span class="badge danger">Tinggi</span></td><td>4 bulan</td><td>Bantuan modal + pelatihan pemasaran</td><td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> View</a></td></tr>
+        <tr><td>Bengkel Maju</td><td>Jasa</td><td>Rugi 2 bulan berturut</td><td><span class="badge danger">Tinggi</span></td><td>2 bulan</td><td>Konsultasi keuangan</td><td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> View</a></td></tr>
+        <tr><td>Warung Mama</td><td>Kuliner</td><td>Penjualan rendah</td><td><span class="badge warning">Sedang</span></td><td>3 bulan</td><td>Pelatihan digital marketing</td><td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> View</a></td></tr>
+        <tr><td>Sablon Kreasi</td><td>Jasa</td><td>Tidak aktif</td><td><span class="badge warning">Sedang</span></td><td>5 bulan</td><td>Kunjungan lapangan</td><td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> View</a></td></tr>
+        <tr><td>Toko Kelontong Sari</td><td>Retail</td><td>Modal turun 15%</td><td><span class="badge warning">Sedang</span></td><td>2 bulan</td><td>Manajemen inventaris</td><td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> View</a></td></tr>
+        <tr><td>Laundry Bersih</td><td>Jasa</td><td>Penjualan stagnan</td><td><span class="badge info">Ringan</span></td><td>1 bulan</td><td>Promosi & branding</td><td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> View</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

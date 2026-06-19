@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard - UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Dashboard">
+
+<!-- Greeting hero -->
+<div class="m-greet">
+  <div class="hi">Halo,</div>
+  <div class="name">Bu Sari</div>
+  <div class="biz">Kedai Sari Rasa &bull; Juni 2026</div>
+</div>
+
+<!-- Hero metric (sisa dana) -->
+<div class="card-navy">
+  <div class="label">Sisa Dana Operasional</div>
+  <div class="value">Rp 12.450.000</div>
+  <div class="sub"><b><span data-ic="arrow-up"></span> 12.5%</b> dari bulan lalu</div>
+</div>
+
+<!-- Stat cards -->
+<div class="stat-grid">
+  <div class="stat">
+    <div class="icon"><span data-ic="wallet"></span></div>
+    <div>
+      <div class="label">Total Modal</div>
+      <div class="value">Rp 25.000.000</div>
+      <div class="delta"><span data-ic="arrow-up"></span> 5% bulan lalu</div>
+    </div>
+  </div>
+  <div class="stat orange">
+    <div class="icon"><span data-ic="money-off"></span></div>
+    <div>
+      <div class="label">Pengeluaran</div>
+      <div class="value">Rp 8.450.000</div>
+      <div class="delta down"><span data-ic="arrow-down"></span> 3% bulan lalu</div>
+    </div>
+  </div>
+  <div class="stat green">
+    <div class="icon"><span data-ic="cart"></span></div>
+    <div>
+      <div class="label">Penjualan</div>
+      <div class="value">Rp 17.820.000</div>
+      <div class="delta"><span data-ic="arrow-up"></span> 12.4% MoM</div>
+    </div>
+  </div>
+  <div class="stat green">
+    <div class="icon"><span data-ic="trend-up"></span></div>
+    <div>
+      <div class="label">Keuntungan</div>
+      <div class="value">Rp 9.370.000</div>
+      <div class="delta">Margin 52.6%</div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart + notifikasi -->
+<div class="row-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Perkembangan Usaha</div>
+      <select class="form-control" style="width:auto">
+        <option>6 Bulan Terakhir</option>
+        <option>3 Bulan</option>
+        <option>12 Bulan</option>
+      </select>
+    </div>
+    <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+    <div class="m-legend" style="margin-top:14px">
+      <span><i style="background:#22C55E"></i>Penjualan</span>
+      <span><i style="background:#F59E0B"></i>Pengeluaran</span>
+      <span><i style="background:#0D1B8E"></i>Keuntungan</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Notifikasi Terbaru</div>
+      <a href="notifikasi.html" class="text-primary" style="font-size:12.5px;font-weight:600">Lihat semua</a>
+    </div>
+    <div class="alert warning">
+      <span data-ic="alert" class="alert-ic"></span>
+      <div>
+        <strong>Stok Es Teh Manis menipis</strong>
+        <div style="font-size:12px;margin-top:2px;opacity:0.85">Tersisa 3 dari batas minimum 10</div>
+      </div>
+    </div>
+    <div class="alert success">
+      <span data-ic="trend-up" class="alert-ic"></span>
+      <div>
+        <strong>Target harian tercapai</strong>
+        <div style="font-size:12px;margin-top:2px;opacity:0.85">Penjualan hari ini Rp 850.000</div>
+      </div>
+    </div>
+    <div class="alert">
+      <span data-ic="bell" class="alert-ic"></span>
+      <div>
+        <strong>Budget bahan baku 85% terpakai</strong>
+        <div style="font-size:12px;margin-top:2px;opacity:0.85">Kemarin</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick actions -->
+<div class="sec-title"><h3>Menu Cepat</h3></div>
+<div class="qa-grid">
+  <a href="modal.html" class="qa">
+    <div class="qa-ico"><span data-ic="wallet"></span></div>
+    <div class="qa-lbl">Modal</div>
+  </a>
+  <a href="riwayat-pengeluaran.html" class="qa">
+    <div class="qa-ico"><span data-ic="money-off"></span></div>
+    <div class="qa-lbl">Pengeluaran</div>
+  </a>
+  <a href="kasir.html" class="qa green">
+    <div class="qa-ico"><span data-ic="store"></span></div>
+    <div class="qa-lbl">Kasir</div>
+  </a>
+  <a href="riwayat-penjualan.html" class="qa">
+    <div class="qa-ico"><span data-ic="cart"></span></div>
+    <div class="qa-lbl">Penjualan</div>
+  </a>
+  <a href="produk.html" class="qa">
+    <div class="qa-ico"><span data-ic="package"></span></div>
+    <div class="qa-lbl">Produk</div>
+  </a>
+  <a href="bahan-baku.html" class="qa">
+    <div class="qa-ico"><span data-ic="box"></span></div>
+    <div class="qa-lbl">Bahan Baku</div>
+  </a>
+  <a href="laporan-keuangan.html" class="qa">
+    <div class="qa-ico"><span data-ic="file-text"></span></div>
+    <div class="qa-lbl">Laporan</div>
+  </a>
+  <a href="rekomendasi.html" class="qa warn">
+    <div class="qa-ico"><span data-ic="star"></span></div>
+    <div class="qa-lbl">Tips</div>
+  </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels: ['Jan','Feb','Mar','Apr','Mei','Jun'],
+    datasets: [
+      { label:'Penjualan',   data:[12000,13500,14200,15800,16400,17820], borderColor:'#22C55E', backgroundColor:'rgba(34,197,94,0.1)',  fill:true, tension:0.35, borderWidth:2 },
+      { label:'Pengeluaran', data:[7000,7400,7900,8100,8200,8450],       borderColor:'#F59E0B', backgroundColor:'rgba(245,158,11,0.1)', fill:true, tension:0.35, borderWidth:2 },
+      { label:'Keuntungan',  data:[5000,6100,6300,7700,8200,9370],       borderColor:'#0D1B8E', backgroundColor:'rgba(13,27,142,0.1)',  fill:true, tension:0.35, borderWidth:2 },
+    ]
+  },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} }
+});
+</script>
+</body>
+</html>

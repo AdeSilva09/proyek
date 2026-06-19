@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup Aplikasi UMKM - DKUKMPP</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B8E;
+    --navy-dark: #050D5C;
+    --navy-light: #2C3BD1;
+    --navy-soft: #E8EBFF;
+    --green: #22C55E;
+    --green-light: #DCFCE7;
+    --bg: #F5F6FA;
+    --card: #FFFFFF;
+    --text: #1F2937;
+    --text-light: #4B5563;
+    --muted: #9CA3AF;
+    --border: #E5E7EB;
+    --red: #EF4444;
+    --red-light: #FEE2E2;
+    --warning: #F59E0B;
+    --warning-light: #FEF3C7;
+    --purple-muted: #6366F1;
+    --neon: #10B981;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(180deg, #EEF0F7 0%, #DDE1F2 100%);
+    color: var(--text);
+    padding: 40px 24px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page-header {
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+  .page-header h1 {
+    color: var(--navy);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .page-header p {
+    color: var(--text-light);
+    margin-top: 8px;
+    font-size: 15px;
+  }
+  .legend {
+    display: inline-flex;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(13,27,142,.08);
+    font-size: 12px;
+    color: var(--text-light);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 14px; height: 14px; border-radius: 4px; }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 36px 24px;
+    max-width: 1480px;
+    margin: 0 auto;
+    justify-items: center;
+  }
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .phone-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-dark);
+    text-align: center;
+    max-width: 280px;
+  }
+  .phone-label small {
+    display: block;
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+  .phone {
+    width: 290px;
+    height: 600px;
+    background: #111;
+    border-radius: 38px;
+    padding: 10px;
+    box-shadow: 0 30px 60px -20px rgba(13,27,142,.35), 0 10px 20px rgba(0,0,0,.1);
+    position: relative;
+  }
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 14px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 18px;
+    background: #111;
+    border-radius: 0 0 12px 12px;
+    z-index: 10;
+  }
+  .screen {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    border-radius: 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .status-bar {
+    height: 30px;
+    background: var(--navy);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 4px 22px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .status-bar .right { display: flex; gap: 4px; align-items: center; }
+  .app-bar {
+    background: var(--navy);
+    color: white;
+    padding: 10px 16px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .app-bar .icon-btn {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px;
+    background: rgba(255,255,255,.12);
+  }
+  .app-bar h2 {
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+  }
+  .body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px 12px 76px;
+    font-size: 11px;
+  }
+  .body::-webkit-scrollbar { width: 4px; }
+  .body::-webkit-scrollbar-thumb { background: rgba(0,0,0,.1); border-radius: 4px; }
+
+  /* Bottom Nav with floating home */
+  .bottom-nav {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 62px;
+    background: var(--navy);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 0 0 28px 28px;
+  }
+  .bottom-nav .nav-item {
+    color: rgba(255,255,255,.65);
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    font-size: 9px;
+    font-weight: 500;
+  }
+  .bottom-nav .nav-item.active { color: white; }
+  .bottom-nav .fab {
+    width: 50px; height: 50px;
+    background: white;
+    border: 4px solid var(--bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: -28px;
+    box-shadow: 0 6px 16px rgba(13,27,142,.4);
+    color: var(--navy);
+  }
+
+  /* Cards */
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(13,27,142,.06);
+    margin-bottom: 10px;
+  }
+  .card-navy {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 8px 20px rgba(13,27,142,.25);
+    margin-bottom: 12px;
+  }
+  .card-navy .label { font-size: 10px; opacity: .8; font-weight: 500; }
+  .card-navy .value { font-size: 22px; font-weight: 700; margin-top: 4px; letter-spacing: -.5px; }
+  .card-navy .sub { font-size: 10px; opacity: .8; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  .btn-primary { background: var(--green); color: white; }
+  .btn-navy { background: var(--navy); color: white; }
+  .btn-outline { background: white; color: var(--navy); border: 1px solid var(--navy); }
+  .btn-purple { background: var(--purple-muted); color: white; }
+  .btn-ghost { background: var(--navy-soft); color: var(--navy); }
+
+  /* Form */
+  .input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px solid #C7CDF3;
+    font-size: 12px;
+    background: white;
+    outline: none;
+    color: var(--text);
+    font-family: inherit;
+  }
+  .input::placeholder { color: var(--muted); }
+  .input-label { font-size: 11px; font-weight: 600; color: var(--text-light); margin-bottom: 6px; display: block; }
+  .form-group { margin-bottom: 12px; }
+
+  /* Chips & Tags */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .chip-green { background: var(--green-light); color: #15803D; }
+  .chip-red { background: var(--red-light); color: #B91C1C; }
+  .chip-warn { background: var(--warning-light); color: #92400E; }
+  .chip-navy { background: var(--navy-soft); color: var(--navy); }
+
+  /* List item */
+  .li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(13,27,142,.05);
+  }
+  .li-ico {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--navy-soft);
+    color: var(--navy);
+    flex-shrink: 0;
+  }
+  .li-body { flex: 1; min-width: 0; }
+  .li-body .t1 { font-size: 12px; font-weight: 600; color: var(--text); }
+  .li-body .t2 { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .li-end { font-size: 11px; font-weight: 700; color: var(--navy); }
+
+  /* Section title */
+  .sec-title {
+    display: flex; justify-content: space-between; align-items: center;
+    margin: 14px 2px 8px;
+  }
+  .sec-title h3 { font-size: 12px; font-weight: 700; color: var(--text); }
+  .sec-title a { font-size: 10px; color: var(--navy); font-weight: 600; }
+
+  /* Quick action grid */
+  .qa-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .qa {
+    background: white;
+    border-radius: 12px;
+    padding: 10px 4px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(13,27,142,.05);
+  }
+  .qa-ico {
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    background: var(--navy-soft);
+    color: var(--navy);
+    margin: 0 auto 4px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qa-label { font-size: 9px; font-weight: 600; color: var(--text-light); line-height: 1.2; }
+
+  /* Stat row */
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat {
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 1px 4px rgba(13,27,142,.05);
+  }
+  .stat .lbl { font-size: 9px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .3px; }
+  .stat .val { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 2px; letter-spacing: -.3px; }
+  .stat .delta { font-size: 9px; font-weight: 600; margin-top: 2px; }
+  .stat .delta.up { color: var(--green); }
+  .stat .delta.down { color: var(--red); }
+
+  /* Progress */
+  .prog { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; }
+  .prog-fill { height: 100%; background: var(--green); border-radius: 999px; }
+  .prog-fill.warn { background: var(--warning); }
+  .prog-fill.danger { background: var(--red); }
+
+  /* Chart placeholders */
+  .chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 90px; padding: 8px 0; }
+  .chart-bars .bar {
+    flex: 1;
+    background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+    border-radius: 6px 6px 2px 2px;
+    position: relative;
+  }
+  .chart-bars .bar.accent { background: linear-gradient(180deg, #4ADE80 0%, var(--green) 100%); }
+  .chart-line { height: 100px; position: relative; }
+  .chart-line svg { width: 100%; height: 100%; }
+  .chart-donut { display: flex; align-items: center; gap: 10px; }
+  .donut { width: 90px; height: 90px; }
+
+  /* Numpad */
+  .numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .numpad button {
+    padding: 12px;
+    border: none;
+    background: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+
+  /* Receipt */
+  .receipt {
+    background: white;
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px dashed var(--border);
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+  }
+  .receipt .center { text-align: center; }
+  .receipt hr { border: none; border-top: 1px dashed var(--border); margin: 8px 0; }
+  .receipt .row { display: flex; justify-content: space-between; padding: 2px 0; }
+
+  /* Toast / Alert */
+  .alert {
+    display: flex; gap: 8px; align-items: flex-start;
+    padding: 10px;
+    border-radius: 12px;
+  }
+  .alert-warn { background: var(--warning-light); color: #92400E; }
+  .alert-danger { background: var(--red-light); color: #B91C1C; }
+  .alert-green { background: var(--green-light); color: #15803D; }
+  .alert .ico { flex-shrink: 0; margin-top: 1px; }
+  .alert .t { font-size: 11px; font-weight: 600; }
+  .alert .s { font-size: 10px; font-weight: 500; opacity: .9; margin-top: 2px; }
+
+  /* Avatar */
+  .avatar {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy-light), var(--navy));
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 700;
+    margin: 0 auto;
+  }
+
+  /* Modal Overlay */
+  .modal-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,.5);
+    display: flex; align-items: flex-end;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+  .modal {
+    background: white;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 18px 16px 80px;
+    animation: slideUp .3s ease;
+  }
+  .modal-handle {
+    width: 40px; height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin: 0 auto 14px;
+  }
+
+  /* Login splash */
+  .splash {
+    flex: 1;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 40px 24px;
+    display: flex; flex-direction: column;
+    border-radius: 0 0 28px 28px;
+  }
+  .splash .logo {
+    width: 72px; height: 72px;
+    background: white;
+    border-radius: 22px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy);
+    margin: 28px auto 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  }
+  .splash-form {
+    background: white;
+    border-radius: 22px;
+    padding: 18px 16px;
+    margin-top: 18px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,.15);
+  }
+
+  /* Search */
+  .search {
+    background: white;
+    border-radius: 14px;
+    padding: 10px 12px;
+    display: flex; gap: 8px; align-items: center;
+    box-shadow: 0 1px 4px rgba(13,27,142,.05);
+    margin-bottom: 10px;
+  }
+  .search input { border: none; outline: none; flex: 1; font-size: 12px; font-family: inherit; }
+
+  /* Tab pills */
+  .tabs {
+    display: flex; gap: 6px;
+    background: white;
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 9px;
+    color: var(--muted);
+  }
+  .tab.active { background: var(--navy); color: white; }
+
+  /* Cart item */
+  .cart-item {
+    display: flex; gap: 10px; align-items: center;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+  .cart-thumb {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--navy-soft);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .qty {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--bg);
+    padding: 2px;
+    border-radius: 8px;
+  }
+  .qty button {
+    width: 20px; height: 20px;
+    border: none;
+    background: white;
+    border-radius: 6px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .qty span { font-size: 11px; font-weight: 700; min-width: 16px; text-align: center; }
+
+  /* Insight cards */
+  .insight-card {
+    background: white;
+    border-radius: 14px;
+    padding: 12px;
+    border-left: 4px solid var(--green);
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(13,27,142,.05);
+  }
+  .insight-card.tip { border-left-color: var(--navy); }
+  .insight-card.warn { border-left-color: var(--warning); }
+
+  /* Toggles */
+  .toggle-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+  .toggle {
+    width: 36px; height: 20px;
+    border-radius: 999px;
+    background: var(--green);
+    position: relative;
+  }
+  .toggle::after {
+    content: '';
+    position: absolute;
+    right: 2px; top: 2px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: white;
+  }
+  .toggle.off { background: var(--border); }
+  .toggle.off::after { left: 2px; right: auto; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Mockup Aplikasi UMKM &mdash; DKUKMPP</h1>
+  <p>Visualisasi UI/UX seluruh fitur pada Product Backlog Pelaku UMKM (27 screen)</p>
+  <div class="legend">
+    <span><span class="swatch" style="background:#0D1B8E"></span>Navy (Primary)</span>
+    <span><span class="swatch" style="background:#22C55E"></span>Green (Aksi)</span>
+    <span><span class="swatch" style="background:#6366F1"></span>Purple Muted</span>
+    <span><span class="swatch" style="background:#EF4444"></span>Red (Krusial)</span>
+    <span><span class="swatch" style="background:#F59E0B"></span>Warning</span>
+  </div>
+</div>
+
+<div class="gallery">
+
+<!-- ========== 1. LOGIN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="splash">
+      <div class="logo">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:700">Selamat Datang</div>
+        <div style="font-size:11px;opacity:.85;margin-top:4px">Sistem Pengelolaan UMKM DKUKMPP</div>
+      </div>
+      <div class="splash-form">
+        <div class="form-group">
+          <label class="input-label">Username</label>
+          <input class="input" placeholder="warungbusari" />
+        </div>
+        <div class="form-group">
+          <label class="input-label">Password</label>
+          <input class="input" type="password" placeholder="********" />
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;margin:4px 0 12px;color:var(--text-light)">
+          <span>Ingat saya</span>
+          <a style="color:var(--navy);font-weight:600">Lupa password?</a>
+        </div>
+        <button class="btn btn-primary">Masuk</button>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">1. Login Sistem<small>Autentikasi UMKM</small></div>
+</div>
+
+<!-- ========== 2. DASHBOARD KEUANGAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div style="display:flex;align-items:center;gap:10px;flex:1">
+        <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">BS</div>
+        <div>
+          <div style="font-size:11px;opacity:.8">Halo,</div>
+          <div style="font-size:13px;font-weight:700">Warung Bu Sari</div>
+        </div>
+      </div>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="card-navy">
+        <div class="label">Sisa Dana</div>
+        <div class="value">Rp 12.450.000</div>
+        <div class="sub"><span style="color:#86EFAC"><span data-ic="arrow-up"></span> 12.5%</span> dari bulan lalu</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="lbl">Modal</div><div class="val">Rp 25Jt</div><div class="delta up"><span data-ic="arrow-up"></span> 5%</div></div>
+        <div class="stat"><div class="lbl">Penjualan</div><div class="val">Rp 8.2Jt</div><div class="delta up"><span data-ic="arrow-up"></span> 18%</div></div>
+        <div class="stat"><div class="lbl">Pengeluaran</div><div class="val">Rp 4.1Jt</div><div class="delta down"><span data-ic="arrow-down"></span> 3%</div></div>
+        <div class="stat"><div class="lbl">Keuntungan</div><div class="val" style="color:var(--green)">Rp 4.1Jt</div><div class="delta up"><span data-ic="arrow-up"></span> 22%</div></div>
+      </div>
+      <div class="sec-title"><h3>Tren Penjualan</h3><a>7 Hari</a></div>
+      <div class="card">
+        <div class="chart-bars">
+          <div class="bar" style="height:50%"></div>
+          <div class="bar" style="height:70%"></div>
+          <div class="bar" style="height:45%"></div>
+          <div class="bar" style="height:85%"></div>
+          <div class="bar" style="height:60%"></div>
+          <div class="bar accent" style="height:95%"></div>
+          <div class="bar" style="height:75%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:4px">
+          <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span>
+        </div>
+      </div>
+      <div class="sec-title"><h3>Notifikasi Penting</h3></div>
+      <div class="alert alert-warn">
+        <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div><div class="t">Stok Gula Menipis</div><div class="s">Tersisa 2 dari batas minimum 5</div></div>
+      </div>
+    </div>
+    <nav class="bottom-nav">
+      <div class="nav-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span>Beranda</span>
+      </div>
+      <div class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg>
+        <span>Transaksi</span>
+      </div>
+      <div class="fab">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 14h2M8 17h2"/></svg>
+      </div>
+      <div class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <span>Produk</span>
+      </div>
+      <div class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 16 0v1"/></svg>
+        <span>Profil</span>
+      </div>
+    </nav>
+  </div></div>
+  <div class="phone-label">2. Dashboard Keuangan<small>Ringkasan & grafik usaha</small></div>
+</div>
+
+<!-- ========== 3. KELOLA PROFIL ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Profil UMKM</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="card" style="text-align:center;padding:18px">
+        <div class="avatar">BS</div>
+        <div style="font-weight:700;margin-top:10px;font-size:14px">Warung Bu Sari</div>
+        <div style="font-size:11px;color:var(--muted)">UMKM Kuliner</div>
+        <div style="margin-top:8px"><span class="chip chip-green">Aktif & Terverifikasi</span></div>
+      </div>
+      <div class="form-group">
+        <label class="input-label">Nama Pemilik</label>
+        <input class="input" value="Sari Wulandari" />
+      </div>
+      <div class="form-group">
+        <label class="input-label">NIK</label>
+        <input class="input" value="3201234567890001" />
+      </div>
+      <div class="form-group">
+        <label class="input-label">No. Telepon</label>
+        <input class="input" value="+62 812 3456 7890" />
+      </div>
+      <div class="form-group">
+        <label class="input-label">Alamat Usaha</label>
+        <input class="input" value="Jl. Mawar No. 12, Pekalongan" />
+      </div>
+      <div class="form-group">
+        <label class="input-label">Kategori Usaha</label>
+        <input class="input" value="Kuliner / Warung Makan" />
+      </div>
+      <button class="btn btn-primary">Simpan Perubahan</button>
+    </div>
+  </div></div>
+  <div class="phone-label">3. Kelola Profil UMKM<small>Edit data usaha</small></div>
+</div>
+
+<!-- ========== 4. MANAJEMEN MODAL ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Manajemen Modal</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="card-navy">
+        <div class="label">Total Modal Aktif</div>
+        <div class="value">Rp 25.000.000</div>
+        <div class="sub"><span style="color:#86EFAC"><span data-ic="arrow-up"></span> 5%</span> dibanding sebelumnya</div>
+      </div>
+      <div class="tabs">
+        <div class="tab active">Semua</div>
+        <div class="tab">Pribadi</div>
+        <div class="tab">Pinjaman</div>
+        <div class="tab">Hibah</div>
+      </div>
+      <div class="li">
+        <div class="li-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="li-body"><div class="t1">Modal Pribadi</div><div class="t2">15 Mei 2026 • Tabungan</div></div>
+        <div class="li-end">+ 10Jt</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:#FEF3C7;color:#92400E"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7l9-4 9 4M5 21V11M19 21V11M9 21v-6M15 21v-6"/></svg></div>
+        <div class="li-body"><div class="t1">KUR BRI</div><div class="t2">10 Apr 2026 • Pinjaman</div></div>
+        <div class="li-end">+ 10Jt</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:#DCFCE7;color:#15803D"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="li-body"><div class="t1">Hibah DKUKMPP</div><div class="t2">02 Mar 2026 • Hibah</div></div>
+        <div class="li-end">+ 5Jt</div>
+      </div>
+      <div class="li">
+        <div class="li-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="li-body"><div class="t1">Modal Tambahan</div><div class="t2">20 Jan 2026 • Pribadi</div></div>
+        <div class="li-end">+ 2Jt</div>
+      </div>
+      <button class="btn btn-primary" style="margin-top:8px">+ Tambah Modal Baru</button>
+    </div>
+  </div></div>
+  <div class="phone-label">4. Manajemen Modal<small>Tambah, edit, hapus, riwayat</small></div>
+</div>
+
+<!-- ========== 5. STATISTIK MODAL ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Statistik Modal</h2>
+    </div>
+    <div class="body">
+      <div class="card-navy">
+        <div class="label">Total Modal</div>
+        <div class="value">Rp 27.000.000</div>
+        <div class="sub" style="font-size:11px">Pertumbuhan 6 bulan terakhir <span style="color:#86EFAC;font-weight:700">+18.2%</span></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-weight:700;font-size:11px">Perkembangan Modal</span>
+          <span style="font-size:10px;color:var(--muted)">Jan-Jun 2026</span>
+        </div>
+        <div class="chart-line">
+          <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#0D1B8E" stop-opacity=".3"/>
+                <stop offset="100%" stop-color="#0D1B8E" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M 0 80 L 33 70 L 66 55 L 100 60 L 133 35 L 166 25 L 200 15 L 200 100 L 0 100 Z" fill="url(#g1)"/>
+            <path d="M 0 80 L 33 70 L 66 55 L 100 60 L 133 35 L 166 25 L 200 15" stroke="#0D1B8E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="166" cy="25" r="3" fill="#0D1B8E"/>
+          </svg>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:4px">
+          <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>Mei</span><span>Jun</span>
+        </div>
+      </div>
+      <div class="sec-title"><h3>Distribusi Sumber Modal</h3></div>
+      <div class="card">
+        <div style="margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span>Pribadi</span><span style="font-weight:700">44%</span></div>
+          <div class="prog"><div class="prog-fill" style="width:44%;background:var(--navy)"></div></div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span>Pinjaman</span><span style="font-weight:700">37%</span></div>
+          <div class="prog"><div class="prog-fill" style="width:37%;background:var(--warning)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span>Hibah</span><span style="font-weight:700">19%</span></div>
+          <div class="prog"><div class="prog-fill" style="width:19%"></div></div>
+        </div>
+      </div>
+      <div class="alert alert-green" style="margin-top:10px">
+        <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <div><div class="t">Modal Anda Bertumbuh!</div><div class="s">Naik 18.2% dalam 6 bulan</div></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">5. Statistik Modal<small>Grafik & persentase perubahan</small></div>
+</div>
+
+<!-- ========== 6. MANAJEMEN BUDGET ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Manajemen Budget</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input placeholder="Cari kategori budget..." />
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <div><div style="font-weight:700;font-size:12px">Bahan Baku</div><div style="font-size:10px;color:var(--muted)">Rp 2.4Jt dari Rp 3Jt</div></div>
+          <span class="chip chip-green">80%</span>
+        </div>
+        <div class="prog"><div class="prog-fill" style="width:80%"></div></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <div><div style="font-weight:700;font-size:12px">Operasional</div><div style="font-size:10px;color:var(--muted)">Rp 950rb dari Rp 1Jt</div></div>
+          <span class="chip chip-warn">95%</span>
+        </div>
+        <div class="prog"><div class="prog-fill warn" style="width:95%"></div></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <div><div style="font-weight:700;font-size:12px">Marketing</div><div style="font-size:10px;color:var(--muted)">Rp 320rb dari Rp 500rb</div></div>
+          <span class="chip chip-green">64%</span>
+        </div>
+        <div class="prog"><div class="prog-fill" style="width:64%"></div></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <div><div style="font-weight:700;font-size:12px">Gaji Karyawan</div><div style="font-size:10px;color:var(--muted)">Rp 1.6Jt dari Rp 1.5Jt</div></div>
+          <span class="chip chip-red">107%</span>
+        </div>
+        <div class="prog"><div class="prog-fill danger" style="width:100%"></div></div>
+      </div>
+      <button class="btn btn-primary" style="margin-top:8px">+ Buat Budget Baru</button>
+    </div>
+  </div></div>
+  <div class="phone-label">6. Manajemen Budget<small>Buat & kelola budget per kategori</small></div>
+</div>
+
+<!-- ========== 7. MONITORING BUDGET ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Monitoring Budget</h2>
+    </div>
+    <div class="body">
+      <div class="card-navy">
+        <div class="label">Sisa Budget Bulan Ini</div>
+        <div class="value">Rp 1.230.000</div>
+        <div class="sub">Total: Rp 6Jt • Terpakai: 79.5%</div>
+        <div style="margin-top:10px;background:rgba(255,255,255,.18);height:8px;border-radius:999px;overflow:hidden">
+          <div style="width:79.5%;height:100%;background:#86EFAC;border-radius:999px"></div>
+        </div>
+      </div>
+      <div class="sec-title"><h3>Progress per Kategori</h3></div>
+      <div class="card chart-donut">
+        <svg class="donut" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#E5E7EB" stroke-width="3.5"/>
+          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#0D1B8E" stroke-width="3.5" stroke-dasharray="80 100" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+        </svg>
+        <div>
+          <div style="font-size:10px;color:var(--muted)">Total Terpakai</div>
+          <div style="font-size:18px;font-weight:700;color:var(--navy)">79.5%</div>
+          <div style="font-size:10px;color:var(--green);font-weight:600">Dalam batas aman</div>
+        </div>
+      </div>
+      <div class="alert alert-warn">
+        <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div><div class="t">Budget Operasional Hampir Habis</div><div class="s">Tersisa Rp 50.000 (5%)</div></div>
+      </div>
+      <div class="alert alert-danger" style="margin-top:8px">
+        <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div><div class="t">Budget Gaji Terlampaui!</div><div class="s">Pengeluaran +Rp 100.000 over budget</div></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">7. Monitoring Budget<small>Sisa, persentase, notifikasi</small></div>
+</div>
+
+<!-- ========== 8. TRANSAKSI PENGELUARAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Catat Pengeluaran</h2>
+    </div>
+    <div class="body">
+      <div class="form-group">
+        <label class="input-label">Nominal</label>
+        <input class="input" value="Rp 250.000" style="font-size:18px;font-weight:700;color:var(--navy)" />
+      </div>
+      <div class="form-group">
+        <label class="input-label">Kategori Budget</label>
+        <input class="input" value="Bahan Baku" />
+      </div>
+      <div class="form-group">
+        <label class="input-label">Deskripsi</label>
+        <input class="input" value="Beli daging ayam 5 kg" />
+      </div>
+      <div class="form-group">
+        <label class="input-label">Tanggal</label>
+        <input class="input" value="05 Juni 2026" />
+      </div>
+      <div class="form-group">
+        <label class="input-label">Bukti (Opsional)</label>
+        <div style="border:2px dashed #C7CDF3;border-radius:12px;padding:18px;text-align:center;background:white">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" style="margin-bottom:6px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <div style="font-size:11px;color:var(--navy);font-weight:600">Unggah Struk / Foto</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-outline">Batal</button>
+        <button class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">8. Transaksi Pengeluaran<small>Form input terhubung budget</small></div>
+</div>
+
+<!-- ========== 9. ANALISIS PENGELUARAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Analisis Pengeluaran</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="tabs">
+        <div class="tab">Minggu</div>
+        <div class="tab active">Bulan</div>
+        <div class="tab">Tahun</div>
+      </div>
+      <div class="card-navy">
+        <div class="label">Total Pengeluaran Juni</div>
+        <div class="value">Rp 4.130.000</div>
+        <div class="sub">Avg/hari Rp 137.667</div>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;font-size:11px;margin-bottom:8px">Per Kategori</div>
+        <div class="chart-bars">
+          <div class="bar accent" style="height:90%"></div>
+          <div class="bar" style="height:55%"></div>
+          <div class="bar" style="height:70%"></div>
+          <div class="bar" style="height:30%"></div>
+          <div class="bar" style="height:45%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--muted);margin-top:4px">
+          <span>Bahan</span><span>Ops</span><span>Gaji</span><span>Mkt</span><span>Lain</span>
+        </div>
+      </div>
+      <div class="sec-title"><h3>Top Pengeluaran</h3></div>
+      <div class="li">
+        <div class="li-ico" style="background:#FEE2E2;color:#B91C1C"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M9 9h6v6H9z"/></svg></div>
+        <div class="li-body"><div class="t1">Bahan Baku</div><div class="t2">42% dari total</div></div>
+        <div class="li-end">Rp 1.7Jt</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:#FEF3C7;color:#92400E"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div>
+        <div class="li-body"><div class="t1">Gaji Karyawan</div><div class="t2">39% dari total</div></div>
+        <div class="li-end">Rp 1.6Jt</div>
+      </div>
+      <div class="li">
+        <div class="li-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="li-body"><div class="t1">Operasional</div><div class="t2">23% dari total</div></div>
+        <div class="li-end">Rp 950rb</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">9. Analisis Pengeluaran<small>Tabel & grafik per kategori</small></div>
+</div>
+
+<!-- ========== 10. MANAJEMEN PRODUK ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Manajemen Produk</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input placeholder="Cari produk..." />
+      </div>
+      <div class="stat-row" style="margin-bottom:10px">
+        <div class="stat"><div class="lbl">Total Produk</div><div class="val">42</div></div>
+        <div class="stat"><div class="lbl">Aktif Dijual</div><div class="val" style="color:var(--green)">38</div></div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb"><span data-ic="food"></span></div>
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:12px">Mie Ayam Spesial</div>
+          <div style="font-size:10px;color:var(--muted)">Stok: 25 porsi</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">Rp 15rb</div>
+          <span class="chip chip-green" style="margin-top:2px">Aktif</span>
+        </div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb"><span data-ic="food"></span></div>
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:12px">Nasi Goreng</div>
+          <div style="font-size:10px;color:var(--muted)">Stok: 18 porsi</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">Rp 18rb</div>
+          <span class="chip chip-green" style="margin-top:2px">Aktif</span>
+        </div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb"><span data-ic="drink"></span></div>
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:12px">Es Teh Manis</div>
+          <div style="font-size:10px;color:var(--muted)">Stok: 3 gelas</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">Rp 5rb</div>
+          <span class="chip chip-red" style="margin-top:2px">Menipis</span>
+        </div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb"><span data-ic="food"></span></div>
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:12px">Ayam Geprek</div>
+          <div style="font-size:10px;color:var(--muted)">Stok: 12 porsi</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">Rp 20rb</div>
+          <span class="chip chip-green" style="margin-top:2px">Aktif</span>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">10. Manajemen Produk<small>Tambah, ubah, hapus produk</small></div>
+</div>
+
+<!-- ========== 11. MANAJEMEN STOK ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Stok Produk</h2>
+    </div>
+    <div class="body">
+      <div class="stat-row" style="margin-bottom:10px">
+        <div class="stat"><div class="lbl">Total Item</div><div class="val">42</div></div>
+        <div class="stat"><div class="lbl">Stok Menipis</div><div class="val" style="color:var(--red)">5</div></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:10px">
+        <button class="btn btn-primary" style="font-size:11px"><span data-ic="arrow-up"></span> Stok Masuk</button>
+        <button class="btn btn-purple" style="font-size:11px"><span data-ic="arrow-down"></span> Stok Keluar</button>
+      </div>
+      <div class="sec-title"><h3>Daftar Stok Realtime</h3></div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:32px;height:32px;background:var(--navy-soft);border-radius:8px;display:flex;align-items:center;justify-content:center"><span data-ic="food"></span></div>
+            <div>
+              <div style="font-size:12px;font-weight:700">Mie Ayam</div>
+              <div style="font-size:10px;color:var(--muted)">Min: 10</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:14px;font-weight:700;color:var(--green)">25</div>
+            <div style="font-size:9px;color:var(--muted)">porsi</div>
+          </div>
+        </div>
+        <div class="prog"><div class="prog-fill" style="width:70%"></div></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:32px;height:32px;background:var(--navy-soft);border-radius:8px;display:flex;align-items:center;justify-content:center"><span data-ic="drink"></span></div>
+            <div>
+              <div style="font-size:12px;font-weight:700">Es Teh Manis</div>
+              <div style="font-size:10px;color:var(--muted)">Min: 10</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:14px;font-weight:700;color:var(--red)">3</div>
+            <div style="font-size:9px;color:var(--muted)">gelas</div>
+          </div>
+        </div>
+        <div class="prog"><div class="prog-fill danger" style="width:15%"></div></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:32px;height:32px;background:var(--navy-soft);border-radius:8px;display:flex;align-items:center;justify-content:center"><span data-ic="food"></span></div>
+            <div>
+              <div style="font-size:12px;font-weight:700">Beras (kg)</div>
+              <div style="font-size:10px;color:var(--muted)">Min: 20</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:14px;font-weight:700;color:var(--warning)">22</div>
+            <div style="font-size:9px;color:var(--muted)">kg</div>
+          </div>
+        </div>
+        <div class="prog"><div class="prog-fill warn" style="width:35%"></div></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">11. Manajemen Stok Produk<small>Stok masuk, keluar, realtime</small></div>
+</div>
+
+<!-- ========== 12. NOTIFIKASI STOK MINIMUM ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Peringatan Stok</h2>
+    </div>
+    <div class="body">
+      <div class="alert alert-danger" style="padding:14px">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div>
+          <div class="t" style="font-size:12px">5 Produk di bawah Stok Minimum</div>
+          <div class="s">Segera lakukan restock untuk menghindari kehilangan penjualan</div>
+        </div>
+      </div>
+      <div class="sec-title"><h3>Daftar Stok Kritis</h3></div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--red-light);color:var(--red)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="li-body"><div class="t1">Es Teh Manis</div><div class="t2">Sisa 3 dari min. 10</div></div>
+        <span class="chip chip-red">Kritis</span>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--red-light);color:var(--red)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="li-body"><div class="t1">Gula Pasir (kg)</div><div class="t2">Sisa 2 dari min. 5</div></div>
+        <span class="chip chip-red">Kritis</span>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--warning-light);color:var(--warning)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="li-body"><div class="t1">Beras (kg)</div><div class="t2">Sisa 22 dari min. 20</div></div>
+        <span class="chip chip-warn">Hampir</span>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--warning-light);color:var(--warning)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="li-body"><div class="t1">Minyak Goreng</div><div class="t2">Sisa 4 L dari min. 5 L</div></div>
+        <span class="chip chip-warn">Hampir</span>
+      </div>
+      <button class="btn btn-navy" style="margin-top:10px">Restock Semua</button>
+    </div>
+  </div></div>
+  <div class="phone-label">12. Notifikasi Stok Minimum<small>Peringatan otomatis sistem</small></div>
+</div>
+
+<!-- ========== 13. LAPORAN MUTASI STOK ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Mutasi Stok</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="tabs">
+        <div class="tab active">Semua</div>
+        <div class="tab">Masuk</div>
+        <div class="tab">Keluar</div>
+      </div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin:6px 2px 6px">05 Juni 2026</div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div>
+        <div class="li-body"><div class="t1">Beras (kg)</div><div class="t2">Stok masuk dari supplier</div></div>
+        <div class="li-end" style="color:var(--green)">+50</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--red-light);color:var(--red)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+        <div class="li-body"><div class="t1">Mie Ayam</div><div class="t2">Penjualan #TRX0234</div></div>
+        <div class="li-end" style="color:var(--red)">-3</div>
+      </div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin:10px 2px 6px">04 Juni 2026</div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--red-light);color:var(--red)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/></svg></div>
+        <div class="li-body"><div class="t1">Es Teh Manis</div><div class="t2">Penjualan #TRX0230</div></div>
+        <div class="li-end" style="color:var(--red)">-12</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="19" x2="12" y2="5"/></svg></div>
+        <div class="li-body"><div class="t1">Minyak (L)</div><div class="t2">Stok masuk pembelian</div></div>
+        <div class="li-end" style="color:var(--green)">+10</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--red-light);color:var(--red)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/></svg></div>
+        <div class="li-body"><div class="t1">Ayam Geprek</div><div class="t2">Penjualan #TRX0228</div></div>
+        <div class="li-end" style="color:var(--red)">-5</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">13. Laporan Mutasi Stok<small>Riwayat stok masuk & keluar</small></div>
+</div>
+
+<!-- ========== 14. KASIR ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Kasir</h2>
+      <div class="icon-btn" style="background:var(--green)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input placeholder="Scan barcode / cari produk..." />
+      </div>
+      <div class="tabs">
+        <div class="tab active">Semua</div>
+        <div class="tab">Makanan</div>
+        <div class="tab">Minuman</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="card" style="padding:8px;text-align:center">
+          <div style="height:50px;background:var(--navy-soft);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:26px"><span data-ic="food"></span></div>
+          <div style="font-size:11px;font-weight:700;margin-top:6px">Mie Ayam</div>
+          <div style="font-size:11px;color:var(--navy);font-weight:700">Rp 15.000</div>
+        </div>
+        <div class="card" style="padding:8px;text-align:center">
+          <div style="height:50px;background:var(--navy-soft);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:26px"><span data-ic="food"></span></div>
+          <div style="font-size:11px;font-weight:700;margin-top:6px">Nasi Goreng</div>
+          <div style="font-size:11px;color:var(--navy);font-weight:700">Rp 18.000</div>
+        </div>
+        <div class="card" style="padding:8px;text-align:center">
+          <div style="height:50px;background:var(--navy-soft);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:26px"><span data-ic="food"></span></div>
+          <div style="font-size:11px;font-weight:700;margin-top:6px">Ayam Geprek</div>
+          <div style="font-size:11px;color:var(--navy);font-weight:700">Rp 20.000</div>
+        </div>
+        <div class="card" style="padding:8px;text-align:center">
+          <div style="height:50px;background:var(--navy-soft);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:26px"><span data-ic="drink"></span></div>
+          <div style="font-size:11px;font-weight:700;margin-top:6px">Es Teh</div>
+          <div style="font-size:11px;color:var(--navy);font-weight:700">Rp 5.000</div>
+        </div>
+      </div>
+      <div class="card-navy" style="position:sticky;bottom:8px;margin-top:12px;padding:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:10px;opacity:.8">3 item di keranjang</div>
+            <div style="font-size:15px;font-weight:700">Rp 53.000</div>
+          </div>
+          <button style="background:var(--green);color:white;border:none;padding:8px 14px;border-radius:10px;font-weight:700;font-size:11px">Lihat Cart <span data-ic="arrow-right"></span></button>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">14. Transaksi Penjualan (Kasir)<small>Pilih produk untuk dijual</small></div>
+</div>
+
+<!-- ========== 15. KERANJANG ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Keranjang Penjualan</h2>
+    </div>
+    <div class="body">
+      <div class="cart-item">
+        <div class="cart-thumb"><span data-ic="food"></span></div>
+        <div style="flex:1">
+          <div style="font-size:12px;font-weight:700">Mie Ayam Spesial</div>
+          <div style="font-size:10px;color:var(--navy);font-weight:600">Rp 15.000</div>
+        </div>
+        <div class="qty"><button>-</button><span>2</span><button>+</button></div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb"><span data-ic="food"></span></div>
+        <div style="flex:1">
+          <div style="font-size:12px;font-weight:700">Nasi Goreng</div>
+          <div style="font-size:10px;color:var(--navy);font-weight:600">Rp 18.000</div>
+        </div>
+        <div class="qty"><button>-</button><span>1</span><button>+</button></div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-thumb"><span data-ic="drink"></span></div>
+        <div style="flex:1">
+          <div style="font-size:12px;font-weight:700">Es Teh Manis</div>
+          <div style="font-size:10px;color:var(--navy);font-weight:600">Rp 5.000</div>
+        </div>
+        <div class="qty"><button>-</button><span>1</span><button>+</button></div>
+      </div>
+      <div class="card" style="margin-top:8px">
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0"><span>Subtotal</span><span>Rp 53.000</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0"><span>Diskon</span><span style="color:var(--green)">- Rp 0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0"><span>Pajak (10%)</span><span>Rp 5.300</span></div>
+        <hr style="border:none;border-top:1px dashed var(--border);margin:6px 0">
+        <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:var(--navy);padding:4px 0"><span>Total</span><span>Rp 58.300</span></div>
+      </div>
+      <button class="btn btn-primary" style="margin-top:8px">Lanjut ke Pembayaran</button>
+    </div>
+  </div></div>
+  <div class="phone-label">15. Keranjang Penjualan<small>Kelola produk transaksi</small></div>
+</div>
+
+<!-- ========== 16. PEMBAYARAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Pembayaran</h2>
+    </div>
+    <div class="body">
+      <div class="card-navy" style="text-align:center;padding:18px">
+        <div class="label">Total Tagihan</div>
+        <div class="value" style="font-size:28px">Rp 58.300</div>
+      </div>
+      <div class="sec-title"><h3>Metode Pembayaran</h3></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+        <button style="background:var(--purple-muted);color:white;padding:14px 8px;border:none;border-radius:12px;font-weight:700;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="12" y1="12" x2="12.01" y2="12"/></svg>
+          Tunai
+        </button>
+        <button style="background:white;color:var(--navy);padding:14px 8px;border:1.5px solid var(--border);border-radius:12px;font-weight:700;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Transfer
+        </button>
+      </div>
+      <div class="form-group">
+        <label class="input-label">Uang Diterima</label>
+        <input class="input" value="Rp 60.000" style="font-size:16px;font-weight:700;color:var(--navy)" />
+      </div>
+      <div class="alert alert-green">
+        <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><div class="t">Kembalian: Rp 1.700</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px">
+        <button class="btn btn-ghost" style="padding:8px;font-size:11px">+10rb</button>
+        <button class="btn btn-ghost" style="padding:8px;font-size:11px">+20rb</button>
+        <button class="btn btn-ghost" style="padding:8px;font-size:11px">+50rb</button>
+      </div>
+      <button class="btn btn-primary" style="margin-top:10px">Selesaikan Transaksi</button>
+    </div>
+  </div></div>
+  <div class="phone-label">16. Pengelolaan Pembayaran<small>Tunai & transfer</small></div>
+</div>
+
+<!-- ========== 17. BUKTI PENJUALAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      <h2>Transaksi Berhasil</h2>
+    </div>
+    <div class="body" style="text-align:center">
+      <div style="margin:14px auto;width:60px;height:60px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div style="font-weight:700;font-size:14px">Pembayaran Sukses</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:14px">5 Juni 2026 • 14:23 WIB</div>
+      <div class="receipt" style="text-align:left">
+        <div class="center" style="font-weight:700">WARUNG BU SARI</div>
+        <div class="center" style="font-size:9px">Jl. Mawar No.12, Pekalongan</div>
+        <hr>
+        <div class="row"><span>No:</span><span>#TRX0238</span></div>
+        <div class="row"><span>Kasir:</span><span>Bu Sari</span></div>
+        <hr>
+        <div class="row"><span>Mie Ayam x2</span><span>30.000</span></div>
+        <div class="row"><span>Nasi Goreng x1</span><span>18.000</span></div>
+        <div class="row"><span>Es Teh x1</span><span>5.000</span></div>
+        <hr>
+        <div class="row"><span>Subtotal</span><span>53.000</span></div>
+        <div class="row"><span>Pajak</span><span>5.300</span></div>
+        <div class="row" style="font-weight:700"><span>TOTAL</span><span>Rp 58.300</span></div>
+        <div class="row"><span>Tunai</span><span>60.000</span></div>
+        <div class="row"><span>Kembali</span><span>1.700</span></div>
+        <hr>
+        <div class="center" style="font-size:9px">Terima Kasih <span data-ic="hand"></span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+        <button class="btn btn-outline" style="font-size:11px"><span data-ic="export"></span> Bagikan</button>
+        <button class="btn btn-primary" style="font-size:11px"><span data-ic="printer"></span> Cetak</button>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">17. Cetak Bukti Penjualan<small>Struk transaksi</small></div>
+</div>
+
+<!-- ========== 18. RIWAYAT PENJUALAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Riwayat Penjualan</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="tabs">
+        <div class="tab active">Hari Ini</div>
+        <div class="tab">Minggu</div>
+        <div class="tab">Bulan</div>
+      </div>
+      <div class="card-navy">
+        <div class="label">Total Penjualan Hari Ini</div>
+        <div class="value">Rp 1.245.000</div>
+        <div class="sub">23 transaksi</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="li-body"><div class="t1">#TRX0238 • Tunai</div><div class="t2">14:23 • 4 item</div></div>
+        <div class="li-end" style="color:var(--green)">+58.300</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></div>
+        <div class="li-body"><div class="t1">#TRX0237 • Transfer</div><div class="t2">13:50 • 2 item</div></div>
+        <div class="li-end" style="color:var(--green)">+35.000</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="li-body"><div class="t1">#TRX0236 • Tunai</div><div class="t2">13:18 • 6 item</div></div>
+        <div class="li-end" style="color:var(--green)">+95.500</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="li-body"><div class="t1">#TRX0235 • Tunai</div><div class="t2">12:42 • 3 item</div></div>
+        <div class="li-end" style="color:var(--green)">+42.000</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="li-body"><div class="t1">#TRX0234 • Transfer</div><div class="t2">12:05 • 1 item</div></div>
+        <div class="li-end" style="color:var(--green)">+15.000</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">18. Riwayat Penjualan<small>Daftar transaksi per periode</small></div>
+</div>
+
+<!-- ========== 20. MONITORING KEUANGAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Monitoring Keuangan</h2>
+    </div>
+    <div class="body">
+      <div class="tabs">
+        <div class="tab">Minggu</div>
+        <div class="tab active">Bulan</div>
+        <div class="tab">Tahun</div>
+      </div>
+      <div class="sec-title"><h3>Indikator Kinerja (KPI)</h3></div>
+      <div class="stat-row">
+        <div class="stat"><div class="lbl"><span data-ic="briefcase"></span> Modal</div><div class="val">Rp 25Jt</div><div class="delta up"><span data-ic="arrow-up"></span> Rp 2Jt</div></div>
+        <div class="stat"><div class="lbl"><span data-ic="wallet"></span> Penjualan</div><div class="val">Rp 8.2Jt</div><div class="delta up"><span data-ic="arrow-up"></span> 18%</div></div>
+        <div class="stat"><div class="lbl"><span data-ic="trend-down"></span> Pengeluaran</div><div class="val">Rp 4.1Jt</div><div class="delta down"><span data-ic="arrow-down"></span> 3%</div></div>
+        <div class="stat"><div class="lbl"><span data-ic="trend-up"></span> Keuntungan</div><div class="val" style="color:var(--green)">Rp 4.1Jt</div><div class="delta up"><span data-ic="arrow-up"></span> 22%</div></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div style="font-size:11px;font-weight:700;margin-bottom:8px">Arus Kas</div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0"><span style="color:var(--green)"><span data-ic="arrow-up"></span> Pemasukan</span><span style="font-weight:700">Rp 8.200.000</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0"><span style="color:var(--red)"><span data-ic="arrow-down"></span> Pengeluaran</span><span style="font-weight:700">Rp 4.100.000</span></div>
+        <hr style="border:none;border-top:1px dashed var(--border);margin:6px 0">
+        <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;padding:4px 0;color:var(--navy)"><span>Sisa Dana</span><span>Rp 12.450.000</span></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-weight:700;font-size:11px">Tren Kas Bersih</span>
+        </div>
+        <div class="chart-line">
+          <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+            <path d="M 0 70 L 40 55 L 80 65 L 120 40 L 160 30 L 200 20" stroke="#22C55E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="200" cy="20" r="3" fill="#22C55E"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">20. Monitoring Keuangan<small>KPI: modal, penjualan, profit</small></div>
+</div>
+
+<!-- ========== 21. ANALISIS KEUNTUNGAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Analisis Keuntungan</h2>
+    </div>
+    <div class="body">
+      <div class="card-navy">
+        <div class="label">Keuntungan Bersih (Juni)</div>
+        <div class="value" style="color:#86EFAC">Rp 4.100.000</div>
+        <div class="sub">Margin: <b>50.0%</b> dari penjualan</div>
+      </div>
+      <div class="sec-title"><h3>Komposisi</h3></div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0"><span>Pendapatan</span><span style="font-weight:700;color:var(--green)">Rp 8.200.000</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0"><span>HPP</span><span style="color:var(--red)">- Rp 2.500.000</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0"><span>Beban Operasional</span><span style="color:var(--red)">- Rp 1.600.000</span></div>
+        <hr style="border:none;border-top:1px dashed var(--border);margin:6px 0">
+        <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--navy)"><span>Laba Bersih</span><span>Rp 4.100.000</span></div>
+      </div>
+      <div class="sec-title"><h3>Produk Paling Untung</h3></div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><span data-ic="food"></span></div>
+        <div class="li-body"><div class="t1">Ayam Geprek</div><div class="t2">Margin 65% • 120 terjual</div></div>
+        <div class="li-end" style="color:var(--green)">Rp 1.5Jt</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--green-light);color:var(--green)"><span data-ic="food"></span></div>
+        <div class="li-body"><div class="t1">Mie Ayam</div><div class="t2">Margin 55% • 145 terjual</div></div>
+        <div class="li-end" style="color:var(--green)">Rp 1.2Jt</div>
+      </div>
+      <div class="li">
+        <div class="li-ico" style="background:var(--warning-light);color:var(--warning)"><span data-ic="drink"></span></div>
+        <div class="li-body"><div class="t1">Es Teh Manis</div><div class="t2">Margin 70% • 230 terjual</div></div>
+        <div class="li-end" style="color:var(--green)">Rp 805rb</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">21. Analisis Keuntungan<small>Otomatis dari penjualan & biaya</small></div>
+</div>
+
+<!-- ========== 22. VISUALISASI KEUNTUNGAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Tren Profit</h2>
+    </div>
+    <div class="body">
+      <div class="stat-row">
+        <div class="stat"><div class="lbl">Margin</div><div class="val" style="color:var(--green)">50.0%</div><div class="delta up"><span data-ic="arrow-up"></span> 4.2%</div></div>
+        <div class="stat"><div class="lbl">ROI</div><div class="val">16.4%</div><div class="delta up"><span data-ic="arrow-up"></span> 1.8%</div></div>
+      </div>
+      <div class="card" style="margin-top:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-weight:700;font-size:11px">Profit per Bulan</span>
+          <span style="font-size:10px;color:var(--muted)">2026</span>
+        </div>
+        <div class="chart-bars">
+          <div class="bar" style="height:35%"></div>
+          <div class="bar" style="height:45%"></div>
+          <div class="bar" style="height:50%"></div>
+          <div class="bar" style="height:60%"></div>
+          <div class="bar" style="height:75%"></div>
+          <div class="bar accent" style="height:95%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:4px">
+          <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>Mei</span><span>Jun</span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;font-size:11px;margin-bottom:8px">Margin Keuntungan</div>
+        <div class="chart-line">
+          <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#22C55E" stop-opacity=".35"/>
+                <stop offset="100%" stop-color="#22C55E" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M 0 75 L 40 70 L 80 60 L 120 50 L 160 35 L 200 25 L 200 100 L 0 100 Z" fill="url(#g2)"/>
+            <path d="M 0 75 L 40 70 L 80 60 L 120 50 L 160 35 L 200 25" stroke="#22C55E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="alert alert-green">
+        <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg></div>
+        <div><div class="t">Profit Naik 4.2% Bulan Ini</div><div class="s">Konsisten 6 bulan terakhir</div></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">22. Visualisasi Keuntungan<small>Grafik margin & tren profit</small></div>
+</div>
+
+<!-- ========== 23. INSIGHT REKOMENDASI ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Insight Usaha</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="card-navy" style="background:linear-gradient(135deg,#6366F1,#0D1B8E)">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h4l5 4V7l-5 4z"/></svg>
+          <span style="font-size:10px;opacity:.9;font-weight:600">AI INSIGHT • 5 Juni 2026</span>
+        </div>
+        <div style="font-size:13px;font-weight:600;line-height:1.4">Performa usaha Anda 22% di atas rata-rata UMKM kuliner serupa. Pertahankan momentum!</div>
+      </div>
+      <div class="sec-title"><h3>Rekomendasi Aksi</h3></div>
+      <div class="insight-card">
+        <div style="font-weight:700;font-size:12px;color:var(--green);display:flex;align-items:center;gap:6px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>
+          Peluang Pertumbuhan
+        </div>
+        <div style="font-size:11px;color:var(--text-light);margin-top:6px">Produk <b>Ayam Geprek</b> punya margin tertinggi (65%). Pertimbangkan paket promo untuk meningkatkan volume.</div>
+      </div>
+      <div class="insight-card warn">
+        <div style="font-weight:700;font-size:12px;color:var(--warning);display:flex;align-items:center;gap:6px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg>
+          Perlu Perhatian
+        </div>
+        <div style="font-size:11px;color:var(--text-light);margin-top:6px">Pengeluaran kategori <b>Gaji</b> melampaui budget 7%. Tinjau ulang alokasi karyawan part-time.</div>
+      </div>
+      <div class="insight-card tip">
+        <div style="font-weight:700;font-size:12px;color:var(--navy);display:flex;align-items:center;gap:6px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 11H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h4l5 4V7l-5 4z"/></svg>
+          Tips Hemat
+        </div>
+        <div style="font-size:11px;color:var(--text-light);margin-top:6px">Beli bahan baku dalam volume besar saat akhir pekan untuk hemat 8-12% biaya pengadaan.</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">23. Insight & Rekomendasi<small>AI advisor untuk UMKM</small></div>
+</div>
+
+<!-- ========== 24. LAPORAN KEUANGAN ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Laporan Keuangan</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="form-group">
+        <label class="input-label">Periode Laporan</label>
+        <input class="input" value="01 - 30 Juni 2026" />
+      </div>
+      <div class="card-navy">
+        <div class="label">Ringkasan Laba Rugi</div>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;font-size:11px"><span style="opacity:.85">Pendapatan</span><span style="font-weight:700">Rp 8.200.000</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:11px"><span style="opacity:.85">Pengeluaran</span><span style="font-weight:700">Rp 4.100.000</span></div>
+          <div style="height:1px;background:rgba(255,255,255,.25);margin:4px 0"></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>Laba Bersih</span><span style="color:#86EFAC">Rp 4.100.000</span></div>
+        </div>
+      </div>
+      <div class="sec-title"><h3>Detail Laporan</h3></div>
+      <div class="li">
+        <div class="li-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="li-body"><div class="t1">Laba Rugi</div><div class="t2">Pendapatan vs biaya</div></div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="li">
+        <div class="li-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+        <div class="li-body"><div class="t1">Arus Kas</div><div class="t2">Kas masuk & keluar harian</div></div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="li">
+        <div class="li-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg></div>
+        <div class="li-body"><div class="t1">Penjualan</div><div class="t2">Per produk & periode</div></div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <button class="btn btn-primary" style="margin-top:8px">Generate Laporan Lengkap</button>
+    </div>
+  </div></div>
+  <div class="phone-label">24. Laporan Keuangan<small>Generate per periode</small></div>
+</div>
+
+<!-- ========== 25. EXPORT PDF ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Laporan Keuangan</h2>
+    </div>
+    <div class="body" style="opacity:.4">
+      <div class="card">Laporan Juni 2026 ...</div>
+      <div class="card">Detail transaksi ...</div>
+      <div class="card">Grafik analisis ...</div>
+    </div>
+    <div class="modal-overlay">
+      <div class="modal">
+        <div class="modal-handle"></div>
+        <div style="text-align:center;margin-bottom:14px">
+          <div style="width:54px;height:54px;border-radius:14px;background:var(--red-light);color:var(--red);display:flex;align-items:center;justify-content:center;margin:0 auto 10px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><text x="6" y="18" font-size="6" fill="currentColor" font-weight="700">PDF</text></svg>
+          </div>
+          <div style="font-weight:700;font-size:14px">Export ke PDF</div>
+          <div style="font-size:11px;color:var(--muted)">Laporan Juni 2026 (12 hal)</div>
+        </div>
+        <div class="toggle-row">
+          <span style="font-size:12px;font-weight:600">Sertakan grafik</span>
+          <div class="toggle"></div>
+        </div>
+        <div class="toggle-row">
+          <span style="font-size:12px;font-weight:600">Detail transaksi</span>
+          <div class="toggle"></div>
+        </div>
+        <div class="toggle-row">
+          <span style="font-size:12px;font-weight:600">Logo & header</span>
+          <div class="toggle off"></div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:10px">⬇ Download PDF</button>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">25. Export Laporan PDF<small>Modal opsi & download</small></div>
+</div>
+
+<!-- ========== 26. EXPORT EXCEL ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Laporan Keuangan</h2>
+    </div>
+    <div class="body" style="opacity:.4">
+      <div class="card">Data transaksi ...</div>
+      <div class="card">Rincian biaya ...</div>
+    </div>
+    <div class="modal-overlay">
+      <div class="modal">
+        <div class="modal-handle"></div>
+        <div style="text-align:center;margin-bottom:14px">
+          <div style="width:54px;height:54px;border-radius:14px;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 10px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+          </div>
+          <div style="font-weight:700;font-size:14px">Export ke Excel</div>
+          <div style="font-size:11px;color:var(--muted)">Format .xlsx siap diolah</div>
+        </div>
+        <div class="sec-title" style="margin-top:0"><h3>Pilih Sheet</h3></div>
+        <div class="toggle-row">
+          <span style="font-size:12px;font-weight:600"><span data-ic="bar-chart"></span> Ringkasan</span>
+          <div class="toggle"></div>
+        </div>
+        <div class="toggle-row">
+          <span style="font-size:12px;font-weight:600"><span data-ic="wallet"></span> Penjualan</span>
+          <div class="toggle"></div>
+        </div>
+        <div class="toggle-row">
+          <span style="font-size:12px;font-weight:600"><span data-ic="trend-down"></span> Pengeluaran</span>
+          <div class="toggle"></div>
+        </div>
+        <div class="toggle-row">
+          <span style="font-size:12px;font-weight:600"><span data-ic="package"></span> Stok Produk</span>
+          <div class="toggle off"></div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:10px">⬇ Download Excel</button>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">26. Export Laporan Excel<small>Pilih sheet & download .xlsx</small></div>
+</div>
+
+<!-- ========== 27. NOTIFIKASI SISTEM ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Notifikasi</h2>
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="body">
+      <div class="tabs">
+        <div class="tab active">Semua</div>
+        <div class="tab">Belum dibaca</div>
+      </div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin:6px 2px 6px">Baru</div>
+      <div class="li" style="background:var(--navy-soft)">
+        <div class="li-ico" style="background:var(--red);color:white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
+        <div class="li-body"><div class="t1">Stok Gula Pasir Kritis</div><div class="t2">Tersisa 2 dari batas min. 5 • 5 menit lalu</div></div>
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--navy)"></span>
+      </div>
+      <div class="li" style="background:var(--navy-soft)">
+        <div class="li-ico" style="background:var(--warning);color:white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="li-body"><div class="t1">Budget Operasional 95%</div><div class="t2">Hampir mencapai batas • 1 jam lalu</div></div>
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--navy)"></span>
+      </div>
+      <div class="li" style="background:var(--navy-soft)">
+        <div class="li-ico" style="background:var(--green);color:white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="li-body"><div class="t1">Laporan Juni Siap</div><div class="t2">Tap untuk lihat ringkasan • 3 jam lalu</div></div>
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--navy)"></span>
+      </div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin:10px 2px 6px">Sebelumnya</div>
+      <div class="li">
+        <div class="li-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg></div>
+        <div class="li-body"><div class="t1">Penjualan harian Rp 1.2 Jt</div><div class="t2">Ringkasan akhir hari • Kemarin</div></div>
+      </div>
+      <div class="li">
+        <div class="li-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h4l5 4V7l-5 4z"/></svg></div>
+        <div class="li-body"><div class="t1">Program Bimbingan DKUKMPP</div><div class="t2">Anda terdaftar program literasi • 2 hari lalu</div></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">27. Notifikasi Sistem<small>Pusat notifikasi terpadu</small></div>
+</div>
+
+<!-- ========== 28. LOGOUT ========== -->
+<div class="phone-wrap">
+  <div class="phone"><div class="screen">
+    <div class="status-bar"><span>9:41</span><span class="right">5G 100%</span></div>
+    <div class="app-bar">
+      <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <h2>Pengaturan</h2>
+    </div>
+    <div class="body" style="opacity:.45">
+      <div class="card" style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:44px;height:44px;font-size:14px">BS</div><div><div style="font-size:12px;font-weight:700">Warung Bu Sari</div><div style="font-size:10px;color:var(--muted)">sari.umkm@email.com</div></div></div>
+      <div class="li"><div class="li-ico"><span data-ic="settings"></span></div><div class="li-body"><div class="t1">Preferensi Aplikasi</div></div></div>
+      <div class="li"><div class="li-ico"><span data-ic="lock"></span></div><div class="li-body"><div class="t1">Keamanan & Password</div></div></div>
+      <div class="li"><div class="li-ico"><span data-ic="globe"></span></div><div class="li-body"><div class="t1">Bahasa</div></div></div>
+      <div class="li" style="background:var(--red-light)"><div class="li-ico" style="background:var(--red);color:white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div><div class="li-body"><div class="t1" style="color:var(--red)">Keluar</div></div></div>
+    </div>
+    <div class="modal-overlay">
+      <div class="modal" style="padding:24px 18px 24px;text-align:center">
+        <div class="modal-handle"></div>
+        <div style="width:60px;height:60px;border-radius:50%;background:var(--red-light);color:var(--red);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </div>
+        <div style="font-weight:700;font-size:15px">Keluar dari Akun?</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px;max-width:200px;margin-left:auto;margin-right:auto;line-height:1.5">Anda akan keluar dari aplikasi UMKM Warung Bu Sari. Data tetap aman tersimpan di sistem.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px">
+          <button class="btn btn-outline">Batal</button>
+          <button class="btn" style="background:var(--red);color:white">Ya, Keluar</button>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <div class="phone-label">28. Logout Sistem<small>Konfirmasi keluar aman</small></div>
+</div>
+
+</div>
+
+<footer style="max-width:1400px;margin:60px auto 0;text-align:center;color:var(--text-light);font-size:12px">
+  Mockup UI/UX &mdash; Sistem Pengelolaan UMKM DKUKMPP &copy; 2026 &middot; 27 Screen sesuai Product Backlog Pelaku UMKM
+</footer>
+
+<script src="../icons.js"></script>
+</body>
+</html>

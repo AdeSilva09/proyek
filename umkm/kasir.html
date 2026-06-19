@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kasir - UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kasir Penjualan">
+
+<div class="kasir-layout">
+  <!-- Kolom kiri: daftar produk -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Pilih Produk</div>
+      <div class="pill-tabs" style="margin-bottom:0">
+        <div class="tab active" data-cat="all">Semua</div>
+        <div class="tab" data-cat="makanan">Makanan</div>
+        <div class="tab" data-cat="minuman">Minuman</div>
+      </div>
+    </div>
+    <div class="search mb-2"><input type="text" id="prodSearch" placeholder="Scan barcode / cari produk..."></div>
+
+    <div class="prod-grid" id="prodGrid">
+      <div class="prod-card" data-cat="makanan" data-name="Mie Ayam Spesial" data-price="15000">
+        <div class="prod-thumb"><span data-ic="food"></span></div>
+        <div class="prod-name">Mie Ayam Spesial</div>
+        <div class="prod-price">Rp 15.000</div>
+        <div class="prod-stok">Stok: 25 porsi</div>
+      </div>
+      <div class="prod-card" data-cat="makanan" data-name="Nasi Goreng" data-price="18000">
+        <div class="prod-thumb"><span data-ic="food"></span></div>
+        <div class="prod-name">Nasi Goreng</div>
+        <div class="prod-price">Rp 18.000</div>
+        <div class="prod-stok">Stok: 18 porsi</div>
+      </div>
+      <div class="prod-card" data-cat="makanan" data-name="Ayam Geprek" data-price="20000">
+        <div class="prod-thumb"><span data-ic="food"></span></div>
+        <div class="prod-name">Ayam Geprek</div>
+        <div class="prod-price">Rp 20.000</div>
+        <div class="prod-stok">Stok: 12 porsi</div>
+      </div>
+      <div class="prod-card" data-cat="makanan" data-name="Soto Ayam" data-price="17000">
+        <div class="prod-thumb"><span data-ic="food"></span></div>
+        <div class="prod-name">Soto Ayam</div>
+        <div class="prod-price">Rp 17.000</div>
+        <div class="prod-stok">Stok: 15 porsi</div>
+      </div>
+      <div class="prod-card" data-cat="minuman" data-name="Es Teh Manis" data-price="5000">
+        <div class="prod-thumb"><span data-ic="drink"></span></div>
+        <div class="prod-name">Es Teh Manis</div>
+        <div class="prod-price">Rp 5.000</div>
+        <div class="prod-stok low">Stok: 3 gelas</div>
+      </div>
+      <div class="prod-card" data-cat="minuman" data-name="Es Jeruk" data-price="6000">
+        <div class="prod-thumb"><span data-ic="drink"></span></div>
+        <div class="prod-name">Es Jeruk</div>
+        <div class="prod-price">Rp 6.000</div>
+        <div class="prod-stok">Stok: 20 gelas</div>
+      </div>
+      <div class="prod-card" data-cat="minuman" data-name="Kopi Hitam" data-price="8000">
+        <div class="prod-thumb"><span data-ic="drink"></span></div>
+        <div class="prod-name">Kopi Hitam</div>
+        <div class="prod-price">Rp 8.000</div>
+        <div class="prod-stok">Stok: 25 gelas</div>
+      </div>
+      <div class="prod-card" data-cat="minuman" data-name="Es Teh Lemon" data-price="7000">
+        <div class="prod-thumb"><span data-ic="drink"></span></div>
+        <div class="prod-name">Es Teh Lemon</div>
+        <div class="prod-price">Rp 7.000</div>
+        <div class="prod-stok">Stok: 18 gelas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kolom kanan: keranjang -->
+  <aside class="cart-card">
+    <div class="card-title mb-2"><span data-ic="cart"></span> Keranjang <span id="cartCount" class="badge info" style="margin-left:6px">0</span></div>
+    <div id="cartEmpty" class="cart-empty">
+      <span data-ic="cart" style="font-size:32px;opacity:0.4"></span>
+      <div style="margin-top:8px">Keranjang kosong</div>
+      <small>Klik produk untuk menambahkan</small>
+    </div>
+    <div id="cartItems" class="cart-list"></div>
+
+    <div class="cart-summary" id="cartSummary" style="display:none">
+      <div class="row"><span>Subtotal</span><strong id="subtotal">Rp 0</strong></div>
+      <div class="row"><span>Diskon</span><strong>Rp 0</strong></div>
+      <hr>
+      <div class="row total"><span>TOTAL</span><strong id="total">Rp 0</strong></div>
+    </div>
+
+    <div class="form-group mt-2">
+      <label>Metode Pembayaran</label>
+      <select id="payMethod" class="form-control">
+        <option value="tunai">Tunai</option>
+        <option value="transfer">Transfer Bank</option>
+        <option value="qris">QRIS</option>
+      </select>
+    </div>
+
+    <button id="payBtn" class="btn success block" disabled>
+      <span data-ic="check"></span> Selesaikan Transaksi
+    </button>
+  </aside>
+</div>
+
+<!-- Modal konfirmasi pembayaran (transfer / qris) -->
+<div class="modal-backdrop" id="payModal">
+  <div class="modal" style="max-width:420px">
+    <div style="text-align:center">
+      <div id="payIcon" style="width:64px;height:64px;border-radius:16px;background:var(--primary-50);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:30px"><span data-ic="banknote"></span></div>
+      <h3 id="payTitle">Konfirmasi Pembayaran Transfer</h3>
+      <p style="color:var(--gray-500);font-size:13px;margin-top:6px" id="paySub">Pastikan pembayaran sudah masuk ke rekening sebelum menyelesaikan transaksi.</p>
+    </div>
+    <div class="card-navy" style="margin-top:16px;text-align:center;padding:16px">
+      <div class="label">Total yg harus dibayar</div>
+      <div class="value" id="payTotal">Rp 0</div>
+    </div>
+    <div id="payTransferInfo" class="alert" style="margin-top:12px;display:none">
+      <span data-ic="building" class="alert-ic"></span>
+      <div>
+        <strong>Transfer ke:</strong><br>
+        BCA &middot; 1234567890 a.n. Sari Wahyuni
+      </div>
+    </div>
+    <div id="payQrisInfo" class="alert" style="margin-top:12px;display:none">
+      <span data-ic="image" class="alert-ic"></span>
+      <div><strong>Tunjukkan QRIS</strong> kepada pelanggan untuk discan.</div>
+    </div>
+    <div class="alert warning" style="margin-top:12px">
+      <span data-ic="alert" class="alert-ic"></span>
+      <div>Apakah pembayaran <strong>sudah masuk</strong>? Klik <strong>Ya, sudah masuk</strong> jika sudah dikonfirmasi.</div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeModal()">Batal</button>
+      <button class="btn success" onclick="finishPayment()"><span data-ic="check"></span> Ya, Sudah Masuk</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal sukses -->
+<div class="modal-backdrop" id="successModal">
+  <div class="modal" style="max-width:380px;text-align:center">
+    <div style="width:72px;height:72px;border-radius:50%;background:var(--success-light);color:var(--success);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:36px"><span data-ic="check-circle"></span></div>
+    <h3>Transaksi Berhasil!</h3>
+    <p style="color:var(--gray-500);font-size:13px;margin-top:6px">Penjualan telah dicatat ke sistem.</p>
+    <div class="modal-actions" style="justify-content:center">
+      <button class="btn" onclick="resetKasir()">Transaksi Baru</button>
+      <a href="riwayat-penjualan.html" class="btn ghost">Lihat Daftar</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .kasir-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 18px;
+    align-items: start;
+  }
+  .prod-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .prod-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.1s, border-color 0.15s, box-shadow 0.15s;
+  }
+  .prod-card:hover { transform: translateY(-2px); border-color: var(--primary); box-shadow: var(--shadow); }
+  .prod-thumb {
+    height: 64px;
+    background: var(--primary-50);
+    color: var(--primary);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px;
+    font-size: 28px;
+  }
+  .prod-thumb svg { width: 32px; height: 32px; }
+  .prod-name { font-size: 12.5px; font-weight: 700; color: var(--gray-800); }
+  .prod-price { font-size: 13px; color: var(--primary); font-weight: 700; margin-top: 4px; }
+  .prod-stok { font-size: 10.5px; color: var(--gray-500); margin-top: 2px; }
+  .prod-stok.low { color: var(--danger); font-weight: 600; }
+
+  .cart-card {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-100);
+    padding: 18px;
+    position: sticky; top: calc(var(--topbar-h) + 12px);
+  }
+  .cart-empty {
+    text-align: center;
+    color: var(--gray-400);
+    padding: 28px 0;
+    font-size: 13px;
+  }
+  .cart-list { display: flex; flex-direction: column; gap: 8px; max-height: 320px; overflow-y: auto; }
+  .cart-item {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--gray-50);
+    border-radius: 10px;
+    padding: 8px 10px;
+  }
+  .cart-item .nm { flex: 1; min-width: 0; }
+  .cart-item .nm .t { font-size: 12.5px; font-weight: 600; color: var(--gray-800); }
+  .cart-item .nm .s { font-size: 11px; color: var(--gray-500); }
+  .cart-item .qty-ctrl { display: flex; align-items: center; gap: 4px; }
+  .cart-item .qty-ctrl button {
+    width: 24px; height: 24px; border-radius: 6px;
+    background: #fff; border: 1px solid var(--gray-200);
+    color: var(--primary); font-weight: 700; cursor: pointer;
+  }
+  .cart-item .qty-ctrl span { font-size: 12px; font-weight: 700; min-width: 18px; text-align: center; }
+  .cart-item .remove {
+    width: 26px; height: 26px; border-radius: 6px;
+    background: var(--danger-light); color: var(--danger);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cart-item .remove svg { width: 14px; height: 14px; }
+
+  .cart-summary { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--gray-200); font-size: 13px; }
+  .cart-summary .row { display: flex; justify-content: space-between; padding: 3px 0; }
+  .cart-summary hr { margin: 8px 0; border: none; border-top: 1px solid var(--gray-100); }
+  .cart-summary .total { font-size: 16px; color: var(--primary); }
+
+  @media (max-width: 1000px) {
+    .kasir-layout { grid-template-columns: 1fr; }
+    .cart-card { position: static; }
+  }
+</style>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  const cart = {}; // id -> {name, price, qty}
+  const fmt = n => 'Rp ' + n.toLocaleString('id-ID');
+
+  // Category & search filter
+  const tabs = document.querySelectorAll('.pill-tabs .tab');
+  const cards = document.querySelectorAll('.prod-card');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.toggle('active', x === t));
+    const c = t.dataset.cat;
+    cards.forEach(card => card.style.display = (c === 'all' || card.dataset.cat === c) ? '' : 'none');
+  }));
+  document.getElementById('prodSearch').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    cards.forEach(c => c.style.display = c.dataset.name.toLowerCase().includes(q) ? '' : 'none');
+  });
+
+  // Add to cart
+  cards.forEach(c => c.addEventListener('click', () => {
+    const name = c.dataset.name;
+    const price = +c.dataset.price;
+    if (cart[name]) cart[name].qty++;
+    else cart[name] = { name, price, qty: 1 };
+    renderCart();
+  }));
+
+  function renderCart() {
+    const items = Object.values(cart);
+    const empty = document.getElementById('cartEmpty');
+    const list = document.getElementById('cartItems');
+    const summary = document.getElementById('cartSummary');
+    const payBtn = document.getElementById('payBtn');
+    const count = document.getElementById('cartCount');
+    count.textContent = items.reduce((a, x) => a + x.qty, 0);
+    if (items.length === 0) {
+      empty.style.display = 'block';
+      list.innerHTML = '';
+      summary.style.display = 'none';
+      payBtn.disabled = true;
+      return;
+    }
+    empty.style.display = 'none';
+    summary.style.display = 'block';
+    payBtn.disabled = false;
+    const subtotal = items.reduce((a, x) => a + x.price * x.qty, 0);
+    document.getElementById('subtotal').textContent = fmt(subtotal);
+    document.getElementById('total').textContent = fmt(subtotal);
+    list.innerHTML = items.map(it => `
+      <div class="cart-item">
+        <div class="nm">
+          <div class="t">${it.name}</div>
+          <div class="s">${fmt(it.price)} &times; ${it.qty} = ${fmt(it.price * it.qty)}</div>
+        </div>
+        <div class="qty-ctrl">
+          <button onclick="changeQty('${it.name}', -1)">-</button>
+          <span>${it.qty}</span>
+          <button onclick="changeQty('${it.name}', 1)">+</button>
+        </div>
+        <button class="remove" onclick="removeItem('${it.name}')" title="Hapus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    `).join('');
+  }
+  function changeQty(name, d) {
+    if (!cart[name]) return;
+    cart[name].qty += d;
+    if (cart[name].qty <= 0) delete cart[name];
+    renderCart();
+  }
+  function removeItem(name) { delete cart[name]; renderCart(); }
+
+  // Payment flow
+  document.getElementById('payBtn').addEventListener('click', () => {
+    const method = document.getElementById('payMethod').value;
+    if (method === 'tunai') {
+      showSuccess();
+    } else {
+      openModal(method);
+    }
+  });
+
+  function openModal(method) {
+    const m = document.getElementById('payModal');
+    const total = Object.values(cart).reduce((a, x) => a + x.price * x.qty, 0);
+    document.getElementById('payTotal').textContent = fmt(total);
+    document.getElementById('payTitle').textContent = method === 'transfer' ? 'Konfirmasi Pembayaran Transfer' : 'Konfirmasi Pembayaran QRIS';
+    document.getElementById('payTransferInfo').style.display = method === 'transfer' ? 'flex' : 'none';
+    document.getElementById('payQrisInfo').style.display     = method === 'qris' ? 'flex' : 'none';
+    m.classList.add('active');
+  }
+  function closeModal() { document.getElementById('payModal').classList.remove('active'); }
+  function finishPayment() {
+    closeModal();
+    showSuccess();
+  }
+  function showSuccess() {
+    document.getElementById('successModal').classList.add('active');
+  }
+  function resetKasir() {
+    Object.keys(cart).forEach(k => delete cart[k]);
+    renderCart();
+    document.getElementById('successModal').classList.remove('active');
+    document.getElementById('payMethod').value = 'tunai';
+  }
+</script>
+</body>
+</html>

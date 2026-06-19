@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Export Laporan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Export Laporan">
+
+<div class="page-title">Export Laporan</div>
+<div class="page-sub">Unduh laporan monitoring dan evaluasi dalam format PDF atau Excel</div>
+
+<div class="card">
+  <div class="tabs">
+    <div class="tab active" data-tab="pdf"><span data-ic="file" style="margin-right:6px;"></span>PDF</div>
+    <div class="tab" data-tab="xlsx"><span data-ic="bar-chart" style="margin-right:6px;"></span>Excel</div>
+  </div>
+
+  <div class="tab-pane" data-pane="pdf">
+    <div class="row-2">
+      <div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Jenis Laporan</label>
+          <select class="form-control">
+            <option>Laporan Pertumbuhan UMKM</option>
+            <option>Laporan Kategori Usaha</option>
+            <option>Laporan Kinerja Program</option>
+            <option>Laporan Komprehensif</option>
+          </select>
+        </div>
+        <div class="form-grid cols-2" style="margin-bottom:12px;">
+          <div class="form-group">
+            <label>Periode</label>
+            <select class="form-control"><option>2026</option><option>Q2 2026</option></select>
+          </div>
+          <div class="form-group">
+            <label>Orientasi</label>
+            <select class="form-control"><option>Landscape</option><option>Portrait</option></select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Bagian yang Disertakan</label>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:13px;">
+            <label><input type="checkbox" checked> Cover & Ringkasan</label>
+            <label><input type="checkbox" checked> Statistik Umum</label>
+            <label><input type="checkbox" checked> Grafik & Visualisasi</label>
+            <label><input type="checkbox" checked> Tabel Data Detail</label>
+            <label><input type="checkbox" checked> Analisis Tren</label>
+            <label><input type="checkbox"> Lampiran</label>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Header / Kop Laporan</label>
+          <input class="form-control" value="Dinas Koperasi dan UMKM">
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Catatan Tambahan</label>
+          <textarea class="form-control" rows="3" placeholder="Catatan untuk laporan..."></textarea>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn"><span data-ic="export"></span> Generate & Download PDF</button>
+          <button class="btn outline"><span data-ic="eye"></span> Preview</button>
+        </div>
+      </div>
+      <div>
+        <div class="card-title mb-2">Riwayat Export PDF</div>
+        <div style="font-size:13px;">
+          <div style="padding:10px 0; border-bottom:1px solid var(--gray-100);">
+            <div class="flex justify-between items-center">
+              <div>
+                <strong>Laporan Pertumbuhan Q2 2026.pdf</strong>
+                <div class="text-muted" style="font-size:12px;">2.4 MB &middot; 04 Jun 2026, 14:23</div>
+              </div>
+              <button class="btn outline sm"><span data-ic="export"></span></button>
+            </div>
+          </div>
+          <div style="padding:10px 0; border-bottom:1px solid var(--gray-100);">
+            <div class="flex justify-between items-center">
+              <div>
+                <strong>Kinerja Program 2026.pdf</strong>
+                <div class="text-muted" style="font-size:12px;">1.8 MB &middot; 01 Jun 2026, 09:12</div>
+              </div>
+              <button class="btn outline sm"><span data-ic="export"></span></button>
+            </div>
+          </div>
+          <div style="padding:10px 0;">
+            <div class="flex justify-between items-center">
+              <div>
+                <strong>Kategori Usaha Mei 2026.pdf</strong>
+                <div class="text-muted" style="font-size:12px;">1.2 MB &middot; 31 Mei 2026, 16:45</div>
+              </div>
+              <button class="btn outline sm"><span data-ic="export"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" data-pane="xlsx" style="display:none;">
+    <div class="row-2">
+      <div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Jenis Data</label>
+          <select class="form-control">
+            <option>Data UMKM Lengkap</option>
+            <option>Data Keuangan UMKM</option>
+            <option>Data Komprehensif (Multi-sheet)</option>
+          </select>
+        </div>
+        <div class="form-grid cols-2" style="margin-bottom:12px;">
+          <div class="form-group">
+            <label>Periode</label>
+            <select class="form-control"><option>2026</option><option>Q2 2026</option><option>Custom</option></select>
+          </div>
+          <div class="form-group">
+            <label>Format File</label>
+            <select class="form-control"><option>.xlsx (Excel 2007+)</option><option>.xls (Legacy)</option><option>.csv</option></select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Kolom yang Disertakan</label>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:13px;">
+            <label><input type="checkbox" checked> ID UMKM</label>
+            <label><input type="checkbox" checked> Nama UMKM</label>
+            <label><input type="checkbox" checked> Pemilik</label>
+            <label><input type="checkbox" checked> Kategori</label>
+            <label><input type="checkbox" checked> Modal</label>
+            <label><input type="checkbox" checked> Penjualan</label>
+            <label><input type="checkbox" checked> Keuntungan</label>
+            <label><input type="checkbox" checked> Status</label>
+            <label><input type="checkbox"> Alamat</label>
+            <label><input type="checkbox"> Kontak</label>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Opsi Tambahan</label>
+          <div style="font-size:13px;">
+            <label style="display:block; padding:4px 0;"><input type="checkbox" checked> Sertakan ringkasan & total</label>
+            <label style="display:block; padding:4px 0;"><input type="checkbox" checked> Format angka (Rp, %, dll)</label>
+            <label style="display:block; padding:4px 0;"><input type="checkbox"> Sertakan grafik (chart)</label>
+            <label style="display:block; padding:4px 0;"><input type="checkbox"> Pivot table</label>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn success"><span data-ic="export"></span> Generate & Download Excel</button>
+          <button class="btn outline"><span data-ic="eye"></span> Preview Data</button>
+        </div>
+      </div>
+      <div>
+        <div class="card-title mb-2">Riwayat Export Excel</div>
+        <table class="data">
+          <thead><tr><th>Nama File</th><th>Ukuran</th><th>Tanggal</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Data_UMKM_Juni2026.xlsx</td><td>3.2 MB</td><td>05 Jun 2026</td><td><button class="btn outline sm"><span data-ic="export"></span></button></td></tr>
+            <tr><td>Keuangan_Q2_2026.xlsx</td><td>2.1 MB</td><td>04 Jun 2026</td><td><button class="btn outline sm"><span data-ic="export"></span></button></td></tr>
+            <tr><td>Komprehensif_Mei2026.xlsx</td><td>5.8 MB</td><td>31 Mei 2026</td><td><button class="btn outline sm"><span data-ic="export"></span></button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const k = t.dataset.tab;
+    document.querySelectorAll('.tab-pane').forEach(p => {
+      p.style.display = (p.dataset.pane === k) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>

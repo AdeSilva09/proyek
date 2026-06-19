@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Master Data Sumber Modal - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Master Data Sumber Modal">
+
+<div class="page-title">Master Data Sumber Modal</div>
+<div class="page-sub">Kelola daftar sumber modal &amp; sub kategori. UMKM memilih dari daftar ini saat input modal.</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="wallet"></span></div><div><div class="label">Total Modal</div><div class="value">Rp 30.6 M</div><div class="delta"><span data-ic="arrow-up"></span> 12.5%</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Rata-rata Modal</div><div class="value">Rp 24.5 jt</div><div class="delta"><span data-ic="arrow-up"></span> Rp 2.1 jt</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="trend-down"></span></div><div><div class="label">UMKM Modal Turun</div><div class="value">48</div><div class="delta down">Perlu pendampingan</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="trophy"></span></div><div><div class="label">Modal Tertinggi</div><div class="value">Rp 185 jt</div><div class="delta">Konveksi Jaya</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Master Data &mdash; Sumber Modal &amp; Sub Kategori</div>
+    <button class="btn sm"><span data-ic="plus"></span> Tambah Sub Kategori</button>
+  </div>
+  <table class="data" style="font-size:13px">
+    <thead><tr><th>Sumber Modal</th><th>Sub Kategori</th><th style="text-align:right">Dipakai UMKM</th><th>Aksi</th></tr></thead>
+    <tbody>
+      <tr><td>Modal Sendiri</td><td>Tabungan Pribadi</td><td style="text-align:right">412</td><td><button class="btn outline sm"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+      <tr><td>Modal Sendiri</td><td>Aset Pribadi</td><td style="text-align:right">86</td><td><button class="btn outline sm"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+      <tr><td>Pinjaman</td><td>Bank (KUR)</td><td style="text-align:right">285</td><td><button class="btn outline sm"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+      <tr><td>Pinjaman</td><td>Koperasi</td><td style="text-align:right">142</td><td><button class="btn outline sm"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+      <tr><td>Investor</td><td>Investor Keluarga</td><td style="text-align:right">62</td><td><button class="btn outline sm"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+      <tr><td>Hibah</td><td>Hibah DKUKMPP</td><td style="text-align:right">198</td><td><button class="btn outline sm"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+      <tr><td>Hibah</td><td>Bantuan Pemerintah</td><td style="text-align:right">63</td><td><button class="btn outline sm"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title mb-2">Perkembangan Modal Total UMKM Binaan (12 Bulan)</div>
+  <div class="chart-wrap"><canvas id="modalChart"></canvas></div>
+</div>
+
+<div class="card">
+  <div class="toolbar">
+    <div class="card-title">Detail Modal per UMKM</div>
+    <div class="spacer"></div>
+    <select class="form-control" style="width:160px;"><option>Urut: Modal Tertinggi</option><option>Modal Terendah</option><option>Pertumbuhan Tertinggi</option></select>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>UMKM</th><th>Sumber Modal</th><th>Sub Kategori Modal</th><th>Modal Awal</th><th>Modal Sekarang</th><th>Pertumbuhan</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Konveksi Jaya</td><td>Pinjaman</td><td>Bank (KUR)</td><td>Rp 65 jt</td><td>Rp 185 jt</td><td class="text-success"><span data-ic="arrow-up"></span> 184.6%</td><td><span class="badge success">Sangat Baik</span></td></tr>
+        <tr><td>Batik Lestari</td><td>Modal Sendiri</td><td>Tabungan Pribadi</td><td>Rp 45 jt</td><td>Rp 62.5 jt</td><td class="text-success"><span data-ic="arrow-up"></span> 38.9%</td><td><span class="badge success">Baik</span></td></tr>
+        <tr><td>Bakery Manis</td><td>Hibah</td><td>Hibah DKUKMPP</td><td>Rp 22 jt</td><td>Rp 35 jt</td><td class="text-success"><span data-ic="arrow-up"></span> 59.1%</td><td><span class="badge success">Baik</span></td></tr>
+        <tr><td>Toko Berkah</td><td>Investor</td><td>Investor Keluarga</td><td>Rp 32 jt</td><td>Rp 38 jt</td><td class="text-success"><span data-ic="arrow-up"></span> 18.8%</td><td><span class="badge info">Stabil</span></td></tr>
+        <tr><td>Warung Bu Sri</td><td>Modal Sendiri</td><td>Tabungan Pribadi</td><td>Rp 15 jt</td><td>Rp 16 jt</td><td class="text-success"><span data-ic="arrow-up"></span> 6.7%</td><td><span class="badge info">Stabil</span></td></tr>
+        <tr><td>Kerajinan Bambu</td><td>Pinjaman</td><td>Koperasi</td><td>Rp 12 jt</td><td>Rp 8 jt</td><td class="text-danger"><span data-ic="arrow-down"></span> 33.3%</td><td><span class="badge danger">Menurun</span></td></tr>
+        <tr><td>Bengkel Maju</td><td>Pinjaman</td><td>Bank (KUR)</td><td>Rp 28 jt</td><td>Rp 21 jt</td><td class="text-danger"><span data-ic="arrow-down"></span> 25.0%</td><td><span class="badge warning">Perlu Perhatian</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+new Chart(document.getElementById('modalChart'),{type:'bar',data:{labels:['Jul','Ags','Sep','Okt','Nov','Des','Jan','Feb','Mar','Apr','Mei','Jun'],
+  datasets:[{label:'Total Modal (Miliar)',data:[24.5,25.1,25.8,26.4,27.0,27.6,28.2,28.7,29.2,29.7,30.2,30.6],backgroundColor:'#1e40af'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+</script>
+</body>
+</html>

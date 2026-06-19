@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Manajemen Notifikasi - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Manajemen Notifikasi">
+
+<div class="page-title">Manajemen Notifikasi</div>
+<div class="page-sub">Kelola notifikasi yang dikirimkan kepada UMKM</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="mail"></span></div><div><div class="label">Total Notifikasi</div><div class="value">1.482</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Terkirim</div><div class="value">1.456</div><div class="delta">98.2%</div></div></div>
+  <div class="stat red"><div class="icon"><span data-ic="x"></span></div><div><div class="label">Gagal</div><div class="value">26</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Terjadwal</div><div class="value">12</div></div></div>
+</div>
+
+<div class="tabs">
+  <div class="tab active">Semua Notifikasi</div>
+  <div class="tab">Template</div>
+  <div class="tab">Pengaturan</div>
+</div>
+
+<div class="card">
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari notifikasi..."></div>
+    <select class="form-control" style="width:150px;"><option>Semua Tipe</option><option>Program</option><option>Pengingat</option><option>Pengumuman</option></select>
+    <select class="form-control" style="width:150px;"><option>Semua Status</option><option>Terkirim</option><option>Gagal</option><option>Terjadwal</option></select>
+    <div class="spacer"></div>
+    <button class="btn">+ Notifikasi Baru</button>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Judul</th><th>Tipe</th><th>Target</th><th>Saluran</th><th>Tanggal Kirim</th><th>Terkirim/Total</th><th>Status</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>Pengingat Pertemuan Program DM</td><td><span class="badge info">Program</span></td><td>45 UMKM</td><td>Email, WA</td><td>05 Jun 2026 08:00</td><td>45/45</td><td><span class="badge success">Terkirim</span></td>
+          <td><button class="btn outline sm">Detail</button></td></tr>
+        <tr><td>Pengumuman Libur Hari Raya</td><td><span class="badge">Pengumuman</span></td><td>Semua (1.248)</td><td>Email, WA, SMS</td><td>03 Jun 2026 09:00</td><td>1.235/1.248</td><td><span class="badge success">Terkirim</span></td>
+          <td><button class="btn outline sm">Detail</button></td></tr>
+        <tr><td>Laporan Bulanan Wajib</td><td><span class="badge warning">Pengingat</span></td><td>UMKM Aktif</td><td>WA</td><td>01 Jun 2026 07:00</td><td>1.078/1.087</td><td><span class="badge success">Terkirim</span></td>
+          <td><button class="btn outline sm">Detail</button></td></tr>
+        <tr><td>Undangan Program Strategi Ekspor</td><td><span class="badge info">Program</span></td><td>35 UMKM</td><td>Email, WA</td><td>15 Jun 2026 (Dijadwalkan)</td><td>-</td><td><span class="badge warning">Terjadwal</span></td>
+          <td><button class="btn outline sm">Edit</button> <button class="btn danger sm">Batal</button></td></tr>
+        <tr><td>Notifikasi Verifikasi Berhasil</td><td><span class="badge">Sistem</span></td><td>Bakery Manis</td><td>Email</td><td>28 Mei 2026 14:30</td><td>0/1</td><td><span class="badge danger">Gagal</span></td>
+          <td><button class="btn warning sm">Kirim Ulang</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

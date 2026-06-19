@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kelola Bahan Baku</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Bahan Baku">
+
+<div class="page-title">Kelola Bahan Baku</div>
+<div class="page-sub">Kelola stok bahan baku yang dipakai untuk produksi</div>
+
+<div class="stat-grid">
+  <div class="stat">
+    <div class="icon"><span data-ic="box"></span></div>
+    <div>
+      <div class="label">Total Item</div>
+      <div class="value">18</div>
+      <div class="delta">Bahan baku aktif</div>
+    </div>
+  </div>
+  <div class="stat orange">
+    <div class="icon"><span data-ic="alert"></span></div>
+    <div>
+      <div class="label">Stok Menipis</div>
+      <div class="value">3</div>
+      <div class="delta down">Perlu restock</div>
+    </div>
+  </div>
+  <div class="stat green">
+    <div class="icon"><span data-ic="check-circle"></span></div>
+    <div>
+      <div class="label">Stok Aman</div>
+      <div class="value">15</div>
+      <div class="delta">Di atas minimum</div>
+    </div>
+  </div>
+  <div class="stat purple">
+    <div class="icon"><span data-ic="wallet"></span></div>
+    <div>
+      <div class="label">Nilai Inventaris</div>
+      <div class="value">Rp 4.250.000</div>
+      <div class="delta">Total nilai stok</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Daftar Bahan Baku</div>
+    <button class="btn sm" onclick="document.getElementById('bbM').classList.add('active')"><span data-ic="plus"></span> Tambah Bahan Baku</button>
+  </div>
+  <div class="toolbar">
+    <div class="search"><input id="bbSearch" placeholder="Cari bahan baku..."></div>
+    <select class="form-control" style="width:160px"><option>Semua Kategori</option><option>Pokok</option><option>Bumbu</option><option>Kemasan</option><option>Lainnya</option></select>
+    <select class="form-control" style="width:140px"><option>Semua Status</option><option>Stok Aman</option><option>Stok Menipis</option></select>
+    <div class="spacer"></div>
+    <span class="text-muted" style="font-size:12.5px">Total: 18 item</span>
+  </div>
+  <div class="table-wrap">
+    <table class="data" id="bbTable">
+      <thead>
+        <tr>
+          <th>Kode</th>
+          <th>Nama Bahan Baku</th>
+          <th>Kategori</th>
+          <th>Satuan</th>
+          <th style="text-align:right">Harga / Satuan</th>
+          <th style="text-align:right">Stok</th>
+          <th style="text-align:right">Min. Stok</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BB-001</td>
+          <td>Beras Premium</td>
+          <td>Pokok</td>
+          <td>kg</td>
+          <td style="text-align:right">Rp 14.000</td>
+          <td style="text-align:right">22</td>
+          <td style="text-align:right">20</td>
+          <td><span class="badge warning">Hampir</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+        <tr>
+          <td>BB-002</td>
+          <td>Daging Ayam</td>
+          <td>Pokok</td>
+          <td>kg</td>
+          <td style="text-align:right">Rp 38.000</td>
+          <td style="text-align:right">8</td>
+          <td style="text-align:right">5</td>
+          <td><span class="badge success">Aman</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+        <tr>
+          <td>BB-003</td>
+          <td>Gula Pasir</td>
+          <td>Bumbu</td>
+          <td>kg</td>
+          <td style="text-align:right">Rp 15.000</td>
+          <td style="text-align:right">2</td>
+          <td style="text-align:right">5</td>
+          <td><span class="badge danger">Kritis</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+        <tr>
+          <td>BB-004</td>
+          <td>Minyak Goreng</td>
+          <td>Pokok</td>
+          <td>liter</td>
+          <td style="text-align:right">Rp 16.500</td>
+          <td style="text-align:right">12</td>
+          <td style="text-align:right">5</td>
+          <td><span class="badge success">Aman</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+        <tr>
+          <td>BB-005</td>
+          <td>Cabai Merah</td>
+          <td>Bumbu</td>
+          <td>kg</td>
+          <td style="text-align:right">Rp 45.000</td>
+          <td style="text-align:right">1.5</td>
+          <td style="text-align:right">2</td>
+          <td><span class="badge danger">Kritis</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+        <tr>
+          <td>BB-006</td>
+          <td>Telur Ayam</td>
+          <td>Pokok</td>
+          <td>kg</td>
+          <td style="text-align:right">Rp 28.000</td>
+          <td style="text-align:right">6</td>
+          <td style="text-align:right">3</td>
+          <td><span class="badge success">Aman</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+        <tr>
+          <td>BB-007</td>
+          <td>Bawang Merah</td>
+          <td>Bumbu</td>
+          <td>kg</td>
+          <td style="text-align:right">Rp 32.000</td>
+          <td style="text-align:right">3</td>
+          <td style="text-align:right">2</td>
+          <td><span class="badge success">Aman</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+        <tr>
+          <td>BB-008</td>
+          <td>Mie Instan (kemasan)</td>
+          <td>Pokok</td>
+          <td>bks</td>
+          <td style="text-align:right">Rp 3.200</td>
+          <td style="text-align:right">45</td>
+          <td style="text-align:right">20</td>
+          <td><span class="badge success">Aman</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+        <tr>
+          <td>BB-009</td>
+          <td>Styrofoam Box</td>
+          <td>Kemasan</td>
+          <td>pcs</td>
+          <td style="text-align:right">Rp 1.200</td>
+          <td style="text-align:right">120</td>
+          <td style="text-align:right">50</td>
+          <td><span class="badge success">Aman</span></td>
+          <td><button class="btn outline sm bb-edit"><span data-ic="edit"></span></button> <button class="btn danger sm"><span data-ic="x"></span></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Edit Bahan Baku -->
+<div class="modal-backdrop" id="bbEditM"><div class="modal">
+  <h3>Edit Bahan Baku</h3>
+  <div class="form-grid cols-2">
+    <div class="form-group"><label>Kode</label><input class="form-control" id="eKode" readonly></div>
+    <div class="form-group"><label>Kategori</label>
+      <select class="form-control" id="eKategori">
+        <option>Pokok</option><option>Bumbu</option><option>Kemasan</option><option>Lainnya</option>
+      </select>
+    </div>
+    <div class="form-group" style="grid-column:1/-1"><label>Nama Bahan Baku</label><input class="form-control" id="eNama"></div>
+    <div class="form-group"><label>Satuan</label>
+      <select class="form-control" id="eSatuan">
+        <option>kg</option><option>gram</option><option>liter</option><option>ml</option><option>pcs</option><option>bks</option><option>botol</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Harga / Satuan (Rp)</label><input type="text" class="form-control" id="eHarga"></div>
+    <div class="form-group"><label>Stok</label><input type="number" class="form-control" id="eStok" min="0" step="0.1"></div>
+    <div class="form-group"><label>Stok Minimum</label><input type="number" class="form-control" id="eMin" min="0"></div>
+  </div>
+  <div class="modal-actions">
+    <button class="btn secondary" onclick="document.getElementById('bbEditM').classList.remove('active')">Batal</button>
+    <button class="btn success" id="bbSaveEdit"><span data-ic="save"></span> Simpan Perubahan</button>
+  </div>
+</div></div>
+
+<!-- Modal Tambah Bahan Baku -->
+<div class="modal-backdrop" id="bbM"><div class="modal">
+  <h3>Tambah Bahan Baku</h3>
+  <div class="form-grid cols-2">
+    <div class="form-group"><label>Kode</label><input class="form-control" name="kode_bahan" placeholder="BB-010"></div>
+    <div class="form-group"><label>Kategori</label>
+      <select class="form-control" name="kategori_bahan">
+        <option>Pokok</option><option>Bumbu</option><option>Kemasan</option><option>Lainnya</option>
+      </select>
+    </div>
+    <div class="form-group" style="grid-column:1/-1"><label>Nama Bahan Baku</label><input class="form-control" name="nama_bahan" placeholder="contoh: Tepung Terigu"></div>
+    <div class="form-group"><label>Satuan</label>
+      <select class="form-control" name="satuan">
+        <option>kg</option><option>gram</option><option>liter</option><option>ml</option><option>pcs</option><option>bks</option><option>botol</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Harga / Satuan (Rp)</label><input type="number" class="form-control" name="harga_satuan" min="0"></div>
+    <div class="form-group"><label>Stok Awal</label><input type="number" class="form-control" name="stok_awal" min="0"></div>
+    <div class="form-group"><label>Stok Minimum</label><input type="number" class="form-control" name="stok_min" min="0"></div>
+    <div class="form-group" style="grid-column:1/-1"><label>Supplier (opsional)</label><input class="form-control" name="supplier" placeholder="contoh: Toko Sembako Pak Budi"></div>
+  </div>
+  <div class="modal-actions">
+    <button class="btn secondary" onclick="document.getElementById('bbM').classList.remove('active')">Batal</button>
+    <button class="btn success"><span data-ic="save"></span> Simpan</button>
+  </div>
+</div></div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  document.getElementById('bbSearch').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('#bbTable tbody tr').forEach(r => {
+      r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+
+  let editingRow = null;
+  document.querySelectorAll('.bb-edit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tds = btn.closest('tr').querySelectorAll('td');
+      editingRow = btn.closest('tr');
+      document.getElementById('eKode').value = tds[0].textContent.trim();
+      document.getElementById('eNama').value = tds[1].textContent.trim();
+      document.getElementById('eKategori').value = tds[2].textContent.trim();
+      document.getElementById('eSatuan').value = tds[3].textContent.trim();
+      document.getElementById('eHarga').value = tds[4].textContent.trim();
+      document.getElementById('eStok').value = parseFloat(tds[5].textContent.trim());
+      document.getElementById('eMin').value = parseFloat(tds[6].textContent.trim());
+      document.getElementById('bbEditM').classList.add('active');
+    });
+  });
+  document.getElementById('bbSaveEdit').addEventListener('click', () => {
+    if (!editingRow) return;
+    const tds = editingRow.querySelectorAll('td');
+    tds[1].textContent = document.getElementById('eNama').value;
+    tds[2].textContent = document.getElementById('eKategori').value;
+    tds[3].textContent = document.getElementById('eSatuan').value;
+    tds[4].textContent = document.getElementById('eHarga').value;
+    const stok = parseFloat(document.getElementById('eStok').value) || 0;
+    const min = parseFloat(document.getElementById('eMin').value) || 0;
+    tds[5].textContent = stok;
+    tds[6].textContent = min;
+    const status = stok < min ? '<span class="badge danger">Kritis</span>' : (stok <= min * 1.2 ? '<span class="badge warning">Hampir</span>' : '<span class="badge success">Aman</span>');
+    tds[7].innerHTML = status;
+    document.getElementById('bbEditM').classList.remove('active');
+  });
+</script>
+</body>
+</html>

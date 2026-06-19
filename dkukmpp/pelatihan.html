@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Pelatihan & Pembinaan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Pelatihan & Pembinaan UMKM">
+
+<div class="page-title">Pelatihan & Pembinaan UMKM</div>
+<div class="page-sub">Kelola jadwal pelatihan, materi, peserta, dan sertifikat untuk UMKM binaan</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Total Pelatihan</div><div class="value">38</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Selesai</div><div class="value">25</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="pause"></span></div><div><div class="label">Berjalan</div><div class="value">8</div></div></div>
+  <div class="stat purple"><div class="icon"><span data-ic="store"></span></div><div><div class="label">Total Peserta</div><div class="value">1.124</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Daftar Jadwal Pelatihan</div>
+    <button class="btn sm"><span data-ic="plus"></span> Tambah Pelatihan</button>
+  </div>
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari pelatihan..."></div>
+    <select class="form-control" style="width:160px;">
+      <option>Semua Status</option><option>Berjalan</option><option>Selesai</option><option>Akan Datang</option>
+    </select>
+    <select class="form-control" style="width:160px;">
+      <option>Semua Kategori</option><option>Digital Marketing</option><option>Pembukuan</option><option>Manajemen Modal</option><option>Branding</option>
+    </select>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Nama Pelatihan</th><th>Kategori</th><th>Tanggal</th><th>Lokasi</th><th style="text-align:right">Peserta</th><th>Status</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>Digital Marketing untuk UMKM</td><td>Digital Marketing</td><td>15 Jun 2026</td><td>Aula DKUKMPP</td><td style="text-align:right">45</td><td><span class="badge warning">Akan Datang</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button> <button class="btn outline sm"><span data-ic="edit"></span></button></td></tr>
+        <tr><td>Pembukuan Digital Sederhana</td><td>Pembukuan</td><td>10 Jun 2026</td><td>Hotel Savoy</td><td style="text-align:right">62</td><td><span class="badge success">Berjalan</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button> <button class="btn outline sm"><span data-ic="edit"></span></button></td></tr>
+        <tr><td>Branding & Foto Produk</td><td>Branding</td><td>05 Jun 2026</td><td>Aula DKUKMPP</td><td style="text-align:right">38</td><td><span class="badge success">Berjalan</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button> <button class="btn outline sm"><span data-ic="edit"></span></button></td></tr>
+        <tr><td>Manajemen Modal & Akses KUR</td><td>Manajemen Modal</td><td>28 Mei 2026</td><td>Hotel Savoy</td><td style="text-align:right">85</td><td><span class="badge gray">Selesai</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button> <button class="btn outline sm"><span data-ic="file-text"></span></button></td></tr>
+        <tr><td>Pelatihan Pajak UMKM</td><td>Pembukuan</td><td>20 Mei 2026</td><td>Aula DKUKMPP</td><td style="text-align:right">72</td><td><span class="badge gray">Selesai</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button> <button class="btn outline sm"><span data-ic="file-text"></span></button></td></tr>
+        <tr><td>SEO untuk Toko Online</td><td>Digital Marketing</td><td>12 Mei 2026</td><td>Online (Zoom)</td><td style="text-align:right">120</td><td><span class="badge gray">Selesai</span></td><td><button class="btn outline sm"><span data-ic="eye"></span></button> <button class="btn outline sm"><span data-ic="file-text"></span></button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row-2">
+  <div class="card">
+    <div class="card-header"><div class="card-title">Materi Pelatihan</div><button class="btn outline sm"><span data-ic="plus"></span> Upload Materi</button></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Judul Materi</th><th>Format</th><th>Aksi</th></tr></thead>
+        <tbody>
+          <tr><td>Modul Digital Marketing 101</td><td>PDF</td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+          <tr><td>Template Laporan Keuangan UMKM</td><td>XLSX</td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+          <tr><td>Panduan Foto Produk dgn HP</td><td>PDF</td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+          <tr><td>Video Tutorial Pengajuan KUR</td><td>MP4</td><td><button class="btn outline sm"><span data-ic="eye"></span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Sertifikat Diterbitkan</div></div>
+    <ul style="list-style:none; padding:0; font-size:13px;">
+      <li style="padding:10px 0; border-bottom:1px solid var(--gray-100);"><strong>Pelatihan Pajak UMKM</strong> — 72 sertifikat<br><small class="text-muted">20 Mei 2026</small></li>
+      <li style="padding:10px 0; border-bottom:1px solid var(--gray-100);"><strong>SEO Toko Online</strong> — 120 sertifikat<br><small class="text-muted">12 Mei 2026</small></li>
+      <li style="padding:10px 0; border-bottom:1px solid var(--gray-100);"><strong>Manajemen Modal & KUR</strong> — 85 sertifikat<br><small class="text-muted">28 Mei 2026</small></li>
+      <li style="padding:10px 0;"><strong>Bootcamp Kuliner Halal</strong> — 58 sertifikat<br><small class="text-muted">02 Mei 2026</small></li>
+    </ul>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

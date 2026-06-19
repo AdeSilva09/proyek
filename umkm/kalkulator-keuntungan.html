@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kalkulator Keuntungan</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kalkulator Keuntungan">
+
+<div class="page-title">Kalkulator Keuntungan</div>
+<div class="page-sub">Pilih periode + kategori/sub kategori &mdash; sistem akan menghitung penjualan, pengeluaran, dan keuntungan bersih per kategori.</div>
+
+<div class="row-2">
+  <!-- Kolom kiri: form pilih periode -->
+  <div class="card">
+    <div class="card-title mb-3">Pilih Periode</div>
+
+    <div class="form-group">
+      <label>Jenis Periode</label>
+      <select class="form-control" id="periodType">
+        <option value="hari">Hari ini</option>
+        <option value="minggu">7 Hari Terakhir</option>
+        <option value="bulan" selected>Bulanan</option>
+        <option value="kuartal">Kuartal</option>
+        <option value="tahun">Tahunan</option>
+        <option value="custom">Custom (rentang tanggal)</option>
+      </select>
+    </div>
+
+    <div id="bulanRow" class="form-group">
+      <label>Bulan</label>
+      <select class="form-control" id="bulanSel">
+        <option>Januari 2026</option>
+        <option>Februari 2026</option>
+        <option>Maret 2026</option>
+        <option>April 2026</option>
+        <option>Mei 2026</option>
+        <option selected>Juni 2026</option>
+      </select>
+    </div>
+
+    <div id="tahunRow" class="form-group" style="display:none">
+      <label>Tahun</label>
+      <select class="form-control"><option>2024</option><option>2025</option><option selected>2026</option></select>
+    </div>
+
+    <div id="customRow" class="form-grid cols-2" style="display:none">
+      <div class="form-group"><label>Dari Tanggal</label><input type="date" class="form-control" value="2026-06-01"></div>
+      <div class="form-group"><label>Sampai Tanggal</label><input type="date" class="form-control" value="2026-06-10"></div>
+    </div>
+
+    <div class="form-group">
+      <label>Kategori Produk</label>
+      <select class="form-control" id="kategoriProduk">
+        <option value="all" selected>Semua Kategori</option>
+        <option value="kuliner">Kuliner</option>
+        <option value="fashion">Fashion</option>
+        <option value="minuman">Minuman</option>
+        <option value="snack">Snack</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Sub Kategori</label>
+      <select class="form-control" id="subKategoriProduk">
+        <option value="all">Semua Sub Kategori</option>
+      </select>
+    </div>
+
+    <button class="btn block mt-2" onclick="hitung()"><span data-ic="bar-chart"></span> Hitung Keuntungan</button>
+
+    <div class="alert mt-2" style="margin-top:14px">
+      <span data-ic="alert" class="alert-ic"></span>
+      <div style="font-size:12.5px">Perhitungan: <strong>Keuntungan = Penjualan &minus; Pengeluaran</strong>. Data diambil dari Daftar Transaksi.</div>
+    </div>
+  </div>
+
+  <!-- Kolom kanan: hasil -->
+  <div>
+    <div class="card-navy" id="resultHero">
+      <div class="label" id="resultPeriode">Keuntungan Juni 2026</div>
+      <div class="value" id="resultProfit">Rp 9.370.000</div>
+      <div class="sub"><b><span data-ic="arrow-up"></span> Margin 52.6%</b> &middot; Profit bersih bulan ini</div>
+    </div>
+
+    <div class="row-2-eq">
+      <div class="stat green">
+        <div class="icon"><span data-ic="trend-up"></span></div>
+        <div>
+          <div class="label">Total Penjualan</div>
+          <div class="value" id="resultPenjualan">Rp 17.820.000</div>
+          <div class="delta">156 transaksi</div>
+        </div>
+      </div>
+      <div class="stat orange">
+        <div class="icon"><span data-ic="money-off"></span></div>
+        <div>
+          <div class="label">Total Pengeluaran</div>
+          <div class="value" id="resultPengeluaran">Rp 8.450.000</div>
+          <div class="delta down">31 transaksi</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title mb-2">Rincian Keuntungan per Kategori Produk</div>
+      <table class="data" style="font-size:13px">
+        <thead>
+          <tr><th>Kategori</th><th>Sub Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr>
+        </thead>
+        <tbody id="kategoriRinci">
+          <tr><td>Kuliner</td><td>Warung Makan</td><td style="text-align:right">Rp 9.420.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 4.910.000</td></tr>
+          <tr><td>Minuman</td><td>Minuman Dingin</td><td style="text-align:right">Rp 3.150.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.870.000</td></tr>
+          <tr><td>Minuman</td><td>Minuman Panas</td><td style="text-align:right">Rp 2.250.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.310.000</td></tr>
+          <tr><td>Snack</td><td>Bakery</td><td style="text-align:right">Rp 3.000.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.280.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title mb-2">Rincian Pengeluaran per Kategori</div>
+      <table class="data" style="font-size:13px">
+        <tbody>
+          <tr><td>Bahan Baku</td><td style="text-align:right">Rp 3.550.000</td><td style="text-align:right;color:var(--gray-500)">42%</td></tr>
+          <tr><td>Gaji Karyawan</td><td style="text-align:right">Rp 3.300.000</td><td style="text-align:right;color:var(--gray-500)">39%</td></tr>
+          <tr><td>Operasional</td><td style="text-align:right">Rp 950.000</td><td style="text-align:right;color:var(--gray-500)">11%</td></tr>
+          <tr><td>Marketing</td><td style="text-align:right">Rp 320.000</td><td style="text-align:right;color:var(--gray-500)">4%</td></tr>
+          <tr><td>Lain-lain</td><td style="text-align:right">Rp 330.000</td><td style="text-align:right;color:var(--gray-500)">4%</td></tr>
+          <tr><td><strong>Total</strong></td><td style="text-align:right"><strong>Rp 8.450.000</strong></td><td style="text-align:right"><strong>100%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  const fmt = n => 'Rp ' + n.toLocaleString('id-ID');
+
+  // Dummy dataset per period
+  const data = {
+    'hari':    { p: 'Hari Ini',         jual: 850000,   keluar: 320000  },
+    'minggu':  { p: '7 Hari Terakhir',  jual: 4250000,  keluar: 1820000 },
+    'bulan':   { p: 'Juni 2026',        jual: 17820000, keluar: 8450000 },
+    'kuartal': { p: 'Kuartal II 2026',  jual: 49500000, keluar: 24200000 },
+    'tahun':   { p: 'Tahun 2026 (s/d Juni)', jual: 89400000, keluar: 43900000 },
+    'custom':  { p: 'Custom Rentang',   jual: 6200000,  keluar: 2780000 },
+  };
+
+  const periodSel = document.getElementById('periodType');
+  periodSel.addEventListener('change', () => {
+    const v = periodSel.value;
+    document.getElementById('bulanRow').style.display  = v === 'bulan' ? '' : 'none';
+    document.getElementById('tahunRow').style.display  = v === 'tahun' ? '' : 'none';
+    document.getElementById('customRow').style.display = v === 'custom' ? 'grid' : 'none';
+  });
+
+  const subMap = {
+    all:     ['Semua Sub Kategori'],
+    kuliner: ['Semua','Warung Makan','Catering','Bakery'],
+    fashion: ['Semua','Baju','Celana','Hijab','Sepatu','Aksesoris'],
+    minuman: ['Semua','Minuman Dingin','Minuman Panas','Jus'],
+    snack:   ['Semua','Bakery','Keripik','Kue Basah'],
+  };
+  const katSel = document.getElementById('kategoriProduk');
+  const subSel = document.getElementById('subKategoriProduk');
+  katSel.addEventListener('change', () => {
+    const arr = subMap[katSel.value] || ['Semua'];
+    subSel.innerHTML = arr.map(o=>`<option>${o}</option>`).join('');
+  });
+
+  function hitung() {
+    const v = periodSel.value;
+    const d = data[v];
+    const profit = d.jual - d.keluar;
+    const margin = ((profit / d.jual) * 100).toFixed(1);
+    document.getElementById('resultPeriode').textContent     = 'Keuntungan ' + d.p;
+    document.getElementById('resultProfit').textContent      = fmt(profit);
+    document.getElementById('resultPenjualan').textContent   = fmt(d.jual);
+    document.getElementById('resultPengeluaran').textContent = fmt(d.keluar);
+    const sub = document.querySelector('.card-navy .sub');
+    sub.innerHTML = `<b><span data-ic="arrow-up"></span> Margin ${margin}%</b> &middot; Profit bersih ${d.p.toLowerCase()}`;
+    if (window.ICRender) window.ICRender(sub);
+  }
+</script>
+</body>
+</html>

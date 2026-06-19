@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Forecasting Keuntungan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Forecasting Keuntungan UMKM">
+
+<div class="page-title">Forecasting Keuntungan UMKM</div>
+<div class="page-sub">Prediksi tren keuntungan UMKM binaan 6 bulan ke depan berdasarkan data historis</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Keuntungan Rata-rata / Bulan</div><div class="value" style="font-size:18px;">Rp 285 jt</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="arrow-up"></span></div><div><div class="label">Proyeksi Pertumbuhan 6 Bln</div><div class="value">+18.5%</div></div></div>
+  <div class="stat purple"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Akurasi Model (MAPE)</div><div class="value">92.3%</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Kategori Risiko Turun</div><div class="value">1</div><div class="delta down">Fashion</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Konfigurasi Forecasting</div>
+  </div>
+  <div class="toolbar">
+    <select class="form-control" style="width:200px;">
+      <option>Semua Kategori</option><option>Kuliner</option><option>Fashion</option><option>Retail</option><option>Jasa</option><option>Kerajinan</option>
+    </select>
+    <select class="form-control" style="width:160px;">
+      <option>Linear Regression</option><option>ARIMA</option><option>Moving Average</option>
+    </select>
+    <select class="form-control" style="width:160px;">
+      <option>6 Bulan ke depan</option><option>3 Bulan</option><option>12 Bulan</option>
+    </select>
+    <button class="btn sm"><span data-ic="trend-up"></span> Jalankan Forecast</button>
+  </div>
+</div>
+
+<div class="row-2">
+  <div class="card">
+    <div class="card-header"><div class="card-title">Tren Keuntungan: Aktual vs Prediksi</div></div>
+    <div class="chart-wrap"><canvas id="forecastChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Prediksi per Kategori</div></div>
+    <div class="chart-wrap"><canvas id="catForecastChart"></canvas></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-title">Detail Prediksi Bulanan</div></div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Bulan</th><th style="text-align:right">Prediksi (Rp)</th><th style="text-align:right">Batas Bawah</th><th style="text-align:right">Batas Atas</th><th>Tren</th></tr></thead>
+      <tbody>
+        <tr><td>Jul 2026</td><td style="text-align:right">298.500.000</td><td style="text-align:right">282.000.000</td><td style="text-align:right">315.000.000</td><td><span class="badge success">Naik 4.7%</span></td></tr>
+        <tr><td>Ags 2026</td><td style="text-align:right">306.200.000</td><td style="text-align:right">288.000.000</td><td style="text-align:right">324.000.000</td><td><span class="badge success">Naik 2.6%</span></td></tr>
+        <tr><td>Sep 2026</td><td style="text-align:right">312.800.000</td><td style="text-align:right">293.000.000</td><td style="text-align:right">332.000.000</td><td><span class="badge success">Naik 2.2%</span></td></tr>
+        <tr><td>Okt 2026</td><td style="text-align:right">319.500.000</td><td style="text-align:right">298.000.000</td><td style="text-align:right">341.000.000</td><td><span class="badge success">Naik 2.1%</span></td></tr>
+        <tr><td>Nov 2026</td><td style="text-align:right">328.000.000</td><td style="text-align:right">304.000.000</td><td style="text-align:right">352.000.000</td><td><span class="badge success">Naik 2.7%</span></td></tr>
+        <tr><td>Des 2026</td><td style="text-align:right">337.800.000</td><td style="text-align:right">311.000.000</td><td style="text-align:right">365.000.000</td><td><span class="badge success">Naik 3.0%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-title">Insight & Rekomendasi</div></div>
+  <ul style="font-size:13px; line-height:1.7; padding-left:20px;">
+    <li><strong>Kategori Kuliner</strong> diproyeksi tumbuh paling tinggi (+24%) — pertimbangkan alokasi pelatihan & modal tambahan.</li>
+    <li><strong>Kategori Fashion</strong> berisiko turun (-3.5%) — perlu intervensi pelatihan branding & digital marketing.</li>
+    <li>Puncak keuntungan diperkirakan pada <strong>Desember 2026</strong> — siapkan program musiman.</li>
+    <li>Total proyeksi keuntungan agregat 6 bulan: <strong>Rp 1.9 Milyar</strong> (+18.5% dari periode sama tahun lalu).</li>
+  </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+new Chart(document.getElementById('forecastChart'), {
+  type: 'line',
+  data: {
+    labels: ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'],
+    datasets: [
+      { label:'Aktual', data:[245,258,262,270,278,285,null,null,null,null,null,null], borderColor:'#1e40af', backgroundColor:'rgba(30,64,175,0.12)', fill:true, tension:0.35, borderWidth:2.5 },
+      { label:'Prediksi', data:[null,null,null,null,null,285,298.5,306.2,312.8,319.5,328,337.8], borderColor:'#16a34a', borderDash:[6,4], backgroundColor:'rgba(22,163,74,0.08)', fill:true, tension:0.35, borderWidth:2.5 }
+    ]
+  },
+  options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}} }
+});
+new Chart(document.getElementById('catForecastChart'), {
+  type: 'bar',
+  data: {
+    labels:['Kuliner','Fashion','Retail','Jasa','Kerajinan'],
+    datasets:[
+      { label:'Saat Ini', data:[120,68,52,28,17], backgroundColor:'#93c5fd' },
+      { label:'Prediksi Des', data:[149,66,62,35,22], backgroundColor:'#1e40af' }
+    ]
+  },
+  options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}} }
+});
+</script>
+</body>
+</html>

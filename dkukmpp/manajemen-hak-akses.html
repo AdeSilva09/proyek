@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Manajemen Hak Akses - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Manajemen Hak Akses">
+
+<div class="page-title">Manajemen Hak Akses</div>
+<div class="page-sub">Kelola status pengguna dan akses sistem sesuai peran</div>
+
+<div class="tabs">
+  <div class="tab active">Pengguna</div>
+  <div class="tab">Peran (Role)</div>
+  <div class="tab">Log Aktivitas</div>
+</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="users"></span></div><div><div class="label">Total Pengguna</div><div class="value">1.286</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Aktif</div><div class="value">1.254</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="pause"></span></div><div><div class="label">Suspended</div><div class="value">28</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="shield"></span></div><div><div class="label">Admin</div><div class="value">4</div></div></div>
+</div>
+
+<div class="card">
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari pengguna..."></div>
+    <select class="form-control" style="width:150px;"><option>Semua Role</option><option>Administrator</option><option>Petugas Lapangan</option><option>UMKM</option></select>
+    <select class="form-control" style="width:150px;"><option>Semua Status</option><option>Aktif</option><option>Suspended</option></select>
+    <div class="spacer"></div>
+    <button class="btn">+ Tambah Pengguna</button>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Nama</th><th>Email</th><th>Role</th><th>Login Terakhir</th><th>Status</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dirga Admin</strong></td><td>admin@umkm.go.id</td><td><span class="badge danger">Administrator</span></td><td>06 Jun 2026 09:15</td><td><span class="badge success">Aktif</span></td>
+          <td><button class="btn outline sm">Edit</button> <button class="btn warning sm">Reset Password</button></td></tr>
+        <tr><td>Andi Pratama</td><td>andi@umkm.go.id</td><td><span class="badge warning">Petugas Lapangan</span></td><td>06 Jun 2026 08:42</td><td><span class="badge success">Aktif</span></td>
+          <td><button class="btn outline sm">Edit</button> <button class="btn danger sm">Suspend</button></td></tr>
+        <tr><td>Siti Nurhayati</td><td>siti@umkm.go.id</td><td><span class="badge warning">Petugas Lapangan</span></td><td>05 Jun 2026 16:20</td><td><span class="badge success">Aktif</span></td>
+          <td><button class="btn outline sm">Edit</button> <button class="btn danger sm">Suspend</button></td></tr>
+        <tr><td>Sri Mulyani</td><td>batik.lestari@email.com</td><td><span class="badge info">UMKM</span></td><td>05 Jun 2026 14:10</td><td><span class="badge success">Aktif</span></td>
+          <td><button class="btn outline sm">Edit</button> <button class="btn danger sm">Suspend</button></td></tr>
+        <tr><td>Joko Susilo</td><td>bengkel.maju@email.com</td><td><span class="badge info">UMKM</span></td><td>02 Mar 2026 11:30</td><td><span class="badge warning">Suspended</span></td>
+          <td><button class="btn outline sm">Edit</button> <button class="btn success sm">Aktifkan</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title mb-2"><span data-ic="shield"></span> Matriks Hak Akses per Role</div>
+  <table class="data">
+    <thead><tr><th>Modul / Fitur</th><th class="text-center">Administrator</th><th class="text-center">Petugas Lapangan</th><th class="text-center">UMKM</th></tr></thead>
+    <tbody>
+      <tr><td>Dashboard</td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-success"><span data-ic="check"></span></td></tr>
+      <tr><td>Verifikasi Pendaftaran</td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-danger"><span data-ic="x"></span></td></tr>
+      <tr><td>Manajemen Data UMKM</td><td class="text-center text-success"><span data-ic="check"></span> Full</td><td class="text-center text-warning">View Only</td><td class="text-center text-warning">Own Data</td></tr>
+      <tr><td>Monitoring Keuangan</td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-warning">Own Data</td></tr>
+      <tr><td>Manajemen Program</td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-warning">View Only</td><td class="text-center text-danger"><span data-ic="x"></span></td></tr>
+      <tr><td>Penugasan Program</td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-danger"><span data-ic="x"></span></td><td class="text-center text-danger"><span data-ic="x"></span></td></tr>
+      <tr><td>Evaluasi Program</td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-danger"><span data-ic="x"></span></td></tr>
+      <tr><td>Laporan & Export</td><td class="text-center text-success"><span data-ic="check"></span> Full</td><td class="text-center text-warning">Limited</td><td class="text-center text-danger"><span data-ic="x"></span></td></tr>
+      <tr><td>Manajemen Hak Akses</td><td class="text-center text-success"><span data-ic="check"></span></td><td class="text-center text-danger"><span data-ic="x"></span></td><td class="text-center text-danger"><span data-ic="x"></span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

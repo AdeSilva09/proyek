@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catat Pengeluaran - UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Catat Pengeluaran" data-back="riwayat-pengeluaran.html">
+
+<div class="card">
+  <div class="card-title mb-3">Detail Pengeluaran</div>
+
+  <div class="form-grid cols-2">
+    <div class="form-group">
+      <label>Nominal (Rp)</label>
+      <input class="form-control" name="nominal" type="number" placeholder="0" min="0">
+    </div>
+    <div class="form-group">
+      <label>Tanggal</label>
+      <input class="form-control" name="tanggal" type="date" value="2026-06-10">
+    </div>
+    <div class="form-group">
+      <label>Kategori Pengeluaran</label>
+      <select class="form-control" id="katPengeluaran">
+        <option value="bahan">Bahan Baku</option>
+        <option value="operasional">Operasional</option>
+        <option value="gaji">Gaji Karyawan</option>
+        <option value="marketing">Marketing</option>
+        <option value="sewa">Sewa Tempat</option>
+        <option value="lain">Lain-lain</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Sub Kategori</label>
+      <select class="form-control" id="subPengeluaran"></select>
+    </div>
+    <div class="form-group">
+      <label>Sumber Dana</label>
+      <select class="form-control" name="sumber_dana">
+        <option>Kas Usaha</option>
+        <option>Modal Pribadi</option>
+        <option>Pinjaman</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Metode Bayar</label>
+      <select class="form-control" name="metode_bayar">
+        <option>Tunai</option>
+        <option>Transfer Bank</option>
+        <option>QRIS</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group mt-2">
+    <label>Deskripsi / Catatan</label>
+    <textarea class="form-control" name="deskripsi" rows="2" placeholder="Contoh: Beli daging ayam 5 kg"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Bukti (opsional)</label>
+    <div class="m-upload">
+      <div class="ic"><span data-ic="image"></span></div>
+      <div class="t">Klik untuk unggah struk / foto</div>
+    </div>
+  </div>
+
+  <div class="flex gap-2 justify-between mt-2" style="flex-wrap:wrap">
+    <a href="riwayat-pengeluaran.html" class="btn secondary">Batal</a>
+    <button class="btn success" type="button" onclick="alert('Pengeluaran tersimpan'); location.href='riwayat-pengeluaran.html'">
+      <span data-ic="save"></span> Simpan Pengeluaran
+    </button>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  const subMap = {
+    bahan:       ['Pokok','Bumbu','Kemasan','Lainnya'],
+    operasional: ['Listrik','Air','Internet','Transportasi','Perbaikan'],
+    gaji:        ['Gaji Pokok','Bonus','Lembur','THR'],
+    marketing:   ['Iklan Online','Cetakan','Promo'],
+    sewa:        ['Sewa Tempat','Sewa Alat'],
+    lain:        ['Lain-lain'],
+  };
+  const kat = document.getElementById('katPengeluaran');
+  const sub = document.getElementById('subPengeluaran');
+  function fill(){ sub.innerHTML = (subMap[kat.value]||['-']).map(o=>`<option>${o}</option>`).join(''); }
+  kat.addEventListener('change', fill); fill();
+</script>
+</body>
+</html>

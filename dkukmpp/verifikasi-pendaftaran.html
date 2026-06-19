@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Verifikasi Registrasi - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Verifikasi Registrasi UMKM">
+
+<div class="page-title">Verifikasi Registrasi UMKM</div>
+<div class="page-sub">Verifikasi, setujui, atau tolak pendaftaran UMKM baru</div>
+
+<div class="stat-grid">
+  <div class="stat orange"><div class="icon"><span data-ic="clock"></span></div><div><div class="label">Menunggu Verifikasi</div><div class="value">18</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Disetujui (Bulan ini)</div><div class="value">12</div></div></div>
+  <div class="stat red"><div class="icon"><span data-ic="x"></span></div><div><div class="label">Ditolak (Bulan ini)</div><div class="value">3</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Total Diproses</div><div class="value">33</div></div></div>
+</div>
+
+<div class="card">
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari nama UMKM atau pemilik..."></div>
+    <select class="form-control" style="width:150px;"><option>Semua Status</option><option>Menunggu</option><option>Disetujui</option><option>Ditolak</option></select>
+    <select class="form-control" style="width:150px;"><option>Semua Kategori</option><option>Kuliner</option><option>Fashion</option><option>Kerajinan</option><option>Jasa</option></select>
+    <select class="form-control" style="width:150px;"><option>Semua Sub Kategori</option><option>Warung Makan</option><option>Baju</option><option>Celana</option></select>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>No</th><th>Nama UMKM</th><th>Pemilik</th><th>Kategori</th><th>Sub Kategori</th><th>Tanggal Daftar</th><th>Status</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Kedai Kopi Senja</td><td>Budi Santoso</td><td>Kuliner</td><td>Minuman Panas</td><td>03 Jun 2026</td><td><span class="badge warning">Menunggu</span></td>
+          <td><button class="btn success sm" onclick="openModal('approve')">Setujui</button> <button class="btn danger sm" onclick="openModal('reject')">Tolak</button></td></tr>
+        <tr><td>2</td><td>Batik Lestari</td><td>Sri Mulyani</td><td>Fashion</td><td>Baju</td><td>02 Jun 2026</td><td><span class="badge warning">Menunggu</span></td>
+          <td><button class="btn success sm" onclick="openModal('approve')">Setujui</button> <button class="btn danger sm" onclick="openModal('reject')">Tolak</button></td></tr>
+        <tr><td>3</td><td>Toko Sembako Berkah</td><td>Ahmad Fauzi</td><td>Perdagangan</td><td>Sembako</td><td>01 Jun 2026</td><td><span class="badge warning">Menunggu</span></td>
+          <td><button class="btn success sm">Setujui</button> <button class="btn danger sm">Tolak</button></td></tr>
+        <tr><td>4</td><td>Bakery Manis</td><td>Linda Wati</td><td>Kuliner</td><td>Bakery</td><td>31 Mei 2026</td><td><span class="badge success">Disetujui</span></td>
+          <td><button class="btn outline sm">Lihat</button></td></tr>
+        <tr><td>5</td><td>Jasa Service AC</td><td>Rudi Hartono</td><td>Jasa</td><td>Servis</td><td>30 Mei 2026</td><td><span class="badge danger">Ditolak</span></td>
+          <td><button class="btn outline sm">Lihat</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <h3 id="mTitle">Konfirmasi Verifikasi</h3>
+    <p id="mBody" class="text-muted">Apakah Anda yakin ingin menyetujui pendaftaran UMKM ini?</p>
+    <div class="form-group" style="margin-top:14px;">
+      <label>Catatan</label>
+      <textarea class="form-control" rows="3" placeholder="Tambahkan catatan..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeModal()">Batal</button>
+      <button class="btn" onclick="closeModal()">Konfirmasi</button>
+    </div>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+function openModal(t){
+  document.getElementById('modal').classList.add('active');
+  document.getElementById('mTitle').textContent = t==='approve'?'Setujui Pendaftaran':'Tolak Pendaftaran';
+  document.getElementById('mBody').textContent = t==='approve'?'Apakah Anda yakin ingin menyetujui pendaftaran UMKM ini?':'Apakah Anda yakin ingin menolak pendaftaran UMKM ini?';
+}
+function closeModal(){ document.getElementById('modal').classList.remove('active'); }
+</script>
+</body>
+</html>

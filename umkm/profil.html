@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelola Data UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Data UMKM">
+
+<div class="row-2">
+  <!-- Kolom kiri: data master -->
+  <div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Informasi Usaha</div>
+        <a href="profil-edit.html" class="btn ghost sm"><span data-ic="edit"></span> Edit Data</a>
+      </div>
+      <table class="data" style="font-size:13.5px">
+        <tbody>
+          <tr><td style="width:220px;color:var(--gray-500)">Nama UMKM</td><td><strong>Kedai Sari Rasa</strong></td></tr>
+          <tr><td style="color:var(--gray-500)">Pemilik</td><td>Sari Wahyuni</td></tr>
+          <tr><td style="color:var(--gray-500)">Kategori Usaha</td><td>Kuliner</td></tr>
+          <tr><td style="color:var(--gray-500)">Sub Kategori</td><td>Warung Makan</td></tr>
+          <tr><td style="color:var(--gray-500)">NIB (Nomor Induk Berusaha)</td><td>1234567890123</td></tr>
+          <tr><td style="color:var(--gray-500)">Alamat Usaha</td><td>Jl. Melati No. 12, Kel. Sukamaju, Bandung</td></tr>
+          <tr><td style="color:var(--gray-500)">Telepon</td><td>0812-3456-7890</td></tr>
+          <tr><td style="color:var(--gray-500)">Email</td><td>kedaisarirasa@gmail.com</td></tr>
+          <tr><td style="color:var(--gray-500)">Jumlah Karyawan</td><td>3 orang</td></tr>
+          <tr><td style="color:var(--gray-500)">Modal Awal</td><td>Rp 15.000.000</td></tr>
+          <tr><td style="color:var(--gray-500)">Deskripsi Usaha</td><td>Kedai makanan rumahan dengan menu nasi rames, soto, dan minuman tradisional. Berdiri sejak 2024 sebagai UMKM binaan DKUKMPP Kota Bandung.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title mb-2">Status Binaan</div>
+      <table class="data" style="font-size:13.5px">
+        <tbody>
+          <tr><td style="width:220px;color:var(--gray-500)">Dinas Pembina</td><td>DKUKMPP Kota Bandung</td></tr>
+          <tr><td style="color:var(--gray-500)">Status Verifikasi</td><td><span class="badge success">Terverifikasi</span></td></tr>
+          <tr><td style="color:var(--gray-500)">Tanggal Bergabung</td><td>15 Januari 2024</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Kolom kanan: hero + ringkasan kinerja -->
+  <div>
+    <div class="card-navy" style="text-align:center;padding-bottom:28px">
+      <div style="width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,0.18);border:3px solid rgba(255,255,255,0.4);margin:6px auto 12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:30px;position:relative;z-index:1">KS</div>
+      <div style="font-weight:700;font-size:18px;position:relative;z-index:1">Kedai Sari Rasa</div>
+      <div style="font-size:12.5px;opacity:0.85;margin-top:2px;position:relative;z-index:1">Kuliner &bull; Warung Makan &bull; Binaan DKUKMPP</div>
+      <div style="margin-top:12px;position:relative;z-index:1"><span class="badge success">Aktif &amp; Terverifikasi</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title mb-2">Ringkasan Kinerja</div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div><div class="text-muted" style="font-size:12px">Modal Saat Ini</div><strong style="font-size:18px">Rp 25.000.000</strong></div>
+        <div><div class="text-muted" style="font-size:12px">Penjualan / Bulan</div><strong style="font-size:18px">Rp 17.820.000</strong></div>
+        <div><div class="text-muted" style="font-size:12px">Keuntungan / Bulan</div><strong style="font-size:18px" class="text-success">Rp 9.370.000</strong></div>
+        <div><div class="text-muted" style="font-size:12px">Margin</div><strong style="font-size:18px">52.6%</strong></div>
+      </div>
+    </div>
+
+    <a href="logout.html" class="btn outline block"><span data-ic="logout"></span> Logout</a>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

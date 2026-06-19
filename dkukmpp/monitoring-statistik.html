@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Monitoring Keuangan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Monitoring Keuangan UMKM">
+
+<div class="page-title">Monitoring Keuangan UMKM</div>
+<div class="page-sub">Pantau modal, transaksi, pengeluaran, keuntungan, dan proyeksi UMKM binaan dalam satu tampilan</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="wallet"></span></div><div><div class="label">Total Modal Tercatat</div><div class="value" style="font-size:18px;">Rp 12.8 M</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="cart"></span></div><div><div class="label">Transaksi Bulan Ini</div><div class="value" style="font-size:18px;">Rp 4.2 M</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="money-off"></span></div><div><div class="label">Pengeluaran Bulan Ini</div><div class="value" style="font-size:18px;">Rp 2.9 M</div></div></div>
+  <div class="stat purple"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Keuntungan Bulan Ini</div><div class="value" style="font-size:18px;">Rp 1.3 M</div></div></div>
+</div>
+
+<div class="tabs" id="monTabs">
+  <div class="tab active" data-view="modal">Modal</div>
+  <div class="tab" data-view="transaksi">Transaksi</div>
+  <div class="tab" data-view="pengeluaran">Pengeluaran</div>
+  <div class="tab" data-view="keuntungan">Keuntungan</div>
+  <div class="tab" data-view="forecast">Forecasting</div>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="view" id="v-modal">
+  <div class="row-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Distribusi Modal per Sumber</div></div>
+      <div class="chart-wrap"><canvas id="cModal"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Modal Masuk per Bulan</div></div>
+      <div class="chart-wrap"><canvas id="cModalLine"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Top UMKM berdasarkan Modal</div></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>UMKM</th><th>Kategori</th><th>Sumber Dominan</th><th style="text-align:right">Total Modal</th></tr></thead>
+        <tbody>
+          <tr><td>Batik Lestari</td><td>Fashion</td><td>KUR + Hibah</td><td style="text-align:right">Rp 62.500.000</td></tr>
+          <tr><td>Konveksi Jaya</td><td>Fashion</td><td>KUR</td><td style="text-align:right">Rp 58.000.000</td></tr>
+          <tr><td>Bakery Manis</td><td>Kuliner</td><td>Modal Sendiri</td><td style="text-align:right">Rp 45.000.000</td></tr>
+          <tr><td>Toko Berkah</td><td>Perdagangan</td><td>Koperasi</td><td style="text-align:right">Rp 38.500.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TRANSAKSI ============ -->
+<div class="view" id="v-transaksi" style="display:none">
+  <div class="row-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Tren Penjualan 6 Bulan</div></div>
+      <div class="chart-wrap"><canvas id="cTrx"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Penjualan per Kategori</div></div>
+      <div class="chart-wrap"><canvas id="cTrxCat"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Top UMKM berdasarkan Penjualan Bulan Ini</div></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>UMKM</th><th>Kategori</th><th style="text-align:right">Jumlah Transaksi</th><th style="text-align:right">Total Penjualan</th></tr></thead>
+        <tbody>
+          <tr><td>Bakery Manis</td><td>Kuliner</td><td style="text-align:right">312</td><td style="text-align:right">Rp 42.800.000</td></tr>
+          <tr><td>Batik Lestari</td><td>Fashion</td><td style="text-align:right">142</td><td style="text-align:right">Rp 28.300.000</td></tr>
+          <tr><td>Toko Berkah</td><td>Perdagangan</td><td style="text-align:right">486</td><td style="text-align:right">Rp 26.450.000</td></tr>
+          <tr><td>Warung Bu Sri</td><td>Kuliner</td><td style="text-align:right">258</td><td style="text-align:right">Rp 18.200.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PENGELUARAN ============ -->
+<div class="view" id="v-pengeluaran" style="display:none">
+  <div class="row-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Pengeluaran per Kategori</div></div>
+      <div class="chart-wrap"><canvas id="cPng"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Tren Pengeluaran 6 Bulan</div></div>
+      <div class="chart-wrap"><canvas id="cPngLine"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Komposisi Pengeluaran Agregat</div></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Kategori Pengeluaran</th><th style="text-align:right">Total (Bulan Ini)</th><th style="text-align:right">% Dari Total</th></tr></thead>
+        <tbody>
+          <tr><td>Bahan Baku</td><td style="text-align:right">Rp 1.180.000.000</td><td style="text-align:right">40.7%</td></tr>
+          <tr><td>Gaji Karyawan</td><td style="text-align:right">Rp 720.000.000</td><td style="text-align:right">24.8%</td></tr>
+          <tr><td>Sewa Tempat</td><td style="text-align:right">Rp 385.000.000</td><td style="text-align:right">13.3%</td></tr>
+          <tr><td>Operasional</td><td style="text-align:right">Rp 295.000.000</td><td style="text-align:right">10.2%</td></tr>
+          <tr><td>Marketing</td><td style="text-align:right">Rp 198.000.000</td><td style="text-align:right">6.8%</td></tr>
+          <tr><td>Lainnya</td><td style="text-align:right">Rp 122.000.000</td><td style="text-align:right">4.2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ KEUNTUNGAN ============ -->
+<div class="view" id="v-keuntungan" style="display:none">
+  <div class="row-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Tren Keuntungan Agregat</div></div>
+      <div class="chart-wrap"><canvas id="cKnt"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Keuntungan per Kategori</div></div>
+      <div class="chart-wrap"><canvas id="cKntCat"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Top UMKM berdasarkan Keuntungan</div></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>UMKM</th><th>Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Pengeluaran</th><th style="text-align:right">Keuntungan</th><th style="text-align:right">Margin</th></tr></thead>
+        <tbody>
+          <tr><td>Bakery Manis</td><td>Kuliner</td><td style="text-align:right">Rp 42.800.000</td><td style="text-align:right">Rp 28.200.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 14.600.000</td><td style="text-align:right">34.1%</td></tr>
+          <tr><td>Batik Lestari</td><td>Fashion</td><td style="text-align:right">Rp 28.300.000</td><td style="text-align:right">Rp 19.850.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 8.450.000</td><td style="text-align:right">29.8%</td></tr>
+          <tr><td>Toko Berkah</td><td>Perdagangan</td><td style="text-align:right">Rp 26.450.000</td><td style="text-align:right">Rp 19.500.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 6.950.000</td><td style="text-align:right">26.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FORECASTING ============ -->
+<div class="view" id="v-forecast" style="display:none">
+  <div class="stat-grid">
+    <div class="stat green"><div class="icon"><span data-ic="arrow-up"></span></div><div><div class="label">Proyeksi 6 Bln</div><div class="value">+18.5%</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Akurasi Model</div><div class="value">92.3%</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Kategori Risiko Turun</div><div class="value" style="font-size:18px;">Fashion</div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Aktual vs Prediksi Keuntungan</div></div>
+    <div class="chart-wrap"><canvas id="cFc"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Detail Prediksi Bulanan</div></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Bulan</th><th style="text-align:right">Prediksi</th><th style="text-align:right">Batas Bawah</th><th style="text-align:right">Batas Atas</th><th>Tren</th></tr></thead>
+        <tbody>
+          <tr><td>Jul 2026</td><td style="text-align:right">Rp 298.500.000</td><td style="text-align:right">Rp 282.000.000</td><td style="text-align:right">Rp 315.000.000</td><td><span class="badge success">Naik 4.7%</span></td></tr>
+          <tr><td>Ags 2026</td><td style="text-align:right">Rp 306.200.000</td><td style="text-align:right">Rp 288.000.000</td><td style="text-align:right">Rp 324.000.000</td><td><span class="badge success">Naik 2.6%</span></td></tr>
+          <tr><td>Sep 2026</td><td style="text-align:right">Rp 312.800.000</td><td style="text-align:right">Rp 293.000.000</td><td style="text-align:right">Rp 332.000.000</td><td><span class="badge success">Naik 2.2%</span></td></tr>
+          <tr><td>Okt 2026</td><td style="text-align:right">Rp 319.500.000</td><td style="text-align:right">Rp 298.000.000</td><td style="text-align:right">Rp 341.000.000</td><td><span class="badge success">Naik 2.1%</span></td></tr>
+          <tr><td>Nov 2026</td><td style="text-align:right">Rp 328.000.000</td><td style="text-align:right">Rp 304.000.000</td><td style="text-align:right">Rp 352.000.000</td><td><span class="badge success">Naik 2.7%</span></td></tr>
+          <tr><td>Des 2026</td><td style="text-align:right">Rp 337.800.000</td><td style="text-align:right">Rp 311.000.000</td><td style="text-align:right">Rp 365.000.000</td><td><span class="badge success">Naik 3.0%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+const tabs = document.querySelectorAll('#monTabs .tab');
+const views = ['modal','transaksi','pengeluaran','keuntungan','forecast'];
+const charts = {};
+
+function makeCharts(view){
+  if (view==='modal' && !charts.modal) {
+    charts.modal = new Chart(document.getElementById('cModal'), {
+      type:'doughnut',
+      data:{labels:['Modal Sendiri','KUR','Koperasi','Hibah DKUKMPP','Lainnya'],
+        datasets:[{data:[5200,3800,1500,1400,900],backgroundColor:['#1e40af','#3b82f6','#60a5fa','#93c5fd','#bfdbfe']}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}
+    });
+    charts.modalLine = new Chart(document.getElementById('cModalLine'), {
+      type:'line',
+      data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
+        datasets:[{label:'Modal Masuk (jt)',data:[180,210,250,290,320,380],borderColor:'#1e40af',backgroundColor:'rgba(30,64,175,0.12)',fill:true,tension:0.35,borderWidth:2.5}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}
+    });
+  }
+  if (view==='transaksi' && !charts.trx) {
+    charts.trx = new Chart(document.getElementById('cTrx'), {
+      type:'line',
+      data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
+        datasets:[{label:'Penjualan (jt)',data:[3200,3450,3680,3820,4020,4200],borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,0.12)',fill:true,tension:0.35,borderWidth:2.5}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}
+    });
+    charts.trxCat = new Chart(document.getElementById('cTrxCat'), {
+      type:'bar',
+      data:{labels:['Kuliner','Fashion','Retail','Jasa','Kerajinan'],
+        datasets:[{label:'Penjualan (jt)',data:[1820,920,780,420,260],backgroundColor:'#1e40af'}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}
+    });
+  }
+  if (view==='pengeluaran' && !charts.png) {
+    charts.png = new Chart(document.getElementById('cPng'), {
+      type:'doughnut',
+      data:{labels:['Bahan Baku','Gaji','Sewa','Operasional','Marketing','Lainnya'],
+        datasets:[{data:[1180,720,385,295,198,122],backgroundColor:['#1e40af','#3b82f6','#60a5fa','#93c5fd','#bfdbfe','#dbeafe']}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}
+    });
+    charts.pngLine = new Chart(document.getElementById('cPngLine'), {
+      type:'line',
+      data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
+        datasets:[{label:'Pengeluaran (jt)',data:[2500,2620,2700,2780,2840,2900],borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.12)',fill:true,tension:0.35,borderWidth:2.5}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}
+    });
+  }
+  if (view==='keuntungan' && !charts.knt) {
+    charts.knt = new Chart(document.getElementById('cKnt'), {
+      type:'line',
+      data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
+        datasets:[{label:'Keuntungan (jt)',data:[700,830,980,1040,1180,1300],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.15)',fill:true,tension:0.3,borderWidth:2.5}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}
+    });
+    charts.kntCat = new Chart(document.getElementById('cKntCat'), {
+      type:'bar',
+      data:{labels:['Kuliner','Fashion','Retail','Jasa','Kerajinan'],
+        datasets:[{label:'Keuntungan (jt)',data:[520,310,225,135,110],backgroundColor:'#10b981'}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}
+    });
+  }
+  if (view==='forecast' && !charts.fc) {
+    charts.fc = new Chart(document.getElementById('cFc'), {
+      type:'line',
+      data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'],
+        datasets:[
+          {label:'Aktual',data:[245,258,262,270,278,285,null,null,null,null,null,null],borderColor:'#1e40af',backgroundColor:'rgba(30,64,175,0.12)',fill:true,tension:0.35,borderWidth:2.5},
+          {label:'Prediksi',data:[null,null,null,null,null,285,298.5,306.2,312.8,319.5,328,337.8],borderColor:'#16a34a',borderDash:[6,4],backgroundColor:'rgba(22,163,74,0.08)',fill:true,tension:0.35,borderWidth:2.5}
+        ]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}
+    });
+  }
+}
+
+makeCharts('modal');
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.toggle('active', x===t));
+  const v = t.dataset.view;
+  views.forEach(name => {
+    document.getElementById('v-'+name).style.display = (name===v) ? '' : 'none';
+  });
+  makeCharts(v);
+}));
+</script>
+</body>
+</html>

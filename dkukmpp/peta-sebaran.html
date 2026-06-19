@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Peta Sebaran UMKM - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  #petaUMKM { height: 480px; border-radius: 10px; }
+</style>
+</head>
+<body data-title="Peta Sebaran UMKM Binaan">
+
+<div class="page-title">Peta Sebaran UMKM Binaan</div>
+<div class="page-sub">Visualisasi geografis lokasi UMKM binaan di Kota Bandung</div>
+
+<div class="stat-grid">
+  <div class="stat"><div class="icon"><span data-ic="store"></span></div><div><div class="label">Total UMKM Terpetakan</div><div class="value">1.248</div></div></div>
+  <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Kecamatan Tercakup</div><div class="value">30</div></div></div>
+  <div class="stat purple"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Kecamatan Terpadat</div><div class="value" style="font-size:18px;">Coblong</div><div class="delta">142 UMKM</div></div></div>
+  <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Kecamatan Minim</div><div class="value" style="font-size:18px;">Cinambo</div><div class="delta down">8 UMKM</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Filter Peta</div>
+  </div>
+  <div class="toolbar">
+    <select class="form-control" style="width:180px;">
+      <option>Semua Kategori</option><option>Kuliner</option><option>Fashion</option><option>Retail</option><option>Jasa</option><option>Kerajinan</option>
+    </select>
+    <select class="form-control" style="width:180px;">
+      <option>Semua Status</option><option>Aktif</option><option>Tidak Aktif</option><option>Bermasalah</option>
+    </select>
+    <select class="form-control" style="width:180px;">
+      <option>Semua Kecamatan</option><option>Coblong</option><option>Sukajadi</option><option>Bandung Wetan</option><option>Cidadap</option>
+    </select>
+    <button class="btn outline sm"><span data-ic="file-text"></span> Export Peta</button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-title">Peta Lokasi UMKM Binaan</div></div>
+  <div id="petaUMKM"></div>
+  <div style="margin-top:12px; font-size:12px; color:var(--text-muted); display:flex; gap:18px; flex-wrap:wrap;">
+    <span><span style="display:inline-block;width:10px;height:10px;background:#1e40af;border-radius:50%;"></span> Aktif</span>
+    <span><span style="display:inline-block;width:10px;height:10px;background:#f59e0b;border-radius:50%;"></span> Tidak Aktif</span>
+    <span><span style="display:inline-block;width:10px;height:10px;background:#dc2626;border-radius:50%;"></span> Bermasalah</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-title">Sebaran per Kecamatan</div></div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Kecamatan</th><th style="text-align:right">Total UMKM</th><th style="text-align:right">Aktif</th><th style="text-align:right">Tidak Aktif</th><th>Kategori Dominan</th></tr></thead>
+      <tbody>
+        <tr><td>Coblong</td><td style="text-align:right">142</td><td style="text-align:right">128</td><td style="text-align:right">14</td><td>Kuliner</td></tr>
+        <tr><td>Sukajadi</td><td style="text-align:right">118</td><td style="text-align:right">105</td><td style="text-align:right">13</td><td>Fashion</td></tr>
+        <tr><td>Bandung Wetan</td><td style="text-align:right">98</td><td style="text-align:right">88</td><td style="text-align:right">10</td><td>Retail</td></tr>
+        <tr><td>Cidadap</td><td style="text-align:right">85</td><td style="text-align:right">75</td><td style="text-align:right">10</td><td>Jasa</td></tr>
+        <tr><td>Andir</td><td style="text-align:right">76</td><td style="text-align:right">68</td><td style="text-align:right">8</td><td>Kuliner</td></tr>
+        <tr><td>Cicendo</td><td style="text-align:right">62</td><td style="text-align:right">55</td><td style="text-align:right">7</td><td>Retail</td></tr>
+        <tr><td>Cinambo</td><td style="text-align:right">8</td><td style="text-align:right">7</td><td style="text-align:right">1</td><td>Kerajinan</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+const map = L.map('petaUMKM').setView([-6.9175, 107.6191], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:'&copy; OpenStreetMap', maxZoom:19
+}).addTo(map);
+
+const markers = [
+  {n:'Kedai Kopi Senja', lat:-6.8945, lng:107.6098, k:'Kuliner', s:'aktif'},
+  {n:'Batik Lestari', lat:-6.9024, lng:107.6235, k:'Fashion', s:'aktif'},
+  {n:'Toko Sembako Berkah', lat:-6.9165, lng:107.6088, k:'Retail', s:'aktif'},
+  {n:'Bakery Manis', lat:-6.9265, lng:107.6321, k:'Kuliner', s:'aktif'},
+  {n:'Salon Cantik', lat:-6.9088, lng:107.6402, k:'Jasa', s:'tidak-aktif'},
+  {n:'Anyaman Bambu Ibu Tini', lat:-6.9352, lng:107.6189, k:'Kerajinan', s:'aktif'},
+  {n:'Warung Bu Sri', lat:-6.9421, lng:107.6051, k:'Kuliner', s:'bermasalah'},
+  {n:'Hijab Modern', lat:-6.8975, lng:107.6478, k:'Fashion', s:'aktif'},
+  {n:'Servis Elektronik Pak Joko', lat:-6.9201, lng:107.6529, k:'Jasa', s:'aktif'},
+  {n:'Catering Sehat', lat:-6.9128, lng:107.5982, k:'Kuliner', s:'aktif'},
+];
+
+const colors = { 'aktif':'#1e40af', 'tidak-aktif':'#f59e0b', 'bermasalah':'#dc2626' };
+markers.forEach(m => {
+  L.circleMarker([m.lat, m.lng], {
+    radius:8, color:colors[m.s], fillColor:colors[m.s], fillOpacity:0.8, weight:2
+  }).bindPopup(`<strong>${m.n}</strong><br>Kategori: ${m.k}<br>Status: ${m.s}`).addTo(map);
+});
+</script>
+</body>
+</html>

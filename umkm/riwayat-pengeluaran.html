@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Riwayat Pengeluaran</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Riwayat Pengeluaran">
+
+<div class="page-title">Riwayat Pengeluaran</div>
+<div class="page-sub">Seluruh transaksi pengeluaran usaha</div>
+
+<div class="stat-grid">
+  <div class="stat orange"><div class="icon"><span data-ic="money-off"></span></div><div><div class="label">Pengeluaran Bulan Ini</div><div class="value">Rp 8.450.000</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="history"></span></div><div><div class="label">Total Transaksi</div><div class="value">31</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Rata-rata/Hari</div><div class="value">Rp 282.000</div></div></div>
+  <div class="stat purple"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Kategori Terbesar</div><div class="value" style="font-size:16px;">Bahan Baku</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><div class="card-title">Daftar Pengeluaran</div>
+    <a href="transaksi-tambah.html" class="btn sm"><span data-ic="plus"></span> Catat Pengeluaran</a>
+  </div>
+  <div class="toolbar">
+    <div class="search"><input placeholder="Cari deskripsi..."></div>
+    <input type="date" class="form-control" style="width:170px;">
+    <input type="date" class="form-control" style="width:170px;">
+    <select class="form-control" style="width:160px;">
+      <option>Semua Kategori</option>
+      <option>Bahan Baku</option><option>Operasional</option><option>Gaji Karyawan</option><option>Marketing</option><option>Sewa Tempat</option>
+    </select>
+  </div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Tanggal</th><th>Kategori</th><th>Sub Kategori</th><th>Deskripsi</th><th>Metode</th><th style="text-align:right">Nominal</th><th>Aksi</th></tr></thead>
+      <tbody>
+        <tr><td>10 Jun 2026</td><td>Bahan Baku</td><td>Pokok</td><td>Beli daging ayam 5 kg</td><td>Kas Usaha</td><td style="text-align:right;color:var(--danger);font-weight:700">Rp 250.000</td><td><a href="transaksi-detail.html" class="btn outline sm"><span data-ic="eye"></span></a></td></tr>
+        <tr><td>08 Jun 2026</td><td>Operasional</td><td>Listrik</td><td>Bayar listrik bulanan</td><td>Kas Usaha</td><td style="text-align:right;color:var(--danger);font-weight:700">Rp 380.000</td><td><a href="transaksi-detail.html" class="btn outline sm"><span data-ic="eye"></span></a></td></tr>
+        <tr><td>07 Jun 2026</td><td>Gaji Karyawan</td><td>Gaji Pokok</td><td>Gaji 2 karyawan minggu I</td><td>Transfer</td><td style="text-align:right;color:var(--danger);font-weight:700">Rp 1.600.000</td><td><a href="transaksi-detail.html" class="btn outline sm"><span data-ic="eye"></span></a></td></tr>
+        <tr><td>05 Jun 2026</td><td>Marketing</td><td>Iklan Online</td><td>Iklan Facebook Ads</td><td>QRIS</td><td style="text-align:right;color:var(--danger);font-weight:700">Rp 320.000</td><td><a href="transaksi-detail.html" class="btn outline sm"><span data-ic="eye"></span></a></td></tr>
+        <tr><td>03 Jun 2026</td><td>Bahan Baku</td><td>Bumbu</td><td>Belanja bumbu mingguan</td><td>Kas Usaha</td><td style="text-align:right;color:var(--danger);font-weight:700">Rp 425.000</td><td><a href="transaksi-detail.html" class="btn outline sm"><span data-ic="eye"></span></a></td></tr>
+        <tr><td>01 Jun 2026</td><td>Sewa Tempat</td><td>Sewa Tempat</td><td>Sewa kedai bulan Juni</td><td>Transfer</td><td style="text-align:right;color:var(--danger);font-weight:700">Rp 1.500.000</td><td><a href="transaksi-detail.html" class="btn outline sm"><span data-ic="eye"></span></a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

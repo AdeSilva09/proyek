@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Fitur Sistem Monitoring UMKM</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 30px 20px;
+    color: #333;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  .header {
+    background: linear-gradient(135deg, #2c3e50 0%, #4a6178 100%);
+    color: #fff;
+    padding: 40px 30px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .header p {
+    opacity: 0.85;
+    font-size: 15px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 25px 30px;
+    background: #f8f9fb;
+    border-bottom: 1px solid #e6e8ec;
+  }
+  .stat-card {
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .stat-card .num {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2c3e50;
+  }
+  .stat-card .label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+  .filter-bar {
+    padding: 20px 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e6e8ec;
+    background: #fff;
+  }
+  .filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+    color: #4b5563;
+  }
+  .filter-btn:hover { background: #f3f4f6; }
+  .filter-btn.active {
+    background: #667eea;
+    color: #fff;
+    border-color: #667eea;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead {
+    background: #f8f9fb;
+  }
+  th {
+    text-align: left;
+    padding: 14px 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6b7280;
+    border-bottom: 2px solid #e6e8ec;
+  }
+  td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f1f4;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  tbody tr {
+    transition: background 0.15s;
+  }
+  tbody tr:hover {
+    background: #f8f9fb;
+  }
+  .no-cell {
+    font-weight: 700;
+    color: #667eea;
+    width: 50px;
+    text-align: center;
+  }
+  .feature-name {
+    font-weight: 600;
+    color: #2c3e50;
+    width: 240px;
+  }
+  .feature-desc {
+    color: #4b5563;
+  }
+  .category-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+  }
+  .cat-auth { background: #dbeafe; color: #1e40af; }
+  .cat-dashboard { background: #dcfce7; color: #166534; }
+  .cat-umkm { background: #fef3c7; color: #92400e; }
+  .cat-monitoring { background: #fce7f3; color: #9d174d; }
+  .cat-program { background: #ede9fe; color: #5b21b6; }
+  .cat-laporan { background: #cffafe; color: #155e75; }
+  .cat-sistem { background: #fee2e2; color: #991b1b; }
+  .footer {
+    padding: 20px 30px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 13px;
+    background: #f8f9fb;
+    border-top: 1px solid #e6e8ec;
+  }
+  @media (max-width: 768px) {
+    .feature-name { width: auto; }
+    th, td { padding: 12px 10px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Sistem Monitoring &amp; Pembinaan UMKM</h1>
+      <p>Daftar Fitur Administrator &mdash; 27 Fitur Pengelolaan Terintegrasi</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="num">27</div>
+        <div class="label">Total Fitur</div>
+      </div>
+      <div class="stat-card" style="border-left-color:#10b981;">
+        <div class="num">7</div>
+        <div class="label">Kategori Modul</div>
+      </div>
+      <div class="stat-card" style="border-left-color:#f59e0b;">
+        <div class="num">9</div>
+        <div class="label">Fitur Monitoring</div>
+      </div>
+      <div class="stat-card" style="border-left-color:#ef4444;">
+        <div class="num">6</div>
+        <div class="label">Fitur Laporan</div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterTable('all', this)">Semua</button>
+      <button class="filter-btn" onclick="filterTable('auth', this)">Autentikasi</button>
+      <button class="filter-btn" onclick="filterTable('dashboard', this)">Dashboard</button>
+      <button class="filter-btn" onclick="filterTable('umkm', this)">Manajemen UMKM</button>
+      <button class="filter-btn" onclick="filterTable('monitoring', this)">Monitoring</button>
+      <button class="filter-btn" onclick="filterTable('program', this)">Program Bimbingan</button>
+      <button class="filter-btn" onclick="filterTable('laporan', this)">Laporan</button>
+      <button class="filter-btn" onclick="filterTable('sistem', this)">Sistem</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Fitur</th>
+          <th>Deskripsi</th>
+        </tr>
+      </thead>
+      <tbody id="featureTable">
+        <tr data-cat="auth"><td class="no-cell">1</td><td class="feature-name"><span class="category-badge cat-auth">Autentikasi</span><br>Login Sistem</td><td class="feature-desc">Administrator dapat melakukan login untuk mengakses seluruh fitur pengelolaan dan monitoring sistem.</td></tr>
+        <tr data-cat="dashboard"><td class="no-cell">2</td><td class="feature-name"><span class="category-badge cat-dashboard">Dashboard</span><br>Dashboard Administrator</td><td class="feature-desc">Menampilkan ringkasan jumlah UMKM, UMKM aktif, UMKM tidak aktif, dan statistik perkembangan UMKM binaan.</td></tr>
+        <tr data-cat="dashboard"><td class="no-cell">3</td><td class="feature-name"><span class="category-badge cat-dashboard">Dashboard</span><br>Monitoring Statistik UMKM</td><td class="feature-desc">Menampilkan grafik dan statistik perkembangan UMKM secara keseluruhan.</td></tr>
+        <tr data-cat="umkm"><td class="no-cell">4</td><td class="feature-name"><span class="category-badge cat-umkm">Manajemen UMKM</span><br>Verifikasi Pendaftaran UMKM</td><td class="feature-desc">Administrator dapat memverifikasi atau menolak pendaftaran UMKM baru.</td></tr>
+        <tr data-cat="umkm"><td class="no-cell">5</td><td class="feature-name"><span class="category-badge cat-umkm">Manajemen UMKM</span><br>Manajemen Data UMKM</td><td class="feature-desc">Mengelola data UMKM yang telah terdaftar, termasuk edit, aktivasi, dan penonaktifan UMKM.</td></tr>
+        <tr data-cat="umkm"><td class="no-cell">6</td><td class="feature-name"><span class="category-badge cat-umkm">Manajemen UMKM</span><br>Detail Informasi UMKM</td><td class="feature-desc">Menampilkan detail informasi profil dan aktivitas UMKM binaan.</td></tr>
+        <tr data-cat="monitoring"><td class="no-cell">7</td><td class="feature-name"><span class="category-badge cat-monitoring">Monitoring</span><br>Monitoring Modal UMKM</td><td class="feature-desc">Memantau perkembangan modal UMKM binaan.</td></tr>
+        <tr data-cat="monitoring"><td class="no-cell">8</td><td class="feature-name"><span class="category-badge cat-monitoring">Monitoring</span><br>Monitoring Penjualan UMKM</td><td class="feature-desc">Memantau perkembangan penjualan UMKM binaan.</td></tr>
+        <tr data-cat="monitoring"><td class="no-cell">9</td><td class="feature-name"><span class="category-badge cat-monitoring">Monitoring</span><br>Monitoring Keuntungan UMKM</td><td class="feature-desc">Memantau keuntungan dan performa keuangan UMKM binaan.</td></tr>
+        <tr data-cat="monitoring"><td class="no-cell">10</td><td class="feature-name"><span class="category-badge cat-monitoring">Monitoring</span><br>Analisis Tren UMKM</td><td class="feature-desc">Menampilkan tren perkembangan UMKM berdasarkan data historis.</td></tr>
+        <tr data-cat="monitoring"><td class="no-cell">11</td><td class="feature-name"><span class="category-badge cat-monitoring">Monitoring</span><br>Identifikasi UMKM Bermasalah</td><td class="feature-desc">Mengidentifikasi UMKM yang mengalami penurunan modal, penjualan rendah, atau tidak aktif.</td></tr>
+        <tr data-cat="program"><td class="no-cell">12</td><td class="feature-name"><span class="category-badge cat-program">Program Bimbingan</span><br>Manajemen Program Bimbingan</td><td class="feature-desc">Mengelola program pembinaan dan pendampingan UMKM.</td></tr>
+        <tr data-cat="program"><td class="no-cell">13</td><td class="feature-name"><span class="category-badge cat-program">Program Bimbingan</span><br>Penugasan Program Bimbingan</td><td class="feature-desc">Menentukan UMKM peserta program berdasarkan kategori dan kebutuhan tertentu.</td></tr>
+        <tr data-cat="program"><td class="no-cell">14</td><td class="feature-name"><span class="category-badge cat-program">Program Bimbingan</span><br>Notifikasi Program Bimbingan</td><td class="feature-desc">Mengirim informasi program kepada UMKM yang ditugaskan.</td></tr>
+        <tr data-cat="program"><td class="no-cell">15</td><td class="feature-name"><span class="category-badge cat-program">Program Bimbingan</span><br>Monitoring Kehadiran Program</td><td class="feature-desc">Memantau tingkat partisipasi UMKM dalam program bimbingan.</td></tr>
+        <tr data-cat="program"><td class="no-cell">16</td><td class="feature-name"><span class="category-badge cat-program">Program Bimbingan</span><br>Evaluasi Program Bimbingan</td><td class="feature-desc">Menginput dan mengelola hasil evaluasi program pembinaan.</td></tr>
+        <tr data-cat="program"><td class="no-cell">17</td><td class="feature-name"><span class="category-badge cat-program">Program Bimbingan</span><br>Analisis Dampak Program</td><td class="feature-desc">Menilai perkembangan UMKM setelah mengikuti program bimbingan.</td></tr>
+        <tr data-cat="laporan"><td class="no-cell">18</td><td class="feature-name"><span class="category-badge cat-laporan">Laporan</span><br>Laporan Pertumbuhan UMKM</td><td class="feature-desc">Menampilkan laporan perkembangan jumlah dan aktivitas UMKM.</td></tr>
+        <tr data-cat="laporan"><td class="no-cell">19</td><td class="feature-name"><span class="category-badge cat-laporan">Laporan</span><br>Laporan UMKM Teraktif</td><td class="feature-desc">Menampilkan UMKM dengan tingkat aktivitas tertinggi dalam sistem.</td></tr>
+        <tr data-cat="laporan"><td class="no-cell">20</td><td class="feature-name"><span class="category-badge cat-laporan">Laporan</span><br>Laporan Kategori Usaha</td><td class="feature-desc">Menampilkan distribusi UMKM berdasarkan kategori usaha.</td></tr>
+        <tr data-cat="laporan"><td class="no-cell">21</td><td class="feature-name"><span class="category-badge cat-laporan">Laporan</span><br>Laporan Kinerja Program</td><td class="feature-desc">Menampilkan hasil evaluasi dan efektivitas program bimbingan.</td></tr>
+        <tr data-cat="laporan"><td class="no-cell">22</td><td class="feature-name"><span class="category-badge cat-laporan">Laporan</span><br>Filter dan Analisis Laporan</td><td class="feature-desc">Menyediakan filter laporan berdasarkan periode, kategori usaha, dan indikator tertentu.</td></tr>
+        <tr data-cat="laporan"><td class="no-cell">23</td><td class="feature-name"><span class="category-badge cat-laporan">Laporan</span><br>Export Laporan PDF</td><td class="feature-desc">Mengunduh laporan monitoring dan evaluasi dalam format PDF.</td></tr>
+        <tr data-cat="laporan"><td class="no-cell">24</td><td class="feature-name"><span class="category-badge cat-laporan">Laporan</span><br>Export Laporan Excel</td><td class="feature-desc">Mengunduh laporan monitoring dan evaluasi dalam format Excel.</td></tr>
+        <tr data-cat="sistem"><td class="no-cell">25</td><td class="feature-name"><span class="category-badge cat-sistem">Sistem</span><br>Manajemen Notifikasi</td><td class="feature-desc">Mengelola notifikasi yang dikirimkan kepada UMKM.</td></tr>
+        <tr data-cat="sistem"><td class="no-cell">26</td><td class="feature-name"><span class="category-badge cat-sistem">Sistem</span><br>Manajemen Hak Akses</td><td class="feature-desc">Mengelola status pengguna dan akses sistem sesuai peran pengguna.</td></tr>
+        <tr data-cat="auth"><td class="no-cell">27</td><td class="feature-name"><span class="category-badge cat-auth">Autentikasi</span><br>Logout Sistem</td><td class="feature-desc">Administrator dapat keluar dari sistem dengan aman.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Sistem Monitoring &amp; Pembinaan UMKM &copy; 2026 &mdash; Modul Administrator
+    </div>
+  </div>
+
+<script>
+  function filterTable(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#featureTable tr').forEach(row => {
+      row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

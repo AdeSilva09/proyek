@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelola Laporan - UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Laporan">
+
+<div class="m-card">
+  <div class="m-card-title">Filter Laporan</div>
+
+  <div class="m-form-group">
+    <label>Jenis Laporan</label>
+    <select class="m-select" id="jenisLaporan">
+      <option value="periode">Per Periode</option>
+      <option value="item">Per Item Barang</option>
+      <option value="kategori">Per Kategori</option>
+    </select>
+  </div>
+
+  <div class="m-form-group">
+    <label>Periode</label>
+    <select class="m-select">
+      <option>Bulanan</option>
+      <option>Mingguan</option>
+      <option>Tahunan</option>
+      <option>Custom</option>
+    </select>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div class="m-form-group" style="margin:0">
+      <label>Dari</label>
+      <input class="m-input" type="date" value="2026-06-01">
+    </div>
+    <div class="m-form-group" style="margin:0">
+      <label>Sampai</label>
+      <input class="m-input" type="date" value="2026-06-30">
+    </div>
+  </div>
+
+  <div class="m-form-group view-kategori view-item" id="rowKat">
+    <label>Kategori UMKM</label>
+    <div style="font-size:11.5px;color:var(--gray-500);margin-bottom:4px">Diambil dari kategori usaha yang Anda daftarkan saat registrasi UMKM.</div>
+    <select class="m-select" id="katProduk" disabled>
+      <option value="kuliner" selected>Kuliner</option>
+    </select>
+  </div>
+
+  <div class="m-form-group view-kategori view-item" id="rowSub">
+    <label>Sub Kategori Produk</label>
+    <select class="m-select" id="subProduk"><option>Semua Sub Kategori</option></select>
+  </div>
+
+  <div class="m-form-group view-item" id="rowItem" style="display:none">
+    <label>Item Barang</label>
+    <select class="m-select">
+      <option>Semua Item</option>
+      <option>Nasi Goreng Spesial</option>
+      <option>Mie Ayam Bakso</option>
+      <option>Es Teh Manis</option>
+      <option>Kopi Susu</option>
+    </select>
+  </div>
+</div>
+
+<div class="m-detail-head">
+  <div class="lbl" id="ringkasLabel">Keuntungan Bersih (Juni 2026)</div>
+  <div class="val">Rp 9.370.000</div>
+  <div class="sub">Margin 52.6%</div>
+</div>
+
+<div class="m-card">
+  <div class="m-card-title">Ringkasan Laporan</div>
+  <div class="m-info-row">
+    <div class="ic green"><span data-ic="arrow-up"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Total Pemasukan</div>
+      <div class="val">Rp 17.820.000</div>
+    </div>
+  </div>
+  <div class="m-info-row">
+    <div class="ic red"><span data-ic="arrow-down"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Total Pengeluaran</div>
+      <div class="val">Rp 8.450.000</div>
+    </div>
+  </div>
+  <div class="m-info-row">
+    <div class="ic"><span data-ic="trend-up"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Keuntungan</div>
+      <div class="val" style="color:#10b981;font-weight:700">Rp 9.370.000</div>
+    </div>
+  </div>
+  <div class="m-info-row">
+    <div class="ic"><span data-ic="bar-chart"></span></div>
+    <div style="flex:1">
+      <div class="lbl">Jumlah Transaksi</div>
+      <div class="val">87 transaksi</div>
+    </div>
+  </div>
+</div>
+
+<!-- LAPORAN PER KATEGORI -->
+<div class="card" id="tabelKategori">
+  <div class="card-title mb-2">Laporan per Kategori &amp; Sub Kategori</div>
+  <div class="table-wrap">
+    <table class="data" style="font-size:13px">
+      <thead>
+        <tr><th>Kategori</th><th>Sub Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Pengeluaran</th><th style="text-align:right">Keuntungan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Kuliner</td><td>Warung Makan</td><td style="text-align:right">Rp 9.420.000</td><td style="text-align:right">Rp 4.510.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 4.910.000</td></tr>
+        <tr><td>Minuman</td><td>Minuman Dingin</td><td style="text-align:right">Rp 3.150.000</td><td style="text-align:right">Rp 1.280.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.870.000</td></tr>
+        <tr><td>Minuman</td><td>Minuman Panas</td><td style="text-align:right">Rp 2.250.000</td><td style="text-align:right">Rp 940.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.310.000</td></tr>
+        <tr><td>Snack</td><td>Bakery</td><td style="text-align:right">Rp 3.000.000</td><td style="text-align:right">Rp 1.720.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.280.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- LAPORAN PER ITEM -->
+<div class="card" id="tabelItem" style="display:none">
+  <div class="card-title mb-2">Laporan per Item Barang</div>
+  <div class="table-wrap">
+    <table class="data" style="font-size:13px">
+      <thead>
+        <tr><th>Item</th><th>Kategori</th><th style="text-align:right">Terjual</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nasi Goreng Spesial</td><td>Kuliner</td><td style="text-align:right">208</td><td style="text-align:right">Rp 4.160.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.660.000</td></tr>
+        <tr><td>Mie Ayam Bakso</td><td>Kuliner</td><td style="text-align:right">184</td><td style="text-align:right">Rp 3.312.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.470.000</td></tr>
+        <tr><td>Es Teh Manis</td><td>Minuman</td><td style="text-align:right">412</td><td style="text-align:right">Rp 2.060.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.230.000</td></tr>
+        <tr><td>Kopi Susu</td><td>Minuman</td><td style="text-align:right">128</td><td style="text-align:right">Rp 1.536.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 890.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- LAPORAN PER PERIODE -->
+<div class="card" id="tabelPeriode" style="display:none">
+  <div class="card-title mb-2">Laporan per Periode</div>
+  <div class="table-wrap">
+    <table class="data" style="font-size:13px">
+      <thead>
+        <tr><th>Periode</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Pengeluaran</th><th style="text-align:right">Keuntungan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Minggu 1 (1&ndash;7 Jun)</td><td style="text-align:right">Rp 4.280.000</td><td style="text-align:right">Rp 2.150.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.130.000</td></tr>
+        <tr><td>Minggu 2 (8&ndash;14 Jun)</td><td style="text-align:right">Rp 4.610.000</td><td style="text-align:right">Rp 2.080.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.530.000</td></tr>
+        <tr><td>Minggu 3 (15&ndash;21 Jun)</td><td style="text-align:right">Rp 4.450.000</td><td style="text-align:right">Rp 2.040.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.410.000</td></tr>
+        <tr><td>Minggu 4 (22&ndash;30 Jun)</td><td style="text-align:right">Rp 4.480.000</td><td style="text-align:right">Rp 2.180.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.300.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="m-btn-row" style="margin-bottom:12px">
+  <a href="kalkulator-keuntungan.html" class="m-btn outline">
+    <span data-ic="bar-chart"></span> Kalkulator Keuntungan
+  </a>
+  <a href="export.html" class="m-btn">
+    <span data-ic="export"></span> Export Laporan
+  </a>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  const subMap = {
+    all:     ['Semua Sub Kategori'],
+    kuliner: ['Semua','Warung Makan','Catering','Bakery'],
+    fashion: ['Semua','Baju','Celana','Hijab','Sepatu'],
+    minuman: ['Semua','Minuman Dingin','Minuman Panas','Jus'],
+    snack:   ['Semua','Bakery','Keripik','Kue Basah'],
+  };
+  const jenis = document.getElementById('jenisLaporan');
+  const kat   = document.getElementById('katProduk');
+  const sub   = document.getElementById('subProduk');
+
+  function refreshSub(){
+    sub.innerHTML = (subMap[kat.value]||['Semua']).map(o=>`<option>${o}</option>`).join('');
+  }
+  kat.addEventListener('change', refreshSub);
+
+  function applyJenis(){
+    const v = jenis.value;
+    document.getElementById('rowKat').style.display  = (v==='kategori'||v==='item') ? '' : 'none';
+    document.getElementById('rowSub').style.display  = (v==='kategori'||v==='item') ? '' : 'none';
+    document.getElementById('rowItem').style.display = v==='item' ? '' : 'none';
+    document.getElementById('tabelKategori').style.display = v==='kategori' ? '' : 'none';
+    document.getElementById('tabelItem').style.display     = v==='item' ? '' : 'none';
+    document.getElementById('tabelPeriode').style.display  = v==='periode' ? '' : 'none';
+  }
+  jenis.addEventListener('change', applyJenis);
+  applyJenis();
+  refreshSub();
+</script>
+</body>
+</html>

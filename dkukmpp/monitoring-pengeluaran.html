@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Data Pengeluaran UMKM Binaan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Data Pengeluaran UMKM Binaan">
+
+<div class="page-title">Data Pengeluaran UMKM Binaan</div>
+<div class="page-sub">Lihat pengeluaran UMKM binaan &mdash; untuk beli apa saja. Pilih UMKM dulu untuk detail per UMKM.</div>
+
+<div class="toolbar mb-3">
+  <select class="form-control" style="width:260px;" id="pilihUmkm">
+    <option value="all">&mdash; Semua UMKM Binaan (Agregat) &mdash;</option>
+    <option>Warung Bu Sri</option>
+    <option>Batik Lestari</option>
+    <option>Bengkel Maju</option>
+    <option>Toko Berkah</option>
+    <option>Bakery Manis</option>
+    <option>Konveksi Jaya</option>
+  </select>
+  <select class="form-control" style="width:160px;">
+    <option>Juni 2026</option><option>Mei 2026</option><option>April 2026</option>
+  </select>
+  <div class="spacer"></div>
+  <a href="monitoring-statistik.html" class="btn outline sm"><span data-ic="eye"></span> Pilih dari Daftar</a>
+</div>
+
+<div class="stat-grid">
+  <div class="stat orange"><div class="icon"><span data-ic="money-off"></span></div><div><div class="label">Total Pengeluaran</div><div class="value">Rp 2.4 M</div><div class="delta">Juni 2026</div></div></div>
+  <div class="stat"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Rata-rata/UMKM</div><div class="value">Rp 1.9 jt</div></div></div>
+  <div class="stat purple"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Kategori Terbesar</div><div class="value" style="font-size:16px;">Bahan Baku</div><div class="delta">38%</div></div></div>
+  <div class="stat red"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Pengeluaran Tinggi</div><div class="value">24</div><div class="delta">UMKM</div></div></div>
+</div>
+
+<div class="card">
+  <div class="card-title mb-2">Pengeluaran per Kategori</div>
+  <table class="data" style="font-size:13px">
+    <thead><tr><th>Kategori</th><th style="text-align:right">Total</th><th style="text-align:right">%</th></tr></thead>
+    <tbody>
+      <tr><td>Bahan Baku</td><td style="text-align:right">Rp 912 jt</td><td style="text-align:right">38%</td></tr>
+      <tr><td>Gaji Karyawan</td><td style="text-align:right">Rp 624 jt</td><td style="text-align:right">26%</td></tr>
+      <tr><td>Operasional</td><td style="text-align:right">Rp 432 jt</td><td style="text-align:right">18%</td></tr>
+      <tr><td>Sewa Tempat</td><td style="text-align:right">Rp 264 jt</td><td style="text-align:right">11%</td></tr>
+      <tr><td>Marketing</td><td style="text-align:right">Rp 168 jt</td><td style="text-align:right">7%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title mb-2">Rincian Pengeluaran &mdash; Untuk Beli Apa Saja</div>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th>Tanggal</th><th>UMKM</th><th>Kategori</th><th>Sub Kategori</th><th>Deskripsi</th><th style="text-align:right">Nominal</th></tr></thead>
+      <tbody>
+        <tr><td>10 Jun 2026</td><td>Batik Lestari</td><td>Bahan Baku</td><td>Kain</td><td>Beli kain mori 50 m</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 3.250.000</td></tr>
+        <tr><td>10 Jun 2026</td><td>Warung Bu Sri</td><td>Bahan Baku</td><td>Pokok</td><td>Beli daging ayam 5 kg</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 250.000</td></tr>
+        <tr><td>08 Jun 2026</td><td>Bakery Manis</td><td>Bahan Baku</td><td>Bumbu</td><td>Bahan kue mingguan</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 1.450.000</td></tr>
+        <tr><td>07 Jun 2026</td><td>Konveksi Jaya</td><td>Gaji Karyawan</td><td>Gaji Pokok</td><td>Gaji 12 karyawan minggu I</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 9.600.000</td></tr>
+        <tr><td>05 Jun 2026</td><td>Batik Lestari</td><td>Marketing</td><td>Iklan Online</td><td>Iklan Instagram Ads</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 750.000</td></tr>
+        <tr><td>01 Jun 2026</td><td>Toko Berkah</td><td>Sewa Tempat</td><td>Sewa Tempat</td><td>Sewa toko bulan Juni</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 2.500.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+</body>
+</html>
