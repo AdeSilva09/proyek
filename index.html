@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIM-UMKM — Sistem Informasi Monitoring & Pembinaan UMKM</title>
+<style>
+  :root {
+    --primary: #1e40af;
+    --primary-dark: #1e3a8a;
+    --accent: #10b981;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #e0e7ff 100%);
+    min-height: 100vh;
+    color: var(--gray-900);
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand .logo {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px;
+  }
+  .brand strong { font-size: 18px; color: var(--gray-900); }
+  .brand small { display: block; font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px 64px;
+  }
+  .container { max-width: 1100px; width: 100%; }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.15;
+    color: var(--primary-dark);
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--gray-700);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .badge-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(30, 64, 175, 0.1);
+    color: var(--primary);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  .panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .panel {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(30, 64, 175, 0.08);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(30, 64, 175, 0.06);
+  }
+  .panel:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(30, 64, 175, 0.18);
+  }
+  .panel .icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+  .panel.admin .icon { background: rgba(30, 64, 175, 0.12); color: var(--primary); }
+  .panel.umkm  .icon { background: rgba(16, 185, 129, 0.12); color: var(--accent); }
+  .panel h2 { font-size: 22px; margin-bottom: 8px; color: var(--gray-900); }
+  .panel .role {
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .panel.admin .role { color: var(--primary); }
+  .panel.umkm  .role { color: var(--accent); }
+  .panel p {
+    color: var(--gray-500);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .panel ul {
+    list-style: none;
+    margin: 0 0 22px 0;
+    padding: 0;
+  }
+  .panel ul li {
+    font-size: 13px;
+    color: var(--gray-700);
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .panel ul li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.4;
+  }
+  .panel.admin ul li { color: var(--primary-dark); }
+  .panel.umkm  ul li { color: #047857; }
+
+  .panel .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+  }
+  .panel.admin .cta { background: var(--primary); }
+  .panel.umkm  .cta { background: var(--accent); }
+  .panel:hover .cta { opacity: 0.92; }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12.5px;
+    color: var(--gray-500);
+  }
+  footer a { color: var(--primary); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    header { padding: 18px 20px; }
+    .panel { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">UB</div>
+      <div>
+        <strong>SIM-UMKM</strong>
+        <small>Sistem Informasi Monitoring &amp; Pembinaan UMKM</small>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="hero">
+        <span class="badge-pill">DKUKMPP Kota Bandung</span>
+        <h1>Selamat Datang di SIM-UMKM</h1>
+        <p>Platform terintegrasi untuk memonitor, membina, dan mengevaluasi perkembangan UMKM binaan — dari registrasi, manajemen modal, transaksi, pengeluaran, hingga pelaporan keuntungan dan pertumbuhan.</p>
+      </div>
+
+      <div class="panels">
+        <a href="dkukmpp/login.html" class="panel admin">
+          <div class="icon">🛡️</div>
+          <div class="role">Administrator</div>
+          <h2>Panel Admin DKUKMPP</h2>
+          <p>Kelola registrasi, verifikasi, dan monitoring keuangan seluruh UMKM binaan beserta laporan agregat.</p>
+          <ul>
+            <li>Verifikasi pendaftaran UMKM</li>
+            <li>Monitoring modal, transaksi, pengeluaran</li>
+            <li>Keuntungan per kategori usaha</li>
+            <li>Laporan keuntungan &amp; pertumbuhan (PDF/Excel)</li>
+            <li>Pelatihan &amp; pembinaan UMKM</li>
+          </ul>
+          <span class="cta">Masuk sebagai Admin →</span>
+        </a>
+
+        <a href="umkm/login.html" class="panel umkm">
+          <div class="icon">🏪</div>
+          <div class="role">Pelaku UMKM</div>
+          <h2>Panel UMKM Binaan</h2>
+          <p>Kelola data usaha Anda — produk, bahan baku, transaksi penjualan, pengeluaran, dan laporan keuangan.</p>
+          <ul>
+            <li>Kelola modal &amp; sumber dana</li>
+            <li>Kelola produk &amp; bahan baku</li>
+            <li>Kasir penjualan &amp; riwayat transaksi</li>
+            <li>Kalkulator keuntungan otomatis</li>
+            <li>Laporan keuangan per periode/kategori</li>
+          </ul>
+          <span class="cta">Masuk sebagai UMKM →</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 DKUKMPP Kota Bandung &middot; SIM-UMKM &middot;
+    <a href="https://github.com/AdeSilva09/proyek" target="_blank" rel="noopener">Source</a>
+  </footer>
+</body>
+</html>
