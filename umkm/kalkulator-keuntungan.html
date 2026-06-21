@@ -3,133 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kalkulator Keuntungan</title>
+<title>Kelola Keuntungan</title>
 <link rel="stylesheet" href="../style.css">
 </head>
-<body data-title="Kalkulator Keuntungan">
+<body data-title="Kelola Keuntungan">
 
-<div class="page-title">Kalkulator Keuntungan</div>
-<div class="page-sub">Pilih periode + kategori/sub kategori &mdash; sistem akan menghitung penjualan, pengeluaran, dan keuntungan bersih per kategori.</div>
+<div class="pill-tabs" id="keuntunganTabs">
+  <div class="tab active" data-view="kalkulator">Kalkulator Keuntungan</div>
+  <div class="tab" data-view="insight">Insight & Rekomendasi</div>
+</div>
 
-<div class="row-2">
-  <!-- Kolom kiri: form pilih periode -->
-  <div class="card">
-    <div class="card-title mb-3">Pilih Periode</div>
+<!-- ============ VIEW: KALKULATOR ============ -->
+<div class="view" id="view-kalkulator">
+  <div class="row-2">
+    <div class="card">
+      <div class="card-title mb-3">Pilih Periode</div>
 
-    <div class="form-group">
-      <label>Jenis Periode</label>
-      <select class="form-control" id="periodType">
-        <option value="hari">Hari ini</option>
-        <option value="minggu">7 Hari Terakhir</option>
-        <option value="bulan" selected>Bulanan</option>
-        <option value="kuartal">Kuartal</option>
-        <option value="tahun">Tahunan</option>
-        <option value="custom">Custom (rentang tanggal)</option>
-      </select>
+      <div class="form-group">
+        <label>Jenis Periode</label>
+        <select class="form-control" id="periodType">
+          <option value="hari">Hari ini</option>
+          <option value="minggu">7 Hari Terakhir</option>
+          <option value="bulan" selected>Bulanan</option>
+          <option value="kuartal">Kuartal</option>
+          <option value="tahun">Tahunan</option>
+          <option value="custom">Custom (rentang tanggal)</option>
+        </select>
+      </div>
+
+      <div id="bulanRow" class="form-group">
+        <label>Bulan</label>
+        <select class="form-control" id="bulanSel">
+          <option>Januari 2026</option>
+          <option>Februari 2026</option>
+          <option>Maret 2026</option>
+          <option>April 2026</option>
+          <option>Mei 2026</option>
+          <option selected>Juni 2026</option>
+        </select>
+      </div>
+
+      <div id="tahunRow" class="form-group" style="display:none">
+        <label>Tahun</label>
+        <select class="form-control"><option>2024</option><option>2025</option><option selected>2026</option></select>
+      </div>
+
+      <div id="customRow" class="form-grid cols-2" style="display:none">
+        <div class="form-group"><label>Dari Tanggal</label><input type="date" class="form-control" value="2026-06-01"></div>
+        <div class="form-group"><label>Sampai Tanggal</label><input type="date" class="form-control" value="2026-06-10"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Kategori Produk</label>
+        <select class="form-control" id="kategoriProduk">
+          <option value="all" selected>Semua Kategori</option>
+          <option value="kuliner">Kuliner</option>
+          <option value="fashion">Fashion</option>
+          <option value="minuman">Minuman</option>
+          <option value="snack">Snack</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Sub Kategori</label>
+        <select class="form-control" id="subKategoriProduk">
+          <option value="all">Semua Sub Kategori</option>
+        </select>
+      </div>
+
+      <button class="btn block mt-2" onclick="hitung()"><span data-ic="bar-chart"></span> Hitung Keuntungan</button>
+
+      <div class="alert mt-2" style="margin-top:14px">
+        <span data-ic="alert" class="alert-ic"></span>
+        <div style="font-size:12.5px">Perhitungan: <strong>Keuntungan = Penjualan &minus; Pengeluaran</strong>. Data diambil dari Daftar Transaksi.</div>
+      </div>
     </div>
 
-    <div id="bulanRow" class="form-group">
-      <label>Bulan</label>
-      <select class="form-control" id="bulanSel">
-        <option>Januari 2026</option>
-        <option>Februari 2026</option>
-        <option>Maret 2026</option>
-        <option>April 2026</option>
-        <option>Mei 2026</option>
-        <option selected>Juni 2026</option>
-      </select>
+    <div>
+      <div class="card-navy" id="resultHero">
+        <div class="label" id="resultPeriode">Keuntungan Juni 2026</div>
+        <div class="value" id="resultProfit">Rp 9.370.000</div>
+        <div class="sub"><b><span data-ic="arrow-up"></span> Margin 52.6%</b> &middot; Profit bersih bulan ini</div>
+      </div>
+
+      <div class="row-2-eq">
+        <div class="stat green">
+          <div class="icon"><span data-ic="trend-up"></span></div>
+          <div>
+            <div class="label">Total Penjualan</div>
+            <div class="value" id="resultPenjualan">Rp 17.820.000</div>
+            <div class="delta">156 transaksi</div>
+          </div>
+        </div>
+        <div class="stat orange">
+          <div class="icon"><span data-ic="money-off"></span></div>
+          <div>
+            <div class="label">Total Pengeluaran</div>
+            <div class="value" id="resultPengeluaran">Rp 8.450.000</div>
+            <div class="delta down">31 transaksi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title mb-2">Rincian Keuntungan per Kategori Produk</div>
+        <div class="table-wrap">
+          <table class="data" style="font-size:13px">
+            <thead>
+              <tr><th>Kategori</th><th>Sub Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr>
+            </thead>
+            <tbody id="kategoriRinci">
+              <tr><td>Kuliner</td><td>Warung Makan</td><td style="text-align:right">Rp 9.420.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 4.910.000</td></tr>
+              <tr><td>Minuman</td><td>Minuman Dingin</td><td style="text-align:right">Rp 3.150.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.870.000</td></tr>
+              <tr><td>Minuman</td><td>Minuman Panas</td><td style="text-align:right">Rp 2.250.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.310.000</td></tr>
+              <tr><td>Snack</td><td>Bakery</td><td style="text-align:right">Rp 3.000.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.280.000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title mb-2">Rincian Pengeluaran per Kategori</div>
+        <div class="table-wrap">
+          <table class="data" style="font-size:13px">
+            <tbody>
+              <tr><td>Bahan Baku</td><td style="text-align:right">Rp 3.550.000</td><td style="text-align:right;color:var(--gray-500)">42%</td></tr>
+              <tr><td>Gaji Karyawan</td><td style="text-align:right">Rp 3.300.000</td><td style="text-align:right;color:var(--gray-500)">39%</td></tr>
+              <tr><td>Operasional</td><td style="text-align:right">Rp 950.000</td><td style="text-align:right;color:var(--gray-500)">11%</td></tr>
+              <tr><td>Marketing</td><td style="text-align:right">Rp 320.000</td><td style="text-align:right;color:var(--gray-500)">4%</td></tr>
+              <tr><td>Lain-lain</td><td style="text-align:right">Rp 330.000</td><td style="text-align:right;color:var(--gray-500)">4%</td></tr>
+              <tr><td><strong>Total</strong></td><td style="text-align:right"><strong>Rp 8.450.000</strong></td><td style="text-align:right"><strong>100%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div id="tahunRow" class="form-group" style="display:none">
-      <label>Tahun</label>
-      <select class="form-control"><option>2024</option><option>2025</option><option selected>2026</option></select>
+<!-- ============ VIEW: INSIGHT ============ -->
+<div class="view" id="view-insight" style="display:none">
+  <div class="page-sub" style="margin-top:-4px">Saran cerdas untuk meningkatkan kinerja keuangan usaha Anda</div>
+
+  <div class="row-2-eq">
+    <div class="card" style="border-left:4px solid var(--success);">
+      <div class="flex items-center gap-2" style="margin-bottom:10px;"><span data-ic="trophy" style="color:var(--success)"></span><strong>Performa Terbaik</strong></div>
+      <p style="font-size:13.5px; margin-bottom:8px;"><strong>Kopi Susu</strong> memberikan margin tertinggi (58%) dengan permintaan stabil. Pertimbangkan menambah varian rasa untuk meningkatkan upsell.</p>
+      <small class="text-muted">Berdasarkan data 3 bulan terakhir</small>
     </div>
-
-    <div id="customRow" class="form-grid cols-2" style="display:none">
-      <div class="form-group"><label>Dari Tanggal</label><input type="date" class="form-control" value="2026-06-01"></div>
-      <div class="form-group"><label>Sampai Tanggal</label><input type="date" class="form-control" value="2026-06-10"></div>
+    <div class="card" style="border-left:4px solid var(--warning);">
+      <div class="flex items-center gap-2" style="margin-bottom:10px;"><span data-ic="alert" style="color:var(--warning)"></span><strong>Perlu Perhatian</strong></div>
+      <p style="font-size:13.5px; margin-bottom:8px;">Biaya bahan baku naik <strong>5%</strong>. Coba bandingkan harga dari supplier alternatif atau pertimbangkan beli partai besar untuk diskon.</p>
+      <small class="text-muted">Trend 30 hari</small>
     </div>
-
-    <div class="form-group">
-      <label>Kategori Produk</label>
-      <select class="form-control" id="kategoriProduk">
-        <option value="all" selected>Semua Kategori</option>
-        <option value="kuliner">Kuliner</option>
-        <option value="fashion">Fashion</option>
-        <option value="minuman">Minuman</option>
-        <option value="snack">Snack</option>
-      </select>
+    <div class="card" style="border-left:4px solid var(--primary);">
+      <div class="flex items-center gap-2" style="margin-bottom:10px;"><span data-ic="trend-up" style="color:var(--primary)"></span><strong>Peluang Pertumbuhan</strong></div>
+      <p style="font-size:13.5px; margin-bottom:8px;">Penjualan jam <strong>12.00&ndash;14.00</strong> menyumbang 40% omzet. Promosi paket makan siang berpotensi naikkan profit 15%.</p>
+      <small class="text-muted">Analisis pola jam</small>
     </div>
-
-    <div class="form-group">
-      <label>Sub Kategori</label>
-      <select class="form-control" id="subKategoriProduk">
-        <option value="all">Semua Sub Kategori</option>
-      </select>
-    </div>
-
-    <button class="btn block mt-2" onclick="hitung()"><span data-ic="bar-chart"></span> Hitung Keuntungan</button>
-
-    <div class="alert mt-2" style="margin-top:14px">
-      <span data-ic="alert" class="alert-ic"></span>
-      <div style="font-size:12.5px">Perhitungan: <strong>Keuntungan = Penjualan &minus; Pengeluaran</strong>. Data diambil dari Daftar Transaksi.</div>
+    <div class="card" style="border-left:4px solid var(--danger);">
+      <div class="flex items-center gap-2" style="margin-bottom:10px;"><span data-ic="bell" style="color:var(--danger)"></span><strong>Aksi Disarankan</strong></div>
+      <p style="font-size:13.5px; margin-bottom:8px;">3 produk mencapai stok minimum. Lakukan restock segera agar tidak kehilangan penjualan.</p>
+      <a href="bahan-baku.html" class="btn outline sm">Lihat Stok Bahan Baku</a>
     </div>
   </div>
 
-  <!-- Kolom kanan: hasil -->
-  <div>
-    <div class="card-navy" id="resultHero">
-      <div class="label" id="resultPeriode">Keuntungan Juni 2026</div>
-      <div class="value" id="resultProfit">Rp 9.370.000</div>
-      <div class="sub"><b><span data-ic="arrow-up"></span> Margin 52.6%</b> &middot; Profit bersih bulan ini</div>
-    </div>
-
-    <div class="row-2-eq">
-      <div class="stat green">
-        <div class="icon"><span data-ic="trend-up"></span></div>
-        <div>
-          <div class="label">Total Penjualan</div>
-          <div class="value" id="resultPenjualan">Rp 17.820.000</div>
-          <div class="delta">156 transaksi</div>
-        </div>
-      </div>
-      <div class="stat orange">
-        <div class="icon"><span data-ic="money-off"></span></div>
-        <div>
-          <div class="label">Total Pengeluaran</div>
-          <div class="value" id="resultPengeluaran">Rp 8.450.000</div>
-          <div class="delta down">31 transaksi</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title mb-2">Rincian Keuntungan per Kategori Produk</div>
-      <table class="data" style="font-size:13px">
-        <thead>
-          <tr><th>Kategori</th><th>Sub Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr>
-        </thead>
-        <tbody id="kategoriRinci">
-          <tr><td>Kuliner</td><td>Warung Makan</td><td style="text-align:right">Rp 9.420.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 4.910.000</td></tr>
-          <tr><td>Minuman</td><td>Minuman Dingin</td><td style="text-align:right">Rp 3.150.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.870.000</td></tr>
-          <tr><td>Minuman</td><td>Minuman Panas</td><td style="text-align:right">Rp 2.250.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.310.000</td></tr>
-          <tr><td>Snack</td><td>Bakery</td><td style="text-align:right">Rp 3.000.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.280.000</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <div class="card-title mb-2">Rincian Pengeluaran per Kategori</div>
-      <table class="data" style="font-size:13px">
-        <tbody>
-          <tr><td>Bahan Baku</td><td style="text-align:right">Rp 3.550.000</td><td style="text-align:right;color:var(--gray-500)">42%</td></tr>
-          <tr><td>Gaji Karyawan</td><td style="text-align:right">Rp 3.300.000</td><td style="text-align:right;color:var(--gray-500)">39%</td></tr>
-          <tr><td>Operasional</td><td style="text-align:right">Rp 950.000</td><td style="text-align:right;color:var(--gray-500)">11%</td></tr>
-          <tr><td>Marketing</td><td style="text-align:right">Rp 320.000</td><td style="text-align:right;color:var(--gray-500)">4%</td></tr>
-          <tr><td>Lain-lain</td><td style="text-align:right">Rp 330.000</td><td style="text-align:right;color:var(--gray-500)">4%</td></tr>
-          <tr><td><strong>Total</strong></td><td style="text-align:right"><strong>Rp 8.450.000</strong></td><td style="text-align:right"><strong>100%</strong></td></tr>
-        </tbody>
-      </table>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Ringkasan Insight</div></div>
+    <div class="form-grid cols-3">
+      <div><div class="text-muted" style="font-size:12px;">Skor Kesehatan Usaha</div><div style="font-size:28px;font-weight:700;color:var(--success);">85/100</div><small class="text-muted">Sangat Baik</small></div>
+      <div><div class="text-muted" style="font-size:12px;">Prediksi Profit Bulan Depan</div><div style="font-size:28px;font-weight:700;color:var(--primary);">Rp 10.2 jt</div><small class="text-success">+8.9% proyeksi</small></div>
+      <div><div class="text-muted" style="font-size:12px;">Risiko Cashflow</div><div style="font-size:28px;font-weight:700;color:var(--success);">Rendah</div><small class="text-muted">Likuiditas terjaga</small></div>
     </div>
   </div>
 </div>
@@ -139,7 +183,6 @@
 <script>
   const fmt = n => 'Rp ' + n.toLocaleString('id-ID');
 
-  // Dummy dataset per period
   const data = {
     'hari':    { p: 'Hari Ini',         jual: 850000,   keluar: 320000  },
     'minggu':  { p: '7 Hari Terakhir',  jual: 4250000,  keluar: 1820000 },
@@ -184,6 +227,16 @@
     sub.innerHTML = `<b><span data-ic="arrow-up"></span> Margin ${margin}%</b> &middot; Profit bersih ${d.p.toLowerCase()}`;
     if (window.ICRender) window.ICRender(sub);
   }
+
+  const ktabs = document.querySelectorAll('#keuntunganTabs .tab');
+  function switchKTab(v){
+    ktabs.forEach(x => x.classList.toggle('active', x.dataset.view === v));
+    document.getElementById('view-kalkulator').style.display = v === 'kalkulator' ? '' : 'none';
+    document.getElementById('view-insight').style.display    = v === 'insight'    ? '' : 'none';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  ktabs.forEach(t => t.addEventListener('click', () => switchKTab(t.dataset.view)));
+  if (location.hash === '#insight') switchKTab('insight');
 </script>
 </body>
 </html>

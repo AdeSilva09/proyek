@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelola Laporan UMKM - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Laporan UMKM">
+
+<div class="page-title">Kelola Laporan UMKM</div>
+<div class="page-sub">Cetak laporan keuntungan &amp; laporan pertumbuhan UMKM binaan &mdash; data diambil dari catatan keuangan UMKM.</div>
+
+<div class="pill-tabs" id="laporanTabs">
+  <div class="tab active" data-view="keuntungan">Cetak Laporan Keuntungan UMKM Binaan</div>
+  <div class="tab" data-view="pertumbuhan">Cetak Laporan Pertumbuhan UMKM</div>
+</div>
+
+<!-- ============ VIEW: KEUNTUNGAN ============ -->
+<div class="view" id="view-keuntungan">
+  <div class="card mb-3">
+    <div class="card-title mb-2">Filter Laporan Keuntungan</div>
+    <div class="form-grid cols-3">
+      <div class="form-group">
+        <label>Pilih UMKM Binaan</label>
+        <select class="form-control" id="umkmKeu">
+          <option value="all">— Semua UMKM Binaan (Agregat) —</option>
+          <option>Warung Bu Sri</option>
+          <option>Batik Lestari</option>
+          <option>Bengkel Maju</option>
+          <option>Toko Berkah</option>
+          <option>Bakery Manis</option>
+          <option>Konveksi Jaya</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Periode</label>
+        <select class="form-control">
+          <option>Juni 2026</option>
+          <option>Mei 2026</option>
+          <option>April 2026</option>
+          <option>Q2 2026</option>
+          <option>Tahun 2026</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Kategori Usaha</label>
+        <select class="form-control">
+          <option>Semua Kategori</option>
+          <option>Kuliner</option>
+          <option>Fashion</option>
+          <option>Retail</option>
+          <option>Jasa</option>
+          <option>Kerajinan</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex gap-2 mt-2" style="flex-wrap:wrap">
+      <button class="btn"><span data-ic="file-text"></span> Tampilkan Laporan</button>
+      <button class="btn outline"><span data-ic="download"></span> Cetak PDF</button>
+      <button class="btn outline"><span data-ic="download"></span> Export Excel</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat green"><div class="icon"><span data-ic="banknote"></span></div><div><div class="label">Total Keuntungan</div><div class="value">Rp 1.31 M</div><div class="delta">Juni 2026</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Margin Rata-rata</div><div class="value">22.6%</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">UMKM Rugi</div><div class="value">28</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="trophy"></span></div><div><div class="label">Margin Tertinggi</div><div class="value">42.8%</div><div class="delta">Bakery Manis</div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title mb-2">Rincian Keuntungan per UMKM</div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>UMKM</th><th>Pemilik</th><th>Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Pengeluaran</th><th style="text-align:right">Keuntungan</th><th style="text-align:right">Margin</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Bakery Manis</td><td>Linda Wati</td><td>Kuliner</td><td style="text-align:right">Rp 22.500.000</td><td style="text-align:right">Rp 12.870.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 9.630.000</td><td style="text-align:right"><strong>42.8%</strong></td><td><span class="badge success">Sangat Baik</span></td></tr>
+          <tr><td>Konveksi Jaya</td><td>Hendra Wijaya</td><td>Fashion</td><td style="text-align:right">Rp 48.000.000</td><td style="text-align:right">Rp 36.500.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 11.500.000</td><td style="text-align:right"><strong>23.9%</strong></td><td><span class="badge success">Baik</span></td></tr>
+          <tr><td>Batik Lestari</td><td>Sri Mulyani</td><td>Fashion</td><td style="text-align:right">Rp 28.300.000</td><td style="text-align:right">Rp 19.850.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 8.450.000</td><td style="text-align:right"><strong>29.8%</strong></td><td><span class="badge success">Baik</span></td></tr>
+          <tr><td>Toko Berkah</td><td>Ahmad Fauzi</td><td>Retail</td><td style="text-align:right">Rp 26.450.000</td><td style="text-align:right">Rp 19.500.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 6.950.000</td><td style="text-align:right"><strong>26.3%</strong></td><td><span class="badge success">Baik</span></td></tr>
+          <tr><td>Salon Cantik</td><td>Rina Anggraini</td><td>Jasa</td><td style="text-align:right">Rp 12.500.000</td><td style="text-align:right">Rp 8.560.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 3.940.000</td><td style="text-align:right"><strong>31.5%</strong></td><td><span class="badge success">Sangat Baik</span></td></tr>
+          <tr><td>Warung Bu Sri</td><td>Sri Wahyuni</td><td>Kuliner</td><td style="text-align:right">Rp 8.400.000</td><td style="text-align:right">Rp 7.200.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.200.000</td><td style="text-align:right"><strong>14.2%</strong></td><td><span class="badge warning">Rendah</span></td></tr>
+          <tr><td>Bengkel Maju</td><td>Joko Susilo</td><td>Jasa</td><td style="text-align:right">Rp 6.800.000</td><td style="text-align:right">Rp 7.500.000</td><td style="text-align:right;color:var(--danger);font-weight:600">-Rp 700.000</td><td style="text-align:right"><strong>-10.3%</strong></td><td><span class="badge danger">Rugi</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VIEW: PERTUMBUHAN ============ -->
+<div class="view" id="view-pertumbuhan" style="display:none">
+  <div class="card mb-3">
+    <div class="card-title mb-2">Filter Laporan Pertumbuhan</div>
+    <div class="form-grid cols-3">
+      <div class="form-group">
+        <label>Pilih UMKM Binaan</label>
+        <select class="form-control" id="umkmPert">
+          <option value="all">— Semua UMKM Binaan (Agregat) —</option>
+          <option>Warung Bu Sri</option>
+          <option>Batik Lestari</option>
+          <option>Bengkel Maju</option>
+          <option>Toko Berkah</option>
+          <option>Bakery Manis</option>
+          <option>Konveksi Jaya</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Rentang Periode</label>
+        <select class="form-control">
+          <option>6 Bulan Terakhir</option>
+          <option>1 Tahun Terakhir</option>
+          <option>2 Tahun Terakhir</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Indikator</label>
+        <select class="form-control">
+          <option>Pertumbuhan Penjualan</option>
+          <option>Pertumbuhan Keuntungan</option>
+          <option>Pertumbuhan Modal</option>
+          <option>Semua Indikator</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex gap-2 mt-2" style="flex-wrap:wrap">
+      <button class="btn"><span data-ic="trend-up"></span> Tampilkan Laporan</button>
+      <button class="btn outline"><span data-ic="download"></span> Cetak PDF</button>
+      <button class="btn outline"><span data-ic="download"></span> Export Excel</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat green"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Pertumbuhan Rata-rata</div><div class="value">+14.2%</div><div class="delta">6 bulan terakhir</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="trophy"></span></div><div><div class="label">UMKM Tumbuh Pesat</div><div class="value">42</div><div class="delta">&gt; 25% growth</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="arrow-down"></span></div><div><div class="label">UMKM Menurun</div><div class="value">18</div><div class="delta">perlu pembinaan</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="store"></span></div><div><div class="label">Total UMKM</div><div class="value">1.248</div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title mb-2">Tren Pertumbuhan Agregat (6 Bulan)</div>
+    <div class="chart-wrap"><canvas id="pertChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title mb-2">Pertumbuhan per UMKM</div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>UMKM</th><th>Kategori</th><th style="text-align:right">Penjualan Awal</th><th style="text-align:right">Penjualan Sekarang</th><th style="text-align:right">Pertumbuhan</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Bakery Manis</td><td>Kuliner</td><td style="text-align:right">Rp 12.000.000</td><td style="text-align:right">Rp 22.500.000</td><td style="text-align:right;color:var(--success);font-weight:700">+87.5%</td><td><span class="badge success">Tumbuh Pesat</span></td></tr>
+          <tr><td>Konveksi Jaya</td><td>Fashion</td><td style="text-align:right">Rp 32.000.000</td><td style="text-align:right">Rp 48.000.000</td><td style="text-align:right;color:var(--success);font-weight:700">+50.0%</td><td><span class="badge success">Tumbuh Pesat</span></td></tr>
+          <tr><td>Batik Lestari</td><td>Fashion</td><td style="text-align:right">Rp 22.500.000</td><td style="text-align:right">Rp 28.300.000</td><td style="text-align:right;color:var(--success);font-weight:700">+25.8%</td><td><span class="badge success">Tumbuh Pesat</span></td></tr>
+          <tr><td>Toko Berkah</td><td>Retail</td><td style="text-align:right">Rp 22.000.000</td><td style="text-align:right">Rp 26.450.000</td><td style="text-align:right;color:var(--success);font-weight:600">+20.2%</td><td><span class="badge info">Stabil</span></td></tr>
+          <tr><td>Salon Cantik</td><td>Jasa</td><td style="text-align:right">Rp 11.000.000</td><td style="text-align:right">Rp 12.500.000</td><td style="text-align:right;color:var(--success);font-weight:600">+13.6%</td><td><span class="badge info">Stabil</span></td></tr>
+          <tr><td>Warung Bu Sri</td><td>Kuliner</td><td style="text-align:right">Rp 9.200.000</td><td style="text-align:right">Rp 8.400.000</td><td style="text-align:right;color:var(--danger);font-weight:600">-8.7%</td><td><span class="badge warning">Menurun</span></td></tr>
+          <tr><td>Bengkel Maju</td><td>Jasa</td><td style="text-align:right">Rp 9.500.000</td><td style="text-align:right">Rp 6.800.000</td><td style="text-align:right;color:var(--danger);font-weight:700">-28.4%</td><td><span class="badge danger">Perlu Pembinaan</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  let chartInst = null;
+  function renderPertChart(){
+    if (chartInst) return;
+    const ctx = document.getElementById('pertChart');
+    if (!ctx) return;
+    chartInst = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan','Feb','Mar','Apr','Mei','Jun'],
+        datasets: [
+          { label:'Penjualan Agregat (jt)', data:[820,895,940,1020,1180,1310], borderColor:'#0D1B8E', backgroundColor:'rgba(13,27,142,0.1)', tension:0.3, fill:true },
+          { label:'Keuntungan Agregat (jt)', data:[180,210,235,260,285,310], borderColor:'#22C55E', backgroundColor:'rgba(34,197,94,0.1)', tension:0.3, fill:true },
+        ]
+      },
+      options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{y:{ticks:{font:{size:11}}}} }
+    });
+  }
+
+  const tabs = document.querySelectorAll('#laporanTabs .tab');
+  function switchTab(v){
+    tabs.forEach(x => x.classList.toggle('active', x.dataset.view === v));
+    document.getElementById('view-keuntungan').style.display  = v === 'keuntungan'  ? '' : 'none';
+    document.getElementById('view-pertumbuhan').style.display = v === 'pertumbuhan' ? '' : 'none';
+    if (v === 'pertumbuhan') renderPertChart();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  tabs.forEach(t => t.addEventListener('click', () => switchTab(t.dataset.view)));
+  if (location.hash === '#pertumbuhan') switchTab('pertumbuhan');
+</script>
+</body>
+</html>

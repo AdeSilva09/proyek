@@ -7,17 +7,14 @@
 
   const navAdmin = [
     { type: 'single', href: 'dashboard.html', icon: 'dashboard', label: 'Dashboard' },
-    { type: 'single', href: 'master-kategori.html', icon: 'database', label: 'Master Data' },
-    { type: 'single', href: 'verifikasi-pendaftaran.html', icon: 'shield', label: 'Kelola Registrasi UMKM' },
-    { type: 'single', href: 'manajemen-umkm.html', icon: 'store', label: 'Kelola Data UMKM Binaan' },
-    { type: 'single', href: 'monitoring-modal.html', icon: 'wallet', label: 'Kelola Modal UMKM' },
+    { type: 'single', href: 'verifikasi-pendaftaran.html', icon: 'shield', label: 'Kelola Data Registrasi' },
+    { type: 'single', href: 'manajemen-umkm.html', icon: 'store', label: 'Kelola Data UMKM' },
+    { type: 'single', href: 'monitoring-modal.html', icon: 'wallet', label: 'Kelola Manajemen Modal UMKM' },
     { type: 'single', href: 'monitoring-penjualan.html', icon: 'cart', label: 'Kelola Transaksi UMKM' },
     { type: 'single', href: 'monitoring-pengeluaran.html', icon: 'money-off', label: 'Kelola Pengeluaran UMKM' },
     { type: 'single', href: 'monitoring-keuntungan.html', icon: 'trend-up', label: 'Kelola Keuntungan UMKM' },
-    { type: 'single', href: 'laporan-pertumbuhan.html', icon: 'file-text', label: 'Kelola Laporan UMKM' },
+    { type: 'single', href: 'laporan-umkm.html', icon: 'file-text', label: 'Kelola Laporan UMKM' },
     { type: 'section', label: 'Pengaturan', items: [
-      { href: 'manajemen-notifikasi.html', icon: 'mail', label: 'Notifikasi' },
-      { href: 'backup-restore.html', icon: 'database', label: 'Backup & Restore' },
       { href: 'logout.html', icon: 'logout', label: 'Logout' },
     ]},
   ];
@@ -32,14 +29,8 @@
       { href: 'kasir.html', label: 'Kasir Penjualan' },
       { href: 'riwayat-penjualan.html', label: 'Riwayat Penjualan' },
     ]},
-    { type: 'group', key: 'pengeluaran', icon: 'money-off', label: 'Kelola Pengeluaran', items: [
-      { href: 'transaksi-tambah.html', label: 'Catat Pengeluaran' },
-      { href: 'riwayat-pengeluaran.html', label: 'Riwayat Pengeluaran' },
-    ]},
-    { type: 'group', key: 'keuangan', icon: 'trend-up', label: 'Keuntungan', items: [
-      { href: 'kalkulator-keuntungan.html', label: 'Kalkulator Keuntungan' },
-      { href: 'insight.html', label: 'Insight & Rekomendasi' },
-    ]},
+    { type: 'single', href: 'riwayat-pengeluaran.html', icon: 'money-off', label: 'Kelola Pengeluaran' },
+    { type: 'single', href: 'kalkulator-keuntungan.html', icon: 'trend-up', label: 'Kelola Keuntungan' },
     { type: 'single', href: 'laporan-keuangan.html', icon: 'file-text', label: 'Kelola Laporan' },
     { type: 'section', label: 'Pengaturan', items: [
       { href: 'notifikasi.html', icon: 'bell', label: 'Notifikasi Sistem' },

@@ -2,72 +2,11 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Laporan Kategori Usaha - SIM-UMKM</title>
-<link rel="stylesheet" href="../style.css">
+<meta http-equiv="refresh" content="0; url=laporan-umkm.html#keuntungan">
+<title>Laporan Kategori UMKM</title>
 </head>
-<body data-title="Laporan Kategori Usaha">
-
-<div class="page-title">Laporan Kategori Usaha</div>
-<div class="page-sub">Distribusi UMKM berdasarkan kategori usaha</div>
-
-<div class="toolbar">
-  <select class="form-control" style="width:160px;"><option>Tahun 2026</option><option>2025</option></select>
-  <div class="spacer"></div>
-  <button class="btn outline sm">⬇ PDF</button>
-  <button class="btn outline sm">⬇ Excel</button>
-</div>
-
-<div class="row-2-eq">
-  <div class="card">
-    <div class="card-title mb-2">Distribusi Kategori (Pie)</div>
-    <div class="chart-wrap"><canvas id="pie"></canvas></div>
-  </div>
-  <div class="card">
-    <div class="card-title mb-2">Jumlah UMKM per Kategori</div>
-    <div class="chart-wrap"><canvas id="bar"></canvas></div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-title mb-2">Ringkasan per Kategori</div>
-  <table class="data">
-    <thead><tr><th>Kategori</th><th>Jumlah UMKM</th><th>% Distribusi</th><th>Modal Rata-rata</th><th>Penjualan Rata-rata</th><th>Pertumbuhan YoY</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Kuliner</strong></td><td>420</td><td>33.7%</td><td>Rp 18.5 jt</td><td>Rp 12.4 jt</td><td class="text-success">+15.2%</td></tr>
-      <tr><td><strong>Fashion</strong></td><td>265</td><td>21.2%</td><td>Rp 38.2 jt</td><td>Rp 24.8 jt</td><td class="text-success">+12.8%</td></tr>
-      <tr><td><strong>Retail</strong></td><td>238</td><td>19.1%</td><td>Rp 22.6 jt</td><td>Rp 15.2 jt</td><td class="text-success">+8.5%</td></tr>
-      <tr><td><strong>Jasa</strong></td><td>180</td><td>14.4%</td><td>Rp 16.8 jt</td><td>Rp 9.5 jt</td><td class="text-success">+9.1%</td></tr>
-      <tr><td><strong>Kerajinan</strong></td><td>145</td><td>11.6%</td><td>Rp 14.2 jt</td><td>Rp 7.8 jt</td><td class="text-success">+5.6%</td></tr>
-      <tr style="background:var(--gray-50);"><td><strong>TOTAL</strong></td><td><strong>1.248</strong></td><td><strong>100%</strong></td><td><strong>Rp 24.5 jt</strong></td><td><strong>Rp 14.7 jt</strong></td><td class="text-success"><strong>+11.4%</strong></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="card">
-  <div class="card-title mb-2">Sub-Kategori Detail (Kuliner)</div>
-  <table class="data">
-    <thead><tr><th>Sub-Kategori</th><th>Jumlah</th><th>Modal Rata</th><th>Penjualan Rata</th></tr></thead>
-    <tbody>
-      <tr><td>Makanan Berat</td><td>165</td><td>Rp 22 jt</td><td>Rp 14.5 jt</td></tr>
-      <tr><td>Minuman & Kopi</td><td>98</td><td>Rp 18 jt</td><td>Rp 12.8 jt</td></tr>
-      <tr><td>Snack & Kue</td><td>87</td><td>Rp 16 jt</td><td>Rp 10.2 jt</td></tr>
-      <tr><td>Bakery</td><td>42</td><td>Rp 24 jt</td><td>Rp 16.5 jt</td></tr>
-      <tr><td>Catering</td><td>28</td><td>Rp 28 jt</td><td>Rp 18 jt</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="../icons.js"></script>
-<script src="../sidebar.js"></script>
-<script>
-new Chart(document.getElementById('pie'),{type:'pie',data:{labels:['Kuliner','Fashion','Retail','Jasa','Kerajinan'],
-  datasets:[{data:[420,265,238,180,145],backgroundColor:['#1e40af','#3b82f6','#60a5fa','#93c5fd','#bfdbfe']}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right'}}}});
-new Chart(document.getElementById('bar'),{type:'bar',data:{labels:['Kuliner','Fashion','Retail','Jasa','Kerajinan'],
-  datasets:[{label:'Jumlah UMKM',data:[420,265,238,180,145],backgroundColor:'#1e40af'}]},
-  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
-</script>
+<body>
+<script>location.replace('laporan-umkm.html#keuntungan');</script>
+<p>Mengalihkan ke <a href="laporan-umkm.html#keuntungan">Kelola Laporan UMKM</a>&hellip;</p>
 </body>
 </html>

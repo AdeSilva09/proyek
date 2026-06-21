@@ -716,6 +716,22 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .content { max-width: 100%; }
 img, svg { max-width: 100%; height: auto; }
 
+/* Defensive responsive: shrink fixed-width form fields on mobile */
+@media (max-width: 600px) {
+  .form-control[style*="width:"],
+  .m-input[style*="width:"],
+  .m-select[style*="width:"] { width: 100% !important; min-width: 0 !important; }
+  .search[style*="max-width"] { max-width: 100% !important; }
+  .pill-tabs { display: flex; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  .pill-tabs .tab { flex: 1 0 auto; text-align: center; }
+  .row-2 { grid-template-columns: 1fr; }
+}
+
+/* Ensure pill-tabs wrap nicely on tablets too */
+@media (max-width: 900px) {
+  .pill-tabs { flex-wrap: wrap; }
+}
+
 /* ====================================================================
    COMPATIBILITY LAYER — map .m-* (warisan mobile) ke style desktop
    Supaya file umkm/ lama tetap render pakai palette & komponen baru

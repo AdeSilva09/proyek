@@ -2,68 +2,11 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Laporan Kinerja Program - SIM-UMKM</title>
-<link rel="stylesheet" href="../style.css">
+<meta http-equiv="refresh" content="0; url=laporan-umkm.html#keuntungan">
+<title>Laporan Kinerja UMKM</title>
 </head>
-<body data-title="Laporan Kinerja Program">
-
-<div class="page-title">Laporan Kinerja Program</div>
-<div class="page-sub">Hasil evaluasi dan efektivitas program bimbingan</div>
-
-<div class="toolbar">
-  <select class="form-control" style="width:160px;"><option>Tahun 2026</option><option>2025</option></select>
-  <select class="form-control" style="width:160px;"><option>Semua Kategori</option><option>Pemasaran</option><option>Keuangan</option></select>
-  <div class="spacer"></div>
-  <button class="btn outline sm">⬇ Export</button>
-</div>
-
-<div class="stat-grid">
-  <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Program Selesai</div><div class="value">11</div></div></div>
-  <div class="stat"><div class="icon"><span data-ic="users"></span></div><div><div class="label">Total Peserta</div><div class="value">385</div></div></div>
-  <div class="stat green"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Rating Rata-rata</div><div class="value">4.5/5</div></div></div>
-  <div class="stat green"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Tingkat Kelulusan</div><div class="value">89.6%</div></div></div>
-</div>
-
-<div class="row-2">
-  <div class="card">
-    <div class="card-title mb-2">Efektivitas per Program</div>
-    <div class="chart-wrap"><canvas id="eff"></canvas></div>
-  </div>
-  <div class="card">
-    <div class="card-title mb-2">Distribusi Rating Kepuasan</div>
-    <div class="chart-wrap"><canvas id="sat"></canvas></div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-title mb-2">Detail Kinerja Program</div>
-  <div class="table-wrap">
-    <table class="data">
-      <thead><tr><th>Kode</th><th>Program</th><th>Peserta</th><th>Kehadiran</th><th>Kelulusan</th><th>Δ Penjualan</th><th>Rating</th><th>Efektivitas</th></tr></thead>
-      <tbody>
-        <tr><td>PRG-021</td><td>Bimbingan Pajak UMKM</td><td>42</td><td>92%</td><td>95%</td><td class="text-success">+24.5%</td><td>4.7/5</td><td><span class="badge success">Sangat Efektif</span></td></tr>
-        <tr><td>PRG-020</td><td>Pelatihan Foto Produk</td><td>30</td><td>88%</td><td>90%</td><td class="text-success">+18.2%</td><td>4.6/5</td><td><span class="badge success">Sangat Efektif</span></td></tr>
-        <tr><td>PRG-019</td><td>Branding & Packaging</td><td>35</td><td>85%</td><td>88%</td><td class="text-success">+21.0%</td><td>4.5/5</td><td><span class="badge success">Efektif</span></td></tr>
-        <tr><td>PRG-018</td><td>Manajemen SDM</td><td>28</td><td>82%</td><td>85%</td><td class="text-success">+12.5%</td><td>4.3/5</td><td><span class="badge info">Efektif</span></td></tr>
-        <tr><td>PRG-017</td><td>Pengembangan Produk</td><td>32</td><td>78%</td><td>82%</td><td class="text-success">+15.8%</td><td>4.2/5</td><td><span class="badge info">Cukup Efektif</span></td></tr>
-        <tr><td>PRG-016</td><td>Legalitas Usaha</td><td>40</td><td>90%</td><td>92%</td><td class="text-success">+8.5%</td><td>4.4/5</td><td><span class="badge info">Efektif</span></td></tr>
-        <tr><td>PRG-015</td><td>Strategi Pemasaran Online</td><td>45</td><td>86%</td><td>87%</td><td class="text-success">+22.4%</td><td>4.6/5</td><td><span class="badge success">Sangat Efektif</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="../icons.js"></script>
-<script src="../sidebar.js"></script>
-<script>
-new Chart(document.getElementById('eff'),{type:'bar',data:{labels:['PRG-021','PRG-020','PRG-019','PRG-018','PRG-017','PRG-016','PRG-015'],
-  datasets:[{label:'Skor Efektivitas',data:[92,88,85,80,76,82,89],backgroundColor:'#1e40af'}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
-new Chart(document.getElementById('sat'),{type:'doughnut',data:{labels:['5 Bintang','4 Bintang','3 Bintang','2 Bintang','1 Bintang'],
-  datasets:[{data:[182,148,42,10,3],backgroundColor:['#059669','#10b981','#f59e0b','#fb923c','#ef4444']}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}});
-</script>
+<body>
+<script>location.replace('laporan-umkm.html#keuntungan');</script>
+<p>Mengalihkan ke <a href="laporan-umkm.html#keuntungan">Kelola Laporan UMKM</a>&hellip;</p>
 </body>
 </html>
