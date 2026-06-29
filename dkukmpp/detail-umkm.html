@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lihat Data UMKM Binaan - SIM-UMKM</title>
+<title>Profil UMKM - SIM-UMKM</title>
 <link rel="stylesheet" href="../style.css">
 </head>
-<body data-title="Lihat Data UMKM Binaan">
+<body data-title="Profil UMKM Binaan">
 
 <div class="flex justify-between items-center mb-2">
   <div>
-    <div class="page-title">Batik Lestari</div>
-    <div class="page-sub">UMK-002 &middot; Fashion / Baju &middot; Bergabung 05 Jan 2024 &middot; <span class="badge success">Aktif</span></div>
+    <div class="page-title" id="hNama">—</div>
+    <div class="page-sub" id="hSub">Memuat data...</div>
   </div>
   <div class="flex gap-2">
-    <a href="monitoring-statistik.html" class="btn secondary">&lsaquo; Pilih UMKM Lain</a>
-    <button class="btn danger"><span data-ic="x"></span> Hapus UMKM</button>
+    <a href="manajemen-umkm.html" class="btn secondary">&lsaquo; Kembali ke Daftar</a>
+    <button class="btn danger" onclick="if(confirm('Hapus UMKM ini?')){}"><span data-ic="trash"></span> Hapus UMKM</button>
   </div>
 </div>
 
@@ -41,18 +41,19 @@
     <div>
       <div class="card">
         <div class="card-title mb-2">Informasi Profil</div>
-        <table class="data" style="font-size:13.5px;">
+        <table class="data" style="font-size:13.5px;" id="tblProfil">
           <tbody>
-            <tr><td style="width:200px; color:var(--gray-500);">Nama UMKM</td><td><strong>Batik Lestari</strong></td></tr>
-            <tr><td style="color:var(--gray-500);">Pemilik</td><td>Sri Mulyani</td></tr>
-            <tr><td style="color:var(--gray-500);">Kategori</td><td>Fashion</td></tr>
-            <tr><td style="color:var(--gray-500);">Sub Kategori</td><td>Baju</td></tr>
-            <tr><td style="color:var(--gray-500);">NIB</td><td>1234567890123</td></tr>
-            <tr><td style="color:var(--gray-500);">Alamat</td><td>Jl. Sukajadi No. 45, Bandung</td></tr>
-            <tr><td style="color:var(--gray-500);">Telepon</td><td>0812-3456-7890</td></tr>
-            <tr><td style="color:var(--gray-500);">Email</td><td>batik.lestari@email.com</td></tr>
-            <tr><td style="color:var(--gray-500);">Jumlah Karyawan</td><td>8 orang</td></tr>
-            <tr><td style="color:var(--gray-500);">Modal Awal</td><td>Rp 45.000.000</td></tr>
+            <tr><td style="width:200px; color:var(--gray-500);">ID UMKM</td><td id="pId">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Nama Merk / Produk</td><td id="pNama">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Pemilik</td><td id="pPemilik">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Kategori</td><td id="pKategori">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Jenis Kegiatan</td><td id="pJenis">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Alamat Usaha</td><td id="pAlamat">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Telepon</td><td id="pTelp">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Email</td><td id="pEmail">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Jumlah Karyawan</td><td id="pKaryawan">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Modal Awal</td><td id="pModalAwal">—</td></tr>
+            <tr><td style="color:var(--gray-500);">Tanggal Bergabung</td><td id="pTgl">—</td></tr>
           </tbody>
         </table>
       </div>
@@ -61,30 +62,16 @@
       <div class="card">
         <div class="card-title mb-2">Ringkasan Kinerja</div>
         <div style="display:flex;flex-direction:column;gap:14px;">
-          <div><div class="text-muted" style="font-size:12px;">Modal Saat Ini</div><strong style="font-size:18px;">Rp 62.500.000</strong></div>
-          <div><div class="text-muted" style="font-size:12px;">Penjualan Bulan Ini</div><strong style="font-size:18px;">Rp 28.300.000</strong></div>
-          <div><div class="text-muted" style="font-size:12px;">Keuntungan Bulan Ini</div><strong style="font-size:18px; color:var(--success);">Rp 8.450.000</strong></div>
-          <div><div class="text-muted" style="font-size:12px;">Margin</div><strong style="font-size:18px;">29.8%</strong></div>
+          <div><div class="text-muted" style="font-size:12px;">Modal Saat Ini</div><strong style="font-size:18px;" id="pModalNow">—</strong></div>
+          <div><div class="text-muted" style="font-size:12px;">Penjualan Bulan Ini</div><strong style="font-size:18px;" id="pPenjualan">—</strong></div>
+          <div><div class="text-muted" style="font-size:12px;">Keuntungan Bulan Ini</div><strong style="font-size:18px; color:var(--success);" id="pKeuntungan">—</strong></div>
+          <div><div class="text-muted" style="font-size:12px;">Margin</div><strong style="font-size:18px;" id="pMargin">—</strong></div>
         </div>
         <hr style="margin:16px 0; border:none; border-top:1px solid var(--gray-100);">
-        <div class="text-muted" style="font-size:12px; margin-bottom:8px;">Penjualan & Keuntungan per Sub Kategori (Bulan Ini)</div>
-        <table class="data" style="font-size:12.5px">
-          <thead><tr><th>Sub Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr></thead>
-          <tbody>
-            <tr><td>Baju</td><td style="text-align:right">Rp 18.450.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 5.620.000</td></tr>
-            <tr><td>Celana</td><td style="text-align:right">Rp 7.200.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.180.000</td></tr>
-            <tr><td>Aksesoris</td><td style="text-align:right">Rp 2.650.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 650.000</td></tr>
-          </tbody>
-        </table>
-        <div class="text-muted" style="font-size:12px; margin:14px 0 8px;">Penjualan & Keuntungan per Item Produk</div>
-        <table class="data" style="font-size:12.5px">
-          <thead><tr><th>Produk</th><th style="text-align:right">Qty Terjual</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr></thead>
-          <tbody>
-            <tr><td>Batik Tulis Pria</td><td style="text-align:right">38</td><td style="text-align:right">Rp 11.020.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 4.180.000</td></tr>
-            <tr><td>Kemeja Batik Wanita</td><td style="text-align:right">30</td><td style="text-align:right">Rp 7.430.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 1.440.000</td></tr>
-            <tr><td>Celana Batik</td><td style="text-align:right">48</td><td style="text-align:right">Rp 7.200.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.180.000</td></tr>
-            <tr><td>Selendang Batik</td><td style="text-align:right">33</td><td style="text-align:right">Rp 2.650.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 650.000</td></tr>
-          </tbody>
+        <div class="text-muted" style="font-size:12px; margin-bottom:8px;" id="lblSubKat">Produk Terlaris (Bulan Ini)</div>
+        <table class="data" style="font-size:12.5px" id="tblTerlaris">
+          <thead><tr><th>Produk</th><th style="text-align:right">Qty Terjual</th><th style="text-align:right">Penjualan</th></tr></thead>
+          <tbody id="tbodyTerlaris"></tbody>
         </table>
       </div>
       <div class="card">
@@ -93,7 +80,7 @@
           <tbody>
             <tr><td style="color:var(--gray-500)">Status Akun</td><td><span class="badge success">Terverifikasi</span></td></tr>
             <tr><td style="color:var(--gray-500)">Diverifikasi Oleh</td><td>Admin DKUKMPP</td></tr>
-            <tr><td style="color:var(--gray-500)">Tanggal Verifikasi</td><td>06 Jan 2024</td></tr>
+            <tr><td style="color:var(--gray-500)">Tanggal Verifikasi</td><td id="pTglVerif">—</td></tr>
           </tbody>
         </table>
       </div>
@@ -104,19 +91,15 @@
 <!-- ============ DATA MODAL ============ -->
 <div class="view" id="v-modal" style="display:none">
   <div class="stat-grid">
-    <div class="stat"><div class="icon"><span data-ic="wallet"></span></div><div><div class="label">Total Modal</div><div class="value">Rp 62.5 jt</div></div></div>
-    <div class="stat green"><div class="icon"><span data-ic="arrow-up"></span></div><div><div class="label">Modal Masuk</div><div class="value">Rp 62.5 jt</div></div></div>
-    <div class="stat purple"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Pertumbuhan</div><div class="value">+38.9%</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="wallet"></span></div><div><div class="label">Total Modal</div><div class="value" id="mTotal">—</div></div></div>
+    <div class="stat green"><div class="icon"><span data-ic="arrow-up"></span></div><div><div class="label">Modal Masuk</div><div class="value" id="mMasuk">—</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Pertumbuhan</div><div class="value" id="mGrowth">—</div></div></div>
   </div>
   <div class="card">
     <div class="card-title mb-2">Daftar Modal yang Diinput UMKM</div>
     <table class="data" style="font-size:13px">
       <thead><tr><th>Tanggal</th><th>Nama Modal</th><th>Sumber Modal</th><th>Sub Kategori</th><th style="text-align:right">Nominal</th></tr></thead>
-      <tbody>
-        <tr><td>05 Jan 2024</td><td>Modal Awal Usaha</td><td>Modal Sendiri</td><td>Tabungan Pribadi</td><td style="text-align:right">Rp 45.000.000</td></tr>
-        <tr><td>20 Jul 2024</td><td>Pinjaman KUR BRI</td><td>Pinjaman</td><td>Bank (KUR)</td><td style="text-align:right">Rp 12.000.000</td></tr>
-        <tr><td>15 Mar 2025</td><td>Bantuan DKUKMPP</td><td>Hibah</td><td>Hibah DKUKMPP</td><td style="text-align:right">Rp 5.500.000</td></tr>
-      </tbody>
+      <tbody id="tbodyModal"></tbody>
     </table>
   </div>
 </div>
@@ -124,26 +107,10 @@
 <!-- ============ DATA PRODUK ============ -->
 <div class="view" id="v-produk" style="display:none">
   <div class="card">
-    <div class="card-title mb-2">Kategori &amp; Sub Kategori Barang</div>
-    <table class="data" style="font-size:13px">
-      <thead><tr><th>Kategori</th><th>Sub Kategori</th><th style="text-align:right">Jumlah Item</th><th style="text-align:right">Total Stok</th></tr></thead>
-      <tbody>
-        <tr><td>Fashion</td><td>Baju</td><td style="text-align:right">18</td><td style="text-align:right">245 pcs</td></tr>
-        <tr><td>Fashion</td><td>Celana</td><td style="text-align:right">8</td><td style="text-align:right">96 pcs</td></tr>
-        <tr><td>Fashion</td><td>Aksesoris</td><td style="text-align:right">12</td><td style="text-align:right">180 pcs</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="card">
     <div class="card-title mb-2">Daftar Produk</div>
     <table class="data" style="font-size:13px">
-      <thead><tr><th>Kode</th><th>Nama Produk</th><th>Sub Kategori</th><th style="text-align:right">Harga Modal</th><th style="text-align:right">Harga Jual</th><th style="text-align:right">Stok</th></tr></thead>
-      <tbody>
-        <tr><td>P-001</td><td>Batik Tulis Pria</td><td>Baju</td><td style="text-align:right">Rp 180.000</td><td style="text-align:right">Rp 290.000</td><td style="text-align:right">42</td></tr>
-        <tr><td>P-002</td><td>Kemeja Batik Wanita</td><td>Baju</td><td style="text-align:right">Rp 155.000</td><td style="text-align:right">Rp 250.000</td><td style="text-align:right">38</td></tr>
-        <tr><td>P-003</td><td>Celana Batik</td><td>Celana</td><td style="text-align:right">Rp 95.000</td><td style="text-align:right">Rp 150.000</td><td style="text-align:right">28</td></tr>
-        <tr><td>P-004</td><td>Selendang Batik</td><td>Aksesoris</td><td style="text-align:right">Rp 50.000</td><td style="text-align:right">Rp 80.000</td><td style="text-align:right">62</td></tr>
-      </tbody>
+      <thead><tr><th>Kode</th><th>Nama Produk</th><th>Kategori</th><th style="text-align:right">Harga Modal</th><th style="text-align:right">Harga Jual</th><th style="text-align:right">Margin</th><th style="text-align:right">Stok</th><th>Status</th></tr></thead>
+      <tbody id="tbodyProduk"></tbody>
     </table>
   </div>
 </div>
@@ -151,20 +118,15 @@
 <!-- ============ DATA BAHAN BAKU ============ -->
 <div class="view" id="v-bahan" style="display:none">
   <div class="stat-grid">
-    <div class="stat"><div class="icon"><span data-ic="box"></span></div><div><div class="label">Total Item</div><div class="value">12</div></div></div>
-    <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Stok Menipis</div><div class="value">2</div></div></div>
-    <div class="stat purple"><div class="icon"><span data-ic="wallet"></span></div><div><div class="label">Nilai Inventaris</div><div class="value">Rp 18.450.000</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="box"></span></div><div><div class="label">Total Item</div><div class="value" id="bbTotal">—</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Stok Menipis</div><div class="value" id="bbMenipis">—</div></div></div>
+    <div class="stat red"><div class="icon"><span data-ic="x"></span></div><div><div class="label">Stok Habis</div><div class="value" id="bbHabis">0</div></div></div>
   </div>
   <div class="card">
     <div class="card-title mb-2">Daftar Bahan Baku</div>
     <table class="data" style="font-size:13px">
-      <thead><tr><th>Kode</th><th>Nama Bahan</th><th>Kategori</th><th>Satuan</th><th style="text-align:right">Harga/Satuan</th><th style="text-align:right">Stok</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td>BB-001</td><td>Kain Mori</td><td>Pokok</td><td>meter</td><td style="text-align:right">Rp 65.000</td><td style="text-align:right">125</td><td><span class="badge success">Aman</span></td></tr>
-        <tr><td>BB-002</td><td>Pewarna Alami</td><td>Bahan</td><td>kg</td><td style="text-align:right">Rp 180.000</td><td style="text-align:right">8</td><td><span class="badge success">Aman</span></td></tr>
-        <tr><td>BB-003</td><td>Lilin Batik</td><td>Bahan</td><td>kg</td><td style="text-align:right">Rp 45.000</td><td style="text-align:right">2</td><td><span class="badge warning">Hampir</span></td></tr>
-        <tr><td>BB-004</td><td>Plastik Kemasan</td><td>Kemasan</td><td>pcs</td><td style="text-align:right">Rp 850</td><td style="text-align:right">450</td><td><span class="badge success">Aman</span></td></tr>
-      </tbody>
+      <thead><tr><th>Kode</th><th>Nama Bahan</th><th>Satuan</th><th style="text-align:right">Harga/Satuan</th><th style="text-align:right">Stok</th><th>Status</th></tr></thead>
+      <tbody id="tbodyBahan"></tbody>
     </table>
   </div>
 </div>
@@ -172,20 +134,15 @@
 <!-- ============ DATA PENJUALAN ============ -->
 <div class="view" id="v-penjualan" style="display:none">
   <div class="stat-grid">
-    <div class="stat green"><div class="icon"><span data-ic="cart"></span></div><div><div class="label">Penjualan Bulan Ini</div><div class="value">Rp 28.300.000</div></div></div>
-    <div class="stat"><div class="icon"><span data-ic="history"></span></div><div><div class="label">Jumlah Transaksi</div><div class="value">142</div></div></div>
-    <div class="stat orange"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Rata-rata/Hari</div><div class="value">Rp 942.000</div></div></div>
+    <div class="stat green"><div class="icon"><span data-ic="cart"></span></div><div><div class="label">Penjualan Bulan Ini</div><div class="value" id="jPenjualan">—</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="history"></span></div><div><div class="label">Jumlah Transaksi</div><div class="value" id="jTransaksi">—</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Rata-rata/Hari</div><div class="value" id="jRataRata">—</div></div></div>
   </div>
   <div class="card">
     <div class="card-title mb-2">Riwayat Penjualan Terakhir</div>
     <table class="data" style="font-size:13px">
-      <thead><tr><th>Tanggal</th><th>Sub Kategori</th><th>Item</th><th style="text-align:right">Qty</th><th style="text-align:right">Nilai</th></tr></thead>
-      <tbody>
-        <tr><td>10 Jun 2026</td><td>Baju</td><td>Batik Tulis Pria</td><td style="text-align:right">2</td><td style="text-align:right">Rp 580.000</td></tr>
-        <tr><td>10 Jun 2026</td><td>Celana</td><td>Celana Batik</td><td style="text-align:right">3</td><td style="text-align:right">Rp 450.000</td></tr>
-        <tr><td>09 Jun 2026</td><td>Baju</td><td>Kemeja Batik Wanita</td><td style="text-align:right">5</td><td style="text-align:right">Rp 1.250.000</td></tr>
-        <tr><td>08 Jun 2026</td><td>Aksesoris</td><td>Selendang Batik</td><td style="text-align:right">4</td><td style="text-align:right">Rp 320.000</td></tr>
-      </tbody>
+      <thead><tr><th>Tanggal</th><th>Produk</th><th style="text-align:right">Qty</th><th>Metode</th><th style="text-align:right">Total</th></tr></thead>
+      <tbody id="tbodyPenjualan"></tbody>
     </table>
   </div>
 </div>
@@ -193,22 +150,15 @@
 <!-- ============ DATA PENGELUARAN ============ -->
 <div class="view" id="v-pengeluaran" style="display:none">
   <div class="stat-grid">
-    <div class="stat orange"><div class="icon"><span data-ic="money-off"></span></div><div><div class="label">Pengeluaran Bulan Ini</div><div class="value">Rp 19.850.000</div></div></div>
-    <div class="stat"><div class="icon"><span data-ic="history"></span></div><div><div class="label">Jumlah Transaksi</div><div class="value">38</div></div></div>
-    <div class="stat purple"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Kategori Terbesar</div><div class="value" style="font-size:16px;">Bahan Baku</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="money-off"></span></div><div><div class="label">Pengeluaran Bulan Ini</div><div class="value" id="ePengeluaran">—</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="history"></span></div><div><div class="label">Jumlah Transaksi</div><div class="value" id="eTransaksi">—</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Kategori Terbesar</div><div class="value" style="font-size:16px;" id="eKatTerbesar">—</div></div></div>
   </div>
   <div class="card">
-    <div class="card-title mb-2">Rincian Pengeluaran &mdash; Untuk Beli Apa Saja</div>
+    <div class="card-title mb-2">Rincian Pengeluaran</div>
     <table class="data" style="font-size:13px">
-      <thead><tr><th>Tanggal</th><th>Kategori</th><th>Sub Kategori</th><th>Deskripsi</th><th style="text-align:right">Nominal</th></tr></thead>
-      <tbody>
-        <tr><td>10 Jun 2026</td><td>Bahan Baku</td><td>Kain</td><td>Beli kain mori 50 m</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 3.250.000</td></tr>
-        <tr><td>08 Jun 2026</td><td>Bahan Baku</td><td>Pewarna</td><td>Pewarna alami batik</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 820.000</td></tr>
-        <tr><td>07 Jun 2026</td><td>Gaji Karyawan</td><td>Gaji Pokok</td><td>Gaji 8 karyawan minggu I</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 6.400.000</td></tr>
-        <tr><td>05 Jun 2026</td><td>Marketing</td><td>Iklan Online</td><td>Iklan Instagram Ads</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 750.000</td></tr>
-        <tr><td>03 Jun 2026</td><td>Operasional</td><td>Listrik</td><td>Listrik bulan Mei</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 480.000</td></tr>
-        <tr><td>01 Jun 2026</td><td>Sewa Tempat</td><td>Sewa Tempat</td><td>Sewa workshop bulan Juni</td><td style="text-align:right;color:var(--danger);font-weight:600">Rp 2.500.000</td></tr>
-      </tbody>
+      <thead><tr><th>Tanggal</th><th>Kategori</th><th>Deskripsi</th><th style="text-align:right">Nominal</th></tr></thead>
+      <tbody id="tbodyPengeluaran"></tbody>
     </table>
   </div>
 </div>
@@ -216,39 +166,23 @@
 <!-- ============ DATA KEUNTUNGAN ============ -->
 <div class="view" id="v-keuntungan" style="display:none">
   <div class="stat-grid">
-    <div class="stat green"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Keuntungan Bulan Ini</div><div class="value">Rp 8.450.000</div></div></div>
-    <div class="stat"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Margin</div><div class="value">29.8%</div></div></div>
-    <div class="stat purple"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Rata-rata/Bulan (6 bln)</div><div class="value">Rp 6.96 jt</div></div></div>
+    <div class="stat green"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Keuntungan Bulan Ini</div><div class="value" id="kKeuntungan">—</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Margin</div><div class="value" id="kMargin">—</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="calendar"></span></div><div><div class="label">Rata-rata/Bulan (6 bln)</div><div class="value" id="kRata">—</div></div></div>
   </div>
   <div class="card">
     <div class="card-title mb-2">Tren Keuntungan 6 Bulan Terakhir</div>
     <div class="chart-wrap sm"><canvas id="cProfit"></canvas></div>
-  </div>
-  <div class="card">
-    <div class="card-title mb-2">Keuntungan per Sub Kategori</div>
-    <table class="data" style="font-size:13px">
-      <thead><tr><th>Sub Kategori</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Keuntungan</th></tr></thead>
-      <tbody>
-        <tr><td>Baju</td><td style="text-align:right">Rp 18.450.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 5.620.000</td></tr>
-        <tr><td>Celana</td><td style="text-align:right">Rp 7.200.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 2.180.000</td></tr>
-        <tr><td>Aksesoris</td><td style="text-align:right">Rp 2.650.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 650.000</td></tr>
-      </tbody>
-    </table>
   </div>
 </div>
 
 <!-- ============ DATA LAPORAN ============ -->
 <div class="view" id="v-laporan" style="display:none">
   <div class="card">
-    <div class="card-title mb-2">Laporan Keuangan yang Diunggah UMKM</div>
+    <div class="card-title mb-2">Laporan Keuangan</div>
     <table class="data" style="font-size:13px">
       <thead><tr><th>Periode</th><th>Jenis</th><th style="text-align:right">Penjualan</th><th style="text-align:right">Pengeluaran</th><th style="text-align:right">Keuntungan</th><th>Aksi</th></tr></thead>
-      <tbody>
-        <tr><td>Juni 2026</td><td>Bulanan</td><td style="text-align:right">Rp 28.300.000</td><td style="text-align:right">Rp 19.850.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 8.450.000</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>
-        <tr><td>Mei 2026</td><td>Bulanan</td><td style="text-align:right">Rp 26.420.000</td><td style="text-align:right">Rp 18.420.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 8.000.000</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>
-        <tr><td>April 2026</td><td>Bulanan</td><td style="text-align:right">Rp 24.180.000</td><td style="text-align:right">Rp 16.680.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 7.500.000</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>
-        <tr><td>Q1 2026</td><td>Kuartalan</td><td style="text-align:right">Rp 68.420.000</td><td style="text-align:right">Rp 47.620.000</td><td style="text-align:right;color:var(--success);font-weight:600">Rp 20.800.000</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>
-      </tbody>
+      <tbody id="tbodyLaporan"></tbody>
     </table>
   </div>
 </div>
@@ -257,23 +191,779 @@
 <script src="../icons.js"></script>
 <script src="../sidebar.js"></script>
 <script>
-  const tabs = document.querySelectorAll('#detailTabs .tab');
-  const views = ['profil','modal','produk','bahan','penjualan','pengeluaran','keuntungan','laporan'];
-  tabs.forEach(t => t.addEventListener('click', () => {
-    tabs.forEach(x => x.classList.toggle('active', x===t));
-    const v = t.dataset.view;
-    views.forEach(name => {
-      document.getElementById('v-'+name).style.display = (name===v) ? '' : 'none';
+// ──────────────── DATA MAP 15 UMKM ────────────────
+const DB = {
+  'UMK-001': {
+    nama:'Otak-Otak Khas Cirebon', pemilik:'Wimpi Wirawan Jasa', kategori:'Kuliner', jenis:'Otak-Otak',
+    alamat:'Jl. Pekalipan IV No. 101', telp:'0812-1100-2201', email:'otak.otak.cirebon@email.com',
+    karyawan:'4 orang', modalAwal:'Rp 8.000.000', modalNow:'Rp 12.800.000',
+    tglBergabung:'12 Feb 2024', tglVerif:'13 Feb 2024',
+    penjualan:'Rp 11.200.000', keuntungan:'Rp 4.100.000', margin:'36.6%',
+    modalTotal:'Rp 12.800.000', modalMasuk:'Rp 4.800.000', modalGrowth:'+60.0%',
+    modalRows:[
+      ['12 Feb 2024','Modal Awal Usaha','Modal Sendiri','Tabungan Pribadi','Rp 8.000.000'],
+      ['10 Agt 2024','Pinjaman KUR','Pinjaman','Bank (KUR)','Rp 4.800.000'],
+    ],
+    produkRows:[
+      ['P-001','Otak-Otak Bakar Original','Kuliner','Rp 2.500','Rp 5.000','50.0%','120','Aman'],
+      ['P-002','Otak-Otak Ikan Tenggiri','Kuliner','Rp 3.000','Rp 6.000','50.0%','85','Aman'],
+      ['P-003','Otak-Otak Pedas','Kuliner','Rp 2.500','Rp 5.000','50.0%','42','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Ikan Tenggiri','kg','Rp 55.000','20','Aman'],
+      ['BB-002','Daun Pisang','ikat','Rp 8.000','15','Aman'],
+      ['BB-003','Bumbu Rempah','kg','Rp 35.000','3','Menipis'],
+    ],
+    jPenjualan:'Rp 11.200.000', jTransaksi:'248', jRata:'Rp 373.000',
+    jRows:[
+      ['12 Jun 2026','Otak-Otak Bakar Original','50','Tunai','Rp 250.000'],
+      ['11 Jun 2026','Otak-Otak Ikan Tenggiri','30','QRIS','Rp 180.000'],
+      ['10 Jun 2026','Otak-Otak Pedas','45','Tunai','Rp 225.000'],
+      ['09 Jun 2026','Otak-Otak Bakar Original','60','Transfer','Rp 300.000'],
+    ],
+    ePengeluaran:'Rp 7.100.000', eTransaksi:'12', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Beli ikan tenggiri 15 kg','Rp 825.000'],
+      ['08 Jun 2026','Bahan Baku','Beli bumbu rempah','Rp 350.000'],
+      ['05 Jun 2026','Operasional','Gas LPG 3 tabung','Rp 180.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji karyawan bulan Juni','Rp 3.200.000'],
+    ],
+    kKeuntungan:'Rp 4.100.000', kMargin:'36.6%', kRata:'Rp 3.2 jt',
+    kData:[2.8,3.1,3.4,3.8,4.0,4.1],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 11.200.000','Rp 7.100.000','Rp 4.100.000'],
+      ['Mei 2026','Bulanan','Rp 10.500.000','Rp 6.800.000','Rp 3.700.000'],
+      ['April 2026','Bulanan','Rp 9.800.000','Rp 6.400.000','Rp 3.400.000'],
+      ['Q1 2026','Kuartalan','Rp 28.000.000','Rp 18.200.000','Rp 9.800.000'],
+    ],
+    terlaris:[['Otak-Otak Bakar Original','312 pcs','Rp 1.560.000'],['Otak-Otak Ikan Tenggiri','186 pcs','Rp 1.116.000'],['Otak-Otak Pedas','148 pcs','Rp 740.000']],
+  },
+  'UMK-002': {
+    nama:'Basreng Crispy', pemilik:'Soleh Hudin', kategori:'Kuliner', jenis:'Basreng',
+    alamat:'Jl. Pekalipan Utara No. 133', telp:'0813-2200-3302', email:'basreng.crispy@email.com',
+    karyawan:'2 orang', modalAwal:'Rp 5.000.000', modalNow:'Rp 7.500.000',
+    tglBergabung:'20 Mar 2024', tglVerif:'21 Mar 2024',
+    penjualan:'Rp 8.400.000', keuntungan:'Rp 2.900.000', margin:'34.5%',
+    modalTotal:'Rp 7.500.000', modalMasuk:'Rp 2.500.000', modalGrowth:'+50.0%',
+    modalRows:[
+      ['20 Mar 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 5.000.000'],
+      ['15 Sep 2024','Tambahan Modal','Pinjaman','Koperasi','Rp 2.500.000'],
+    ],
+    produkRows:[
+      ['P-001','Basreng Original','Kuliner','Rp 3.000','Rp 8.000','62.5%','200','Aman'],
+      ['P-002','Basreng Pedas','Kuliner','Rp 3.000','Rp 8.000','62.5%','150','Aman'],
+      ['P-003','Basreng Keju','Kuliner','Rp 3.500','Rp 9.000','61.1%','80','Menipis'],
+    ],
+    bahanRows:[
+      ['BB-001','Bakso Ikan','kg','Rp 45.000','15','Aman'],
+      ['BB-002','Minyak Goreng','liter','Rp 16.000','10','Aman'],
+      ['BB-003','Bumbu Pedas','bungkus','Rp 5.000','5','Menipis'],
+    ],
+    jPenjualan:'Rp 8.400.000', jTransaksi:'186', jRata:'Rp 280.000',
+    jRows:[
+      ['12 Jun 2026','Basreng Pedas','30','Tunai','Rp 240.000'],
+      ['11 Jun 2026','Basreng Original','50','QRIS','Rp 400.000'],
+      ['10 Jun 2026','Basreng Keju','20','Tunai','Rp 180.000'],
+    ],
+    ePengeluaran:'Rp 5.500.000', eTransaksi:'8', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Beli bakso ikan 10 kg','Rp 450.000'],
+      ['07 Jun 2026','Bahan Baku','Minyak goreng 20 liter','Rp 320.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji karyawan','Rp 2.400.000'],
+    ],
+    kKeuntungan:'Rp 2.900.000', kMargin:'34.5%', kRata:'Rp 2.4 jt',
+    kData:[1.8,2.0,2.2,2.5,2.7,2.9],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 8.400.000','Rp 5.500.000','Rp 2.900.000'],
+      ['Mei 2026','Bulanan','Rp 7.800.000','Rp 5.100.000','Rp 2.700.000'],
+      ['Q1 2026','Kuartalan','Rp 21.000.000','Rp 14.400.000','Rp 6.600.000'],
+    ],
+    terlaris:[['Basreng Original','580 pcs','Rp 4.640.000'],['Basreng Pedas','420 pcs','Rp 3.360.000'],['Basreng Keju','200 pcs','Rp 1.800.000']],
+  },
+  'UMK-003': {
+    nama:'Sari Putri', pemilik:'Yeti Sumaryati', kategori:'Kuliner', jenis:'Kripik Kentang, Sumpia Rebon, Sambosa',
+    alamat:'Jl. Pekalipan Utara Gg. V No. 29', telp:'0814-3300-4403', email:'sari.putri@email.com',
+    karyawan:'3 orang', modalAwal:'Rp 7.000.000', modalNow:'Rp 9.800.000',
+    tglBergabung:'05 Apr 2024', tglVerif:'06 Apr 2024',
+    penjualan:'Rp 9.400.000', keuntungan:'Rp 3.200.000', margin:'34.0%',
+    modalTotal:'Rp 9.800.000', modalMasuk:'Rp 2.800.000', modalGrowth:'+40.0%',
+    modalRows:[
+      ['05 Apr 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 7.000.000'],
+      ['10 Nov 2024','Pinjaman KUR','Pinjaman','Bank (KUR)','Rp 2.800.000'],
+    ],
+    produkRows:[
+      ['P-001','Kripik Kentang Original','Kuliner','Rp 8.000','Rp 15.000','46.7%','80','Aman'],
+      ['P-002','Sumpia Rebon','Kuliner','Rp 6.000','Rp 12.000','50.0%','60','Aman'],
+      ['P-003','Sambosa Isi Ayam','Kuliner','Rp 7.500','Rp 14.000','46.4%','45','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Kentang','kg','Rp 12.000','25','Aman'],
+      ['BB-002','Rebon / Udang Kering','kg','Rp 80.000','5','Menipis'],
+      ['BB-003','Minyak Goreng','liter','Rp 16.000','8','Aman'],
+    ],
+    jPenjualan:'Rp 9.400.000', jTransaksi:'164', jRata:'Rp 313.000',
+    jRows:[
+      ['12 Jun 2026','Kripik Kentang Original','20','Tunai','Rp 300.000'],
+      ['11 Jun 2026','Sumpia Rebon','15','QRIS','Rp 180.000'],
+      ['10 Jun 2026','Sambosa Isi Ayam','12','Tunai','Rp 168.000'],
+    ],
+    ePengeluaran:'Rp 6.200.000', eTransaksi:'10', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Kentang 20 kg','Rp 240.000'],
+      ['08 Jun 2026','Bahan Baku','Rebon kering 3 kg','Rp 240.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji 3 karyawan','Rp 2.700.000'],
+    ],
+    kKeuntungan:'Rp 3.200.000', kMargin:'34.0%', kRata:'Rp 2.7 jt',
+    kData:[2.1,2.3,2.5,2.7,2.9,3.2],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 9.400.000','Rp 6.200.000','Rp 3.200.000'],
+      ['Mei 2026','Bulanan','Rp 8.700.000','Rp 5.800.000','Rp 2.900.000'],
+      ['Q1 2026','Kuartalan','Rp 24.000.000','Rp 16.200.000','Rp 7.800.000'],
+    ],
+    terlaris:[['Kripik Kentang Original','320 pcs','Rp 4.800.000'],['Sumpia Rebon','240 pcs','Rp 2.880.000'],['Sambosa Isi Ayam','180 pcs','Rp 2.520.000']],
+  },
+  'UMK-004': {
+    nama:'Warung Watini', pemilik:'Watini', kategori:'Lain-lain', jenis:'Sembako',
+    alamat:'Jl. P. Suryanegara Gg. Langgar No. 18', telp:'0815-4400-5504', email:'warung.watini@email.com',
+    karyawan:'1 orang', modalAwal:'Rp 10.000.000', modalNow:'Rp 8.000.000',
+    tglBergabung:'15 Jan 2024', tglVerif:'16 Jan 2024',
+    penjualan:'Rp 3.800.000', keuntungan:'-Rp 300.000', margin:'-7.9%',
+    modalTotal:'Rp 8.000.000', modalMasuk:'Rp 0', modalGrowth:'-20.0%',
+    modalRows:[
+      ['15 Jan 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 10.000.000'],
+    ],
+    produkRows:[
+      ['P-001','Beras Premium 5kg','Lain-lain','Rp 60.000','Rp 68.000','11.8%','30','Aman'],
+      ['P-002','Minyak Goreng 1L','Lain-lain','Rp 15.000','Rp 17.000','11.8%','25','Aman'],
+      ['P-003','Gula Pasir 1kg','Lain-lain','Rp 14.000','Rp 16.000','12.5%','20','Menipis'],
+    ],
+    bahanRows:[
+      ['BB-001','Beras','kg','Rp 12.000','150','Aman'],
+      ['BB-002','Minyak Goreng','liter','Rp 15.000','40','Aman'],
+      ['BB-003','Gula Pasir','kg','Rp 14.000','18','Menipis'],
+    ],
+    jPenjualan:'Rp 3.800.000', jTransaksi:'98', jRata:'Rp 127.000',
+    jRows:[
+      ['12 Jun 2026','Beras Premium 5kg','3','Tunai','Rp 204.000'],
+      ['11 Jun 2026','Minyak Goreng 1L','5','Tunai','Rp 85.000'],
+      ['10 Jun 2026','Gula Pasir 1kg','4','Tunai','Rp 64.000'],
+    ],
+    ePengeluaran:'Rp 4.100.000', eTransaksi:'15', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Stok beras 50 kg','Rp 600.000'],
+      ['08 Jun 2026','Bahan Baku','Stok minyak goreng','Rp 450.000'],
+      ['01 Jun 2026','Sewa Tempat','Sewa kios bulan Juni','Rp 1.500.000'],
+    ],
+    kKeuntungan:'-Rp 300.000', kMargin:'-7.9%', kRata:'Rp 0.2 jt',
+    kData:[0.5,0.3,0.2,0.1,-0.1,-0.3],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 3.800.000','Rp 4.100.000','-Rp 300.000'],
+      ['Mei 2026','Bulanan','Rp 4.100.000','Rp 4.000.000','Rp 100.000'],
+      ['Q1 2026','Kuartalan','Rp 14.000.000','Rp 13.500.000','Rp 500.000'],
+    ],
+    terlaris:[['Beras Premium 5kg','92 pcs','Rp 6.256.000'],['Minyak Goreng 1L','120 pcs','Rp 2.040.000'],['Gula Pasir 1kg','80 pcs','Rp 1.280.000']],
+  },
+  'UMK-005': {
+    nama:'Bawang Goreng Mama Rosi', pemilik:'Rosyyani', kategori:'Kuliner', jenis:'Bawang Goreng Aneka Rasa, Bawang Sumenep, Bawang Putih',
+    alamat:'Jl. Pegajahan Selatan No. 33 RT. 02/05', telp:'0816-5500-6605', email:'bawang.mamarosi@email.com',
+    karyawan:'5 orang', modalAwal:'Rp 20.000.000', modalNow:'Rp 34.280.000',
+    tglBergabung:'08 Jan 2024', tglVerif:'09 Jan 2024',
+    penjualan:'Rp 15.800.000', keuntungan:'Rp 6.200.000', margin:'39.2%',
+    modalTotal:'Rp 34.280.000', modalMasuk:'Rp 14.280.000', modalGrowth:'+71.4%',
+    modalRows:[
+      ['08 Jan 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 20.000.000'],
+      ['20 Jun 2024','KUR BRI','Pinjaman','Bank (KUR)','Rp 10.000.000'],
+      ['15 Feb 2025','Hibah Program DKUKMPP','Hibah','Hibah DKUKMPP','Rp 4.280.000'],
+    ],
+    produkRows:[
+      ['P-001','Bawang Goreng Sumenep 100g','Kuliner','Rp 18.000','Rp 35.000','48.6%','150','Aman'],
+      ['P-002','Bawang Goreng Pedas 100g','Kuliner','Rp 18.000','Rp 35.000','48.6%','120','Aman'],
+      ['P-003','Bawang Putih Goreng 100g','Kuliner','Rp 20.000','Rp 38.000','47.4%','80','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Bawang Merah Sumenep','kg','Rp 40.000','30','Aman'],
+      ['BB-002','Bawang Putih','kg','Rp 35.000','20','Aman'],
+      ['BB-003','Minyak Goreng','liter','Rp 16.000','25','Aman'],
+      ['BB-004','Plastik Kemasan','pcs','Rp 500','500','Aman'],
+    ],
+    jPenjualan:'Rp 15.800.000', jTransaksi:'312', jRata:'Rp 527.000',
+    jRows:[
+      ['12 Jun 2026','Bawang Goreng Sumenep 100g','50','Tunai','Rp 1.750.000'],
+      ['11 Jun 2026','Bawang Goreng Pedas 100g','40','QRIS','Rp 1.400.000'],
+      ['10 Jun 2026','Bawang Putih Goreng 100g','30','Transfer','Rp 1.140.000'],
+    ],
+    ePengeluaran:'Rp 9.600.000', eTransaksi:'14', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Bawang Sumenep 20 kg','Rp 800.000'],
+      ['08 Jun 2026','Bahan Baku','Minyak goreng 30 liter','Rp 480.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji 5 karyawan','Rp 5.000.000'],
+    ],
+    kKeuntungan:'Rp 6.200.000', kMargin:'39.2%', kRata:'Rp 5.0 jt',
+    kData:[3.5,4.0,4.5,5.0,5.5,6.2],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 15.800.000','Rp 9.600.000','Rp 6.200.000'],
+      ['Mei 2026','Bulanan','Rp 14.200.000','Rp 8.700.000','Rp 5.500.000'],
+      ['Q1 2026','Kuartalan','Rp 40.000.000','Rp 25.500.000','Rp 14.500.000'],
+    ],
+    terlaris:[['Bawang Goreng Sumenep 100g','580 pcs','Rp 20.300.000'],['Bawang Goreng Pedas 100g','420 pcs','Rp 14.700.000'],['Bawang Putih Goreng 100g','280 pcs','Rp 10.640.000']],
+  },
+  'UMK-006': {
+    nama:'Nyusoe', pemilik:'Nanda Ramadhan', kategori:'Kuliner', jenis:'Susu Sapi, Catering',
+    alamat:'Pegajahan Selatan No. 50', telp:'0817-6600-7706', email:'nyusoe@email.com',
+    karyawan:'3 orang', modalAwal:'Rp 12.000.000', modalNow:'Rp 14.400.000',
+    tglBergabung:'22 Feb 2024', tglVerif:'23 Feb 2024',
+    penjualan:'Rp 6.800.000', keuntungan:'Rp 1.800.000', margin:'26.5%',
+    modalTotal:'Rp 14.400.000', modalMasuk:'Rp 2.400.000', modalGrowth:'+20.0%',
+    modalRows:[
+      ['22 Feb 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 12.000.000'],
+      ['01 Aug 2024','Tambahan','Pinjaman','Koperasi','Rp 2.400.000'],
+    ],
+    produkRows:[
+      ['P-001','Susu Sapi Segar 250ml','Kuliner','Rp 4.000','Rp 8.000','50.0%','50','Aman'],
+      ['P-002','Susu Rasa Stroberi','Kuliner','Rp 4.500','Rp 9.000','50.0%','40','Aman'],
+      ['P-003','Paket Catering Nasi Box','Kuliner','Rp 20.000','Rp 35.000','42.9%','10','Menipis'],
+    ],
+    bahanRows:[
+      ['BB-001','Susu Segar','liter','Rp 8.000','20','Aman'],
+      ['BB-002','Gula Pasir','kg','Rp 14.000','5','Aman'],
+      ['BB-003','Kemasan Botol','pcs','Rp 1.000','200','Aman'],
+    ],
+    jPenjualan:'Rp 6.800.000', jTransaksi:'142', jRata:'Rp 227.000',
+    jRows:[
+      ['12 Jun 2026','Susu Sapi Segar 250ml','30','Tunai','Rp 240.000'],
+      ['11 Jun 2026','Susu Rasa Stroberi','25','QRIS','Rp 225.000'],
+      ['10 Jun 2026','Paket Catering Nasi Box','5','Transfer','Rp 175.000'],
+    ],
+    ePengeluaran:'Rp 5.000.000', eTransaksi:'9', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Susu segar 15 liter','Rp 120.000'],
+      ['05 Jun 2026','Operasional','Gas memasak','Rp 150.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji 3 karyawan','Rp 2.700.000'],
+    ],
+    kKeuntungan:'Rp 1.800.000', kMargin:'26.5%', kRata:'Rp 1.5 jt',
+    kData:[1.1,1.2,1.4,1.5,1.6,1.8],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 6.800.000','Rp 5.000.000','Rp 1.800.000'],
+      ['Mei 2026','Bulanan','Rp 6.500.000','Rp 4.900.000','Rp 1.600.000'],
+      ['Q1 2026','Kuartalan','Rp 18.000.000','Rp 13.500.000','Rp 4.500.000'],
+    ],
+    terlaris:[['Susu Sapi Segar 250ml','420 pcs','Rp 3.360.000'],['Susu Rasa Stroberi','280 pcs','Rp 2.520.000'],['Catering Nasi Box','28 pcs','Rp 980.000']],
+  },
+  'UMK-007': {
+    nama:'Siwang Umi Ami', pemilik:'Aminah', kategori:'Kuliner', jenis:'Siwang, Triwang, Bawang Goreng',
+    alamat:'Pulasaren Barat Gg. Sobari No. 156', telp:'0818-7700-8807', email:'siwang.umia@email.com',
+    karyawan:'2 orang', modalAwal:'Rp 6.000.000', modalNow:'Rp 8.400.000',
+    tglBergabung:'18 Mar 2024', tglVerif:'19 Mar 2024',
+    penjualan:'Rp 7.200.000', keuntungan:'Rp 2.400.000', margin:'33.3%',
+    modalTotal:'Rp 8.400.000', modalMasuk:'Rp 2.400.000', modalGrowth:'+40.0%',
+    modalRows:[
+      ['18 Mar 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 6.000.000'],
+      ['10 Oct 2024','Pinjaman Koperasi','Pinjaman','Koperasi','Rp 2.400.000'],
+    ],
+    produkRows:[
+      ['P-001','Siwang Original 100g','Kuliner','Rp 8.000','Rp 18.000','55.6%','80','Aman'],
+      ['P-002','Triwang Pedas 100g','Kuliner','Rp 8.000','Rp 18.000','55.6%','60','Aman'],
+      ['P-003','Bawang Goreng Umi 100g','Kuliner','Rp 12.000','Rp 25.000','52.0%','40','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Siwang (Ikan)','kg','Rp 30.000','10','Aman'],
+      ['BB-002','Bawang Merah','kg','Rp 35.000','5','Menipis'],
+      ['BB-003','Minyak Goreng','liter','Rp 16.000','8','Aman'],
+    ],
+    jPenjualan:'Rp 7.200.000', jTransaksi:'168', jRata:'Rp 240.000',
+    jRows:[
+      ['12 Jun 2026','Siwang Original 100g','40','Tunai','Rp 720.000'],
+      ['11 Jun 2026','Triwang Pedas 100g','30','QRIS','Rp 540.000'],
+      ['10 Jun 2026','Bawang Goreng Umi 100g','20','Tunai','Rp 500.000'],
+    ],
+    ePengeluaran:'Rp 4.800.000', eTransaksi:'8', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Siwang ikan segar','Rp 300.000'],
+      ['08 Jun 2026','Bahan Baku','Bawang merah 5 kg','Rp 175.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji karyawan','Rp 2.400.000'],
+    ],
+    kKeuntungan:'Rp 2.400.000', kMargin:'33.3%', kRata:'Rp 2.0 jt',
+    kData:[1.5,1.7,1.9,2.1,2.2,2.4],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 7.200.000','Rp 4.800.000','Rp 2.400.000'],
+      ['Mei 2026','Bulanan','Rp 6.800.000','Rp 4.600.000','Rp 2.200.000'],
+      ['Q1 2026','Kuartalan','Rp 19.000.000','Rp 13.000.000','Rp 6.000.000'],
+    ],
+    terlaris:[['Siwang Original 100g','380 pcs','Rp 6.840.000'],['Triwang Pedas 100g','280 pcs','Rp 5.040.000'],['Bawang Goreng Umi 100g','160 pcs','Rp 4.000.000']],
+  },
+  'UMK-008': {
+    nama:'Galang Cucur', pemilik:'Nursamsi Suprayogi', kategori:'Kuliner', jenis:'Kue Cucur',
+    alamat:'Pekalipan Utara Gg. V No. 29 RT.02/01', telp:'0819-8800-9908', email:'galang.cucur@email.com',
+    karyawan:'2 orang', modalAwal:'Rp 4.000.000', modalNow:'Rp 4.800.000',
+    tglBergabung:'28 Apr 2024', tglVerif:'29 Apr 2024',
+    penjualan:'Rp 4.800.000', keuntungan:'Rp 900.000', margin:'18.8%',
+    modalTotal:'Rp 4.800.000', modalMasuk:'Rp 800.000', modalGrowth:'+20.0%',
+    modalRows:[
+      ['28 Apr 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 4.000.000'],
+      ['05 Jan 2025','Tabungan Usaha','Modal Sendiri','Tabungan Pribadi','Rp 800.000'],
+    ],
+    produkRows:[
+      ['P-001','Kue Cucur Original','Kuliner','Rp 1.500','Rp 3.000','50.0%','100','Aman'],
+      ['P-002','Kue Cucur Gula Merah','Kuliner','Rp 1.800','Rp 3.500','48.6%','80','Aman'],
+      ['P-003','Kue Cucur Pandan','Kuliner','Rp 1.800','Rp 3.500','48.6%','60','Menipis'],
+    ],
+    bahanRows:[
+      ['BB-001','Tepung Beras','kg','Rp 12.000','10','Aman'],
+      ['BB-002','Gula Merah','kg','Rp 20.000','5','Aman'],
+      ['BB-003','Kelapa Parut','kg','Rp 18.000','2','Menipis'],
+    ],
+    jPenjualan:'Rp 4.800.000', jTransaksi:'118', jRata:'Rp 160.000',
+    jRows:[
+      ['12 Jun 2026','Kue Cucur Original','60','Tunai','Rp 180.000'],
+      ['11 Jun 2026','Kue Cucur Gula Merah','40','Tunai','Rp 140.000'],
+      ['10 Jun 2026','Kue Cucur Pandan','30','Tunai','Rp 105.000'],
+    ],
+    ePengeluaran:'Rp 3.900.000', eTransaksi:'9', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Tepung beras 8 kg','Rp 96.000'],
+      ['08 Jun 2026','Bahan Baku','Gula merah 4 kg','Rp 80.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji karyawan','Rp 2.400.000'],
+    ],
+    kKeuntungan:'Rp 900.000', kMargin:'18.8%', kRata:'Rp 0.7 jt',
+    kData:[0.5,0.6,0.7,0.7,0.8,0.9],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 4.800.000','Rp 3.900.000','Rp 900.000'],
+      ['Mei 2026','Bulanan','Rp 4.500.000','Rp 3.700.000','Rp 800.000'],
+      ['Q1 2026','Kuartalan','Rp 12.600.000','Rp 10.500.000','Rp 2.100.000'],
+    ],
+    terlaris:[['Kue Cucur Original','680 pcs','Rp 2.040.000'],['Kue Cucur Gula Merah','480 pcs','Rp 1.680.000'],['Kue Cucur Pandan','320 pcs','Rp 1.120.000']],
+  },
+  'UMK-009': {
+    nama:'Azza Cake & Cookies', pemilik:'Fitriah Pratiwi', kategori:'Kuliner', jenis:'Kue, Kuliner',
+    alamat:'Jl. Kembar Gg. Syamsu No. 2 RT. 01/08', telp:'0820-9900-0009', email:'azza.cake@email.com',
+    karyawan:'6 orang', modalAwal:'Rp 24.000.000', modalNow:'Rp 56.000.000',
+    tglBergabung:'10 Jan 2024', tglVerif:'11 Jan 2024',
+    penjualan:'Rp 18.300.000', keuntungan:'Rp 7.880.000', margin:'43.1%',
+    modalTotal:'Rp 56.000.000', modalMasuk:'Rp 32.000.000', modalGrowth:'+133.3%',
+    modalRows:[
+      ['10 Jan 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 24.000.000'],
+      ['15 Jul 2024','KUR BRI','Pinjaman','Bank (KUR)','Rp 20.000.000'],
+      ['10 Mar 2025','Hibah DKUKMPP','Hibah','Hibah DKUKMPP','Rp 12.000.000'],
+    ],
+    produkRows:[
+      ['P-001','Nastar Premium','Kuliner','Rp 40.000','Rp 85.000','52.9%','80','Aman'],
+      ['P-002','Brownies Coklat','Kuliner','Rp 30.000','Rp 65.000','53.8%','60','Aman'],
+      ['P-003','Kue Bolu Pandan','Kuliner','Rp 25.000','Rp 55.000','54.5%','45','Aman'],
+      ['P-004','Kue Kering Lebaran','Kuliner','Rp 50.000','Rp 110.000','54.5%','35','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Tepung Terigu','kg','Rp 12.000','25','Aman'],
+      ['BB-002','Mentega Premium','kg','Rp 85.000','8','Aman'],
+      ['BB-003','Coklat Batang','kg','Rp 120.000','5','Menipis'],
+      ['BB-004','Telur Ayam','kg','Rp 28.000','10','Aman'],
+    ],
+    jPenjualan:'Rp 18.300.000', jTransaksi:'214', jRata:'Rp 610.000',
+    jRows:[
+      ['12 Jun 2026','Nastar Premium','20','Transfer','Rp 1.700.000'],
+      ['11 Jun 2026','Brownies Coklat','15','QRIS','Rp 975.000'],
+      ['10 Jun 2026','Kue Bolu Pandan','12','Tunai','Rp 660.000'],
+    ],
+    ePengeluaran:'Rp 10.420.000', eTransaksi:'16', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Tepung terigu 20 kg','Rp 240.000'],
+      ['08 Jun 2026','Bahan Baku','Mentega premium 5 kg','Rp 425.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji 6 karyawan','Rp 5.400.000'],
+    ],
+    kKeuntungan:'Rp 7.880.000', kMargin:'43.1%', kRata:'Rp 6.2 jt',
+    kData:[4.0,4.5,5.2,5.8,6.5,7.88],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 18.300.000','Rp 10.420.000','Rp 7.880.000'],
+      ['Mei 2026','Bulanan','Rp 16.500.000','Rp 9.800.000','Rp 6.700.000'],
+      ['Q1 2026','Kuartalan','Rp 45.000.000','Rp 26.500.000','Rp 18.500.000'],
+    ],
+    terlaris:[['Nastar Premium','480 pcs','Rp 40.800.000'],['Brownies Coklat','360 pcs','Rp 23.400.000'],['Kue Kering Lebaran','240 pcs','Rp 26.400.000']],
+  },
+  'UMK-010': {
+    nama:'Mamito Kitchen', pemilik:'Siti Masitoh', kategori:'Lain-lain', jenis:'Bawang Putih',
+    alamat:'Jl. Pekalipan Gg. V No. 6', telp:'0821-0011-1100', email:'mamito.kitchen@email.com',
+    karyawan:'2 orang', modalAwal:'Rp 5.000.000', modalNow:'Rp 6.200.000',
+    tglBergabung:'05 May 2024', tglVerif:'06 May 2024',
+    penjualan:'Rp 5.400.000', keuntungan:'Rp 1.600.000', margin:'29.6%',
+    modalTotal:'Rp 6.200.000', modalMasuk:'Rp 1.200.000', modalGrowth:'+24.0%',
+    modalRows:[
+      ['05 May 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 5.000.000'],
+      ['10 Jan 2025','Tabungan Usaha','Modal Sendiri','Tabungan Pribadi','Rp 1.200.000'],
+    ],
+    produkRows:[
+      ['P-001','Bawang Putih Kupas 250g','Lain-lain','Rp 8.000','Rp 15.000','46.7%','60','Aman'],
+      ['P-002','Bawang Putih Goreng 100g','Lain-lain','Rp 10.000','Rp 20.000','50.0%','40','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Bawang Putih','kg','Rp 30.000','20','Aman'],
+      ['BB-002','Kemasan Plastik','pcs','Rp 500','200','Aman'],
+    ],
+    jPenjualan:'Rp 5.400.000', jTransaksi:'124', jRata:'Rp 180.000',
+    jRows:[
+      ['12 Jun 2026','Bawang Putih Kupas 250g','30','Tunai','Rp 450.000'],
+      ['11 Jun 2026','Bawang Putih Goreng 100g','20','QRIS','Rp 400.000'],
+    ],
+    ePengeluaran:'Rp 3.800.000', eTransaksi:'7', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Bawang putih 15 kg','Rp 450.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji karyawan','Rp 2.400.000'],
+    ],
+    kKeuntungan:'Rp 1.600.000', kMargin:'29.6%', kRata:'Rp 1.3 jt',
+    kData:[0.9,1.0,1.1,1.3,1.4,1.6],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 5.400.000','Rp 3.800.000','Rp 1.600.000'],
+      ['Mei 2026','Bulanan','Rp 5.000.000','Rp 3.600.000','Rp 1.400.000'],
+      ['Q1 2026','Kuartalan','Rp 14.000.000','Rp 10.200.000','Rp 3.800.000'],
+    ],
+    terlaris:[['Bawang Putih Kupas 250g','360 pcs','Rp 5.400.000'],['Bawang Putih Goreng 100g','240 pcs','Rp 4.800.000']],
+  },
+  'UMK-011': {
+    nama:'Batik Al Fitri', pemilik:'Al Fitria', kategori:'Fashion', jenis:'Batik',
+    alamat:'Jl. Pegajahan Selatan No. 38 RT. 02/05', telp:'0822-1122-2211', email:'batik.alfitri@email.com',
+    karyawan:'8 orang', modalAwal:'Rp 25.000.000', modalNow:'Rp 45.000.000',
+    tglBergabung:'03 Jan 2024', tglVerif:'04 Jan 2024',
+    penjualan:'Rp 14.200.000', keuntungan:'Rp 4.150.000', margin:'29.2%',
+    modalTotal:'Rp 45.000.000', modalMasuk:'Rp 20.000.000', modalGrowth:'+80.0%',
+    modalRows:[
+      ['03 Jan 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 25.000.000'],
+      ['20 Jun 2024','KUR BNI','Pinjaman','Bank (KUR)','Rp 12.000.000'],
+      ['15 Feb 2025','Hibah DKUKMPP','Hibah','Hibah DKUKMPP','Rp 8.000.000'],
+    ],
+    produkRows:[
+      ['P-001','Batik Tulis Cirebon Pria','Fashion','Rp 180.000','Rp 290.000','37.9%','42','Aman'],
+      ['P-002','Batik Tulis Cirebon Wanita','Fashion','Rp 160.000','Rp 260.000','38.5%','35','Aman'],
+      ['P-003','Batik Cap Mega Mendung','Fashion','Rp 120.000','Rp 200.000','40.0%','50','Aman'],
+      ['P-004','Selendang Batik','Fashion','Rp 50.000','Rp 85.000','41.2%','60','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Kain Mori','meter','Rp 65.000','80','Aman'],
+      ['BB-002','Pewarna Alami','kg','Rp 180.000','10','Aman'],
+      ['BB-003','Lilin Batik (Malam)','kg','Rp 45.000','5','Menipis'],
+      ['BB-004','Canting Batik','pcs','Rp 25.000','20','Aman'],
+    ],
+    jPenjualan:'Rp 14.200.000', jTransaksi:'128', jRata:'Rp 473.000',
+    jRows:[
+      ['12 Jun 2026','Batik Tulis Cirebon Pria','5','Transfer','Rp 1.450.000'],
+      ['11 Jun 2026','Batik Cap Mega Mendung','8','QRIS','Rp 1.600.000'],
+      ['10 Jun 2026','Selendang Batik','10','Tunai','Rp 850.000'],
+    ],
+    ePengeluaran:'Rp 10.050.000', eTransaksi:'15', eKatTerbesar:'Gaji Karyawan',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Kain mori 30 meter','Rp 1.950.000'],
+      ['08 Jun 2026','Bahan Baku','Pewarna alami 3 kg','Rp 540.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji 8 karyawan','Rp 6.400.000'],
+    ],
+    kKeuntungan:'Rp 4.150.000', kMargin:'29.2%', kRata:'Rp 3.5 jt',
+    kData:[2.5,2.8,3.2,3.5,3.8,4.15],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 14.200.000','Rp 10.050.000','Rp 4.150.000'],
+      ['Mei 2026','Bulanan','Rp 13.000.000','Rp 9.200.000','Rp 3.800.000'],
+      ['Q1 2026','Kuartalan','Rp 36.000.000','Rp 26.000.000','Rp 10.000.000'],
+    ],
+    terlaris:[['Batik Tulis Cirebon Pria','142 pcs','Rp 41.180.000'],['Batik Cap Mega Mendung','200 pcs','Rp 40.000.000'],['Selendang Batik','320 pcs','Rp 27.200.000']],
+  },
+  'UMK-012': {
+    nama:'Rengginang Anakku', pemilik:'Indah Noviana Sari', kategori:'Kuliner', jenis:'Sambal Botol, Rengginang',
+    alamat:'Pegajahan Selatan No. 42 A RT. 02/05', telp:'0823-2233-3322', email:'rengginang.anakku@email.com',
+    karyawan:'3 orang', modalAwal:'Rp 6.500.000', modalNow:'Rp 9.100.000',
+    tglBergabung:'14 Mar 2024', tglVerif:'15 Mar 2024',
+    penjualan:'Rp 8.600.000', keuntungan:'Rp 3.000.000', margin:'34.9%',
+    modalTotal:'Rp 9.100.000', modalMasuk:'Rp 2.600.000', modalGrowth:'+40.0%',
+    modalRows:[
+      ['14 Mar 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 6.500.000'],
+      ['20 Oct 2024','Pinjaman Koperasi','Pinjaman','Koperasi','Rp 2.600.000'],
+    ],
+    produkRows:[
+      ['P-001','Rengginang Udang 200g','Kuliner','Rp 10.000','Rp 22.000','54.5%','80','Aman'],
+      ['P-002','Rengginang Terasi 200g','Kuliner','Rp 10.000','Rp 22.000','54.5%','60','Aman'],
+      ['P-003','Sambal Botol Original','Kuliner','Rp 8.000','Rp 18.000','55.6%','50','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Ketan','kg','Rp 18.000','20','Aman'],
+      ['BB-002','Udang Kering','kg','Rp 75.000','5','Aman'],
+      ['BB-003','Terasi','kg','Rp 50.000','3','Menipis'],
+    ],
+    jPenjualan:'Rp 8.600.000', jTransaksi:'172', jRata:'Rp 287.000',
+    jRows:[
+      ['12 Jun 2026','Rengginang Udang 200g','40','Tunai','Rp 880.000'],
+      ['11 Jun 2026','Sambal Botol Original','30','QRIS','Rp 540.000'],
+      ['10 Jun 2026','Rengginang Terasi 200g','35','Tunai','Rp 770.000'],
+    ],
+    ePengeluaran:'Rp 5.600.000', eTransaksi:'10', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Ketan 15 kg','Rp 270.000'],
+      ['08 Jun 2026','Bahan Baku','Udang kering 3 kg','Rp 225.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji 3 karyawan','Rp 2.700.000'],
+    ],
+    kKeuntungan:'Rp 3.000.000', kMargin:'34.9%', kRata:'Rp 2.5 jt',
+    kData:[1.8,2.0,2.2,2.5,2.7,3.0],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 8.600.000','Rp 5.600.000','Rp 3.000.000'],
+      ['Mei 2026','Bulanan','Rp 8.000.000','Rp 5.300.000','Rp 2.700.000'],
+      ['Q1 2026','Kuartalan','Rp 22.000.000','Rp 14.500.000','Rp 7.500.000'],
+    ],
+    terlaris:[['Rengginang Udang 200g','480 pcs','Rp 10.560.000'],['Rengginang Terasi 200g','360 pcs','Rp 7.920.000'],['Sambal Botol Original','280 pcs','Rp 5.040.000']],
+  },
+  'UMK-013': {
+    nama:'Tempe Mala', pemilik:'Parimala', kategori:'Lain-lain', jenis:'Tempe',
+    alamat:'Benteng No. 134 RT. 06/03', telp:'0824-3344-4433', email:'tempe.mala@email.com',
+    karyawan:'2 orang', modalAwal:'Rp 4.000.000', modalNow:'Rp 4.800.000',
+    tglBergabung:'25 Apr 2024', tglVerif:'26 Apr 2024',
+    penjualan:'Rp 4.200.000', keuntungan:'Rp 1.200.000', margin:'28.6%',
+    modalTotal:'Rp 4.800.000', modalMasuk:'Rp 800.000', modalGrowth:'+20.0%',
+    modalRows:[
+      ['25 Apr 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 4.000.000'],
+      ['10 Jan 2025','Tabungan Usaha','Modal Sendiri','Tabungan Pribadi','Rp 800.000'],
+    ],
+    produkRows:[
+      ['P-001','Tempe Bulat 250g','Lain-lain','Rp 3.000','Rp 6.000','50.0%','80','Aman'],
+      ['P-002','Tempe Papan 500g','Lain-lain','Rp 5.500','Rp 10.000','45.0%','50','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Kedelai','kg','Rp 12.000','50','Aman'],
+      ['BB-002','Ragi Tempe','bungkus','Rp 5.000','10','Aman'],
+      ['BB-003','Plastik Pembungkus','pcs','Rp 300','300','Aman'],
+    ],
+    jPenjualan:'Rp 4.200.000', jTransaksi:'114', jRata:'Rp 140.000',
+    jRows:[
+      ['12 Jun 2026','Tempe Papan 500g','20','Tunai','Rp 200.000'],
+      ['11 Jun 2026','Tempe Bulat 250g','40','Tunai','Rp 240.000'],
+    ],
+    ePengeluaran:'Rp 3.000.000', eTransaksi:'7', eKatTerbesar:'Bahan Baku',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Kedelai 40 kg','Rp 480.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji karyawan','Rp 2.000.000'],
+    ],
+    kKeuntungan:'Rp 1.200.000', kMargin:'28.6%', kRata:'Rp 1.0 jt',
+    kData:[0.7,0.8,0.9,1.0,1.1,1.2],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 4.200.000','Rp 3.000.000','Rp 1.200.000'],
+      ['Mei 2026','Bulanan','Rp 4.000.000','Rp 2.900.000','Rp 1.100.000'],
+      ['Q1 2026','Kuartalan','Rp 11.000.000','Rp 8.200.000','Rp 2.800.000'],
+    ],
+    terlaris:[['Tempe Bulat 250g','840 pcs','Rp 5.040.000'],['Tempe Papan 500g','420 pcs','Rp 4.200.000']],
+  },
+  'UMK-014': {
+    nama:'Aneka Kue', pemilik:'Dedi Hartomi', kategori:'Kuliner', jenis:'Kue',
+    alamat:'Jl. Kanoman', telp:'0825-4455-5544', email:'aneka.kue@email.com',
+    karyawan:'3 orang', modalAwal:'Rp 8.000.000', modalNow:'Rp 10.000.000',
+    tglBergabung:'30 Mar 2024', tglVerif:'31 Mar 2024',
+    penjualan:'Rp 6.500.000', keuntungan:'Rp 1.300.000', margin:'20.0%',
+    modalTotal:'Rp 10.000.000', modalMasuk:'Rp 2.000.000', modalGrowth:'+25.0%',
+    modalRows:[
+      ['30 Mar 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 8.000.000'],
+      ['01 Dec 2024','Tambahan Tabungan','Modal Sendiri','Tabungan Pribadi','Rp 2.000.000'],
+    ],
+    produkRows:[
+      ['P-001','Kue Lapis','Kuliner','Rp 20.000','Rp 35.000','42.9%','30','Aman'],
+      ['P-002','Kue Bolu','Kuliner','Rp 18.000','Rp 30.000','40.0%','25','Aman'],
+      ['P-003','Kue Tart Mini','Kuliner','Rp 25.000','Rp 40.000','37.5%','15','Menipis'],
+    ],
+    bahanRows:[
+      ['BB-001','Tepung Terigu','kg','Rp 12.000','15','Aman'],
+      ['BB-002','Gula Pasir','kg','Rp 14.000','8','Aman'],
+      ['BB-003','Telur Ayam','kg','Rp 28.000','5','Menipis'],
+    ],
+    jPenjualan:'Rp 6.500.000', jTransaksi:'136', jRata:'Rp 217.000',
+    jRows:[
+      ['12 Jun 2026','Kue Lapis','10','Tunai','Rp 350.000'],
+      ['11 Jun 2026','Kue Bolu','8','QRIS','Rp 240.000'],
+      ['10 Jun 2026','Kue Tart Mini','5','Tunai','Rp 200.000'],
+    ],
+    ePengeluaran:'Rp 5.200.000', eTransaksi:'11', eKatTerbesar:'Gaji Karyawan',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Tepung terigu 12 kg','Rp 144.000'],
+      ['08 Jun 2026','Bahan Baku','Gula pasir 6 kg','Rp 84.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji 3 karyawan','Rp 2.700.000'],
+    ],
+    kKeuntungan:'Rp 1.300.000', kMargin:'20.0%', kRata:'Rp 1.1 jt',
+    kData:[0.8,0.9,1.0,1.1,1.2,1.3],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 6.500.000','Rp 5.200.000','Rp 1.300.000'],
+      ['Mei 2026','Bulanan','Rp 6.200.000','Rp 5.000.000','Rp 1.200.000'],
+      ['Q1 2026','Kuartalan','Rp 17.000.000','Rp 13.800.000','Rp 3.200.000'],
+    ],
+    terlaris:[['Kue Lapis','360 pcs','Rp 12.600.000'],['Kue Bolu','280 pcs','Rp 8.400.000'],['Kue Tart Mini','120 pcs','Rp 4.800.000']],
+  },
+  'UMK-015': {
+    nama:'Kampoeng Tjaroeban', pemilik:'Paulus Mulyanto', kategori:'Kuliner', jenis:'Ketan Gurih, Oleh-Oleh Cirebon',
+    alamat:'Jl. Kanoman No. 14', telp:'0826-5566-6655', email:'kampoeng.tjaroeban@email.com',
+    karyawan:'12 orang', modalAwal:'Rp 32.000.000', modalNow:'Rp 75.600.000',
+    tglBergabung:'02 Jan 2024', tglVerif:'03 Jan 2024',
+    penjualan:'Rp 22.500.000', keuntungan:'Rp 10.530.000', margin:'46.8%',
+    modalTotal:'Rp 75.600.000', modalMasuk:'Rp 43.600.000', modalGrowth:'+136.3%',
+    modalRows:[
+      ['02 Jan 2024','Modal Awal','Modal Sendiri','Tabungan Pribadi','Rp 32.000.000'],
+      ['10 Jun 2024','KUR BRI','Pinjaman','Bank (KUR)','Rp 25.000.000'],
+      ['20 Jan 2025','Investor','Investor','Investor Pribadi','Rp 12.000.000'],
+      ['15 Apr 2025','Hibah DKUKMPP','Hibah','Hibah DKUKMPP','Rp 6.600.000'],
+    ],
+    produkRows:[
+      ['P-001','Ketan Gurih Original','Kuliner','Rp 8.000','Rp 18.000','55.6%','150','Aman'],
+      ['P-002','Ketan Gurih Ayam','Kuliner','Rp 12.000','Rp 25.000','52.0%','120','Aman'],
+      ['P-003','Oleh-Oleh Emping Melinjo','Kuliner','Rp 20.000','Rp 40.000','50.0%','80','Aman'],
+      ['P-004','Kerupuk Udang Cirebon','Kuliner','Rp 15.000','Rp 30.000','50.0%','100','Aman'],
+      ['P-005','Dodol Cirebon','Kuliner','Rp 18.000','Rp 35.000','48.6%','60','Aman'],
+    ],
+    bahanRows:[
+      ['BB-001','Beras Ketan','kg','Rp 18.000','50','Aman'],
+      ['BB-002','Santan Kelapa','liter','Rp 12.000','20','Aman'],
+      ['BB-003','Ayam Kampung','kg','Rp 60.000','10','Aman'],
+      ['BB-004','Emping Melinjo','kg','Rp 45.000','8','Menipis'],
+      ['BB-005','Kemasan Kotak','pcs','Rp 2.000','500','Aman'],
+    ],
+    jPenjualan:'Rp 22.500.000', jTransaksi:'386', jRata:'Rp 750.000',
+    jRows:[
+      ['12 Jun 2026','Ketan Gurih Ayam','80','Tunai','Rp 2.000.000'],
+      ['11 Jun 2026','Oleh-Oleh Emping Melinjo','40','QRIS','Rp 1.600.000'],
+      ['10 Jun 2026','Kerupuk Udang Cirebon','60','Transfer','Rp 1.800.000'],
+      ['09 Jun 2026','Ketan Gurih Original','100','Tunai','Rp 1.800.000'],
+    ],
+    ePengeluaran:'Rp 11.970.000', eTransaksi:'18', eKatTerbesar:'Gaji Karyawan',
+    eRows:[
+      ['10 Jun 2026','Bahan Baku','Beras ketan 30 kg','Rp 540.000'],
+      ['08 Jun 2026','Bahan Baku','Ayam kampung 8 kg','Rp 480.000'],
+      ['01 Jun 2026','Gaji Karyawan','Gaji 12 karyawan','Rp 8.400.000'],
+      ['05 Jun 2026','Marketing','Iklan sosial media','Rp 500.000'],
+    ],
+    kKeuntungan:'Rp 10.530.000', kMargin:'46.8%', kRata:'Rp 8.2 jt',
+    kData:[5.0,6.0,7.0,8.0,9.0,10.53],
+    lRows:[
+      ['Juni 2026','Bulanan','Rp 22.500.000','Rp 11.970.000','Rp 10.530.000'],
+      ['Mei 2026','Bulanan','Rp 20.000.000','Rp 10.800.000','Rp 9.200.000'],
+      ['April 2026','Bulanan','Rp 18.500.000','Rp 10.000.000','Rp 8.500.000'],
+      ['Q1 2026','Kuartalan','Rp 52.000.000','Rp 28.500.000','Rp 23.500.000'],
+    ],
+    terlaris:[['Ketan Gurih Ayam','1.120 pcs','Rp 28.000.000'],['Oleh-Oleh Emping Melinjo','680 pcs','Rp 27.200.000'],['Kerupuk Udang Cirebon','800 pcs','Rp 24.000.000']],
+  },
+};
+
+// ──────────────── LOAD & RENDER ────────────────
+function getParam(key){ return new URLSearchParams(location.search).get(key); }
+
+const id = getParam('id') || 'UMK-001';
+const d = DB[id];
+
+if (!d) {
+  document.getElementById('hNama').textContent = 'UMKM tidak ditemukan';
+  document.getElementById('hSub').textContent = 'ID ' + id + ' tidak ada dalam sistem.';
+} else {
+  // Header
+  document.getElementById('hNama').textContent = d.nama;
+  document.getElementById('hSub').innerHTML = id + ' &middot; ' + d.kategori + ' / ' + d.jenis + ' &middot; Bergabung ' + d.tglBergabung + ' &middot; <span class="badge success">Aktif</span>';
+  document.title = d.nama + ' - SIM-UMKM';
+
+  // Profil
+  document.getElementById('pId').textContent = id;
+  document.getElementById('pNama').innerHTML = '<strong>' + d.nama + '</strong>';
+  document.getElementById('pPemilik').textContent = d.pemilik;
+  document.getElementById('pKategori').textContent = d.kategori;
+  document.getElementById('pJenis').textContent = d.jenis;
+  document.getElementById('pAlamat').textContent = d.alamat;
+  document.getElementById('pTelp').textContent = d.telp;
+  document.getElementById('pEmail').textContent = d.email;
+  document.getElementById('pKaryawan').textContent = d.karyawan;
+  document.getElementById('pModalAwal').textContent = d.modalAwal;
+  document.getElementById('pTgl').textContent = d.tglBergabung;
+  document.getElementById('pTglVerif').textContent = d.tglVerif;
+  document.getElementById('pModalNow').textContent = d.modalNow;
+  document.getElementById('pPenjualan').textContent = d.penjualan;
+  document.getElementById('pKeuntungan').textContent = d.keuntungan;
+  document.getElementById('pMargin').textContent = d.margin;
+
+  // Terlaris
+  document.getElementById('tbodyTerlaris').innerHTML = d.terlaris.map(r =>
+    `<tr><td>${r[0]}</td><td style="text-align:right">${r[1]}</td><td style="text-align:right">${r[2]}</td></tr>`
+  ).join('');
+
+  // Modal
+  document.getElementById('mTotal').textContent = d.modalTotal;
+  document.getElementById('mMasuk').textContent = d.modalMasuk;
+  document.getElementById('mGrowth').textContent = d.modalGrowth;
+  document.getElementById('tbodyModal').innerHTML = d.modalRows.map(r =>
+    `<tr>${r.map((v,i) => `<td${i===4?' style="text-align:right"':''}>${v}</td>`).join('')}</tr>`
+  ).join('');
+
+  // Produk
+  document.getElementById('tbodyProduk').innerHTML = d.produkRows.map(r => {
+    const stok = r[6], statusBadge = stok === 'Habis' ? 'danger' : stok === 'Menipis' ? 'warning' : 'success';
+    return `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td style="text-align:right">${r[3]}</td><td style="text-align:right">${r[4]}</td><td style="text-align:right">${r[5]}</td><td style="text-align:right">${r[6]}</td><td><span class="badge ${statusBadge}">${r[7]}</span></td></tr>`;
+  }).join('');
+
+  // Bahan baku
+  let bbMenipis = 0, bbHabis = 0;
+  document.getElementById('tbodyBahan').innerHTML = d.bahanRows.map(r => {
+    const st = r[4] === '0' ? 'Habis' : r[5];
+    if (st === 'Menipis') bbMenipis++;
+    if (st === 'Habis') bbHabis++;
+    const cls = st === 'Habis' ? 'danger' : st === 'Menipis' ? 'warning' : 'success';
+    return `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td style="text-align:right">${r[3]}</td><td style="text-align:right">${r[4]}</td><td><span class="badge ${cls}">${st}</span></td></tr>`;
+  }).join('');
+  document.getElementById('bbTotal').textContent = d.bahanRows.length;
+  document.getElementById('bbMenipis').textContent = bbMenipis;
+  document.getElementById('bbHabis').textContent = bbHabis;
+
+  // Penjualan
+  document.getElementById('jPenjualan').textContent = d.jPenjualan;
+  document.getElementById('jTransaksi').textContent = d.jTransaksi;
+  document.getElementById('jRataRata').textContent = d.jRata;
+  document.getElementById('tbodyPenjualan').innerHTML = d.jRows.map(r =>
+    `<tr><td>${r[0]}</td><td>${r[1]}</td><td style="text-align:right">${r[2]}</td><td>${r[3]}</td><td style="text-align:right">${r[4]}</td></tr>`
+  ).join('');
+
+  // Pengeluaran
+  document.getElementById('ePengeluaran').textContent = d.ePengeluaran;
+  document.getElementById('eTransaksi').textContent = d.eTransaksi;
+  document.getElementById('eKatTerbesar').textContent = d.eKatTerbesar;
+  document.getElementById('tbodyPengeluaran').innerHTML = d.eRows.map(r =>
+    `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td style="text-align:right;color:var(--danger);font-weight:600">${r[3]}</td></tr>`
+  ).join('');
+
+  // Keuntungan
+  document.getElementById('kKeuntungan').textContent = d.kKeuntungan;
+  document.getElementById('kMargin').textContent = d.kMargin;
+  document.getElementById('kRata').textContent = d.kRata;
+
+  // Laporan
+  document.getElementById('tbodyLaporan').innerHTML = d.lRows.map(r =>
+    `<tr><td>${r[0]}</td><td>${r[1]}</td><td style="text-align:right">${r[2]}</td><td style="text-align:right">${r[3]}</td><td style="text-align:right;color:var(--success);font-weight:600">${r[4]}</td><td><button class="btn outline sm"><span data-ic="eye"></span> Lihat</button></td></tr>`
+  ).join('');
+}
+
+// ──────────────── TABS ────────────────
+const tabs = document.querySelectorAll('#detailTabs .tab');
+const views = ['profil','modal','produk','bahan','penjualan','pengeluaran','keuntungan','laporan'];
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.toggle('active', x===t));
+  const v = t.dataset.view;
+  views.forEach(name => {
+    document.getElementById('v-'+name).style.display = (name===v) ? '' : 'none';
+  });
+  if (v==='keuntungan' && d && !window._profitChart) {
+    window._profitChart = new Chart(document.getElementById('cProfit'),{
+      type:'line',
+      data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
+        datasets:[{label:'Keuntungan (jt)',data:d.kData,borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.15)',fill:true,tension:0.3,borderWidth:2}]},
+      options:{responsive:true,maintainAspectRatio:false}
     });
-    if (v==='keuntungan' && !window._profitChart) {
-      window._profitChart = new Chart(document.getElementById('cProfit'),{
-        type:'line',
-        data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
-          datasets:[{label:'Keuntungan (jt)',data:[5,6,6.8,7.5,8,8.45],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.15)',fill:true,tension:0.3,borderWidth:2}]},
-        options:{responsive:true,maintainAspectRatio:false}
-      });
-    }
-  }));
+  }
+}));
+
+// Auto-switch tab based on URL hash (e.g. #modal, #keuntungan, #penjualan)
+const hashTab = location.hash.replace('#','');
+if (hashTab && views.includes(hashTab)) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.view === hashTab));
+  views.forEach(name => {
+    document.getElementById('v-'+name).style.display = (name===hashTab) ? '' : 'none';
+  });
+  if (hashTab==='keuntungan' && d && !window._profitChart) {
+    window._profitChart = new Chart(document.getElementById('cProfit'),{
+      type:'line',
+      data:{labels:['Jan','Feb','Mar','Apr','Mei','Jun'],
+        datasets:[{label:'Keuntungan (jt)',data:d.kData,borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.15)',fill:true,tension:0.3,borderWidth:2}]},
+      options:{responsive:true,maintainAspectRatio:false}
+    });
+  }
+}
 </script>
 </body>
 </html>

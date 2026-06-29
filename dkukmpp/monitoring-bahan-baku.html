@@ -2,109 +2,11 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Data Bahan Baku UMKM Binaan - SIM-UMKM</title>
-<link rel="stylesheet" href="../style.css">
+<meta http-equiv="refresh" content="0; url=kelola-produk-bahan-baku.html#bahan">
+<title>Kelola Bahan Baku UMKM</title>
 </head>
-<body data-title="Data Bahan Baku UMKM Binaan">
-
-<div class="page-title">Data Bahan Baku UMKM Binaan</div>
-<div class="page-sub">Pantau persediaan bahan baku UMKM binaan &mdash; deteksi stok menipis untuk intervensi pembinaan / bantuan supplier.</div>
-
-<div class="toolbar mb-3">
-  <select class="form-control" style="width:260px;" id="pilihUmkm">
-    <option value="all">&mdash; Semua UMKM Binaan (Agregat) &mdash;</option>
-    <option>Warung Bu Sri</option>
-    <option>Batik Lestari</option>
-    <option>Bengkel Maju</option>
-    <option>Toko Berkah</option>
-    <option>Bakery Manis</option>
-    <option>Konveksi Jaya</option>
-  </select>
-  <select class="form-control" style="width:160px;" id="filterStatus">
-    <option value="">Semua Status</option>
-    <option>Stok Aman</option>
-    <option>Stok Menipis</option>
-    <option>Habis</option>
-  </select>
-  <select class="form-control" style="width:160px;">
-    <option>Semua Kategori</option>
-    <option>Pokok</option><option>Bumbu</option><option>Kemasan</option><option>Lainnya</option>
-  </select>
-  <div class="spacer"></div>
-  <a href="monitoring-statistik.html" class="btn outline sm"><span data-ic="eye"></span> Pilih dari Daftar</a>
-</div>
-
-<div class="stat-grid">
-  <div class="stat"><div class="icon"><span data-ic="box"></span></div><div><div class="label">Total Item Bahan Baku</div><div class="value">3.842</div><div class="delta">dari 142 UMKM</div></div></div>
-  <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Stok Menipis</div><div class="value">128</div><div class="delta">di 47 UMKM</div></div></div>
-  <div class="stat red"><div class="icon"><span data-ic="x"></span></div><div><div class="label">Habis Stok</div><div class="value">19</div><div class="delta">perlu intervensi</div></div></div>
-  <div class="stat purple"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Kenaikan Harga</div><div class="value">+5%</div><div class="delta">trend 30 hari</div></div></div>
-</div>
-
-<div class="alert warning mb-3">
-  <span data-ic="alert" class="alert-ic"></span>
-  <div>
-    <strong>19 UMKM membutuhkan intervensi:</strong> bahan baku habis &amp; belum di-restock &gt; 7 hari.
-    Pertimbangkan koneksi ke supplier mitra DKUKMPP atau bantuan modal darurat.
-  </div>
-</div>
-
-<div class="row-2-eq">
-  <div class="card">
-    <div class="card-title mb-2">UMKM dengan Stok Kritis</div>
-    <table class="data" style="font-size:13px">
-      <thead><tr><th>UMKM</th><th style="text-align:right">Item Habis</th><th style="text-align:right">Menipis</th></tr></thead>
-      <tbody>
-        <tr><td>Warung Bu Sri</td><td style="text-align:right;color:var(--danger);font-weight:600">3</td><td style="text-align:right;color:var(--warning);font-weight:600">5</td></tr>
-        <tr><td>Bakery Manis</td><td style="text-align:right;color:var(--danger);font-weight:600">2</td><td style="text-align:right;color:var(--warning);font-weight:600">7</td></tr>
-        <tr><td>Konveksi Jaya</td><td style="text-align:right;color:var(--danger);font-weight:600">2</td><td style="text-align:right;color:var(--warning);font-weight:600">4</td></tr>
-        <tr><td>Toko Berkah</td><td style="text-align:right;color:var(--danger);font-weight:600">1</td><td style="text-align:right;color:var(--warning);font-weight:600">6</td></tr>
-        <tr><td>Batik Lestari</td><td style="text-align:right;color:var(--danger);font-weight:600">1</td><td style="text-align:right;color:var(--warning);font-weight:600">3</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="card">
-    <div class="card-title mb-2">Bahan Baku Paling Banyak Dibeli</div>
-    <table class="data" style="font-size:13px">
-      <thead><tr><th>Bahan</th><th>Kategori</th><th style="text-align:right">Total</th></tr></thead>
-      <tbody>
-        <tr><td>Tepung Terigu</td><td>Pokok</td><td style="text-align:right">Rp 84 jt</td></tr>
-        <tr><td>Minyak Goreng</td><td>Pokok</td><td style="text-align:right">Rp 72 jt</td></tr>
-        <tr><td>Gula Pasir</td><td>Pokok</td><td style="text-align:right">Rp 58 jt</td></tr>
-        <tr><td>Daging Ayam</td><td>Pokok</td><td style="text-align:right">Rp 46 jt</td></tr>
-        <tr><td>Kain Mori</td><td>Bahan Tekstil</td><td style="text-align:right">Rp 38 jt</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-header"><div class="card-title">Daftar Bahan Baku UMKM Binaan</div></div>
-  <div class="toolbar">
-    <div class="search"><input placeholder="Cari bahan baku..."></div>
-    <div class="spacer"></div>
-    <span class="text-muted" style="font-size:12.5px;">Menampilkan 8 dari 3.842 item</span>
-  </div>
-  <div class="table-wrap">
-    <table class="data">
-      <thead><tr><th>Kode</th><th>Nama Bahan</th><th>UMKM</th><th>Kategori</th><th style="text-align:right">Stok</th><th>Satuan</th><th style="text-align:right">Harga/Unit</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td>BB-001</td><td>Daging Ayam</td><td>Warung Bu Sri</td><td>Pokok</td><td style="text-align:right">2,5</td><td>kg</td><td style="text-align:right">Rp 38.000</td><td><span class="badge warning">Menipis</span></td></tr>
-        <tr><td>BB-002</td><td>Minyak Goreng</td><td>Warung Bu Sri</td><td>Pokok</td><td style="text-align:right">0</td><td>L</td><td style="text-align:right">Rp 18.000</td><td><span class="badge danger">Habis</span></td></tr>
-        <tr><td>BB-005</td><td>Tepung Terigu</td><td>Bakery Manis</td><td>Pokok</td><td style="text-align:right">12</td><td>kg</td><td style="text-align:right">Rp 14.000</td><td><span class="badge success">Aman</span></td></tr>
-        <tr><td>BB-008</td><td>Gula Pasir</td><td>Bakery Manis</td><td>Pokok</td><td style="text-align:right">3</td><td>kg</td><td style="text-align:right">Rp 16.000</td><td><span class="badge warning">Menipis</span></td></tr>
-        <tr><td>BB-012</td><td>Kain Mori</td><td>Batik Lestari</td><td>Tekstil</td><td style="text-align:right">28</td><td>m</td><td style="text-align:right">Rp 32.000</td><td><span class="badge success">Aman</span></td></tr>
-        <tr><td>BB-018</td><td>Pewarna Batik</td><td>Batik Lestari</td><td>Bumbu</td><td style="text-align:right">0</td><td>kg</td><td style="text-align:right">Rp 85.000</td><td><span class="badge danger">Habis</span></td></tr>
-        <tr><td>BB-022</td><td>Benang Jahit</td><td>Konveksi Jaya</td><td>Tekstil</td><td style="text-align:right">45</td><td>roll</td><td style="text-align:right">Rp 12.500</td><td><span class="badge success">Aman</span></td></tr>
-        <tr><td>BB-031</td><td>Kemasan Plastik</td><td>Toko Berkah</td><td>Kemasan</td><td style="text-align:right">1,5</td><td>pak</td><td style="text-align:right">Rp 22.000</td><td><span class="badge warning">Menipis</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<script src="../icons.js"></script>
-<script src="../sidebar.js"></script>
+<body>
+<script>location.replace('kelola-produk-bahan-baku.html#bahan');</script>
+<p>Mengalihkan ke <a href="kelola-produk-bahan-baku.html#bahan">Kelola Produk &amp; Bahan Baku</a>&hellip;</p>
 </body>
 </html>

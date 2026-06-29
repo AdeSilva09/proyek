@@ -732,6 +732,59 @@ img, svg { max-width: 100%; height: auto; }
   .pill-tabs { flex-wrap: wrap; }
 }
 
+/* ===== Mobile adaptive card layout for data tables (<= 600px) =====
+   Tabel besar berubah jadi tumpukan kartu. Setiap <td> menampilkan label
+   dari atribut data-label (kalau ada) atau dari <th> di kolomnya. */
+@media (max-width: 600px) {
+  table.data.responsive,
+  .table-wrap table.data {
+    min-width: 0 !important;
+    border-collapse: collapse;
+    display: block;
+  }
+  .table-wrap table.data thead {
+    display: none;
+  }
+  .table-wrap table.data tbody { display: block; }
+  .table-wrap table.data tbody tr {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .table-wrap table.data tbody tr:hover { background: #fff; }
+  .table-wrap table.data tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 6px 0;
+    border: none;
+    border-bottom: 1px dashed var(--gray-100);
+    text-align: right !important;
+    font-size: 12.5px;
+    word-break: break-word;
+  }
+  .table-wrap table.data tbody td:last-child { border-bottom: none; }
+  .table-wrap table.data tbody td::before {
+    content: attr(data-label);
+    color: var(--gray-500);
+    font-weight: 600;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    text-align: left;
+    flex-shrink: 0;
+    max-width: 45%;
+  }
+  /* Aksi/buttons sebaiknya full width di mobile */
+  .table-wrap table.data tbody td .btn { padding: 6px 10px; font-size: 12px; }
+  .table-wrap table.data tbody td .btn.sm { padding: 5px 8px; }
+}
+
 /* ====================================================================
    COMPATIBILITY LAYER — map .m-* (warisan mobile) ke style desktop
    Supaya file umkm/ lama tetap render pakai palette & komponen baru

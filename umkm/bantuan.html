@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panduan & Bantuan - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Panduan & Bantuan">
+
+<div class="page-title">Panduan &amp; Bantuan</div>
+<div class="page-sub">Temukan panduan penggunaan sistem, tips pengelolaan usaha, dan cara menghubungi pendamping DKUKMPP.</div>
+
+<!-- Kategori panduan -->
+<div class="pill-tabs" id="bantuanTabs">
+  <div class="tab active" data-view="panduan">Panduan Sistem</div>
+  <div class="tab" data-view="tips">Tips Usaha</div>
+  <div class="tab" data-view="kontak">Hubungi Kami</div>
+  <div class="tab" data-view="faq">FAQ</div>
+</div>
+
+<!-- ===== PANDUAN SISTEM ===== -->
+<div class="view" id="v-panduan">
+
+  <div class="alert info mb-3" style="margin-bottom:16px">
+    <span data-ic="info"></span>
+    Panduan ini membantu Anda menggunakan setiap fitur SIM-UMKM dengan benar. Klik judul untuk membuka detail.
+  </div>
+
+  <div class="row-2-eq" style="gap:16px">
+
+    <!-- Panduan Dasar -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🚀 Panduan Dasar</div>
+      </div>
+      <div class="guide-list">
+        <div class="guide-item" onclick="openGuide('login')">
+          <div class="guide-icon" style="background:#e0e7ff"><span data-ic="user"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Login &amp; Kelola Profil</div>
+            <div class="guide-desc">Cara masuk ke sistem, mengubah profil dan foto usaha Anda.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('dashboard')">
+          <div class="guide-icon" style="background:#dcfce7"><span data-ic="bar-chart"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Memahami Dashboard</div>
+            <div class="guide-desc">Arti setiap angka KPI dan cara membaca grafik 6 bulan.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('modal')">
+          <div class="guide-icon" style="background:#fef9c3"><span data-ic="wallet"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Mencatat Modal Usaha</div>
+            <div class="guide-desc">Cara input sumber modal, membedakan Modal Sendiri, Pinjaman, Hibah, dan Investor.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('produk')">
+          <div class="guide-icon" style="background:#fce7f3"><span data-ic="package"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Kelola Data Produk</div>
+            <div class="guide-desc">Tambah, ubah, dan hapus produk. Cara menghitung harga jual dan margin otomatis.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panduan Transaksi -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">💳 Panduan Transaksi</div>
+      </div>
+      <div class="guide-list">
+        <div class="guide-item" onclick="openGuide('kasir')">
+          <div class="guide-icon" style="background:#fef3c7"><span data-ic="shopping-cart"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Menggunakan Kasir</div>
+            <div class="guide-desc">Cara catat penjualan harian lewat kasir, pilih produk, metode bayar (Tunai/QRIS/Transfer).</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('pengeluaran')">
+          <div class="guide-icon" style="background:#fee2e2"><span data-ic="credit-card"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Mencatat Pengeluaran</div>
+            <div class="guide-desc">Kategori pengeluaran (Bahan Baku, Gaji, Operasional, Sewa, Marketing) dan cara mengisinya.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('keuntungan')">
+          <div class="guide-icon" style="background:#dcfce7"><span data-ic="trend-up"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Kalkulator Keuntungan</div>
+            <div class="guide-desc">Cara baca hasil kalkulator keuntungan dan memahami margin usaha Anda.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('laporan')">
+          <div class="guide-icon" style="background:#ede9fe"><span data-ic="file-text"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Cetak Laporan Keuangan</div>
+            <div class="guide-desc">Export laporan bulanan/tahunan ke PDF dan Excel.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Panduan lanjutan -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">📦 Panduan Lanjutan</div>
+    </div>
+    <div class="guide-list guide-list-horizontal">
+      <div class="guide-item" onclick="openGuide('bahan')">
+        <div class="guide-icon" style="background:#ccfbf1"><span data-ic="layers"></span></div>
+        <div class="guide-body">
+          <div class="guide-title">Kelola Bahan Baku</div>
+          <div class="guide-desc">Set stok minimum agar peringatan otomatis muncul.</div>
+        </div>
+        <span data-ic="chevron-right"></span>
+      </div>
+      <div class="guide-item" onclick="openGuide('notifikasi')">
+        <div class="guide-icon" style="background:#e0e7ff"><span data-ic="bell"></span></div>
+        <div class="guide-body">
+          <div class="guide-title">Notifikasi Sistem</div>
+          <div class="guide-desc">Arti setiap notifikasi dan cara meresponsnya.</div>
+        </div>
+        <span data-ic="chevron-right"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIPS USAHA ===== -->
+<div class="view" id="v-tips" style="display:none">
+  <div class="row-2-eq" style="gap:16px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">💰 Tips Keuangan</div></div>
+      <div class="guide-list">
+        <div class="guide-item">
+          <div class="guide-icon" style="background:#fef9c3"><span data-ic="wallet"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Atur Budget per Kategori</div>
+            <div class="guide-desc">Alokasikan minimal 30% penjualan untuk bahan baku, maks 20% untuk operasional agar keuntungan terjaga.</div>
+          </div>
+        </div>
+        <div class="guide-item">
+          <div class="guide-icon" style="background:#dcfce7"><span data-ic="trend-up"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Target Margin 25%+</div>
+            <div class="guide-desc">Margin &gt; 25% dikategorikan "Baik" oleh DKUKMPP. Cek margin tiap produk dari menu Produk.</div>
+          </div>
+        </div>
+        <div class="guide-item">
+          <div class="guide-icon" style="background:#fee2e2"><span data-ic="alert"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Pisahkan Keuangan Pribadi &amp; Usaha</div>
+            <div class="guide-desc">Gunakan rekening terpisah. Catat setiap penarikan sebagai "Pengeluaran - Gaji Pemilik".</div>
+          </div>
+        </div>
+        <div class="guide-item">
+          <div class="guide-icon" style="background:#ede9fe"><span data-ic="bar-chart"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Rutin Cek Laporan Bulanan</div>
+            <div class="guide-desc">Bandingkan bulan ini vs bulan lalu. Turun &gt; 10%? Segera konsultasi ke pendamping.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">📈 Tips Pertumbuhan</div></div>
+      <div class="guide-list">
+        <div class="guide-item">
+          <div class="guide-icon" style="background:#ccfbf1"><span data-ic="package"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Diversifikasi Produk</div>
+            <div class="guide-desc">Tambahkan minimal 1 produk baru per kuartal. Cek produk terlaris di tab Statistik.</div>
+          </div>
+        </div>
+        <div class="guide-item">
+          <div class="guide-icon" style="background:#fce7f3"><span data-ic="star"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Manfaatkan Program Pelatihan</div>
+            <div class="guide-desc">DKUKMPP rutin mengadakan pelatihan gratis. Pantau notifikasi untuk undangan.</div>
+          </div>
+        </div>
+        <div class="guide-item">
+          <div class="guide-icon" style="background:#e0e7ff"><span data-ic="shopping-cart"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Catat Setiap Transaksi</div>
+            <div class="guide-desc">Data penjualan yang lengkap membantu DKUKMPP memberikan rekomendasi dan akses modal lebih besar.</div>
+          </div>
+        </div>
+        <div class="guide-item">
+          <div class="guide-icon" style="background:#fef3c7"><span data-ic="layers"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Kelola Stok Bahan Baku</div>
+            <div class="guide-desc">Set stok minimum agar sistem memperingatkan sebelum bahan habis. Hindari kehilangan penjualan.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">📌 Checklist Bulanan UMKM Sehat</div></div>
+    <div style="padding:0 16px 16px">
+      <div class="checklist-grid">
+        <label class="checklist-item"><input type="checkbox"> Semua transaksi penjualan bulan ini sudah dicatat</label>
+        <label class="checklist-item"><input type="checkbox"> Semua pengeluaran sudah diinput dengan kategori benar</label>
+        <label class="checklist-item"><input type="checkbox"> Stok produk dan bahan baku sudah diperbarui</label>
+        <label class="checklist-item"><input type="checkbox"> Laporan bulanan sudah dicetak / disimpan</label>
+        <label class="checklist-item"><input type="checkbox"> Margin setiap produk sudah dicek (&gt; 25%?)</label>
+        <label class="checklist-item"><input type="checkbox"> Tidak ada bahan baku berstatus "Habis"</label>
+        <label class="checklist-item"><input type="checkbox"> Profil UMKM (foto, alamat, kontak) masih akurat</label>
+        <label class="checklist-item"><input type="checkbox"> Notifikasi sistem sudah dibaca semua</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== KONTAK ===== -->
+<div class="view" id="v-kontak" style="display:none">
+  <div class="row-2-eq" style="gap:16px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">📞 Hubungi Pendamping DKUKMPP</div></div>
+      <div style="padding:0 16px 16px">
+        <p class="text-muted" style="font-size:13.5px;margin-bottom:16px">Konsultasi gratis untuk seluruh UMKM binaan DKUKMPP Kota Cirebon. Kami siap membantu Anda mengembangkan usaha.</p>
+        <div class="kontak-list">
+          <div class="kontak-item">
+            <div class="kontak-icon"><span data-ic="phone"></span></div>
+            <div>
+              <div class="kontak-label">Telepon / WhatsApp</div>
+              <div class="kontak-value">(0231) 123-4567</div>
+              <div class="kontak-note">Senin – Jumat, 08.00 – 16.00 WIB</div>
+            </div>
+          </div>
+          <div class="kontak-item">
+            <div class="kontak-icon"><span data-ic="mail"></span></div>
+            <div>
+              <div class="kontak-label">Email</div>
+              <div class="kontak-value">umkm@dkukmpp.cirebonkota.go.id</div>
+              <div class="kontak-note">Respons dalam 1×24 jam kerja</div>
+            </div>
+          </div>
+          <div class="kontak-item">
+            <div class="kontak-icon"><span data-ic="map-pin"></span></div>
+            <div>
+              <div class="kontak-label">Kantor DKUKMPP</div>
+              <div class="kontak-value">Jl. Siliwangi No. 84, Kota Cirebon</div>
+              <div class="kontak-note">Senin – Jumat, 08.00 – 15.30 WIB</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">✉️ Kirim Pesan / Pertanyaan</div></div>
+      <div style="padding:0 16px 16px">
+        <div class="form-group">
+          <label>Nama Anda</label>
+          <input class="form-control" type="text" placeholder="Nama lengkap / nama UMKM" value="Bu Sari — Sari Putri">
+        </div>
+        <div class="form-group">
+          <label>Topik Pertanyaan</label>
+          <select class="form-control">
+            <option>Cara pengisian data di sistem</option>
+            <option>Masalah login / akses</option>
+            <option>Konsultasi keuangan usaha</option>
+            <option>Informasi program pelatihan</option>
+            <option>Pengajuan modal / hibah</option>
+            <option>Lain-lain</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pesan</label>
+          <textarea class="form-control" rows="4" placeholder="Tulis pertanyaan atau kendala Anda di sini..."></textarea>
+        </div>
+        <button class="btn block" onclick="kirimPesan()"><span data-ic="send"></span> Kirim Pesan</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">📅 Jadwal Konsultasi Tatap Muka</div></div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Hari</th><th>Jam</th><th>Jenis Konsultasi</th><th>Pendamping</th><th>Kuota</th><th>Aksi</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Hari">Selasa</td><td data-label="Jam">09.00 – 11.00</td><td data-label="Jenis">Konsultasi Keuangan</td><td data-label="Pendamping">Pak Ahmad Fauzi</td><td data-label="Kuota"><span class="badge success">5 slot</span></td><td data-label="Aksi"><button class="btn outline sm" onclick="daftarKonsultasi('Selasa, 09.00')">Daftar</button></td></tr>
+          <tr><td data-label="Hari">Rabu</td><td data-label="Jam">13.00 – 15.00</td><td data-label="Jenis">Konsultasi Pemasaran</td><td data-label="Pendamping">Bu Sinta Rahayu</td><td data-label="Kuota"><span class="badge warning">2 slot</span></td><td data-label="Aksi"><button class="btn outline sm" onclick="daftarKonsultasi('Rabu, 13.00')">Daftar</button></td></tr>
+          <tr><td data-label="Hari">Kamis</td><td data-label="Jam">09.00 – 12.00</td><td data-label="Jenis">Klinik Digital UMKM</td><td data-label="Pendamping">Tim IT DKUKMPP</td><td data-label="Kuota"><span class="badge success">8 slot</span></td><td data-label="Aksi"><button class="btn outline sm" onclick="daftarKonsultasi('Kamis, 09.00')">Daftar</button></td></tr>
+          <tr><td data-label="Hari">Jumat</td><td data-label="Jam">08.00 – 10.00</td><td data-label="Jenis">Konsultasi Legalitas</td><td data-label="Pendamping">Pak Budi Santoso</td><td data-label="Kuota"><span class="badge danger">Penuh</span></td><td data-label="Aksi"><button class="btn outline sm" disabled>Penuh</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FAQ ===== -->
+<div class="view" id="v-faq" style="display:none">
+  <div class="card">
+    <div class="card-header"><div class="card-title">❓ Pertanyaan yang Sering Diajukan</div></div>
+    <div style="padding:0 16px 16px">
+      <div class="faq-list" id="faqList">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Bagaimana cara mengubah password akun saya?</div>
+          <div class="faq-a">Saat ini perubahan password dilakukan melalui admin DKUKMPP. Hubungi pendamping Anda atau kirim email ke <strong>umkm@dkukmpp.cirebonkota.go.id</strong> dengan menyertakan ID UMKM Anda.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Data saya tidak tersimpan, apa yang harus dilakukan?</div>
+          <div class="faq-a">Pastikan tombol <strong>Simpan</strong> sudah diklik setelah mengisi form. Jika masih bermasalah, coba refresh halaman (F5) dan periksa koneksi internet. Data yang belum disimpan akan hilang saat halaman di-refresh.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Apa bedanya "Margin" dan "Keuntungan"?</div>
+          <div class="faq-a"><strong>Keuntungan</strong> adalah selisih antara total penjualan dan total pengeluaran (dalam Rupiah). <strong>Margin</strong> adalah persentase keuntungan terhadap penjualan: <code>(Keuntungan ÷ Penjualan) × 100%</code>. Margin lebih berguna untuk membandingkan antar produk yang harganya berbeda-beda.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Mengapa stok bahan baku saya berstatus "Menipis"?</div>
+          <div class="faq-a">Status <strong>Menipis</strong> muncul ketika stok saat ini ≤ stok minimum yang Anda tetapkan. Segera lakukan pembelian ulang (restock) dan update jumlah stok di menu <strong>Kelola Bahan Baku</strong>.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Apakah data keuangan saya bisa dilihat oleh UMKM lain?</div>
+          <div class="faq-a">Tidak. Data keuangan Anda bersifat rahasia dan hanya bisa diakses oleh Anda sendiri dan admin DKUKMPP yang bertugas membina usaha Anda. UMKM lain tidak memiliki akses ke data Anda.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Bagaimana cara mengajukan bantuan modal dari DKUKMPP?</div>
+          <div class="faq-a">Pengajuan bantuan modal dilakukan secara offline di kantor DKUKMPP. Pastikan data usaha Anda di sistem sudah lengkap (profil, modal, laporan keuangan 3 bulan terakhir), karena data ini digunakan sebagai bahan evaluasi pengajuan.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Bagaimana cara mencetak laporan keuangan?</div>
+          <div class="faq-a">Buka menu <strong>Kelola Laporan → Laporan Keuangan</strong>, pilih periode yang diinginkan, lalu klik tombol <strong>Cetak PDF</strong> atau <strong>Export Excel</strong>. Laporan akan diunduh otomatis ke perangkat Anda.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Kenapa ada notifikasi yang saya tidak mengerti?</div>
+          <div class="faq-a">Setiap notifikasi memiliki ikon warna berbeda: <span class="badge success">Hijau</span> = informasi positif, <span class="badge warning">Oranye</span> = perlu perhatian, <span class="badge danger">Merah</span> = tindakan segera diperlukan. Buka menu <strong>Notifikasi</strong> untuk melihat detail lengkapnya.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal detail panduan -->
+<div class="modal-backdrop" id="modalGuide">
+  <div class="modal" style="max-width:560px">
+    <h3 id="guideTitle"></h3>
+    <div id="guideBody" style="margin-top:12px;font-size:13.5px;line-height:1.7;color:var(--gray-700)"></div>
+    <div class="modal-actions"><button class="btn secondary" onclick="closeGuide()">Tutup</button></div>
+  </div>
+</div>
+
+<style>
+.guide-list { display:flex; flex-direction:column; gap:0; }
+.guide-list-horizontal { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+.guide-item {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px; cursor:pointer;
+  border-bottom:1px solid var(--gray-100);
+  transition:background .15s;
+}
+.guide-item:last-child { border-bottom:none; }
+.guide-item:hover { background:var(--gray-50); }
+.guide-icon { width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px; }
+.guide-body { flex:1; }
+.guide-title { font-weight:600;font-size:13.5px;color:var(--gray-800); }
+.guide-desc { font-size:12px;color:var(--gray-500);margin-top:2px; }
+
+.kontak-list { display:flex;flex-direction:column;gap:14px; }
+.kontak-item { display:flex;align-items:flex-start;gap:14px;padding:12px;background:var(--gray-50);border-radius:8px; }
+.kontak-icon { width:36px;height:36px;background:var(--primary);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.kontak-label { font-size:11px;color:var(--gray-500);margin-bottom:2px; }
+.kontak-value { font-weight:600;font-size:14px;color:var(--gray-800); }
+.kontak-note { font-size:11.5px;color:var(--gray-500);margin-top:2px; }
+
+.checklist-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px; }
+.checklist-item { display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--gray-700);cursor:pointer; }
+.checklist-item input { margin-top:2px;accent-color:var(--primary); }
+
+.faq-list { display:flex;flex-direction:column;gap:4px;margin-top:8px; }
+.faq-item { border:1px solid var(--gray-200);border-radius:8px;overflow:hidden; }
+.faq-q { padding:12px 14px;font-weight:600;font-size:13.5px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--gray-800); }
+.faq-q:hover { background:var(--gray-50); }
+.faq-arrow { transition:transform .2s;flex-shrink:0; }
+.faq-item.open .faq-arrow { transform:rotate(90deg); }
+.faq-a { display:none;padding:0 14px 14px 36px;font-size:13px;color:var(--gray-600);line-height:1.7; }
+.faq-item.open .faq-a { display:block; }
+
+@media(max-width:600px){
+  .guide-list-horizontal { grid-template-columns:1fr; }
+  .checklist-grid { grid-template-columns:1fr; }
+}
+</style>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+// Tabs
+const tabs = document.querySelectorAll('#bantuanTabs .tab');
+const views = ['panduan','tips','kontak','faq'];
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.toggle('active', x===t));
+  views.forEach(v => document.getElementById('v-'+v).style.display = (v===t.dataset.view)?'':'none');
+}));
+
+// Hash routing
+const hash = location.hash.replace('#','');
+if (hash && views.includes(hash)) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.view===hash));
+  views.forEach(v => document.getElementById('v-'+v).style.display = (v===hash)?'':'none');
+}
+
+// FAQ toggle
+function toggleFaq(el){ el.classList.toggle('open'); }
+
+// Konfirmasi konsultasi
+function daftarKonsultasi(slot){
+  alert('Mock: Anda terdaftar untuk sesi konsultasi ' + slot + '.\nKonfirmasi akan dikirim melalui notifikasi sistem.');
+}
+
+// Kirim pesan
+function kirimPesan(){
+  alert('Mock: Pesan Anda telah terkirim ke pendamping DKUKMPP.\nKami akan merespons dalam 1×24 jam kerja.');
+}
+
+// Guide modal content
+const GUIDES = {
+  login: {
+    title:'Login & Kelola Profil',
+    body:`<ol style="padding-left:18px;margin:0">
+      <li>Buka halaman <strong>login.html</strong> dan masukkan email + password yang diberikan DKUKMPP.</li>
+      <li>Setelah masuk, klik nama Anda di pojok kanan atas → pilih <strong>Profil</strong>.</li>
+      <li>Klik <strong>Edit Profil</strong> untuk mengubah nama usaha, alamat, nomor telepon, atau foto.</li>
+      <li>Klik <strong>Simpan Perubahan</strong> setelah selesai.</li>
+    </ol>
+    <div class="alert info" style="margin-top:14px;font-size:12.5px">Foto profil UMKM digunakan di laporan resmi DKUKMPP. Gunakan foto yang jelas dan mewakili usaha Anda.</div>`
+  },
+  dashboard: {
+    title:'Memahami Dashboard',
+    body:`<p>Dashboard menampilkan 4 angka utama (KPI) usaha Anda:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>Sisa Dana</strong> — Total modal dikurangi total pengeluaran.</li>
+      <li><strong>Total Modal</strong> — Semua sumber dana yang masuk ke usaha.</li>
+      <li><strong>Total Pengeluaran</strong> — Akumulasi semua biaya operasional.</li>
+      <li><strong>Keuntungan</strong> — Selisih penjualan dan pengeluaran bulan ini.</li>
+    </ul>
+    <p>Grafik 6 bulan menunjukkan tren penjualan dan pengeluaran. Jika garis pengeluaran mendekati/melampaui penjualan, saatnya evaluasi biaya.</p>`
+  },
+  modal: {
+    title:'Mencatat Modal Usaha',
+    body:`<p>Modal dicatat di menu <strong>Kelola Modal → Tambah Modal</strong>. Isi:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>Sumber</strong>: Modal Sendiri / Pinjaman / Investor / Hibah</li>
+      <li><strong>Sub Kategori</strong>: otomatis muncul sesuai sumber (mis. Modal Sendiri → Tabungan Pribadi / Aset)</li>
+      <li><strong>Nominal</strong>: jumlah dana dalam Rupiah</li>
+      <li><strong>Tanggal</strong>: tanggal dana diterima/digunakan</li>
+    </ul>
+    <div class="alert info" style="margin-top:14px;font-size:12.5px">Hibah dari DKUKMPP wajib dicatat agar terlihat di laporan dan memudahkan pengajuan bantuan berikutnya.</div>`
+  },
+  produk: {
+    title:'Kelola Data Produk',
+    body:`<p>Buka menu <strong>Kelola Data Produk</strong>, klik <strong>+ Tambah Produk</strong>. Isi:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>Harga Modal</strong>: biaya produksi per unit (bahan baku + tenaga)</li>
+      <li><strong>Harga Jual</strong>: harga yang dibayar pembeli</li>
+      <li><strong>Margin</strong>: dikalkulasi otomatis = (Jual − Modal) ÷ Jual × 100%</li>
+      <li><strong>Stok Minimum</strong>: sistem akan memberi peringatan jika stok ≤ angka ini</li>
+    </ul>
+    <p>Target margin ≥ 25% agar usaha dikategorikan "Baik" oleh DKUKMPP.</p>`
+  },
+  kasir: {
+    title:'Menggunakan Kasir',
+    body:`<p>Kasir digunakan untuk mencatat penjualan secara cepat:</p>
+    <ol style="padding-left:18px;margin:8px 0">
+      <li>Buka <strong>Kelola Penjualan → Kasir Penjualan</strong>.</li>
+      <li>Pilih produk dan masukkan jumlah (qty).</li>
+      <li>Pilih metode pembayaran: <strong>Tunai</strong>, <strong>Transfer Bank</strong>, atau <strong>QRIS</strong>.</li>
+      <li>Klik <strong>Proses Transaksi</strong>. Transaksi otomatis masuk ke Riwayat Penjualan.</li>
+    </ol>
+    <div class="alert info" style="margin-top:14px;font-size:12.5px">Stok produk akan berkurang otomatis setiap kali transaksi berhasil disimpan.</div>`
+  },
+  pengeluaran: {
+    title:'Mencatat Pengeluaran',
+    body:`<p>Buka <strong>Kelola Pengeluaran → Tambah Pengeluaran</strong>. Pilih kategori yang tepat:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>Bahan Baku</strong> — pembelian bahan untuk produksi</li>
+      <li><strong>Gaji Karyawan</strong> — upah karyawan bulanan/harian</li>
+      <li><strong>Operasional</strong> — listrik, air, internet, kemasan</li>
+      <li><strong>Sewa Tempat</strong> — biaya sewa toko/kios/dapur</li>
+      <li><strong>Marketing</strong> — promosi, iklan media sosial, brosur</li>
+    </ul>
+    <p>Pengeluaran yang dikategorikan benar membantu laporan keuangan lebih akurat.</p>`
+  },
+  keuntungan: {
+    title:'Kalkulator Keuntungan',
+    body:`<p>Kalkulator menghitung otomatis berdasarkan data yang sudah Anda input:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>Keuntungan</strong> = Total Penjualan − Total Pengeluaran</li>
+      <li><strong>Margin</strong> = Keuntungan ÷ Penjualan × 100%</li>
+    </ul>
+    <p>Interpretasi margin:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><span class="badge success">Sangat Baik</span> — Margin > 25%</li>
+      <li><span class="badge success">Baik</span> — Margin 15–25%</li>
+      <li><span class="badge warning">Rendah</span> — Margin < 15%</li>
+      <li><span class="badge danger">Rugi</span> — Margin negatif</li>
+    </ul>`
+  },
+  laporan: {
+    title:'Cetak Laporan Keuangan',
+    body:`<ol style="padding-left:18px;margin:0">
+      <li>Buka <strong>Kelola Laporan → Laporan Keuangan</strong>.</li>
+      <li>Pilih periode: Bulanan, Kuartalan, atau Tahunan.</li>
+      <li>Klik <strong>Tampilkan Laporan</strong> untuk preview data.</li>
+      <li>Klik <strong>Cetak PDF</strong> untuk unduh format PDF, atau <strong>Export Excel</strong> untuk format spreadsheet.</li>
+    </ol>
+    <div class="alert info" style="margin-top:14px;font-size:12.5px">Simpan laporan minimal 3 bulan terakhir. Data ini diperlukan saat pengajuan bantuan modal ke DKUKMPP.</div>`
+  },
+  bahan: {
+    title:'Kelola Bahan Baku',
+    body:`<p>Pantau stok bahan baku agar produksi tidak terhenti:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li>Tambah bahan baku di menu <strong>Kelola Bahan Baku → + Tambah</strong>.</li>
+      <li>Isi <strong>Stok Minimum</strong> — sistem akan otomatis memberi notifikasi saat stok ≤ nilai ini.</li>
+      <li>Status stok: <span class="badge success">Aman</span> / <span class="badge warning">Menipis</span> / <span class="badge danger">Habis</span>.</li>
+      <li>Perbarui stok setiap kali ada pembelian bahan baku baru.</li>
+    </ul>`
+  },
+  notifikasi: {
+    title:'Memahami Notifikasi',
+    body:`<p>Notifikasi dikirim otomatis oleh sistem untuk kondisi berikut:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><span class="badge success">Hijau</span> — Kabar baik: modal masuk, target tercapai, laporan siap.</li>
+      <li><span class="badge warning">Oranye</span> — Perhatian: stok menipis, pengeluaran mendekati batas.</li>
+      <li><span class="badge danger">Merah</span> — Segera tindaki: stok habis, batas jatuh tempo terlewat.</li>
+      <li><span class="badge info">Biru</span> — Informasi: undangan pelatihan, pengumuman DKUKMPP.</li>
+    </ul>
+    <p>Buka menu <strong>Notifikasi Sistem</strong> untuk melihat riwayat semua notifikasi.</p>`
+  },
+};
+
+function openGuide(key){
+  const g = GUIDES[key];
+  if(!g) return;
+  document.getElementById('guideTitle').textContent = g.title;
+  document.getElementById('guideBody').innerHTML = g.body;
+  document.getElementById('modalGuide').classList.add('active');
+  if(window.ICRender) ICRender(document.getElementById('guideBody'));
+}
+function closeGuide(){ document.getElementById('modalGuide').classList.remove('active'); }
+document.getElementById('modalGuide').addEventListener('click', e => { if(e.target===e.currentTarget) closeGuide(); });
+</script>
+</body>
+</html>

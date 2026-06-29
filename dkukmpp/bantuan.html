@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panduan & Bantuan Admin - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Panduan & Bantuan">
+
+<div class="page-title">Panduan &amp; Bantuan Administrator</div>
+<div class="page-sub">Panduan penggunaan panel DKUKMPP, alur kerja verifikasi UMKM, dan informasi teknis sistem.</div>
+
+<div class="pill-tabs" id="bantuanTabs">
+  <div class="tab active" data-view="panduan">Panduan Sistem</div>
+  <div class="tab" data-view="alur">Alur Kerja</div>
+  <div class="tab" data-view="faq">FAQ Admin</div>
+  <div class="tab" data-view="teknis">Info Teknis</div>
+</div>
+
+<!-- ===== PANDUAN SISTEM ===== -->
+<div class="view" id="v-panduan">
+
+  <div class="stat-grid">
+    <div class="stat"><div class="icon"><span data-ic="book"></span></div><div><div class="label">Total Panduan</div><div class="value">16</div></div></div>
+    <div class="stat green"><div class="icon"><span data-ic="check"></span></div><div><div class="label">Modul Aktif</div><div class="value">9</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="users"></span></div><div><div class="label">UMKM Binaan</div><div class="value">15</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="shield"></span></div><div><div class="label">Role Aktif</div><div class="value">Admin</div></div></div>
+  </div>
+
+  <div class="row-2-eq" style="gap:16px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">🔑 Akses &amp; Navigasi</div></div>
+      <div class="guide-list">
+        <div class="guide-item" onclick="openGuide('login')">
+          <div class="guide-icon" style="background:#e0e7ff"><span data-ic="user"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Login Admin &amp; Hak Akses</div>
+            <div class="guide-desc">Cara login sebagai admin, perbedaan role, dan manajemen sesi.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('dashboard')">
+          <div class="guide-icon" style="background:#dcfce7"><span data-ic="bar-chart"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Membaca Dashboard Agregat</div>
+            <div class="guide-desc">Arti KPI agregat, grafik pertumbuhan, dan distribusi kategori UMKM.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('sidebar')">
+          <div class="guide-icon" style="background:#fef9c3"><span data-ic="menu"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Navigasi Sidebar</div>
+            <div class="guide-desc">Penjelasan setiap menu di sidebar admin dan fungsinya.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">👥 Kelola UMKM</div></div>
+      <div class="guide-list">
+        <div class="guide-item" onclick="openGuide('verifikasi')">
+          <div class="guide-icon" style="background:#fce7f3"><span data-ic="check"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Verifikasi Pendaftaran</div>
+            <div class="guide-desc">Alur menyetujui atau menolak pendaftaran UMKM baru.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('detail')">
+          <div class="guide-icon" style="background:#ccfbf1"><span data-ic="eye"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Melihat Detail UMKM</div>
+            <div class="guide-desc">Navigasi tab profil, modal, produk, penjualan, pengeluaran, dan laporan per UMKM.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('bermasalah')">
+          <div class="guide-icon" style="background:#fee2e2"><span data-ic="alert"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">UMKM Bermasalah</div>
+            <div class="guide-desc">Kriteria UMKM bermasalah dan langkah intervensi yang tersedia.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-2-eq" style="gap:16px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">📊 Monitoring &amp; Laporan</div></div>
+      <div class="guide-list">
+        <div class="guide-item" onclick="openGuide('modal')">
+          <div class="guide-icon" style="background:#fef3c7"><span data-ic="wallet"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Kelola Modal UMKM</div>
+            <div class="guide-desc">Cara baca sebaran sumber modal dan status pertumbuhan modal.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('keuntungan')">
+          <div class="guide-icon" style="background:#dcfce7"><span data-ic="trend-up"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Kelola Keuntungan</div>
+            <div class="guide-desc">Filter performa keuangan per kategori dan interpretasi margin.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('laporan')">
+          <div class="guide-icon" style="background:#ede9fe"><span data-ic="file-text"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Cetak Laporan &amp; Peta Sebaran</div>
+            <div class="guide-desc">Export laporan keuntungan, pertumbuhan, per kategori, dan peta lokasi UMKM.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">⚙️ Pengaturan Sistem</div></div>
+      <div class="guide-list">
+        <div class="guide-item" onclick="openGuide('hakakses')">
+          <div class="guide-icon" style="background:#e0e7ff"><span data-ic="shield"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Manajemen Hak Akses</div>
+            <div class="guide-desc">Menambah operator, mengatur role, dan menonaktifkan akun.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('notifikasi')">
+          <div class="guide-icon" style="background:#fce7f3"><span data-ic="bell"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Manajemen Notifikasi</div>
+            <div class="guide-desc">Cara broadcast notifikasi ke semua atau sebagian UMKM binaan.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+        <div class="guide-item" onclick="openGuide('auditlog')">
+          <div class="guide-icon" style="background:#ccfbf1"><span data-ic="list"></span></div>
+          <div class="guide-body">
+            <div class="guide-title">Audit Log</div>
+            <div class="guide-desc">Cara membaca log aktivitas admin dan mengekspor riwayat audit.</div>
+          </div>
+          <span data-ic="chevron-right"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ALUR KERJA ===== -->
+<div class="view" id="v-alur" style="display:none">
+  <div class="card mb-3">
+    <div class="card-header"><div class="card-title">🔄 Alur Verifikasi Pendaftaran UMKM</div></div>
+    <div style="padding:16px">
+      <div class="alur-steps">
+        <div class="alur-step">
+          <div class="alur-num">1</div>
+          <div class="alur-body">
+            <div class="alur-title">UMKM Mendaftar</div>
+            <div class="alur-desc">Pelaku usaha mengisi form pendaftaran. Status awal: <span class="badge warning">Menunggu</span>.</div>
+          </div>
+        </div>
+        <div class="alur-arrow"><span data-ic="arrow-down"></span></div>
+        <div class="alur-step">
+          <div class="alur-num">2</div>
+          <div class="alur-body">
+            <div class="alur-title">Admin Menerima Notifikasi</div>
+            <div class="alur-desc">Sistem mengirim notifikasi ke admin. Buka <strong>Kelola Data Registrasi</strong>.</div>
+          </div>
+        </div>
+        <div class="alur-arrow"><span data-ic="arrow-down"></span></div>
+        <div class="alur-step">
+          <div class="alur-num">3</div>
+          <div class="alur-body">
+            <div class="alur-title">Review Detail Pendaftaran</div>
+            <div class="alur-desc">Klik <strong>Detail</strong> untuk melihat lengkap data calon UMKM sebelum memutuskan.</div>
+          </div>
+        </div>
+        <div class="alur-arrow"><span data-ic="arrow-down"></span></div>
+        <div class="alur-step">
+          <div class="alur-num" style="background:var(--success)">4a</div>
+          <div class="alur-body">
+            <div class="alur-title">Setujui <span class="badge success">Disetujui</span></div>
+            <div class="alur-desc">UMKM otomatis terdaftar sebagai Aktif. Data muncul di Kelola Data UMKM.</div>
+          </div>
+        </div>
+        <div class="alur-step" style="margin-top:4px">
+          <div class="alur-num" style="background:var(--danger)">4b</div>
+          <div class="alur-body">
+            <div class="alur-title">Tolak <span class="badge danger">Ditolak</span></div>
+            <div class="alur-desc">Isi catatan alasan penolakan. UMKM mendapat notifikasi dan dapat mendaftar ulang.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">📋 Checklist Admin Mingguan</div></div>
+    <div style="padding:0 16px 16px">
+      <div class="checklist-grid">
+        <label class="checklist-item"><input type="checkbox"> Cek pendaftaran baru yang menunggu verifikasi</label>
+        <label class="checklist-item"><input type="checkbox"> Review UMKM bermasalah (modal turun / penjualan rendah)</label>
+        <label class="checklist-item"><input type="checkbox"> Pantau statistik agregat di dashboard</label>
+        <label class="checklist-item"><input type="checkbox"> Cek bahan baku kritis (status Habis/Menipis)</label>
+        <label class="checklist-item"><input type="checkbox"> Kirim notifikasi pengumuman bila diperlukan</label>
+        <label class="checklist-item"><input type="checkbox"> Export laporan mingguan (PDF/Excel)</label>
+        <label class="checklist-item"><input type="checkbox"> Review audit log aktivitas sistem</label>
+        <label class="checklist-item"><input type="checkbox"> Update jadwal pelatihan jika ada perubahan</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FAQ ADMIN ===== -->
+<div class="view" id="v-faq" style="display:none">
+  <div class="card">
+    <div class="card-header"><div class="card-title">❓ FAQ Administrator</div></div>
+    <div style="padding:0 16px 16px">
+      <div class="faq-list">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Bagaimana cara menambah operator admin baru?</div>
+          <div class="faq-a">Buka <strong>Manajemen Hak Akses</strong> → klik <strong>+ Tambah Pengguna</strong>. Isi nama, email, dan role (Admin / Operator). Sistem akan mengirim email undangan ke akun baru secara otomatis.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Apa yang terjadi jika pendaftaran UMKM ditolak?</div>
+          <div class="faq-a">UMKM mendapat notifikasi penolakan beserta catatan alasan yang Anda isi. UMKM dapat memperbaiki data dan mendaftar ulang. Riwayat pendaftaran yang ditolak tetap tersimpan di log sistem.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Bagaimana cara mengubah status UMKM dari Aktif ke Tidak Aktif?</div>
+          <div class="faq-a">Buka <strong>Kelola Data UMKM</strong>, cari UMKM yang dituju, klik dropdown di kolom Status, dan pilih <strong>Tidak Aktif</strong>. UMKM tidak aktif tidak dihitung dalam statistik agregat dashboard.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Apakah admin bisa mengubah data keuangan UMKM?</div>
+          <div class="faq-a">Tidak. Admin DKUKMPP hanya memiliki akses <strong>view-only</strong> atas data keuangan UMKM (modal, transaksi, pengeluaran, laporan). Hanya pelaku UMKM yang bisa mengubah data keuangan mereka sendiri. Hal ini untuk menjaga integritas data.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Bagaimana cara mengirim notifikasi ke semua UMKM sekaligus?</div>
+          <div class="faq-a">Buka <strong>Manajemen Notifikasi</strong> → klik <strong>+ Broadcast Notifikasi</strong>. Pilih kategori (Pelatihan/Pengumuman/dll), isi judul dan pesan, pilih target (Semua UMKM / per Kategori / pilih manual), lalu klik <strong>Kirim</strong>.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Bagaimana kriteria UMKM dikategorikan "Bermasalah"?</div>
+          <div class="faq-a">UMKM dikategorikan bermasalah jika memenuhi salah satu kondisi: (1) modal turun &gt; 20% dalam 3 bulan, (2) penjualan &lt; 50% rata-rata kategori, (3) margin negatif (rugi) 2 bulan berturut-turut, atau (4) tidak ada input data selama &gt; 30 hari. Pantau di menu <strong>UMKM Bermasalah</strong>.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span data-ic="chevron-right" class="faq-arrow"></span> Data di peta sebaran tidak muncul, apa penyebabnya?</div>
+          <div class="faq-a">Peta membutuhkan koneksi internet untuk memuat tile peta dari OpenStreetMap. Pastikan koneksi stabil. Jika masalah berlanjut, refresh halaman (F5) dan tunggu beberapa detik hingga peta selesai dimuat.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== INFO TEKNIS ===== -->
+<div class="view" id="v-teknis" style="display:none">
+  <div class="row-2-eq" style="gap:16px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">🖥️ Spesifikasi Sistem</div></div>
+      <div style="padding:0 16px 16px">
+        <table class="data" style="font-size:13px">
+          <tbody>
+            <tr><td style="color:var(--gray-500);width:160px">Nama Sistem</td><td><strong>SIM-UMKM</strong></td></tr>
+            <tr><td style="color:var(--gray-500)">Versi</td><td>1.0.0 (Prototipe UI)</td></tr>
+            <tr><td style="color:var(--gray-500)">Platform</td><td>Web — HTML5 / CSS3 / JavaScript</td></tr>
+            <tr><td style="color:var(--gray-500)">Browser Didukung</td><td>Chrome 90+, Firefox 88+, Edge 90+, Safari 14+</td></tr>
+            <tr><td style="color:var(--gray-500)">Resolusi Optimal</td><td>1280×720 ke atas (responsive hingga mobile)</td></tr>
+            <tr><td style="color:var(--gray-500)">Koneksi</td><td>Diperlukan untuk peta Leaflet &amp; Chart.js CDN</td></tr>
+            <tr><td style="color:var(--gray-500)">Penyimpanan Sesi</td><td>localStorage browser (bukan cookie)</td></tr>
+            <tr><td style="color:var(--gray-500)">Pemilik Domain</td><td>DKUKMPP Kota Cirebon</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">🔒 Keamanan &amp; Privasi</div></div>
+      <div style="padding:0 16px 16px">
+        <div class="guide-list">
+          <div class="guide-item" style="cursor:default">
+            <div class="guide-icon" style="background:#dcfce7"><span data-ic="shield"></span></div>
+            <div class="guide-body">
+              <div class="guide-title">Sesi Otomatis Berakhir</div>
+              <div class="guide-desc">Sesi login berakhir saat browser ditutup. Selalu logout setelah selesai pada perangkat bersama.</div>
+            </div>
+          </div>
+          <div class="guide-item" style="cursor:default">
+            <div class="guide-icon" style="background:#fef9c3"><span data-ic="eye"></span></div>
+            <div class="guide-body">
+              <div class="guide-title">Data UMKM Bersifat Rahasia</div>
+              <div class="guide-desc">Dilarang berbagi data keuangan UMKM ke pihak di luar DKUKMPP tanpa izin.</div>
+            </div>
+          </div>
+          <div class="guide-item" style="cursor:default">
+            <div class="guide-icon" style="background:#e0e7ff"><span data-ic="list"></span></div>
+            <div class="guide-body">
+              <div class="guide-title">Semua Aksi Tercatat</div>
+              <div class="guide-desc">Login, verifikasi, dan perubahan data tersimpan di Audit Log dan dapat diperiksa kapan saja.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">📞 Kontak Tim Teknis</div></div>
+    <div style="padding:0 16px 16px">
+      <div class="kontak-list">
+        <div class="kontak-item">
+          <div class="kontak-icon"><span data-ic="phone"></span></div>
+          <div>
+            <div class="kontak-label">Helpdesk Sistem</div>
+            <div class="kontak-value">(0231) 123-9999</div>
+            <div class="kontak-note">Senin – Jumat, 08.00 – 16.00 WIB</div>
+          </div>
+        </div>
+        <div class="kontak-item">
+          <div class="kontak-icon"><span data-ic="mail"></span></div>
+          <div>
+            <div class="kontak-label">Email Teknis</div>
+            <div class="kontak-value">it@dkukmpp.cirebonkota.go.id</div>
+            <div class="kontak-note">Untuk laporan bug, permintaan fitur, dan masalah akses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal detail panduan -->
+<div class="modal-backdrop" id="modalGuide">
+  <div class="modal" style="max-width:560px">
+    <h3 id="guideTitle"></h3>
+    <div id="guideBody" style="margin-top:12px;font-size:13.5px;line-height:1.7;color:var(--gray-700)"></div>
+    <div class="modal-actions"><button class="btn secondary" onclick="closeGuide()">Tutup</button></div>
+  </div>
+</div>
+
+<style>
+.guide-list { display:flex; flex-direction:column; gap:0; }
+.guide-item {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px; cursor:pointer;
+  border-bottom:1px solid var(--gray-100);
+  transition:background .15s;
+}
+.guide-item:last-child { border-bottom:none; }
+.guide-item:hover { background:var(--gray-50); }
+.guide-icon { width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.guide-body { flex:1; }
+.guide-title { font-weight:600;font-size:13.5px;color:var(--gray-800); }
+.guide-desc { font-size:12px;color:var(--gray-500);margin-top:2px; }
+
+.kontak-list { display:flex;flex-direction:column;gap:12px;margin-top:8px; }
+.kontak-item { display:flex;align-items:flex-start;gap:14px;padding:12px;background:var(--gray-50);border-radius:8px; }
+.kontak-icon { width:36px;height:36px;background:var(--primary);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.kontak-label { font-size:11px;color:var(--gray-500);margin-bottom:2px; }
+.kontak-value { font-weight:600;font-size:14px;color:var(--gray-800); }
+.kontak-note { font-size:11.5px;color:var(--gray-500);margin-top:2px; }
+
+.checklist-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px; }
+.checklist-item { display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--gray-700);cursor:pointer; }
+.checklist-item input { margin-top:2px;accent-color:var(--primary); }
+
+.alur-steps { display:flex;flex-direction:column;gap:0; }
+.alur-step { display:flex;align-items:flex-start;gap:14px;padding:12px 0; }
+.alur-num { width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.alur-title { font-weight:600;font-size:13.5px;color:var(--gray-800); }
+.alur-desc { font-size:12.5px;color:var(--gray-500);margin-top:3px; }
+.alur-arrow { padding:0 0 0 14px;color:var(--gray-300);font-size:16px; }
+
+.faq-list { display:flex;flex-direction:column;gap:4px;margin-top:8px; }
+.faq-item { border:1px solid var(--gray-200);border-radius:8px;overflow:hidden; }
+.faq-q { padding:12px 14px;font-weight:600;font-size:13.5px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--gray-800); }
+.faq-q:hover { background:var(--gray-50); }
+.faq-arrow { transition:transform .2s;flex-shrink:0; }
+.faq-item.open .faq-arrow { transform:rotate(90deg); }
+.faq-a { display:none;padding:0 14px 14px 36px;font-size:13px;color:var(--gray-600);line-height:1.7; }
+.faq-item.open .faq-a { display:block; }
+
+@media(max-width:600px){
+  .checklist-grid { grid-template-columns:1fr; }
+}
+</style>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+// Tabs
+const tabs = document.querySelectorAll('#bantuanTabs .tab');
+const views = ['panduan','alur','faq','teknis'];
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.toggle('active', x===t));
+  views.forEach(v => document.getElementById('v-'+v).style.display = (v===t.dataset.view)?'':'none');
+}));
+
+const hash = location.hash.replace('#','');
+if (hash && views.includes(hash)) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.view===hash));
+  views.forEach(v => document.getElementById('v-'+v).style.display = (v===hash)?'':'none');
+}
+
+function toggleFaq(el){ el.classList.toggle('open'); }
+
+const GUIDES = {
+  login: {
+    title:'Login Admin & Hak Akses',
+    body:`<p>Gunakan kredensial admin untuk masuk:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li>Email: <strong>admin@umkm.go.id</strong></li>
+      <li>Password: <strong>admin123</strong></li>
+    </ul>
+    <p>Admin memiliki akses penuh ke seluruh panel DKUKMPP. Operator memiliki akses terbatas (tidak bisa hapus data atau ubah hak akses). Sesi tersimpan di localStorage browser — logout saat menggunakan perangkat bersama.</p>`
+  },
+  dashboard: {
+    title:'Membaca Dashboard Agregat',
+    body:`<p>Dashboard menampilkan ringkasan seluruh UMKM binaan:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>KPI atas</strong> — Total UMKM aktif, pendaftaran menunggu, yang bermasalah, dan pelatihan bulan ini.</li>
+      <li><strong>Grafik Pertumbuhan</strong> — Tren jumlah UMKM aktif per bulan.</li>
+      <li><strong>Distribusi Kategori</strong> — Pie chart sebaran UMKM per bidang usaha.</li>
+      <li><strong>Pendaftaran Terbaru</strong> — 5 pendaftaran terakhir yang perlu diproses.</li>
+    </ul>`
+  },
+  sidebar: {
+    title:'Navigasi Sidebar Admin',
+    body:`<ul style="padding-left:18px;margin:0;line-height:2">
+      <li><strong>Dashboard</strong> — KPI agregat dan ringkasan sistem</li>
+      <li><strong>Kelola Data Registrasi</strong> — Verifikasi pendaftaran baru</li>
+      <li><strong>Kelola Data UMKM</strong> — Daftar & detail semua UMKM binaan</li>
+      <li><strong>Kelola Produk & Bahan Baku</strong> — Pantau inventori UMKM</li>
+      <li><strong>Kelola Modal</strong> — Sebaran dan pertumbuhan modal</li>
+      <li><strong>Kelola Pemasukan & Pengeluaran</strong> — Transaksi dan biaya</li>
+      <li><strong>Kelola Keuntungan</strong> — Performa keuangan per kategori</li>
+      <li><strong>Kelola Laporan</strong> — Cetak laporan + peta sebaran</li>
+    </ul>`
+  },
+  verifikasi: {
+    title:'Verifikasi Pendaftaran UMKM',
+    body:`<ol style="padding-left:18px;margin:0">
+      <li>Buka <strong>Kelola Data Registrasi</strong>.</li>
+      <li>Klik <strong>Detail</strong> pada baris pendaftaran untuk melihat data lengkap.</li>
+      <li>Klik <strong>Setujui</strong> jika data valid → UMKM langsung berstatus Aktif.</li>
+      <li>Klik <strong>Tolak</strong> dan isi catatan alasan jika ada masalah pada data.</li>
+    </ol>
+    <div class="alert info" style="margin-top:14px;font-size:12.5px">Pendaftaran yang sudah Disetujui atau Ditolak tidak dapat diubah statusnya kembali. Pastikan data dicek dengan teliti sebelum memutuskan.</div>`
+  },
+  detail: {
+    title:'Melihat Detail UMKM',
+    body:`<p>Dari <strong>Kelola Data UMKM</strong>, klik tombol <strong>Lihat</strong> untuk membuka profil lengkap UMKM. Tersedia 8 tab:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>Data UMKM</strong> — profil, kontak, status</li>
+      <li><strong>Data Modal</strong> — riwayat sumber modal</li>
+      <li><strong>Data Produk</strong> — daftar produk & margin</li>
+      <li><strong>Bahan Baku</strong> — stok & status</li>
+      <li><strong>Data Penjualan</strong> — riwayat transaksi</li>
+      <li><strong>Data Pengeluaran</strong> — pengeluaran per kategori</li>
+      <li><strong>Data Keuntungan</strong> — grafik & margin bulanan</li>
+      <li><strong>Laporan</strong> — laporan keuangan per periode</li>
+    </ul>
+    <p>Link "Lihat" dari halaman lain (Kelola Modal, Keuntungan, dll) akan langsung membuka tab yang relevan.</p>`
+  },
+  bermasalah: {
+    title:'UMKM Bermasalah',
+    body:`<p>UMKM dikategorikan bermasalah jika:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li>Modal turun &gt; 20% dalam 3 bulan terakhir</li>
+      <li>Penjualan &lt; 50% rata-rata kategori yang sama</li>
+      <li>Margin negatif (rugi) selama 2 bulan berturut-turut</li>
+      <li>Tidak ada input data selama &gt; 30 hari</li>
+    </ul>
+    <p>Langkah intervensi yang tersedia: undang ke pelatihan, kunjungan pendamping, atau ajukan bantuan modal darurat.</p>`
+  },
+  modal: {
+    title:'Kelola Modal UMKM',
+    body:`<p>Halaman ini menampilkan agregat modal seluruh UMKM binaan:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>Sebaran Sumber Modal</strong> — berapa UMKM pakai Modal Sendiri, Pinjaman, Hibah, dll.</li>
+      <li><strong>Grafik 12 Bulan</strong> — tren total modal keseluruhan UMKM.</li>
+      <li><strong>Detail per UMKM</strong> — modal awal, sekarang, pertumbuhan, dan status.</li>
+    </ul>
+    <p>Klik <strong>Lihat</strong> pada baris UMKM untuk langsung ke tab Data Modal di profil UMKM tersebut.</p>`
+  },
+  keuntungan: {
+    title:'Kelola Keuntungan UMKM',
+    body:`<p>Filter performa keuangan per kategori (Kuliner / Fashion / Lain-lain / Semua):</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li>Tabel menampilkan penjualan, HPP, keuntungan, dan margin per UMKM.</li>
+      <li>Status: <span class="badge success">Sangat Baik</span> &gt;25% · <span class="badge success">Baik</span> 15–25% · <span class="badge warning">Rendah</span> &lt;15% · <span class="badge danger">Rugi</span> negatif.</li>
+      <li>Klik <strong>Lihat</strong> untuk membuka tab Data Keuntungan di profil UMKM.</li>
+    </ul>`
+  },
+  laporan: {
+    title:'Cetak Laporan & Peta Sebaran',
+    body:`<p>Buka <strong>Kelola Laporan</strong> — tersedia 4 tab:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li><strong>Laporan Keuntungan</strong> — rincian keuntungan & margin per UMKM.</li>
+      <li><strong>Laporan Pertumbuhan</strong> — tren pertumbuhan penjualan.</li>
+      <li><strong>Laporan Per Kategori</strong> — perbandingan antar bidang usaha.</li>
+      <li><strong>Peta Sebaran</strong> — lokasi pin setiap UMKM di peta interaktif.</li>
+    </ul>
+    <p>Semua laporan dapat dieksport via tombol <strong>Cetak PDF</strong> atau <strong>Export Excel</strong>.</p>`
+  },
+  hakakses: {
+    title:'Manajemen Hak Akses',
+    body:`<p>Buka <strong>Manajemen Hak Akses</strong> untuk:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li>Tambah pengguna admin/operator baru</li>
+      <li>Ubah role pengguna yang sudah ada</li>
+      <li>Nonaktifkan akun yang sudah tidak dipakai</li>
+      <li>Reset password pengguna</li>
+    </ul>
+    <div class="alert info" style="margin-top:14px;font-size:12.5px">Hanya Admin (bukan Operator) yang bisa mengubah hak akses pengguna lain.</div>`
+  },
+  notifikasi: {
+    title:'Manajemen Notifikasi',
+    body:`<p>Admin dapat mengirim notifikasi manual ke UMKM binaan:</p>
+    <ol style="padding-left:18px;margin:8px 0">
+      <li>Buka <strong>Manajemen Notifikasi</strong> → <strong>+ Broadcast</strong>.</li>
+      <li>Pilih kategori: Pelatihan / Pengumuman / Peringatan / Informasi.</li>
+      <li>Isi judul dan isi pesan.</li>
+      <li>Pilih target: Semua UMKM, per Kategori Usaha, atau pilih manual.</li>
+      <li>Klik <strong>Kirim Notifikasi</strong>.</li>
+    </ol>`
+  },
+  auditlog: {
+    title:'Audit Log',
+    body:`<p>Audit Log mencatat semua aktivitas penting di sistem:</p>
+    <ul style="padding-left:18px;margin:8px 0">
+      <li>Login / logout admin dan UMKM</li>
+      <li>Verifikasi pendaftaran (Setujui/Tolak)</li>
+      <li>Perubahan data UMKM</li>
+      <li>Pengiriman notifikasi broadcast</li>
+      <li>Perubahan hak akses</li>
+    </ul>
+    <p>Gunakan filter tanggal dan jenis aksi untuk mencari log spesifik. Klik <strong>Export</strong> untuk unduh riwayat audit dalam format CSV.</p>`
+  },
+};
+
+function openGuide(key){
+  const g = GUIDES[key];
+  if(!g) return;
+  document.getElementById('guideTitle').textContent = g.title;
+  document.getElementById('guideBody').innerHTML = g.body;
+  document.getElementById('modalGuide').classList.add('active');
+  if(window.ICRender) ICRender(document.getElementById('guideBody'));
+}
+function closeGuide(){ document.getElementById('modalGuide').classList.remove('active'); }
+document.getElementById('modalGuide').addEventListener('click', e => { if(e.target===e.currentTarget) closeGuide(); });
+</script>
+</body>
+</html>

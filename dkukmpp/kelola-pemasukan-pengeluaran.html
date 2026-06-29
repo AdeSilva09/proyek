@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelola Pemasukan & Pengeluaran UMKM - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Pemasukan & Pengeluaran UMKM">
+
+<div class="page-title">Kelola Pemasukan &amp; Pengeluaran UMKM</div>
+<div class="page-sub">Pantau transaksi pemasukan (penjualan) dan pengeluaran seluruh UMKM binaan dalam satu halaman.</div>
+
+<div class="pill-tabs" id="ppTabs">
+  <div class="tab active" data-view="pemasukan">Kelola Pemasukan</div>
+  <div class="tab" data-view="pengeluaran">Kelola Pengeluaran</div>
+</div>
+
+<!-- ===================== VIEW: PEMASUKAN ===================== -->
+<div class="view" id="view-pemasukan">
+  <div class="toolbar mb-3">
+    <select class="form-control" style="width:260px;" id="iUmkm">
+      <option value="">— Semua UMKM Binaan (Agregat) —</option>
+      <option>Otak-Otak Khas Cirebon</option>
+      <option>Basreng Crispy</option>
+      <option>Sari Putri</option>
+      <option>Bawang Goreng Mama Rosi</option>
+      <option>Nyusoe</option>
+      <option>Siwang Umi Ami</option>
+      <option>Galang Cucur</option>
+      <option>Azza Cake &amp; Cookies</option>
+      <option>Batik Al Fitri</option>
+      <option>Rengginang Anakku</option>
+      <option>Aneka Kue</option>
+      <option>Kampoeng Tjaroeban</option>
+      <option>Warung Watini</option>
+      <option>Mamito Kitchen</option>
+      <option>Tempe Mala</option>
+    </select>
+    <select class="form-control" style="width:160px;" id="iKategori">
+      <option value="">Semua Kategori</option>
+      <option>Kuliner</option>
+      <option>Fashion</option>
+      <option>Retail</option>
+      <option>Jasa</option>
+      <option>Kerajinan</option>
+    </select>
+    <div class="spacer"></div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="icon"><span data-ic="cart"></span></div><div><div class="label">Total Penjualan</div><div class="value">Rp 5.8 M</div></div></div>
+    <div class="stat green"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Rata-rata/UMKM</div><div class="value">Rp 4.6 jt</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="fire"></span></div><div><div class="label">Penjualan Tertinggi</div><div class="value">Rp 48 jt</div><div class="delta">Konveksi Jaya</div></div></div>
+    <div class="stat red"><div class="icon"><span data-ic="trend-down"></span></div><div><div class="label">Penjualan Rendah</div><div class="value">62</div><div class="delta down">UMKM</div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title mb-2">Penjualan per Kategori</div>
+    <div class="chart-wrap"><canvas id="catChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title mb-2">Top 10 UMKM dengan Penjualan Tertinggi</div>
+    <div class="table-wrap">
+      <table class="data" id="topUmkmTable">
+        <thead><tr><th>Peringkat</th><th>UMKM</th><th>Kategori</th><th style="text-align:right">Penjualan Bulan Ini</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Peringkat">🥇 1</td><td data-label="UMKM">Kampoeng Tjaroeban</td><td data-label="Kategori">Kuliner</td><td data-label="Penjualan" style="text-align:right">Rp 22.500.000</td></tr>
+          <tr><td data-label="Peringkat">🥈 2</td><td data-label="UMKM">Azza Cake &amp; Cookies</td><td data-label="Kategori">Kuliner</td><td data-label="Penjualan" style="text-align:right">Rp 18.300.000</td></tr>
+          <tr><td data-label="Peringkat">🥉 3</td><td data-label="UMKM">Bawang Goreng Mama Rosi</td><td data-label="Kategori">Kuliner</td><td data-label="Penjualan" style="text-align:right">Rp 15.800.000</td></tr>
+          <tr><td data-label="Peringkat">4</td><td data-label="UMKM">Batik Al Fitri</td><td data-label="Kategori">Fashion</td><td data-label="Penjualan" style="text-align:right">Rp 14.200.000</td></tr>
+          <tr><td data-label="Peringkat">5</td><td data-label="UMKM">Otak-Otak Khas Cirebon</td><td data-label="Kategori">Kuliner</td><td data-label="Penjualan" style="text-align:right">Rp 12.600.000</td></tr>
+          <tr><td data-label="Peringkat">6</td><td data-label="UMKM">Sari Putri</td><td data-label="Kategori">Kuliner</td><td data-label="Penjualan" style="text-align:right">Rp 9.400.000</td></tr>
+          <tr><td data-label="Peringkat">7</td><td data-label="UMKM">Rengginang Anakku</td><td data-label="Kategori">Kuliner</td><td data-label="Penjualan" style="text-align:right">Rp 7.200.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Daftar Transaksi Penjualan UMKM</div>
+      <span class="text-muted" style="font-size:12.5px;" id="iCount">Data dari catatan kasir UMKM</span>
+    </div>
+    <div class="toolbar">
+      <div class="search"><input id="iSearch" placeholder="Cari produk / UMKM..."></div>
+      <input type="date" class="form-control" style="width:170px;" id="iDateFrom">
+      <input type="date" class="form-control" style="width:170px;" id="iDateTo">
+      <select class="form-control" style="width:160px;" id="iMetode">
+        <option value="">Semua Metode</option>
+        <option>Tunai</option>
+        <option>Transfer</option>
+        <option>QRIS</option>
+      </select>
+      <button class="btn outline sm" id="iReset" type="button">Reset Filter</button>
+    </div>
+    <div class="table-wrap">
+      <table class="data" id="iTable">
+        <thead><tr><th>Tanggal</th><th>UMKM</th><th>Produk</th><th>Kategori</th><th style="text-align:right">Qty</th><th>Metode</th><th style="text-align:right">Total</th></tr></thead>
+        <tbody>
+          <tr data-date="2026-06-10"><td data-label="Tanggal">10 Jun 2026</td><td data-label="UMKM">Kampoeng Tjaroeban</td><td data-label="Produk">Ketan Gurih Paket</td><td data-label="Kategori">Kuliner</td><td data-label="Qty" style="text-align:right">30</td><td data-label="Metode">Tunai</td><td data-label="Total" style="text-align:right;color:var(--success);font-weight:600">Rp 1.500.000</td></tr>
+          <tr data-date="2026-06-10"><td data-label="Tanggal">10 Jun 2026</td><td data-label="UMKM">Batik Al Fitri</td><td data-label="Produk">Batik Tulis</td><td data-label="Kategori">Fashion</td><td data-label="Qty" style="text-align:right">3</td><td data-label="Metode">Transfer</td><td data-label="Total" style="text-align:right;color:var(--success);font-weight:600">Rp 1.050.000</td></tr>
+          <tr data-date="2026-06-09"><td data-label="Tanggal">09 Jun 2026</td><td data-label="UMKM">Azza Cake &amp; Cookies</td><td data-label="Produk">Paket Kue Mix</td><td data-label="Kategori">Kuliner</td><td data-label="Qty" style="text-align:right">20</td><td data-label="Metode">QRIS</td><td data-label="Total" style="text-align:right;color:var(--success);font-weight:600">Rp 860.000</td></tr>
+          <tr data-date="2026-06-09"><td data-label="Tanggal">09 Jun 2026</td><td data-label="UMKM">Bawang Goreng Mama Rosi</td><td data-label="Produk">Bawang Goreng Aneka Rasa</td><td data-label="Kategori">Kuliner</td><td data-label="Qty" style="text-align:right">15</td><td data-label="Metode">Tunai</td><td data-label="Total" style="text-align:right;color:var(--success);font-weight:600">Rp 750.000</td></tr>
+          <tr data-date="2026-06-08"><td data-label="Tanggal">08 Jun 2026</td><td data-label="UMKM">Otak-Otak Khas Cirebon</td><td data-label="Produk">Otak-Otak Bakar</td><td data-label="Kategori">Kuliner</td><td data-label="Qty" style="text-align:right">50</td><td data-label="Metode">Tunai</td><td data-label="Total" style="text-align:right;color:var(--success);font-weight:600">Rp 1.000.000</td></tr>
+          <tr data-date="2026-06-08"><td data-label="Tanggal">08 Jun 2026</td><td data-label="UMKM">Sari Putri</td><td data-label="Produk">Kripik Kentang + Sumpia</td><td data-label="Kategori">Kuliner</td><td data-label="Qty" style="text-align:right">10</td><td data-label="Metode">QRIS</td><td data-label="Total" style="text-align:right;color:var(--success);font-weight:600">Rp 480.000</td></tr>
+          <tr data-date="2026-06-07"><td data-label="Tanggal">07 Jun 2026</td><td data-label="UMKM">Rengginang Anakku</td><td data-label="Produk">Rengginang + Sambal Botol</td><td data-label="Kategori">Kuliner</td><td data-label="Qty" style="text-align:right">12</td><td data-label="Metode">Transfer</td><td data-label="Total" style="text-align:right;color:var(--success);font-weight:600">Rp 600.000</td></tr>
+          <tr data-date="2026-06-07"><td data-label="Tanggal">07 Jun 2026</td><td data-label="UMKM">Siwang Umi Ami</td><td data-label="Produk">Siwang + Bawang Goreng</td><td data-label="Kategori">Kuliner</td><td data-label="Qty" style="text-align:right">8</td><td data-label="Metode">Tunai</td><td data-label="Total" style="text-align:right;color:var(--success);font-weight:600">Rp 320.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== VIEW: PENGELUARAN ===================== -->
+<div class="view" id="view-pengeluaran" style="display:none">
+  <div class="toolbar mb-3">
+    <select class="form-control" style="width:260px;" id="eUmkm">
+      <option value="">— Semua UMKM Binaan (Agregat) —</option>
+      <option>Otak-Otak Khas Cirebon</option>
+      <option>Basreng Crispy</option>
+      <option>Sari Putri</option>
+      <option>Bawang Goreng Mama Rosi</option>
+      <option>Nyusoe</option>
+      <option>Siwang Umi Ami</option>
+      <option>Galang Cucur</option>
+      <option>Azza Cake &amp; Cookies</option>
+      <option>Batik Al Fitri</option>
+      <option>Rengginang Anakku</option>
+      <option>Aneka Kue</option>
+      <option>Kampoeng Tjaroeban</option>
+      <option>Warung Watini</option>
+      <option>Mamito Kitchen</option>
+      <option>Tempe Mala</option>
+    </select>
+    <select class="form-control" style="width:160px;" id="ePeriode">
+      <option value="">Semua Periode</option>
+      <option>Juni 2026</option>
+      <option>Mei 2026</option>
+      <option>April 2026</option>
+    </select>
+    <div class="spacer"></div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat orange"><div class="icon"><span data-ic="money-off"></span></div><div><div class="label">Total Pengeluaran</div><div class="value">Rp 2.4 M</div><div class="delta">Juni 2026</div></div></div>
+    <div class="stat"><div class="icon"><span data-ic="bar-chart"></span></div><div><div class="label">Rata-rata/UMKM</div><div class="value">Rp 1.9 jt</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Kategori Terbesar</div><div class="value" style="font-size:16px;">Bahan Baku</div><div class="delta">38%</div></div></div>
+    <div class="stat red"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Pengeluaran Tinggi</div><div class="value">24</div><div class="delta">UMKM</div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title mb-2">Pengeluaran per Kategori</div>
+    <table class="data" style="font-size:13px">
+      <thead><tr><th>Kategori</th><th style="text-align:right">Total</th><th style="text-align:right">%</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Kategori">Bahan Baku</td><td data-label="Total" style="text-align:right">Rp 912 jt</td><td data-label="%" style="text-align:right">38%</td></tr>
+        <tr><td data-label="Kategori">Gaji Karyawan</td><td data-label="Total" style="text-align:right">Rp 624 jt</td><td data-label="%" style="text-align:right">26%</td></tr>
+        <tr><td data-label="Kategori">Operasional</td><td data-label="Total" style="text-align:right">Rp 432 jt</td><td data-label="%" style="text-align:right">18%</td></tr>
+        <tr><td data-label="Kategori">Sewa Tempat</td><td data-label="Total" style="text-align:right">Rp 264 jt</td><td data-label="%" style="text-align:right">11%</td></tr>
+        <tr><td data-label="Kategori">Marketing</td><td data-label="Total" style="text-align:right">Rp 168 jt</td><td data-label="%" style="text-align:right">7%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Rincian Pengeluaran — Untuk Beli Apa Saja</div>
+      <span class="text-muted" style="font-size:12.5px;" id="eCount"></span>
+    </div>
+    <div class="toolbar">
+      <div class="search"><input id="eSearch" placeholder="Cari deskripsi / UMKM..."></div>
+      <select class="form-control" style="width:170px;" id="eKategori">
+        <option value="">Semua Kategori</option>
+        <option>Bahan Baku</option>
+        <option>Gaji Karyawan</option>
+        <option>Operasional</option>
+        <option>Sewa Tempat</option>
+        <option>Marketing</option>
+      </select>
+      <input type="date" class="form-control" style="width:170px;" id="eDateFrom">
+      <input type="date" class="form-control" style="width:170px;" id="eDateTo">
+      <button class="btn outline sm" id="eReset" type="button">Reset Filter</button>
+    </div>
+    <div class="table-wrap">
+      <table class="data" id="eTable">
+        <thead><tr><th>Tanggal</th><th>UMKM</th><th>Kategori</th><th>Sub Kategori</th><th>Deskripsi</th><th style="text-align:right">Nominal</th></tr></thead>
+        <tbody>
+          <tr data-date="2026-06-10"><td data-label="Tanggal">10 Jun 2026</td><td data-label="UMKM">Batik Al Fitri</td><td data-label="Kategori">Bahan Baku</td><td data-label="Sub">Kain</td><td data-label="Deskripsi">Beli kain batik 30 m</td><td data-label="Nominal" style="text-align:right;color:var(--danger);font-weight:600">Rp 2.100.000</td></tr>
+          <tr data-date="2026-06-10"><td data-label="Tanggal">10 Jun 2026</td><td data-label="UMKM">Otak-Otak Khas Cirebon</td><td data-label="Kategori">Bahan Baku</td><td data-label="Sub">Pokok</td><td data-label="Deskripsi">Beli ikan tenggiri 10 kg</td><td data-label="Nominal" style="text-align:right;color:var(--danger);font-weight:600">Rp 450.000</td></tr>
+          <tr data-date="2026-06-08"><td data-label="Tanggal">08 Jun 2026</td><td data-label="UMKM">Azza Cake &amp; Cookies</td><td data-label="Kategori">Bahan Baku</td><td data-label="Sub">Bumbu</td><td data-label="Deskripsi">Bahan kue mingguan</td><td data-label="Nominal" style="text-align:right;color:var(--danger);font-weight:600">Rp 980.000</td></tr>
+          <tr data-date="2026-06-07"><td data-label="Tanggal">07 Jun 2026</td><td data-label="UMKM">Bawang Goreng Mama Rosi</td><td data-label="Kategori">Bahan Baku</td><td data-label="Sub">Pokok</td><td data-label="Deskripsi">Beli bawang Sumenep 20 kg</td><td data-label="Nominal" style="text-align:right;color:var(--danger);font-weight:600">Rp 600.000</td></tr>
+          <tr data-date="2026-06-05"><td data-label="Tanggal">05 Jun 2026</td><td data-label="UMKM">Kampoeng Tjaroeban</td><td data-label="Kategori">Marketing</td><td data-label="Sub">Iklan Online</td><td data-label="Deskripsi">Iklan Instagram Ads oleh-oleh</td><td data-label="Nominal" style="text-align:right;color:var(--danger);font-weight:600">Rp 500.000</td></tr>
+          <tr data-date="2026-06-01"><td data-label="Tanggal">01 Jun 2026</td><td data-label="UMKM">Sari Putri</td><td data-label="Kategori">Operasional</td><td data-label="Sub">Kemasan</td><td data-label="Deskripsi">Beli plastik kemasan produk</td><td data-label="Nominal" style="text-align:right;color:var(--danger);font-weight:600">Rp 320.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('#ppTabs .tab');
+  function show(v){
+    tabs.forEach(x => x.classList.toggle('active', x.dataset.view === v));
+    document.getElementById('view-pemasukan').style.display = v === 'pemasukan' ? '' : 'none';
+    document.getElementById('view-pengeluaran').style.display = v === 'pengeluaran' ? '' : 'none';
+    location.hash = v;
+  }
+  tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.view)));
+  if (location.hash === '#pengeluaran') show('pengeluaran');
+
+  // Chart kategori
+  new Chart(document.getElementById('catChart'), {
+    type: 'polarArea',
+    data: { labels: ['Kuliner','Fashion','Retail','Jasa','Kerajinan'],
+      datasets: [{ data: [2100,1850,920,580,350],
+        backgroundColor: ['#0D1B8E','#3b82f6','#60a5fa','#22C55E','#F59E0B'] }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+  });
+
+  // --- Filter helper ---
+  function parseDate(s) {
+    // s = "YYYY-MM-DD" or ""
+    return s ? new Date(s + 'T00:00:00') : null;
+  }
+
+  // === PEMASUKAN filter ===
+  const iTable = document.getElementById('iTable').querySelector('tbody');
+  const iCount = document.getElementById('iCount');
+  function applyPemasukan(){
+    const u = document.getElementById('iUmkm').value.toLowerCase();
+    const k = document.getElementById('iKategori').value.toLowerCase();
+    const m = document.getElementById('iMetode').value.toLowerCase();
+    const q = document.getElementById('iSearch').value.toLowerCase();
+    const df = parseDate(document.getElementById('iDateFrom').value);
+    const dt = parseDate(document.getElementById('iDateTo').value);
+    let visible = 0;
+    iTable.querySelectorAll('tr').forEach(tr => {
+      const tds = tr.children;
+      const rowDate = parseDate(tr.dataset.date);
+      const matchUmkm = !u || tds[1].textContent.toLowerCase().includes(u);
+      const matchKat  = !k || tds[3].textContent.toLowerCase() === k;
+      const matchMet  = !m || tds[5].textContent.toLowerCase() === m;
+      const matchQ    = !q || tds[1].textContent.toLowerCase().includes(q) || tds[2].textContent.toLowerCase().includes(q);
+      const matchFrom = !df || (rowDate && rowDate >= df);
+      const matchTo   = !dt || (rowDate && rowDate <= dt);
+      const ok = matchUmkm && matchKat && matchMet && matchQ && matchFrom && matchTo;
+      tr.style.display = ok ? '' : 'none';
+      if (ok) visible++;
+    });
+    iCount.textContent = `Menampilkan ${visible} transaksi`;
+
+    // Also filter Top UMKM table (jika filter UMKM dipilih)
+    document.querySelectorAll('#topUmkmTable tbody tr').forEach(tr => {
+      const matchUmkm = !u || tr.children[1].textContent.toLowerCase().includes(u);
+      const matchKat = !k || tr.children[2].textContent.toLowerCase() === k;
+      tr.style.display = (matchUmkm && matchKat) ? '' : 'none';
+    });
+  }
+  ['iUmkm','iKategori','iMetode','iSearch','iDateFrom','iDateTo'].forEach(id => {
+    document.getElementById(id).addEventListener('input', applyPemasukan);
+    document.getElementById(id).addEventListener('change', applyPemasukan);
+  });
+  document.getElementById('iReset').addEventListener('click', () => {
+    ['iUmkm','iKategori','iMetode','iSearch','iDateFrom','iDateTo'].forEach(id => document.getElementById(id).value = '');
+    applyPemasukan();
+  });
+  applyPemasukan();
+
+  // === PENGELUARAN filter ===
+  const eTable = document.getElementById('eTable').querySelector('tbody');
+  const eCount = document.getElementById('eCount');
+  function applyPengeluaran(){
+    const u = document.getElementById('eUmkm').value.toLowerCase();
+    const k = document.getElementById('eKategori').value.toLowerCase();
+    const q = document.getElementById('eSearch').value.toLowerCase();
+    const df = parseDate(document.getElementById('eDateFrom').value);
+    const dt = parseDate(document.getElementById('eDateTo').value);
+    let visible = 0;
+    eTable.querySelectorAll('tr').forEach(tr => {
+      const tds = tr.children;
+      const rowDate = parseDate(tr.dataset.date);
+      const matchUmkm = !u || tds[1].textContent.toLowerCase().includes(u);
+      const matchKat  = !k || tds[2].textContent.toLowerCase() === k;
+      const matchQ    = !q || tds[1].textContent.toLowerCase().includes(q) || tds[4].textContent.toLowerCase().includes(q);
+      const matchFrom = !df || (rowDate && rowDate >= df);
+      const matchTo   = !dt || (rowDate && rowDate <= dt);
+      const ok = matchUmkm && matchKat && matchQ && matchFrom && matchTo;
+      tr.style.display = ok ? '' : 'none';
+      if (ok) visible++;
+    });
+    eCount.textContent = `Menampilkan ${visible} pengeluaran`;
+  }
+  ['eUmkm','eKategori','eSearch','eDateFrom','eDateTo','ePeriode'].forEach(id => {
+    document.getElementById(id).addEventListener('input', applyPengeluaran);
+    document.getElementById(id).addEventListener('change', applyPengeluaran);
+  });
+  document.getElementById('eReset').addEventListener('click', () => {
+    ['eUmkm','eKategori','eSearch','eDateFrom','eDateTo','ePeriode'].forEach(id => document.getElementById(id).value = '');
+    applyPengeluaran();
+  });
+  applyPengeluaran();
+</script>
+</body>
+</html>

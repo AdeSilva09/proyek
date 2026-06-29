@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -8,29 +8,65 @@
 </head>
 <body>
 <div class="login-page">
-  <form class="login-card" onsubmit="event.preventDefault(); window.location='dashboard.html';">
+  <form class="login-card" id="loginForm">
     <div class="login-logo">UB</div>
     <h1>Login Pelaku UMKM</h1>
     <div class="sub">Masuk untuk mengelola usaha Anda</div>
 
+    <div id="loginError" class="alert danger" style="display:none;margin-bottom:14px">
+      <span data-ic="alert" class="alert-ic"></span>
+      <div id="loginErrorText">Email atau password salah.</div>
+    </div>
+
     <div class="form-group">
       <label>Username / Email</label>
-      <input type="text" class="form-control" placeholder="umkm@example.com" value="sari@umkm.id" required>
+      <input type="text" class="form-control" id="email" placeholder="busari@umkm.go.id" value="busari@umkm.go.id" required>
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" class="form-control" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" value="password" required>
+      <input type="password" class="form-control" id="password" placeholder="••••••••" value="umkm123" required>
     </div>
     <div class="form-group flex justify-between items-center" style="font-size:12.5px;">
       <label style="display:flex;gap:6px;align-items:center;font-weight:400;">
         <input type="checkbox" checked> Ingat saya
       </label>
-      <a href="#" style="color:var(--primary);">Lupa password?</a>
+      <a href="#" style="color:var(--primary);" onclick="event.preventDefault();alert('Hubungi admin DKUKMPP untuk reset password.')">Lupa password?</a>
     </div>
     <button type="submit" class="btn">Masuk ke Sistem</button>
+    <div class="footer-link" style="margin-top:18px;padding-top:12px;border-top:1px solid var(--gray-100)">
+      <strong style="color:var(--gray-700)">Demo kredensial:</strong><br>
+      busari@umkm.go.id / umkm123
+    </div>
     <div class="footer-link">&copy; 2026 SIM-UMKM &middot; <a href="../dkukmpp/login.html" style="color:var(--primary);">Login Admin</a></div>
   </form>
 </div>
+<script src="../icons.js"></script>
+<script src="../auth.js"></script>
+<script>
+  const s = window.SIMAuth && window.SIMAuth.getSession();
+  if (s && s.role === 'umkm') location.replace('dashboard.html');
+
+  document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const pw = document.getElementById('password').value;
+    const errBox = document.getElementById('loginError');
+    const errTxt = document.getElementById('loginErrorText');
+    const sess = window.SIMAuth.login(email, pw);
+    if (!sess) {
+      errTxt.textContent = 'Email atau password salah.';
+      errBox.style.display = 'flex';
+      return;
+    }
+    if (sess.role !== 'umkm') {
+      errTxt.textContent = 'Akun ini bukan akun UMKM. Gunakan portal Admin.';
+      errBox.style.display = 'flex';
+      window.SIMAuth.logout();
+      return;
+    }
+    location.href = 'dashboard.html';
+  });
+  if (window.ICRender) window.ICRender(document.body);
+</script>
 </body>
 </html>
-

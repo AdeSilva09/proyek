@@ -4,14 +4,29 @@
 // - State persisted in localStorage
 (function() {
   const isUMKM = /\/umkm\//i.test(location.pathname);
+  const isDKUK = /\/dkukmpp\//i.test(location.pathname);
+
+  // ===== Inline auth guard (skip login/logout pages) =====
+  const SESSION_KEY = 'simumkmSession';
+  const pathLower = location.pathname.toLowerCase();
+  const isAuthPage = pathLower.endsWith('/login.html') || pathLower.endsWith('/logout.html');
+  let __session = null;
+  try { __session = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch (e) {}
+  if (!isAuthPage) {
+    const neededRole = isUMKM ? 'umkm' : (isDKUK ? 'admin' : null);
+    if (neededRole && (!__session || __session.role !== neededRole)) {
+      location.replace('login.html');
+      return;
+    }
+  }
 
   const navAdmin = [
     { type: 'single', href: 'dashboard.html', icon: 'dashboard', label: 'Dashboard' },
     { type: 'single', href: 'verifikasi-pendaftaran.html', icon: 'shield', label: 'Kelola Data Registrasi' },
     { type: 'single', href: 'manajemen-umkm.html', icon: 'store', label: 'Kelola Data UMKM' },
-    { type: 'single', href: 'monitoring-modal.html', icon: 'wallet', label: 'Kelola Manajemen Modal UMKM' },
-    { type: 'single', href: 'monitoring-penjualan.html', icon: 'cart', label: 'Kelola Transaksi UMKM' },
-    { type: 'single', href: 'monitoring-pengeluaran.html', icon: 'money-off', label: 'Kelola Pengeluaran UMKM' },
+    { type: 'single', href: 'kelola-produk-bahan-baku.html', icon: 'package', label: 'Kelola Produk & Bahan Baku' },
+    { type: 'single', href: 'monitoring-modal.html', icon: 'wallet', label: 'Kelola Modal UMKM' },
+    { type: 'single', href: 'kelola-pemasukan-pengeluaran.html', icon: 'cart', label: 'Kelola Pemasukan & Pengeluaran' },
     { type: 'single', href: 'monitoring-keuntungan.html', icon: 'trend-up', label: 'Kelola Keuntungan UMKM' },
     { type: 'single', href: 'laporan-umkm.html', icon: 'file-text', label: 'Kelola Laporan UMKM' },
     { type: 'section', label: 'Pengaturan', items: [
@@ -41,9 +56,9 @@
 
   const nav = isUMKM ? navUMKM : navAdmin;
   const brandText = isUMKM ? 'SIM-UMKM<br><small style="font-weight:400;font-size:11px;opacity:0.75">Panel Pelaku UMKM</small>' : 'SIM-UMKM<br><small style="font-weight:400;font-size:11px;opacity:0.75">Admin Panel</small>';
-  const userName = isUMKM ? 'Bu Sari' : 'Dirga Admin';
+  const userName = (__session && __session.name) || (isUMKM ? 'Bu Sari' : 'Dirga Admin');
   const userRole = isUMKM ? 'Pelaku UMKM' : 'Administrator';
-  const userInitial = isUMKM ? 'BS' : 'DA';
+  const userInitial = (__session && __session.initial) || (isUMKM ? 'BS' : 'DA');
 
   const currentFile = (location.pathname.split('/').pop() || 'dashboard.html').toLowerCase();
 
@@ -111,12 +126,16 @@
   topbar.innerHTML = `
     <button type="button" class="hamburger" id="sidebarToggle" aria-label="Toggle sidebar">${hamburgerSvg}</button>
     <h1>${pageTitle}</h1>
-    <div class="user">
+    <div class="user" id="userMenuRoot" style="position:relative">
       <div class="user-info text-right">
         <strong>${userName}</strong>
         <small>${userRole}</small>
       </div>
-      <div class="avatar">${userInitial}</div>
+      <button type="button" class="avatar" id="userMenuToggle" title="Akun" style="border:none;cursor:pointer">${userInitial}</button>
+      <div id="userMenuPop" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid var(--gray-200);border-radius:10px;box-shadow:0 8px 24px rgba(13,27,142,0.15);min-width:180px;z-index:120;overflow:hidden;">
+        <div style="padding:10px 14px;border-bottom:1px solid var(--gray-100);font-size:12px;color:var(--gray-500)"><strong style="color:var(--gray-800);font-size:13px">${userName}</strong><br>${userRole}</div>
+        <a href="logout.html" style="display:block;padding:10px 14px;color:var(--danger);font-size:13px;font-weight:600">Logout</a>
+      </div>
     </div>
   `;
 
@@ -132,7 +151,7 @@
       <div class="footer-meta">
         <span>&copy; 2026 DKUKMPP Kota Bandung</span>
         <span class="dot">&middot;</span>
-        <a href="#">Bantuan</a>
+        <a href="bantuan.html">Bantuan</a>
         <span class="dot">&middot;</span>
         <a href="#">Kebijakan Privasi</a>
       </div>
@@ -204,4 +223,14 @@
   });
 
   if (window.ICRender) window.ICRender(document.body);
+
+  // User menu dropdown
+  const umt = document.getElementById('userMenuToggle');
+  const ump = document.getElementById('userMenuPop');
+  if (umt && ump) {
+    umt.addEventListener('click', (e) => { e.stopPropagation(); ump.style.display = ump.style.display === 'block' ? 'none' : 'block'; });
+    document.addEventListener('click', (e) => {
+      if (!ump.contains(e.target) && e.target !== umt) ump.style.display = 'none';
+    });
+  }
 })();

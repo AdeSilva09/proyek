@@ -18,23 +18,30 @@
       <label>Pilih UMKM Binaan</label>
       <select class="form-control" id="pilihUmkm">
         <option value="all">— Semua UMKM Binaan (Agregat) —</option>
-        <option>Warung Bu Sri</option>
-        <option>Batik Lestari</option>
-        <option>Bengkel Maju</option>
-        <option>Toko Berkah</option>
-        <option>Bakery Manis</option>
-        <option>Konveksi Jaya</option>
+        <option>Otak-Otak Khas Cirebon</option>
+        <option>Basreng Crispy</option>
+        <option>Sari Putri</option>
+        <option>Bawang Goreng Mama Rosi</option>
+        <option>Nyusoe</option>
+        <option>Siwang Umi Ami</option>
+        <option>Galang Cucur</option>
+        <option>Azza Cake &amp; Cookies</option>
+        <option>Batik Al Fitri</option>
+        <option>Rengginang Anakku</option>
+        <option>Aneka Kue</option>
+        <option>Kampoeng Tjaroeban</option>
+        <option>Warung Watini</option>
+        <option>Mamito Kitchen</option>
+        <option>Tempe Mala</option>
       </select>
     </div>
     <div class="form-group">
       <label>Kategori UMKM</label>
       <select class="form-control" id="pilihKategori">
         <option value="all">— Semua Kategori (Agregat) —</option>
-        <option value="kuliner">Kuliner</option>
-        <option value="fashion" selected>Fashion</option>
-        <option value="retail">Retail</option>
-        <option value="jasa">Jasa</option>
-        <option value="kerajinan">Kerajinan</option>
+        <option value="kuliner" selected>Kuliner</option>
+        <option value="fashion">Fashion</option>
+        <option value="lainlain">Lain-lain</option>
       </select>
     </div>
     <div class="form-group">
@@ -74,6 +81,7 @@
           <th style="text-align:right">Keuntungan</th>
           <th style="text-align:right">Margin</th>
           <th>Status</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tbody id="tbodyDetail"></tbody>
@@ -85,61 +93,61 @@
 <script src="../icons.js"></script>
 <script src="../sidebar.js"></script>
 <script>
+const NAMA_ID = {
+  'Otak-Otak Khas Cirebon':'UMK-001','Basreng Crispy':'UMK-002','Sari Putri':'UMK-003',
+  'Warung Watini':'UMK-004','Bawang Goreng Mama Rosi':'UMK-005','Nyusoe':'UMK-006',
+  'Siwang Umi Ami':'UMK-007','Galang Cucur':'UMK-008','Azza Cake & Cookies':'UMK-009',
+  'Mamito Kitchen':'UMK-010','Batik Al Fitri':'UMK-011','Rengginang Anakku':'UMK-012',
+  'Tempe Mala':'UMK-013','Aneka Kue':'UMK-014','Kampoeng Tjaroeban':'UMK-015',
+};
+
 const dataKategori = {
   fashion: {
-    nama:'Fashion', jumlah:265, total:'Rp 310 jt', margin:'26.4%', rugi:6, topMargin:'29.8%', topName:'Batik Lestari',
+    nama:'Fashion', jumlah:1, total:'Rp 42 jt', margin:'29.2%', rugi:0, topMargin:'29.2%', topName:'Batik Al Fitri',
     rows:[
-      ['Batik Lestari','Sri Mulyani','Baju','Rp 28.300.000','Rp 19.850.000','112 pcs','Rp 8.450.000','29.8%','success','Sangat Baik'],
-      ['Konveksi Jaya','Hendra Wijaya','Celana','Rp 48.000.000','Rp 36.500.000','198 pcs','Rp 11.500.000','23.9%','success','Baik'],
-      ['Hijab Modern','Lestari Putri','Hijab','Rp 18.500.000','Rp 13.200.000','86 pcs','Rp 5.300.000','28.6%','success','Baik'],
-      ['Sepatu Kulit Asli','Bambang S.','Sepatu','Rp 14.800.000','Rp 11.250.000','42 pcs','Rp 3.550.000','24.0%','success','Baik'],
-      ['Aksesoris Cantik','Dewi Lestari','Aksesoris','Rp 7.200.000','Rp 6.800.000','185 pcs','Rp 400.000','5.6%','warning','Rendah'],
-      ['Konveksi Murah','Joko Pranoto','Baju','Rp 9.400.000','Rp 9.800.000','58 pcs','-Rp 400.000','-4.3%','danger','Rugi'],
+      ['Batik Al Fitri','Al Fitria','Batik','Rp 14.200.000','Rp 10.050.000','52 pcs','Rp 4.150.000','29.2%','success','Baik'],
     ]
   },
   kuliner: {
-    nama:'Kuliner', jumlah:420, total:'Rp 520 jt', margin:'28.5%', rugi:9, topMargin:'42.8%', topName:'Bakery Manis',
+    nama:'Kuliner', jumlah:12, total:'Rp 285 jt', margin:'32.4%', rugi:1, topMargin:'46.8%', topName:'Kampoeng Tjaroeban',
     rows:[
-      ['Bakery Manis','Linda Wati','Bakery','Rp 22.500.000','Rp 12.870.000','420 pcs','Rp 9.630.000','42.8%','success','Sangat Baik'],
-      ['Kedai Kopi Senja','Dimas Pratama','Minuman','Rp 15.200.000','Rp 11.800.000','580 cup','Rp 3.400.000','22.3%','info','Cukup'],
-      ['Warung Bu Sri','Sri Wahyuni','Warung Makan','Rp 8.400.000','Rp 7.200.000','312 porsi','Rp 1.200.000','14.2%','warning','Rendah'],
-      ['Catering Sehat','Indra Kusuma','Catering','Rp 18.500.000','Rp 13.100.000','62 paket','Rp 5.400.000','29.2%','success','Baik'],
+      ['Kampoeng Tjaroeban','Paulus Mulyanto','Makanan Khas','Rp 22.500.000','Rp 11.970.000','480 bks','Rp 10.530.000','46.8%','success','Sangat Baik'],
+      ['Azza Cake & Cookies','Fitriah Pratiwi','Kue','Rp 18.300.000','Rp 10.420.000','360 pcs','Rp 7.880.000','43.1%','success','Sangat Baik'],
+      ['Bawang Goreng Mama Rosi','Rosyyani','Bumbu','Rp 15.800.000','Rp 9.600.000','420 bks','Rp 6.200.000','39.2%','success','Sangat Baik'],
+      ['Otak-Otak Khas Cirebon','Wimpi Wirawan Jasa','Makanan Khas','Rp 12.600.000','Rp 8.100.000','630 pcs','Rp 4.500.000','35.7%','success','Baik'],
+      ['Sari Putri','Yeti Sumaryati','Keripik','Rp 9.400.000','Rp 6.200.000','280 bks','Rp 3.200.000','34.0%','success','Baik'],
+      ['Rengginang Anakku','Indah Noviana Sari','Keripik','Rp 7.200.000','Rp 5.100.000','240 bks','Rp 2.100.000','29.2%','success','Baik'],
+      ['Nyusoe','Nanda Ramadhan','Minuman','Rp 6.800.000','Rp 5.200.000','340 cup','Rp 1.600.000','23.5%','info','Cukup'],
+      ['Basreng Crispy','Soleh Hudin','Keripik','Rp 5.900.000','Rp 4.600.000','295 bks','Rp 1.300.000','22.0%','info','Cukup'],
+      ['Siwang Umi Ami','Aminah','Makanan Khas','Rp 5.200.000','Rp 4.100.000','210 pcs','Rp 1.100.000','21.2%','info','Cukup'],
+      ['Galang Cucur','Nursamsi Suprayogi','Kue','Rp 4.800.000','Rp 3.900.000','480 pcs','Rp 900.000','18.8%','warning','Rendah'],
+      ['Aneka Kue','Dedi Hartomi','Kue','Rp 4.200.000','Rp 3.600.000','180 pcs','Rp 600.000','14.3%','warning','Rendah'],
+      ['Warung Watini','Watini','Sembako','Rp 3.800.000','Rp 4.100.000','—','-Rp 300.000','-7.9%','danger','Rugi'],
     ]
   },
-  retail: {
-    nama:'Retail', jumlah:238, total:'Rp 225 jt', margin:'18.2%', rugi:4, topMargin:'26.3%', topName:'Toko Berkah',
+  lainlain: {
+    nama:'Lain-lain', jumlah:3, total:'Rp 18 jt', margin:'12.1%', rugi:1, topMargin:'18.5%', topName:'Mamito Kitchen',
     rows:[
-      ['Toko Berkah','Ahmad Fauzi','Sembako','Rp 26.450.000','Rp 19.500.000','1.240 item','Rp 6.950.000','26.3%','success','Baik'],
-      ['Toko Kelontong Sari','Hartono S.','Toko Kelontong','Rp 18.700.000','Rp 15.900.000','820 item','Rp 2.800.000','14.9%','warning','Rendah'],
-      ['Elektronik Murah','Bagus W.','Elektronik','Rp 32.000.000','Rp 26.500.000','64 unit','Rp 5.500.000','17.2%','info','Cukup'],
-    ]
-  },
-  jasa: {
-    nama:'Jasa', jumlah:180, total:'Rp 135 jt', margin:'20.1%', rugi:5, topMargin:'31.5%', topName:'Salon Cantik',
-    rows:[
-      ['Salon Cantik','Rina Anggraini','Salon','Rp 12.500.000','Rp 8.560.000','185 layanan','Rp 3.940.000','31.5%','success','Sangat Baik'],
-      ['Laundry Bersih','Tono S.','Laundry','Rp 9.800.000','Rp 7.420.000','420 kg','Rp 2.380.000','24.3%','success','Baik'],
-      ['Bengkel Maju','Joko Susilo','Servis','Rp 6.800.000','Rp 7.500.000','58 unit','-Rp 700.000','-10.3%','danger','Rugi'],
-    ]
-  },
-  kerajinan: {
-    nama:'Kerajinan', jumlah:145, total:'Rp 110 jt', margin:'22.4%', rugi:4, topMargin:'28.4%', topName:'Anyaman Bambu',
-    rows:[
-      ['Anyaman Bambu','Wati Lestari','Anyaman','Rp 9.500.000','Rp 6.800.000','142 pcs','Rp 2.700.000','28.4%','success','Baik'],
-      ['Kerajinan Kayu Jati','Suparno','Kayu','Rp 14.200.000','Rp 11.100.000','38 pcs','Rp 3.100.000','21.8%','info','Cukup'],
-      ['Keramik Sumber Rejeki','Maman','Keramik','Rp 7.800.000','Rp 6.200.000','85 pcs','Rp 1.600.000','20.5%','info','Cukup'],
+      ['Mamito Kitchen','Siti Masitoh','Bumbu','Rp 5.400.000','Rp 4.400.000','180 bks','Rp 1.000.000','18.5%','warning','Rendah'],
+      ['Tempe Mala','Parimala','Tempe','Rp 4.200.000','Rp 3.600.000','420 bks','Rp 600.000','14.3%','warning','Rendah'],
+      ['Warung Watini','Watini','Sembako','Rp 3.800.000','Rp 4.100.000','—','-Rp 300.000','-7.9%','danger','Rugi'],
     ]
   },
   all: {
-    nama:'Semua Kategori', jumlah:1248, total:'Rp 1.31 M', margin:'22.6%', rugi:28, topMargin:'42.8%', topName:'Bakery Manis',
+    nama:'Semua Kategori', jumlah:15, total:'Rp 345 jt', margin:'30.8%', rugi:1, topMargin:'46.8%', topName:'Kampoeng Tjaroeban',
     rows:[
-      ['Bakery Manis','Linda Wati','Bakery','Rp 22.500.000','Rp 12.870.000','420 pcs','Rp 9.630.000','42.8%','success','Sangat Baik'],
-      ['Salon Cantik','Rina Anggraini','Salon','Rp 12.500.000','Rp 8.560.000','185 layanan','Rp 3.940.000','31.5%','success','Sangat Baik'],
-      ['Batik Lestari','Sri Mulyani','Baju','Rp 28.300.000','Rp 19.850.000','112 pcs','Rp 8.450.000','29.8%','success','Baik'],
-      ['Konveksi Jaya','Hendra Wijaya','Celana','Rp 48.000.000','Rp 36.500.000','198 pcs','Rp 11.500.000','23.9%','success','Baik'],
-      ['Toko Berkah','Ahmad Fauzi','Sembako','Rp 26.450.000','Rp 19.500.000','1.240 item','Rp 6.950.000','26.3%','success','Baik'],
-      ['Warung Bu Sri','Sri Wahyuni','Warung Makan','Rp 8.400.000','Rp 7.200.000','312 porsi','Rp 1.200.000','14.2%','warning','Rendah'],
-      ['Bengkel Maju','Joko Susilo','Servis','Rp 6.800.000','Rp 7.500.000','58 unit','-Rp 700.000','-10.3%','danger','Rugi'],
+      ['Kampoeng Tjaroeban','Paulus Mulyanto','Makanan Khas','Rp 22.500.000','Rp 11.970.000','480 bks','Rp 10.530.000','46.8%','success','Sangat Baik'],
+      ['Azza Cake & Cookies','Fitriah Pratiwi','Kue','Rp 18.300.000','Rp 10.420.000','360 pcs','Rp 7.880.000','43.1%','success','Sangat Baik'],
+      ['Bawang Goreng Mama Rosi','Rosyyani','Bumbu','Rp 15.800.000','Rp 9.600.000','420 bks','Rp 6.200.000','39.2%','success','Sangat Baik'],
+      ['Otak-Otak Khas Cirebon','Wimpi Wirawan Jasa','Makanan Khas','Rp 12.600.000','Rp 8.100.000','630 pcs','Rp 4.500.000','35.7%','success','Baik'],
+      ['Batik Al Fitri','Al Fitria','Batik','Rp 14.200.000','Rp 10.050.000','52 pcs','Rp 4.150.000','29.2%','success','Baik'],
+      ['Sari Putri','Yeti Sumaryati','Keripik','Rp 9.400.000','Rp 6.200.000','280 bks','Rp 3.200.000','34.0%','success','Baik'],
+      ['Rengginang Anakku','Indah Noviana Sari','Keripik','Rp 7.200.000','Rp 5.100.000','240 bks','Rp 2.100.000','29.2%','success','Baik'],
+      ['Nyusoe','Nanda Ramadhan','Minuman','Rp 6.800.000','Rp 5.200.000','340 cup','Rp 1.600.000','23.5%','info','Cukup'],
+      ['Basreng Crispy','Soleh Hudin','Keripik','Rp 5.900.000','Rp 4.600.000','295 bks','Rp 1.300.000','22.0%','info','Cukup'],
+      ['Galang Cucur','Nursamsi Suprayogi','Kue','Rp 4.800.000','Rp 3.900.000','480 pcs','Rp 900.000','18.8%','warning','Rendah'],
+      ['Mamito Kitchen','Siti Masitoh','Bumbu','Rp 5.400.000','Rp 4.400.000','180 bks','Rp 1.000.000','18.5%','warning','Rendah'],
+      ['Warung Watini','Watini','Sembako','Rp 3.800.000','Rp 4.100.000','—','-Rp 300.000','-7.9%','danger','Rugi'],
     ]
   }
 };
@@ -156,6 +164,10 @@ function render(key){
   const tb = document.getElementById('tbodyDetail');
   tb.innerHTML = d.rows.map(r => {
     const profitClass = r[6].startsWith('-') ? 'text-danger' : 'text-success';
+    const umkmId = NAMA_ID[r[0]] || '';
+    const lihatBtn = umkmId
+      ? `<a href="detail-umkm.html?id=${umkmId}#keuntungan" class="btn outline sm"><span data-ic="eye"></span> Lihat</a>`
+      : '—';
     return `<tr>
       <td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td>
       <td style="text-align:right">${r[3]}</td>
@@ -164,12 +176,13 @@ function render(key){
       <td class="${profitClass}" style="text-align:right;font-weight:600">${r[6]}</td>
       <td style="text-align:right"><strong>${r[7]}</strong></td>
       <td><span class="badge ${r[8]}">${r[9]}</span></td>
+      <td>${lihatBtn}</td>
     </tr>`;
   }).join('');
 }
 
 document.getElementById('pilihKategori').addEventListener('change', e => render(e.target.value));
-render('fashion');
+render('kuliner');
 </script>
 </body>
 </html>

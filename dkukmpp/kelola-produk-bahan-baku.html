@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelola Produk & Bahan Baku UMKM - SIM-UMKM</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-title="Kelola Produk & Bahan Baku UMKM">
+
+<div class="page-title">Kelola Produk & Bahan Baku UMKM Binaan</div>
+<div class="page-sub">Pantau katalog produk &amp; persediaan bahan baku seluruh UMKM binaan dalam satu halaman.</div>
+
+<div class="pill-tabs" id="pbTabs">
+  <div class="tab active" data-view="produk">Data Produk</div>
+  <div class="tab" data-view="bahan">Data Bahan Baku</div>
+</div>
+
+<!-- ============ VIEW PRODUK ============ -->
+<div class="view" id="view-produk">
+  <div class="toolbar mb-3">
+    <select class="form-control" style="width:260px;" id="pUmkm">
+      <option value="">— Semua UMKM Binaan (Agregat) —</option>
+      <option>Otak-Otak Khas Cirebon</option>
+      <option>Basreng Crispy</option>
+      <option>Sari Putri</option>
+      <option>Bawang Goreng Mama Rosi</option>
+      <option>Nyusoe</option>
+      <option>Siwang Umi Ami</option>
+      <option>Galang Cucur</option>
+      <option>Azza Cake &amp; Cookies</option>
+      <option>Batik Al Fitri</option>
+      <option>Rengginang Anakku</option>
+      <option>Aneka Kue</option>
+      <option>Kampoeng Tjaroeban</option>
+      <option>Warung Watini</option>
+      <option>Mamito Kitchen</option>
+      <option>Tempe Mala</option>
+    </select>
+    <select class="form-control" style="width:160px;" id="pKat">
+      <option value="">Semua Kategori</option>
+      <option>Kuliner</option><option>Fashion</option><option>Minuman</option><option>Snack</option><option>Perdagangan</option>
+    </select>
+    <select class="form-control" style="width:160px;" id="pSub"><option value="">Semua Sub Kategori</option></select>
+    <div class="spacer"></div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="icon"><span data-ic="package"></span></div><div><div class="label">Total Produk</div><div class="value">1.284</div><div class="delta">dari 142 UMKM</div></div></div>
+    <div class="stat green"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Margin Rata-rata</div><div class="value">42%</div><div class="delta">+3% vs bulan lalu</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="star"></span></div><div><div class="label">Kategori Dominan</div><div class="value" style="font-size:16px;">Kuliner</div><div class="delta">38% katalog</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Produk Tanpa Update</div><div class="value">36</div><div class="delta">&gt; 90 hari</div></div></div>
+  </div>
+
+  <div class="row-2-eq">
+    <div class="card">
+      <div class="card-title mb-2">Sebaran Produk per Kategori</div>
+      <table class="data" style="font-size:13px">
+        <thead><tr><th>Kategori</th><th style="text-align:right">Jumlah Produk</th><th style="text-align:right">%</th></tr></thead>
+        <tbody>
+          <tr><td>Kuliner</td><td style="text-align:right">488</td><td style="text-align:right">38%</td></tr>
+          <tr><td>Minuman</td><td style="text-align:right">282</td><td style="text-align:right">22%</td></tr>
+          <tr><td>Fashion</td><td style="text-align:right">218</td><td style="text-align:right">17%</td></tr>
+          <tr><td>Snack</td><td style="text-align:right">154</td><td style="text-align:right">12%</td></tr>
+          <tr><td>Kerajinan</td><td style="text-align:right">90</td><td style="text-align:right">7%</td></tr>
+          <tr><td>Jasa</td><td style="text-align:right">52</td><td style="text-align:right">4%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title mb-2">Top 5 Margin Tertinggi</div>
+      <table class="data" style="font-size:13px">
+        <thead><tr><th>Produk</th><th>UMKM</th><th style="text-align:right">Margin</th></tr></thead>
+        <tbody>
+          <tr><td>Kripik Kentang</td><td>Sari Putri</td><td style="text-align:right;color:var(--success);font-weight:600">50%</td></tr>
+          <tr><td>Kue Cucur</td><td>Galang Cucur</td><td style="text-align:right;color:var(--success);font-weight:600">50%</td></tr>
+          <tr><td>Basreng Original</td><td>Basreng Crispy</td><td style="text-align:right;color:var(--success);font-weight:600">47%</td></tr>
+          <tr><td>Batik Tulis Cirebon</td><td>Batik Al Fitri</td><td style="text-align:right;color:var(--success);font-weight:600">46%</td></tr>
+          <tr><td>Ketan Gurih Oleh-Oleh</td><td>Kampoeng Tjaroeban</td><td style="text-align:right;color:var(--success);font-weight:600">46%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">Daftar Produk UMKM Binaan</div></div>
+    <div class="toolbar">
+      <div class="search"><input id="pSearch" placeholder="Cari nama produk..."></div>
+      <div class="spacer"></div>
+      <span class="text-muted" style="font-size:12.5px;" id="pCount">Menampilkan 8 produk</span>
+    </div>
+    <div class="table-wrap">
+      <table class="data" id="pTable">
+        <thead><tr><th>Kode</th><th>Nama Produk</th><th>UMKM</th><th>Kategori</th><th>Sub Kategori</th><th style="text-align:right">Modal</th><th style="text-align:right">Jual</th><th>Margin</th><th>Stok</th></tr></thead>
+        <tbody>
+          <tr><td>P-001</td><td>Otak-Otak Bakar</td><td>Otak-Otak Khas Cirebon</td><td>Kuliner</td><td>Makanan Khas</td><td style="text-align:right">Rp 12.000</td><td style="text-align:right">Rp 20.000</td><td class="text-success">40%</td><td>—</td></tr>
+          <tr><td>P-002</td><td>Basreng Original</td><td>Basreng Crispy</td><td>Snack</td><td>Keripik</td><td style="text-align:right">Rp 8.000</td><td style="text-align:right">Rp 15.000</td><td class="text-success">47%</td><td>80 bks</td></tr>
+          <tr><td>P-003</td><td>Kripik Kentang</td><td>Sari Putri</td><td>Snack</td><td>Keripik</td><td style="text-align:right">Rp 10.000</td><td style="text-align:right">Rp 20.000</td><td class="text-success">50%</td><td>45 bks</td></tr>
+          <tr><td>P-004</td><td>Bawang Goreng Sumenep</td><td>Bawang Goreng Mama Rosi</td><td>Kuliner</td><td>Bumbu</td><td style="text-align:right">Rp 18.000</td><td style="text-align:right">Rp 35.000</td><td class="text-success">49%</td><td>60 bks</td></tr>
+          <tr><td>P-005</td><td>Kue Cucur</td><td>Galang Cucur</td><td>Kuliner</td><td>Kue Basah</td><td style="text-align:right">Rp 1.500</td><td style="text-align:right">Rp 3.000</td><td class="text-success">50%</td><td>100 pcs</td></tr>
+          <tr><td>P-006</td><td>Batik Tulis Cirebon</td><td>Batik Al Fitri</td><td>Fashion</td><td>Batik</td><td style="text-align:right">Rp 150.000</td><td style="text-align:right">Rp 280.000</td><td class="text-success">46%</td><td>15 pcs</td></tr>
+          <tr><td>P-007</td><td>Rengginang Udang</td><td>Rengginang Anakku</td><td>Snack</td><td>Keripik</td><td style="text-align:right">Rp 12.000</td><td style="text-align:right">Rp 22.000</td><td class="text-success">45%</td><td>35 bks</td></tr>
+          <tr><td>P-008</td><td>Ketan Gurih Oleh-Oleh</td><td>Kampoeng Tjaroeban</td><td>Kuliner</td><td>Makanan Khas</td><td style="text-align:right">Rp 15.000</td><td style="text-align:right">Rp 28.000</td><td class="text-success">46%</td><td>20 bks <span class="badge danger">Min!</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VIEW BAHAN BAKU ============ -->
+<div class="view" id="view-bahan" style="display:none">
+  <div class="toolbar mb-3">
+    <select class="form-control" style="width:260px;" id="bUmkm">
+      <option value="">— Semua UMKM Binaan (Agregat) —</option>
+      <option>Otak-Otak Khas Cirebon</option>
+      <option>Basreng Crispy</option>
+      <option>Sari Putri</option>
+      <option>Bawang Goreng Mama Rosi</option>
+      <option>Nyusoe</option>
+      <option>Siwang Umi Ami</option>
+      <option>Galang Cucur</option>
+      <option>Azza Cake &amp; Cookies</option>
+      <option>Batik Al Fitri</option>
+      <option>Rengginang Anakku</option>
+      <option>Aneka Kue</option>
+      <option>Kampoeng Tjaroeban</option>
+      <option>Warung Watini</option>
+      <option>Mamito Kitchen</option>
+      <option>Tempe Mala</option>
+    </select>
+    <select class="form-control" style="width:160px;" id="bStatus">
+      <option value="">Semua Status</option>
+      <option>Aman</option>
+      <option>Menipis</option>
+      <option>Habis</option>
+    </select>
+    <select class="form-control" style="width:160px;" id="bKat">
+      <option value="">Semua Kategori</option>
+      <option>Pokok</option><option>Bumbu</option><option>Tekstil</option><option>Kemasan</option>
+    </select>
+    <div class="spacer"></div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="icon"><span data-ic="box"></span></div><div><div class="label">Total Item Bahan</div><div class="value">3.842</div><div class="delta">dari 142 UMKM</div></div></div>
+    <div class="stat orange"><div class="icon"><span data-ic="alert"></span></div><div><div class="label">Stok Menipis</div><div class="value">128</div><div class="delta">di 47 UMKM</div></div></div>
+    <div class="stat red"><div class="icon"><span data-ic="x"></span></div><div><div class="label">Habis Stok</div><div class="value">19</div><div class="delta">perlu intervensi</div></div></div>
+    <div class="stat purple"><div class="icon"><span data-ic="trend-up"></span></div><div><div class="label">Kenaikan Harga</div><div class="value">+5%</div><div class="delta">trend 30 hari</div></div></div>
+  </div>
+
+  <div class="alert warning mb-3">
+    <span data-ic="alert" class="alert-ic"></span>
+    <div><strong>19 UMKM membutuhkan intervensi:</strong> bahan baku habis &amp; belum di-restock &gt; 7 hari. Pertimbangkan koneksi ke supplier mitra DKUKMPP atau bantuan modal darurat.</div>
+  </div>
+
+  <div class="row-2-eq">
+    <div class="card">
+      <div class="card-title mb-2">UMKM dengan Stok Kritis</div>
+      <table class="data" style="font-size:13px">
+        <thead><tr><th>UMKM</th><th style="text-align:right">Item Habis</th><th style="text-align:right">Menipis</th></tr></thead>
+        <tbody>
+          <tr><td>Sari Putri</td><td style="text-align:right;color:var(--danger);font-weight:600">2</td><td style="text-align:right;color:var(--warning);font-weight:600">5</td></tr>
+          <tr><td>Azza Cake &amp; Cookies</td><td style="text-align:right;color:var(--danger);font-weight:600">2</td><td style="text-align:right;color:var(--warning);font-weight:600">4</td></tr>
+          <tr><td>Kampoeng Tjaroeban</td><td style="text-align:right;color:var(--danger);font-weight:600">1</td><td style="text-align:right;color:var(--warning);font-weight:600">6</td></tr>
+          <tr><td>Bawang Goreng Mama Rosi</td><td style="text-align:right;color:var(--danger);font-weight:600">1</td><td style="text-align:right;color:var(--warning);font-weight:600">3</td></tr>
+          <tr><td>Batik Al Fitri</td><td style="text-align:right;color:var(--danger);font-weight:600">1</td><td style="text-align:right;color:var(--warning);font-weight:600">2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title mb-2">Bahan Baku Paling Banyak Dibeli</div>
+      <table class="data" style="font-size:13px">
+        <thead><tr><th>Bahan</th><th>Kategori</th><th style="text-align:right">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Tepung Terigu</td><td>Pokok</td><td style="text-align:right">Rp 84 jt</td></tr>
+          <tr><td>Minyak Goreng</td><td>Pokok</td><td style="text-align:right">Rp 72 jt</td></tr>
+          <tr><td>Gula Pasir</td><td>Pokok</td><td style="text-align:right">Rp 58 jt</td></tr>
+          <tr><td>Daging Ayam</td><td>Pokok</td><td style="text-align:right">Rp 46 jt</td></tr>
+          <tr><td>Kain Mori</td><td>Tekstil</td><td style="text-align:right">Rp 38 jt</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">Daftar Bahan Baku UMKM Binaan</div></div>
+    <div class="toolbar">
+      <div class="search"><input id="bSearch" placeholder="Cari bahan baku..."></div>
+      <div class="spacer"></div>
+      <span class="text-muted" style="font-size:12.5px;" id="bCount">Menampilkan 8 item</span>
+    </div>
+    <div class="table-wrap">
+      <table class="data" id="bTable">
+        <thead><tr><th>Kode</th><th>Nama Bahan</th><th>UMKM</th><th>Kategori</th><th style="text-align:right">Stok</th><th>Satuan</th><th style="text-align:right">Harga/Unit</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>BB-001</td><td>Ikan Tenggiri</td><td>Otak-Otak Khas Cirebon</td><td>Pokok</td><td style="text-align:right">3</td><td>kg</td><td style="text-align:right">Rp 45.000</td><td><span class="badge warning">Menipis</span></td></tr>
+          <tr><td>BB-002</td><td>Minyak Goreng</td><td>Otak-Otak Khas Cirebon</td><td>Pokok</td><td style="text-align:right">0</td><td>L</td><td style="text-align:right">Rp 18.000</td><td><span class="badge danger">Habis</span></td></tr>
+          <tr><td>BB-003</td><td>Kentang</td><td>Sari Putri</td><td>Pokok</td><td style="text-align:right">15</td><td>kg</td><td style="text-align:right">Rp 12.000</td><td><span class="badge success">Aman</span></td></tr>
+          <tr><td>BB-004</td><td>Bawang Sumenep</td><td>Bawang Goreng Mama Rosi</td><td>Pokok</td><td style="text-align:right">5</td><td>kg</td><td style="text-align:right">Rp 28.000</td><td><span class="badge warning">Menipis</span></td></tr>
+          <tr><td>BB-005</td><td>Kain Batik</td><td>Batik Al Fitri</td><td>Tekstil</td><td style="text-align:right">20</td><td>m</td><td style="text-align:right">Rp 35.000</td><td><span class="badge success">Aman</span></td></tr>
+          <tr><td>BB-006</td><td>Pewarna Kain</td><td>Batik Al Fitri</td><td>Bumbu</td><td style="text-align:right">0</td><td>kg</td><td style="text-align:right">Rp 75.000</td><td><span class="badge danger">Habis</span></td></tr>
+          <tr><td>BB-007</td><td>Tepung Beras</td><td>Galang Cucur</td><td>Pokok</td><td style="text-align:right">8</td><td>kg</td><td style="text-align:right">Rp 14.000</td><td><span class="badge success">Aman</span></td></tr>
+          <tr><td>BB-008</td><td>Kemasan Plastik</td><td>Rengginang Anakku</td><td>Kemasan</td><td style="text-align:right">2</td><td>pak</td><td style="text-align:right">Rp 22.000</td><td><span class="badge warning">Menipis</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="../icons.js"></script>
+<script src="../sidebar.js"></script>
+<script src="../auth.js"></script>
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('#pbTabs .tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.toggle('active', x === t));
+    const v = t.dataset.view;
+    document.getElementById('view-produk').style.display = v === 'produk' ? '' : 'none';
+    document.getElementById('view-bahan').style.display = v === 'bahan' ? '' : 'none';
+    location.hash = v;
+  }));
+  if (location.hash === '#bahan') {
+    document.querySelector('#pbTabs .tab[data-view="bahan"]').click();
+  }
+
+  // Sub map produk
+  const subMap = {
+    Kuliner: ['Warung Makan','Catering','Bakery'],
+    Fashion: ['Baju','Celana','Hijab','Sepatu','Aksesoris'],
+    Minuman: ['Minuman Dingin','Minuman Panas','Jus'],
+    Snack:   ['Bakery','Keripik','Kue Basah'],
+    Perdagangan: ['Sembako','Elektronik'],
+  };
+  const pKat = document.getElementById('pKat');
+  const pSub = document.getElementById('pSub');
+  pKat.addEventListener('change', () => {
+    const arr = subMap[pKat.value] || [];
+    pSub.innerHTML = `<option value="">Semua Sub Kategori</option>` + arr.map(o=>`<option>${o}</option>`).join('');
+    filterProduk();
+  });
+
+  // Filter Produk: UMKM, Kategori, Sub, Search
+  function filterProduk(){
+    const u = document.getElementById('pUmkm').value.toLowerCase();
+    const k = pKat.value.toLowerCase();
+    const s = pSub.value.toLowerCase();
+    const q = document.getElementById('pSearch').value.toLowerCase();
+    let visible = 0;
+    document.querySelectorAll('#pTable tbody tr').forEach(tr => {
+      const tds = tr.children;
+      const matchUmkm = !u || tds[2].textContent.toLowerCase().includes(u);
+      const matchKat = !k || tds[3].textContent.toLowerCase() === k;
+      const matchSub = !s || tds[4].textContent.toLowerCase() === s;
+      const matchQ = !q || tds[1].textContent.toLowerCase().includes(q) || tds[0].textContent.toLowerCase().includes(q);
+      const show = matchUmkm && matchKat && matchSub && matchQ;
+      tr.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById('pCount').textContent = `Menampilkan ${visible} produk`;
+  }
+  ['pUmkm','pSub','pSearch'].forEach(id => {
+    document.getElementById(id).addEventListener('input', filterProduk);
+    document.getElementById(id).addEventListener('change', filterProduk);
+  });
+
+  // Filter Bahan
+  function filterBahan(){
+    const u = document.getElementById('bUmkm').value.toLowerCase();
+    const st = document.getElementById('bStatus').value.toLowerCase();
+    const k = document.getElementById('bKat').value.toLowerCase();
+    const q = document.getElementById('bSearch').value.toLowerCase();
+    let visible = 0;
+    document.querySelectorAll('#bTable tbody tr').forEach(tr => {
+      const tds = tr.children;
+      const matchUmkm = !u || tds[2].textContent.toLowerCase().includes(u);
+      const matchKat = !k || tds[3].textContent.toLowerCase() === k;
+      const matchStatus = !st || tds[7].textContent.toLowerCase().includes(st);
+      const matchQ = !q || tds[1].textContent.toLowerCase().includes(q) || tds[0].textContent.toLowerCase().includes(q);
+      const show = matchUmkm && matchKat && matchStatus && matchQ;
+      tr.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById('bCount').textContent = `Menampilkan ${visible} item`;
+  }
+  ['bUmkm','bStatus','bKat','bSearch'].forEach(id => {
+    document.getElementById(id).addEventListener('input', filterBahan);
+    document.getElementById(id).addEventListener('change', filterBahan);
+  });
+</script>
+</body>
+</html>

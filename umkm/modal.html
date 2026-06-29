@@ -97,11 +97,6 @@
   </div>
 
   <div class="m-card">
-    <div class="m-card-title">Perkembangan Modal</div>
-    <div class="m-chart"><canvas id="modalChart"></canvas></div>
-  </div>
-
-  <div class="m-card">
     <div class="m-card-title">Ringkasan Statistik</div>
     <div class="m-info-row">
       <div class="ic"><span data-ic="trend-up"></span></div>
@@ -127,32 +122,15 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="../icons.js"></script>
 <script src="../sidebar.js"></script>
 <script>
-  let chartInstance = null;
-  function renderChart(){
-    if (chartInstance) return;
-    const ctx = document.getElementById('modalChart');
-    if (!ctx) return;
-    chartInstance = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Jan','Feb','Mar','Apr','Mei'],
-        datasets: [{ label:'Modal', data:[15000,7500,0,2500,1500], backgroundColor:'#16348f', borderRadius:6 }]
-      },
-      options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{ticks:{font:{size:10}}},x:{ticks:{font:{size:10}}}} }
-    });
-  }
-
   const tabs = document.querySelectorAll('#modalTabs .tab');
   tabs.forEach(t => t.addEventListener('click', () => {
     tabs.forEach(x => x.classList.toggle('active', x===t));
     const v = t.dataset.view;
-    document.getElementById('view-daftar').style.display     = v==='daftar' ? '' : 'none';
-    document.getElementById('view-statistik').style.display  = v==='statistik' ? '' : 'none';
-    if (v==='statistik') renderChart();
+    document.getElementById('view-daftar').style.display    = v==='daftar' ? '' : 'none';
+    document.getElementById('view-statistik').style.display = v==='statistik' ? '' : 'none';
   }));
 </script>
 </body>

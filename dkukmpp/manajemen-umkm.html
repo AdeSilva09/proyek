@@ -27,29 +27,53 @@
 
   <div class="table-wrap">
     <table class="data">
-      <thead><tr><th>ID</th><th>Nama UMKM</th><th>Pemilik</th><th>Kategori</th><th>Sub Kategori</th><th>Modal</th><th>Tgl Bergabung</th><th>Status</th><th>Aksi</th></tr></thead>
+      <thead><tr><th>ID</th><th>Nama Merk/Produk</th><th>Pemilik</th><th>Kategori</th><th>Jenis Kegiatan</th><th>Keterangan</th><th>Alamat Usaha</th><th>Status</th><th>Aksi</th></tr></thead>
       <tbody>
-        <tr><td>UMK-001</td><td>Warung Bu Sri</td><td>Sri Wahyuni</td><td>Kuliner</td><td>Warung Makan</td><td>Rp 15 jt</td><td>12 Mar 2023</td>
-          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
-          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
-        <tr><td>UMK-002</td><td>Batik Lestari</td><td>Sri Mulyani</td><td>Fashion</td><td>Baju</td><td>Rp 45 jt</td><td>05 Jan 2024</td>
-          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
-          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
-        <tr><td>UMK-003</td><td>Bengkel Maju</td><td>Joko Susilo</td><td>Jasa</td><td>Servis</td><td>Rp 28 jt</td><td>22 Aug 2023</td>
-          <td><select class="form-control sm st-aktif"><option>Aktif</option><option selected>Tidak Aktif</option></select></td>
-          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
-        <tr><td>UMK-004</td><td>Toko Berkah</td><td>Ahmad Fauzi</td><td>Perdagangan</td><td>Sembako</td><td>Rp 32 jt</td><td>18 Nov 2023</td>
-          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
-          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
-        <tr><td>UMK-005</td><td>Kerajinan Bambu</td><td>Wati Lestari</td><td>Kerajinan</td><td>Anyaman</td><td>Rp 12 jt</td><td>03 Feb 2024</td>
-          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
-          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
-        <tr><td>UMK-006</td><td>Bakery Manis</td><td>Linda Wati</td><td>Kuliner</td><td>Bakery</td><td>Rp 22 jt</td><td>28 Apr 2024</td>
-          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
-          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
-        <tr><td>UMK-007</td><td>Konveksi Jaya</td><td>Hendra Wijaya</td><td>Fashion</td><td>Celana</td><td>Rp 65 jt</td><td>15 Jul 2023</td>
-          <td><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
-          <td><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a> <button class="btn danger sm"><span data-ic="x"></span> Hapus</button></td></tr>
+        <tr><td data-label="ID">UMK-001</td><td data-label="Nama Merk/Produk">Otak-Otak Khas Cirebon</td><td data-label="Pemilik">Wimpi Wirawan Jasa</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Otak-Otak</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Pekalipan IV No. 101</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-002</td><td data-label="Nama Merk/Produk">Basreng Crispy</td><td data-label="Pemilik">Soleh Hudin</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Basreng</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Pekalipan Utara No. 133</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-003</td><td data-label="Nama Merk/Produk">Sari Putri</td><td data-label="Pemilik">Yeti Sumaryati</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Kripik Kentang, Sumpia Rebon, Sambosa</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Pekalipan Utara Gg. V No. 29</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-004</td><td data-label="Nama Merk/Produk">Warung Watini</td><td data-label="Pemilik">Watini</td><td data-label="Kategori">Lain-lain</td><td data-label="Jenis Kegiatan">Sembako</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. P. Suryanegara Gg. Langgar No. 18</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-005</td><td data-label="Nama Merk/Produk">Bawang Goreng Mama Rosi</td><td data-label="Pemilik">Rosyyani</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Bawang Goreng Aneka Rasa, Bawang Sumenep, Bawang Putih</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Pegajahan Selatan No. 33 RT. 02/05</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-006</td><td data-label="Nama Merk/Produk">Nyusoe</td><td data-label="Pemilik">Nanda Ramadhan</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Susu Sapi, Catering</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Pegajahan Selatan No. 50</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-007</td><td data-label="Nama Merk/Produk">Siwang Umi Ami</td><td data-label="Pemilik">Aminah</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Siwang, Triwang, Bawang Goreng</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Pulasaren Barat Gg. Sobari No. 156</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-008</td><td data-label="Nama Merk/Produk">Galang Cucur</td><td data-label="Pemilik">Nursamsi Suprayogi</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Kue Cucur</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Pekalipan Utara Gg. V No. 29 RT.02/01</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-009</td><td data-label="Nama Merk/Produk">Azza Cake &amp; Cookies</td><td data-label="Pemilik">Fitriah Pratiwi</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Kue, Kuliner</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Kembar Gg. Syamsu No. 2 RT. 01/08</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-010</td><td data-label="Nama Merk/Produk">Mamito Kitchen</td><td data-label="Pemilik">Siti Masitoh</td><td data-label="Kategori">Lain-lain</td><td data-label="Jenis Kegiatan">Bawang Putih</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Pekalipan Gg. V No. 6</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-011</td><td data-label="Nama Merk/Produk">Batik Al Fitri</td><td data-label="Pemilik">Al Fitria</td><td data-label="Kategori">Fashion</td><td data-label="Jenis Kegiatan">Batik</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Pegajahan Selatan No. 38 RT. 02/05</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-012</td><td data-label="Nama Merk/Produk">Rengginang Anakku</td><td data-label="Pemilik">Indah Noviana Sari</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Sambal Botol, Rengginang</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Pegajahan Selatan No. 42 A RT. 02/05</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-013</td><td data-label="Nama Merk/Produk">Tempe Mala</td><td data-label="Pemilik">Parimala</td><td data-label="Kategori">Lain-lain</td><td data-label="Jenis Kegiatan">Tempe</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Benteng No. 134 RT. 06/03</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-014</td><td data-label="Nama Merk/Produk">Aneka Kue</td><td data-label="Pemilik">Dedi Hartomi</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Kue</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Kanoman</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
+        <tr><td data-label="ID">UMK-015</td><td data-label="Nama Merk/Produk">Kampoeng Tjaroeban</td><td data-label="Pemilik">Paulus Mulyanto</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Ketan Gurih, Oleh-Oleh Cirebon</td><td data-label="Keterangan"><span class="badge info">Mikro</span></td><td data-label="Alamat Usaha">Jl. Kanoman No. 14</td>
+          <td data-label="Status"><select class="form-control sm st-aktif"><option selected>Aktif</option><option>Tidak Aktif</option></select></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html" class="btn outline sm"><span data-ic="eye"></span> Lihat</a><button class="btn danger sm"><span data-ic="trash"></span> Hapus</button></div></td></tr>
       </tbody>
     </table>
   </div>
@@ -69,6 +93,15 @@
 <script src="../icons.js"></script>
 <script src="../sidebar.js"></script>
 <script>
+  // Auto-set ?id= on each Lihat link from the ID cell in the same row
+  document.querySelectorAll('table.data tbody tr').forEach(tr => {
+    const idCell = tr.querySelector('td[data-label="ID"]');
+    const lihatLink = tr.querySelector('a.btn[href="detail-umkm.html"]');
+    if (idCell && lihatLink) {
+      lihatLink.href = 'detail-umkm.html?id=' + idCell.textContent.trim();
+    }
+  });
+
   const subMap = {
     Kuliner: ['Warung Makan','Catering','Bakery','Minuman'],
     Fashion: ['Baju','Celana','Hijab','Sepatu','Aksesoris'],

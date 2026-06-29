@@ -29,32 +29,48 @@
     <table class="data">
       <thead><tr><th>No</th><th>Nama UMKM</th><th>Pemilik</th><th>Kategori</th><th>Sub Kategori</th><th>Tanggal Daftar</th><th>Status</th><th>Aksi</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>Kedai Kopi Senja</td><td>Budi Santoso</td><td>Kuliner</td><td>Minuman Panas</td><td>03 Jun 2026</td><td><span class="badge warning">Menunggu</span></td>
-          <td><button class="btn success sm" onclick="openModal('approve')">Setujui</button> <button class="btn danger sm" onclick="openModal('reject')">Tolak</button></td></tr>
-        <tr><td>2</td><td>Batik Lestari</td><td>Sri Mulyani</td><td>Fashion</td><td>Baju</td><td>02 Jun 2026</td><td><span class="badge warning">Menunggu</span></td>
-          <td><button class="btn success sm" onclick="openModal('approve')">Setujui</button> <button class="btn danger sm" onclick="openModal('reject')">Tolak</button></td></tr>
-        <tr><td>3</td><td>Toko Sembako Berkah</td><td>Ahmad Fauzi</td><td>Perdagangan</td><td>Sembako</td><td>01 Jun 2026</td><td><span class="badge warning">Menunggu</span></td>
-          <td><button class="btn success sm">Setujui</button> <button class="btn danger sm">Tolak</button></td></tr>
-        <tr><td>4</td><td>Bakery Manis</td><td>Linda Wati</td><td>Kuliner</td><td>Bakery</td><td>31 Mei 2026</td><td><span class="badge success">Disetujui</span></td>
-          <td><button class="btn outline sm">Lihat</button></td></tr>
-        <tr><td>5</td><td>Jasa Service AC</td><td>Rudi Hartono</td><td>Jasa</td><td>Servis</td><td>30 Mei 2026</td><td><span class="badge danger">Ditolak</span></td>
-          <td><button class="btn outline sm">Lihat</button></td></tr>
+        <tr><td data-label="No">1</td><td data-label="Nama UMKM">Sari Putri</td><td data-label="Pemilik">Yeti Sumaryati</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Kripik Kentang, Sumpia Rebon</td><td data-label="Tanggal Daftar">03 Jun 2026</td><td data-label="Status"><span class="badge warning">Menunggu</span></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><button class="btn success sm" onclick="openModal('approve',this)"><span data-ic="check"></span> Setujui</button><button class="btn danger sm" onclick="openModal('reject',this)"><span data-ic="x"></span> Tolak</button><button class="btn outline sm" onclick="openModal('detail',this)"><span data-ic="eye"></span> Detail</button></div></td></tr>
+        <tr><td data-label="No">2</td><td data-label="Nama UMKM">Nyusoe</td><td data-label="Pemilik">Nanda Ramadhan</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Susu Sapi, Catering</td><td data-label="Tanggal Daftar">02 Jun 2026</td><td data-label="Status"><span class="badge warning">Menunggu</span></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><button class="btn success sm" onclick="openModal('approve',this)"><span data-ic="check"></span> Setujui</button><button class="btn danger sm" onclick="openModal('reject',this)"><span data-ic="x"></span> Tolak</button><button class="btn outline sm" onclick="openModal('detail',this)"><span data-ic="eye"></span> Detail</button></div></td></tr>
+        <tr><td data-label="No">3</td><td data-label="Nama UMKM">Galang Cucur</td><td data-label="Pemilik">Nursamsi Suprayogi</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Kue Cucur</td><td data-label="Tanggal Daftar">01 Jun 2026</td><td data-label="Status"><span class="badge warning">Menunggu</span></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><button class="btn success sm" onclick="openModal('approve',this)"><span data-ic="check"></span> Setujui</button><button class="btn danger sm" onclick="openModal('reject',this)"><span data-ic="x"></span> Tolak</button><button class="btn outline sm" onclick="openModal('detail',this)"><span data-ic="eye"></span> Detail</button></div></td></tr>
+        <tr><td data-label="No">4</td><td data-label="Nama UMKM">Azza Cake &amp; Cookies</td><td data-label="Pemilik">Fitriah Pratiwi</td><td data-label="Kategori">Kuliner</td><td data-label="Jenis Kegiatan">Kue, Kuliner</td><td data-label="Tanggal Daftar">31 Mei 2026</td><td data-label="Status"><span class="badge success">Disetujui</span></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html?id=UMK-009" class="btn outline sm"><span data-ic="eye"></span> Lihat Profil</a></div></td></tr>
+        <tr><td data-label="No">5</td><td data-label="Nama UMKM">Tempe Mala</td><td data-label="Pemilik">Parimala</td><td data-label="Kategori">Lain-lain</td><td data-label="Jenis Kegiatan">Tempe</td><td data-label="Tanggal Daftar">30 Mei 2026</td><td data-label="Status"><span class="badge danger">Ditolak</span></td>
+          <td data-label="Aksi"><div style="display:flex;gap:6px;flex-wrap:nowrap"><a href="detail-umkm.html?id=UMK-013" class="btn outline sm"><span data-ic="eye"></span> Lihat Profil</a></div></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
+<!-- Modal Setujui / Tolak -->
 <div class="modal-backdrop" id="modal">
   <div class="modal">
     <h3 id="mTitle">Konfirmasi Verifikasi</h3>
-    <p id="mBody" class="text-muted">Apakah Anda yakin ingin menyetujui pendaftaran UMKM ini?</p>
+    <p id="mBody" class="text-muted"></p>
     <div class="form-group" style="margin-top:14px;">
       <label>Catatan</label>
       <textarea class="form-control" rows="3" placeholder="Tambahkan catatan..."></textarea>
     </div>
     <div class="modal-actions">
       <button class="btn secondary" onclick="closeModal()">Batal</button>
-      <button class="btn" onclick="closeModal()">Konfirmasi</button>
+      <button class="btn" id="mConfirmBtn" onclick="closeModal()">Konfirmasi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Detail Pendaftaran -->
+<div class="modal-backdrop" id="modalDetail">
+  <div class="modal" style="max-width:520px">
+    <h3 id="dTitle">Detail Pendaftaran</h3>
+    <table class="data" style="font-size:13px;margin-top:12px" id="dTable">
+      <tbody id="dBody"></tbody>
+    </table>
+    <div class="modal-actions" style="margin-top:16px">
+      <button class="btn secondary" onclick="closeDetailModal()">Tutup</button>
+      <button class="btn success" id="dSetujuiBtn">Setujui</button>
+      <button class="btn danger" id="dTolakBtn">Tolak</button>
     </div>
   </div>
 </div>
@@ -62,12 +78,79 @@
 <script src="../icons.js"></script>
 <script src="../sidebar.js"></script>
 <script>
-function openModal(t){
+function getRow(el){ return el.closest('tr'); }
+
+function openModal(t, btn){
+  const tr = getRow(btn);
+  const cells = tr.querySelectorAll('td[data-label]');
+  const nama = cells[1]?.textContent.trim() || '';
   document.getElementById('modal').classList.add('active');
-  document.getElementById('mTitle').textContent = t==='approve'?'Setujui Pendaftaran':'Tolak Pendaftaran';
-  document.getElementById('mBody').textContent = t==='approve'?'Apakah Anda yakin ingin menyetujui pendaftaran UMKM ini?':'Apakah Anda yakin ingin menolak pendaftaran UMKM ini?';
+  if(t === 'approve'){
+    document.getElementById('mTitle').textContent = 'Setujui Pendaftaran';
+    document.getElementById('mBody').textContent = `Setujui pendaftaran UMKM "${nama}"? UMKM akan langsung berstatus Aktif.`;
+    document.getElementById('mConfirmBtn').className = 'btn success';
+    document.getElementById('mConfirmBtn').textContent = 'Ya, Setujui';
+  } else {
+    document.getElementById('mTitle').textContent = 'Tolak Pendaftaran';
+    document.getElementById('mBody').textContent = `Tolak pendaftaran UMKM "${nama}"? Tindakan ini tidak dapat dibatalkan.`;
+    document.getElementById('mConfirmBtn').className = 'btn danger';
+    document.getElementById('mConfirmBtn').textContent = 'Ya, Tolak';
+  }
 }
+
+function openModal(t, btn){
+  if(t === 'detail'){ openDetailModal(btn); return; }
+  const tr = getRow(btn);
+  const cells = tr.querySelectorAll('td[data-label]');
+  const nama = cells[1]?.textContent.trim() || '';
+  document.getElementById('modal').classList.add('active');
+  if(t === 'approve'){
+    document.getElementById('mTitle').textContent = 'Setujui Pendaftaran';
+    document.getElementById('mBody').textContent = `Setujui pendaftaran UMKM "${nama}"? UMKM akan langsung berstatus Aktif.`;
+    document.getElementById('mConfirmBtn').className = 'btn success';
+    document.getElementById('mConfirmBtn').textContent = 'Ya, Setujui';
+  } else {
+    document.getElementById('mTitle').textContent = 'Tolak Pendaftaran';
+    document.getElementById('mBody').textContent = `Tolak pendaftaran UMKM "${nama}"? Tindakan ini tidak dapat dibatalkan.`;
+    document.getElementById('mConfirmBtn').className = 'btn danger';
+    document.getElementById('mConfirmBtn').textContent = 'Ya, Tolak';
+  }
+}
+
+function openDetailModal(btn){
+  const tr = getRow(btn);
+  const cells = tr.querySelectorAll('td[data-label]');
+  const nama    = cells[1]?.textContent.trim() || '—';
+  const pemilik = cells[2]?.textContent.trim() || '—';
+  const kat     = cells[3]?.textContent.trim() || '—';
+  const jenis   = cells[4]?.textContent.trim() || '—';
+  const tgl     = cells[5]?.textContent.trim() || '—';
+
+  document.getElementById('dTitle').textContent = 'Detail Pendaftaran — ' + nama;
+  document.getElementById('dBody').innerHTML = [
+    ['Nama UMKM', nama],
+    ['Pemilik', pemilik],
+    ['Kategori', kat],
+    ['Jenis Kegiatan', jenis],
+    ['Tanggal Daftar', tgl],
+    ['Status', '<span class="badge warning">Menunggu Verifikasi</span>'],
+  ].map(([k,v]) =>
+    `<tr><td style="width:160px;color:var(--gray-500)">${k}</td><td>${v}</td></tr>`
+  ).join('');
+
+  document.getElementById('dSetujuiBtn').onclick = () => {
+    closeDetailModal(); openModal('approve', btn);
+  };
+  document.getElementById('dTolakBtn').onclick = () => {
+    closeDetailModal(); openModal('reject', btn);
+  };
+  document.getElementById('modalDetail').classList.add('active');
+}
+
 function closeModal(){ document.getElementById('modal').classList.remove('active'); }
+function closeDetailModal(){ document.getElementById('modalDetail').classList.remove('active'); }
+document.getElementById('modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+document.getElementById('modalDetail').addEventListener('click', e => { if(e.target===e.currentTarget) closeDetailModal(); });
 </script>
 </body>
 </html>
